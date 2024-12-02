@@ -58,53 +58,77 @@ export default function Ping() {
   //   console.log(parsedRuns);
   // });
 
-  const testingData = {
-    activeDuration: 918000,
-    activeZoneMinutes: {
-      totalMinutes: 15,
-      minutesInHeartRateZones: "Array(4)",
+  const testingData = [
+    {
+      activityName: "Run",
+      calories: 265,
+      distance: 2.24427,
+      distanceUnit: "Kilometer",
+      duration: 830000,
+      elevationGain: 0,
+      originalStartTime: "2024-11-22T11:20:24.000+11:00",
+      pace: 360.81076300864294,
+      speed: 9.977529411764706,
+      steps: 2276,
     },
-    activityLevel: ["{…}", "{…}", "{…}", "{…}"],
-    activityName: "Run",
-    activityTypeId: 90009,
-    calories: 265,
-    caloriesLink:
-      "https://api.fitbit.com/1/user/-/activities/calories/date/2024-12-01/2024-12-01/1min/time/12:30/12:45.json",
-    distance: 2.54427,
-    distanceUnit: "Kilometer",
-    duration: 920000,
-    elevationGain: 0,
-    hasActiveZoneMinutes: true,
-    heartRateZones: [],
-    inProgress: false,
-    intervalWorkoutData: { intervalSummaries: "Array(0)", numRepeats: 0 },
-    lastModified: "2024-12-01T01:47:59.428Z",
-    logId: 2474517443734024000,
-    logType: "tracker",
-    manualValuesSpecified: { calories: false, distance: false, steps: false },
-    originalDuration: 920000,
-    originalStartTime: "2024-12-01T12:30:28.000+11:00",
-    pace: 360.81076300864294,
-    source: {
-      type: "tracker",
-      name: "Inspire 3",
-      id: "E1D82A22963F",
-      url: "https://www.fitbit.com/",
-      trackerFeatures: "Array(7)",
+    {
+      activityName: "Run",
+      calories: 265,
+      distance: 1.54427,
+      distanceUnit: "Kilometer",
+      duration: 650000,
+      elevationGain: 0,
+      originalStartTime: "2024-11-24T09:10:22.000+11:00",
+      pace: 360.81076300864294,
+      speed: 9.977529411764706,
+      steps: 2276,
     },
-    speed: 9.977529411764706,
-    startTime: "2024-12-01T12:30:28.000+11:00",
-    steps: 2276,
-    tcxLink:
-      "https://api.fitbit.com/1/user/-/activities/2474517443734024400.tcx",
-  };
+    {
+      activityName: "Run",
+      calories: 265,
+      distance: 2.94427,
+      distanceUnit: "Kilometer",
+      duration: 910000,
+      elevationGain: 0,
+      originalStartTime: "2024-11-27T15:50:58.000+11:00",
+      pace: 360.81076300864294,
+      speed: 9.977529411764706,
+      steps: 2276,
+    },
+    {
+      activityName: "Run",
+      calories: 265,
+      distance: 2.45427,
+      distanceUnit: "Kilometer",
+      duration: 1020000,
+      elevationGain: 0,
+      originalDuration: 1020000,
+      originalStartTime: "2024-11-29T07:30:02.000+11:00",
+      pace: 360.81076300864294,
+      speed: 9.977529411764706,
+      steps: 2276,
+    },
+    {
+      activityName: "Run",
+      calories: 265,
+      distance: 2.54427,
+      distanceUnit: "Kilometer",
+      duration: 920000,
+      elevationGain: 0,
+      originalDuration: 920000,
+      originalStartTime: "2024-12-01T12:30:28.000+11:00",
+      pace: 360.81076300864294,
+      speed: 9.977529411764706,
+      steps: 2276,
+    },
+  ];
   class Run {
     constructor(run) {
       this.date = run.originalStartTime.split("T")[0];
       this.initialTime = dateTimeParser(run.originalStartTime);
       this.duration = timeParser(run.duration);
       this.endTime = endTimeCalc(this.initialTime, this.duration);
-      this.distance = run.distance;
+      this.distance = run.distance.toFixed(2);
       this.speed = run.speed;
       this.steps = run.steps;
       function dateTimeParser(dateString) {
@@ -149,17 +173,18 @@ export default function Ping() {
     }
   }
 
-  let newRun = new Run(testingData);
   const [runs, setRuns] = useState([]);
-  for (let i = 0; i !== 13; i++) {
-    runs.push([newRun, i]);
+  for (let i = 0; i !== testingData.length; i++) {
+    let newRun = new Run(testingData[i]);
+    newRun.index = i;
+    runs.push([newRun]);
   }
 
   function RunList() {
     return (
       <div id="runList">
         {runs.map((run) => {
-          return <RunItem key={run[0] + run[1]} data={run[0]}></RunItem>;
+          return <RunItem key={run[0] + run[0].index} data={run[0]}></RunItem>;
         })}
       </div>
     );
@@ -169,8 +194,14 @@ export default function Ping() {
     return (
       <div className="runItem" style={{ display: "flex" }}>
         <p>{props.data.date}</p>
-        <p>{props.data.initialTime}</p>
-        <p>{props.data.duration}</p>
+        <p>
+          {props.data.initialTime[0]}:{props.data.initialTime[1]}:
+          {props.data.initialTime[2]}
+        </p>
+        <p>
+          {props.data.duration[0]}:{props.data.duration[1]}:
+          {props.data.duration[2]}
+        </p>
         <p>{props.data.distance} km</p>
       </div>
     );
