@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { profile } from "./API.jsx";
 import "./App.css";
 // console.log(fetch("https://api.fitbit.com/oauth2/token", {
-export default function Ping() {
+export default function Page() {
   //   method: "POST",
   //   body:
   //     "response_type=code&client_id=" +
@@ -172,39 +172,99 @@ export default function Ping() {
       }
     }
   }
-
-  const [runs, setRuns] = useState([]);
-  for (let i = 0; i !== testingData.length; i++) {
-    let newRun = new Run(testingData[i]);
-    newRun.index = i;
-    runs.push([newRun]);
+  let initialRuns = runStatePacker2();
+  function runStatePacker2() {
+    let holder = [];
+    for (let i = 0; i !== testingData.length; i++) {
+      let newRun = new Run(testingData[i]);
+      newRun.index = i;
+      holder.push(newRun);
+    }
+    return holder;
+  }
+  const [runs, setRuns] = useState(initialRuns);
+  function runStatePacker() {
+    let holder = [];
+    for (let i = 0; i !== testingData.length; i++) {
+      let newRun = new Run(testingData[i]);
+      newRun.index = i;
+      holder.push(newRun);
+    }
+    setRuns(holder);
   }
 
   function RunList() {
     return (
       <div id="runList">
         {runs.map((run) => {
-          return <RunItem key={run[0] + run[0].index} data={run[0]}></RunItem>;
+          return <RunItem key={run.date + run.index} data={run}></RunItem>;
         })}
       </div>
     );
   }
 
+  const [activeItem, setActiveItem] = useState("runItem0");
   function RunItem(props) {
     return (
-      <div className="runItem" style={{ display: "flex" }}>
-        <p>{props.data.date}</p>
-        <p>
-          {props.data.initialTime[0]}:{props.data.initialTime[1]}:
-          {props.data.initialTime[2]}
-        </p>
-        <p>
-          {props.data.duration[0]}:{props.data.duration[1]}:
-          {props.data.duration[2]}
-        </p>
-        <p>{props.data.distance} km</p>
+      <div
+        id={"runItem" + props.data.index}
+        className="runItem"
+        style={
+          activeItem === "runItem" + props.data.index
+            ? {
+                backgroundColor: "#cacaca",
+              }
+            : {
+                backgroundColor: "white",
+              }
+        }
+        onClick={function () {
+          runItemSelect(props.data.index);
+        }}
+      >
+        <RunItemStat type="date" data={props.data}></RunItemStat>
+        <RunItemStat type="time" data={props.data}></RunItemStat>
+        <RunItemStat type="duration" data={props.data}></RunItemStat>
+        <RunItemStat type="distance" data={props.data}></RunItemStat>
       </div>
     );
+  }
+
+  function RunItemStat(props) {
+    let content;
+    if (props.type === "date") {
+      content = props.data.date;
+    } else if (props.type === "time") {
+      content =
+        props.data.initialTime[0] +
+        ":" +
+        props.data.initialTime[1] +
+        ":" +
+        props.data.initialTime[2];
+    } else if (props.type === "duration") {
+      content =
+        props.data.duration[0] +
+        ":" +
+        props.data.duration[1] +
+        ":" +
+        props.data.duration[2];
+    } else if (props.type === "distance") {
+      content = props.data.distance + " km";
+    }
+    return (
+      <>
+        <p
+          onClick={function () {
+            runItemSelect(props.data.index);
+          }}
+        >
+          {content}
+        </p>
+      </>
+    );
+  }
+  function runItemSelect(index) {
+    setActiveItem("runItem" + index);
   }
 
   return (

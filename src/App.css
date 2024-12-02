@@ -25,6 +25,7 @@ width: 100vw;
 
 #leftTitle,
 .runItem {
+  display:flex;
   height: 40px;
   line-height: 40px;
   outline: solid 1px black;
