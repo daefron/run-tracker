@@ -148,15 +148,16 @@ export default function Ping() {
       }
     }
   }
+
   let newRun = new Run(testingData);
-  const [runs, setRuns] = useState(["hi", "hello"]);
+  const [runs, setRuns] = useState([]);
   for (let i = 0; i !== 13; i++) {
     runs.push([newRun, i]);
   }
 
   function RunList() {
     return (
-      <div>
+      <div id="runList">
         {runs.map((run) => {
           return <RunItem key={run[0] + run[1]} data={run[0]}></RunItem>;
         })}
@@ -166,18 +167,24 @@ export default function Ping() {
 
   function RunItem(props) {
     return (
-      <div style={{ display: "flex" }}>
+      <div className="runItem" style={{ display: "flex" }}>
         <p>{props.data.date}</p>
         <p>{props.data.initialTime}</p>
         <p>{props.data.duration}</p>
-        <p>{props.data.disatnce}</p>
+        <p>{props.data.distance} km</p>
       </div>
     );
   }
 
   return (
-    <div>
-      <RunList></RunList>
-    </div>
+    <>
+      <div id="body">
+        <div id="left">
+          <p id="leftTitle">Runs:</p>
+          <RunList></RunList>
+        </div>
+        <div id="right"></div>
+      </div>
+    </>
   );
 }
