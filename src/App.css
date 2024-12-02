@@ -16,23 +16,27 @@ width: 100vw;
   width: 40%;
   height: 100%;
   outline: solid;
+  display:flex;
+  flex-direction: column;
 }
 #runList {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: 100%;
 }
 
 #leftTitle,
+#allRuns,
 .runItem {
   display:flex;
+  justify-content: space-between;
   height: 40px;
   line-height: 40px;
   outline: solid 1px black;
-  padding-left: 10px;
+  padding-inline: 10px;
   vertical-align: middle;
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 #right {
   width: 60%;

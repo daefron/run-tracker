@@ -131,6 +131,24 @@ export default function Page() {
       this.distance = run.distance.toFixed(2);
       this.speed = run.speed;
       this.steps = run.steps;
+      this.render = {
+        date: toAusDate(this.date),
+        startTime: renderTime(this.initialTime),
+        duration: renderTime(this.duration),
+      };
+      function toAusDate(date) {
+        let splitDate = date.split("-");
+        return splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0];
+      }
+      function renderTime(time) {
+        let newTime = [];
+        time.forEach((number) => {
+          if (number.toString().length < 2) {
+            newTime.push("0" + number);
+          } else newTime.push(number);
+        });
+        return newTime;
+      }
       function dateTimeParser(dateString) {
         let parsed = dateString.split("T")[1];
         parsed = parsed.split("+")[0];
@@ -153,7 +171,7 @@ export default function Page() {
           let remainder = mins % 1;
           mins -= remainder;
           seconds = parseInt(remainder * 60);
-        }
+        } else seconds = 0;
         return [hours, mins, seconds];
       }
       function endTimeCalc(initialTime, duration) {
@@ -172,8 +190,8 @@ export default function Page() {
       }
     }
   }
-  let initialRuns = runStatePacker2();
-  function runStatePacker2() {
+  let initialRuns = runStatePacker();
+  function runStatePacker() {
     let holder = [];
     for (let i = 0; i !== testingData.length; i++) {
       let newRun = new Run(testingData[i]);
@@ -183,15 +201,6 @@ export default function Page() {
     return holder;
   }
   const [runs, setRuns] = useState(initialRuns);
-  function runStatePacker() {
-    let holder = [];
-    for (let i = 0; i !== testingData.length; i++) {
-      let newRun = new Run(testingData[i]);
-      newRun.index = i;
-      holder.push(newRun);
-    }
-    setRuns(holder);
-  }
 
   function RunList() {
     return (
@@ -207,10 +216,9 @@ export default function Page() {
   function RunItem(props) {
     return (
       <div
-        id={"runItem" + props.data.index}
         className="runItem"
         style={
-          activeItem === "runItem" + props.data.index
+          activeItem === props.data.index
             ? {
                 backgroundColor: "#cacaca",
               }
@@ -233,21 +241,21 @@ export default function Page() {
   function RunItemStat(props) {
     let content;
     if (props.type === "date") {
-      content = props.data.date;
+      content = props.data.render.date;
     } else if (props.type === "time") {
       content =
-        props.data.initialTime[0] +
+        props.data.render.startTime[0] +
         ":" +
-        props.data.initialTime[1] +
+        props.data.render.startTime[1] +
         ":" +
-        props.data.initialTime[2];
+        props.data.render.startTime[2];
     } else if (props.type === "duration") {
       content =
-        props.data.duration[0] +
+        props.data.render.duration[0] +
         ":" +
-        props.data.duration[1] +
+        props.data.render.duration[1] +
         ":" +
-        props.data.duration[2];
+        props.data.render.duration[2];
     } else if (props.type === "distance") {
       content = props.data.distance + " km";
     }
@@ -264,7 +272,32 @@ export default function Page() {
     );
   }
   function runItemSelect(index) {
-    setActiveItem("runItem" + index);
+    console.log(runs);
+    setActiveItem(index);
+  }
+
+  function AllRuns() {
+    return (
+      <>
+        <p
+          id="allRuns"
+          style={
+            activeItem === "allRuns"
+              ? {
+                  backgroundColor: "#cacaca",
+                }
+              : {
+                  backgroundColor: "white",
+                }
+          }
+          onClick={function () {
+            runItemSelect("allRuns");
+          }}
+        >
+          All runs
+        </p>
+      </>
+    );
   }
 
   return (
@@ -273,6 +306,7 @@ export default function Page() {
         <div id="left">
           <p id="leftTitle">Runs:</p>
           <RunList></RunList>
+          <AllRuns></AllRuns>
         </div>
         <div id="right"></div>
       </div>
