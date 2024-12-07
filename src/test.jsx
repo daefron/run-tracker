@@ -137,8 +137,8 @@ export default function Page() {
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),
-        duration: renderDuration(this.duration),
-        distance: this.distance + "km",
+        duration: renderDuration(this.duration, this),
+        distance: this.distance + " km",
       };
       function toAusDate(date) {
         let splitDate = date.split("-");
@@ -174,11 +174,14 @@ export default function Page() {
         let competingDistance = run.lastRun.distance;
         let distance = run.distance;
         run.distanceDiff = distance - competingDistance;
-        run.render.distanceDiff = Number(run.distanceDiff.toFixed(2));
+        if (run.distanceDiff < 0) {
+          run.distanceNegative = true;
+        }
+        run.render.distanceDiff = Number(run.distanceDiff.toFixed(2)) + " km";
         let competingTime = objectToMs(run.lastRun.duration);
         let time = objectToMs(run.duration);
         run.durationDiff = msToObject(time - competingTime);
-        run.render.durationDiff = renderDuration(run.durationDiff);
+        run.render.durationDiff = renderDuration(run.durationDiff, run);
       }
       run.nextRun = holder[run.index + 1];
     });
@@ -195,13 +198,14 @@ export default function Page() {
     newTime = new Time(newTime[0], newTime[1], newTime[2]);
     return newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
   }
-  function renderDuration(time) {
+  function renderDuration(time, run) {
     let newTime = new Time(time.hours, time.mins, time.secs);
     let negative;
     for (const type in newTime) {
       if (newTime[type] < 0) {
         newTime[type] *= -1;
         negative = true;
+        run.durationNegative = true;
       }
     }
     if (newTime.secs.toString().length < 2) {
@@ -317,18 +321,34 @@ export default function Page() {
         <RunItemStat type="date" data={props.data}></RunItemStat>
         <RunItemStat type="startTime" data={props.data}></RunItemStat>
         <RunItemStat type="duration" data={props.data}></RunItemStat>
-        <RunItemStat type="durationDiff" data={props.data}></RunItemStat>
+        <RunItemStat
+          type="duration"
+          diff={true}
+          data={props.data}
+        ></RunItemStat>
         <RunItemStat type="distance" data={props.data}></RunItemStat>
-        <RunItemStat type="distanceDiff" data={props.data}></RunItemStat>
+        <RunItemStat
+          type="distance"
+          diff={true}
+          data={props.data}
+        ></RunItemStat>
       </div>
     );
   }
 
   function RunItemStat(props) {
     let content = props.data.render[props.type];
+    let statStyle = {};
+    if (props.diff) {
+      content = props.data.render[props.type + "Diff"];
+      if (props.data[props.type + "Negative"]) {
+        statStyle.color = "Red";
+      } else statStyle.color = "Green";
+    }
     return (
       <>
         <p
+          style={statStyle}
           onClick={() => {
             setActiveItem(props.data.index);
           }}
