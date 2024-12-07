@@ -120,33 +120,29 @@ export default function Page() {
       steps: 2276,
     },
   ];
+  function Time(hours, mins, secs) {
+    this.hours = hours;
+    this.mins = mins;
+    this.secs = secs;
+  }
   class Run {
     constructor(run) {
       this.date = run.originalStartTime.split("T")[0];
       this.initialTime = dateTimeParser(run.originalStartTime);
-      this.duration = msToArray(run.duration);
+      this.duration = msToObject(run.duration);
       this.endTime = endTimeCalc(this.initialTime, this.duration);
-      this.distance = run.distance.toFixed(2);
+      this.distance = Number(run.distance.toFixed(2));
       this.speed = run.speed;
       this.steps = run.steps;
       this.render = {
         date: toAusDate(this.date),
-        startTime: timeJoiner(renderTime(this.initialTime)),
-        duration: timeJoiner(renderTime(this.duration)),
+        startTime: renderTime(this.initialTime),
+        duration: renderDuration(this.duration),
         distance: this.distance + "km",
       };
       function toAusDate(date) {
         let splitDate = date.split("-");
         return splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0];
-      }
-      function renderTime(time) {
-        let newTime = [];
-        time.forEach((number) => {
-          if (number.toString().length < 2) {
-            newTime.push("0" + number);
-          } else newTime.push(number);
-        });
-        return newTime;
       }
       function dateTimeParser(dateString) {
         let parsed = dateString.split("T")[1];
@@ -154,16 +150,13 @@ export default function Page() {
         let hour = Number(parsed[0]);
         let mins = Number(parsed[1]);
         let secs = Number(parsed[2]);
-        return [hour, mins, secs];
+        return new Time(hour, mins, secs);
       }
       function endTimeCalc(initialTime, duration) {
-        let initialTimeMs = arrayToMs(initialTime);
-        let durationMs = arrayToMs(duration);
-        let endTime = msToArray(initialTimeMs + durationMs);
+        let initialTimeMs = objectToMs(initialTime);
+        let durationMs = objectToMs(duration);
+        let endTime = msToObject(initialTimeMs + durationMs);
         return endTime;
-      }
-      function timeJoiner(time) {
-        return time[0] + ":" + time[1] + ":" + time[2];
       }
     }
   }
@@ -173,32 +166,69 @@ export default function Page() {
     for (let i = 0; i !== testingData.length; i++) {
       let newRun = new Run(testingData[i]);
       newRun.index = i;
-      if (i > 0) {
-        let competingDistance = holder[i - 1].distance;
-        newRun.distanceDiff = newRun.distance - competingDistance;
-        let competingTime = holder[i - 1].duration;
-        newRun.durationDiff = durationDiffCalc(newRun.duration, competingTime);
-        function durationDiffCalc(duration, competingTime) {
-          let hours = (duration[0] - competingTime[0]) * 3600;
-          let mins = (duration[1] - competingTime[1]) * 60;
-          let secs = duration[2] - competingTime[2];
-          let totalDiff = hours + mins + secs;
-          let minsDiff = totalDiff / 60;
-          let secsDiff = parseInt((minsDiff % 1) * 60);
-          minsDiff = parseInt(minsDiff - secsDiff / 60);
-          let renderDiff = [0, minsDiff, secsDiff];
-          return renderDiff;
-        }
-      }
       holder.push(newRun);
     }
+    holder.forEach((run) => {
+      run.lastRun = holder[run.index - 1];
+      if (run.lastRun) {
+        let competingDistance = run.lastRun.distance;
+        let distance = run.distance;
+        run.distanceDiff = distance - competingDistance;
+        run.render.distanceDiff = Number(run.distanceDiff.toFixed(2));
+        let competingTime = objectToMs(run.lastRun.duration);
+        let time = objectToMs(run.duration);
+        run.durationDiff = msToObject(time - competingTime);
+        run.render.durationDiff = renderDuration(run.durationDiff);
+      }
+      run.nextRun = holder[run.index + 1];
+    });
+    console.log(holder);
     return holder;
   }
+  function renderTime(time) {
+    let newTime = [];
+    for (const number in time) {
+      if (time[number].toString().length < 2) {
+        newTime.push("0" + time[number]);
+      } else newTime.push(time[number]);
+    }
+    newTime = new Time(newTime[0], newTime[1], newTime[2]);
+    return newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
+  }
+  function renderDuration(time) {
+    let newTime = new Time(time.hours, time.mins, time.secs);
+    let negative;
+    for (const type in newTime) {
+      if (newTime[type] < 0) {
+        newTime[type] *= -1;
+        negative = true;
+      }
+    }
+    if (newTime.secs.toString().length < 2) {
+      newTime.secs = "0" + newTime.secs;
+    }
+    let renderString;
+    if (newTime.hours === 0 && newTime.mins === 0) {
+      renderString = newTime.secs;
+    } else if (newTime.hours === 0) {
+      renderString = newTime.mins + ":" + newTime.secs;
+    } else
+      renderString = newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
+    if (negative) {
+      renderString = "-" + renderString;
+    }
+    return renderString;
+  }
 
-  function msToArray(time) {
+  function msToObject(time) {
     let hourIn = 3600000;
     let minIn = 60000;
     let secsIn = 1000;
+    if (time < 0) {
+      hourIn = -3600000;
+      minIn = -60000;
+      secsIn = -1000;
+    }
     let hours = 0;
     let mins = 0;
     let secs = 0;
@@ -210,27 +240,36 @@ export default function Page() {
       let minsRemainder = mins % 1;
       mins -= minsRemainder;
       secs = parseInt(minsRemainder * 60);
-      return [hours, mins, secs];
+      if (time > 0) {
+        return new Time(hours, mins, secs);
+      }
+      return new Time(-hours, -mins, -secs);
     }
     if (time / minIn >= 1) {
       mins = time / minIn;
       let minsRemainder = mins % 1;
       mins -= minsRemainder;
       secs = parseInt(minsRemainder * 60);
-      return [hours, mins, secs];
+      if (time > 0) {
+        return new Time(hours, mins, secs);
+      }
+      return new Time(-hours, -mins, -secs);
     }
     secs = parseInt(time / secsIn);
-    return [hours, mins, secs];
+    if (time > 0) {
+      return new Time(hours, mins, secs);
+    }
+    return new Time(-hours, -mins, -secs);
   }
 
-  function arrayToMs(time) {
+  function objectToMs(time) {
     let total = 0;
     let hourIn = 3600000;
     let minIn = 60000;
     let secIn = 1000;
-    total += time[0] * hourIn;
-    total += time[1] * minIn;
-    total += time[2] * secIn;
+    total += time.hours * hourIn;
+    total += time.mins * minIn;
+    total += time.secs * secIn;
     return total;
   }
 
@@ -278,7 +317,9 @@ export default function Page() {
         <RunItemStat type="date" data={props.data}></RunItemStat>
         <RunItemStat type="startTime" data={props.data}></RunItemStat>
         <RunItemStat type="duration" data={props.data}></RunItemStat>
+        <RunItemStat type="durationDiff" data={props.data}></RunItemStat>
         <RunItemStat type="distance" data={props.data}></RunItemStat>
+        <RunItemStat type="distanceDiff" data={props.data}></RunItemStat>
       </div>
     );
   }
