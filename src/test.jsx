@@ -1,7 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { profile } from "./API.jsx";
+import { useState, useRef } from "react";
 import "./App.css";
-// console.log(fetch("https://api.fitbit.com/oauth2/token", {
 export default function Page() {
   //   method: "POST",
   //   body:
@@ -133,8 +131,9 @@ export default function Page() {
       this.steps = run.steps;
       this.render = {
         date: toAusDate(this.date),
-        startTime: renderTime(this.initialTime),
-        duration: renderTime(this.duration),
+        startTime: timeJoiner(renderTime(this.initialTime)),
+        duration: timeJoiner(renderTime(this.duration)),
+        distance: this.distance + "km",
       };
       function toAusDate(date) {
         let splitDate = date.split("-");
@@ -151,10 +150,10 @@ export default function Page() {
       }
       function dateTimeParser(dateString) {
         let parsed = dateString.split("T")[1];
-        parsed = parsed.split("+")[0];
-        let hour = Number(parsed.split(":")[0]);
-        let mins = Number(parsed.split(":")[1]);
-        let secs = Number(parsed.split(":")[2]);
+        parsed = parsed.split("+")[0].split(":");
+        let hour = Number(parsed[0]);
+        let mins = Number(parsed[1]);
+        let secs = Number(parsed[2]);
         return [hour, mins, secs];
       }
       function timeParser(duration) {
@@ -188,24 +187,55 @@ export default function Page() {
         } else mins += duration[1];
         return [hours, mins, secs];
       }
+      function timeJoiner(time) {
+        return time[0] + ":" + time[1] + ":" + time[2];
+      }
     }
   }
-  let initialRuns = runStatePacker();
+
   function runStatePacker() {
     let holder = [];
     for (let i = 0; i !== testingData.length; i++) {
       let newRun = new Run(testingData[i]);
       newRun.index = i;
+      if (i > 0) {
+        let competingDistance = holder[i - 1].distance;
+        newRun.distanceDiff = newRun.distance - competingDistance;
+        let competingTime = holder[i - 1].duration;
+        newRun.durationDiff = durationDiffCalc(newRun.duration, competingTime);
+        function durationDiffCalc(duration, competingTime) {
+          let hours = (duration[0] - competingTime[0]) * 3600;
+          let mins = (duration[1] - competingTime[1]) * 60;
+          let secs = duration[2] - competingTime[2];
+          let totalDiff = hours + mins + secs;
+          let minsDiff = totalDiff / 60;
+          let secsDiff = parseInt((minsDiff % 1) * 60);
+          minsDiff = parseInt(minsDiff - secsDiff / 60);
+          let renderDiff = [0, minsDiff, secsDiff];
+          return renderDiff;
+        }
+      }
       holder.push(newRun);
     }
+    console.log(holder);
     return holder;
   }
-  const [runs, setRuns] = useState(initialRuns);
+  const runsRef = useRef(runStatePacker());
+
+  function RunListTitle() {
+    return (
+      <div id="leftTitle">
+        <p>Date</p>
+        <p>Duration</p>
+        <p>Length</p>
+      </div>
+    );
+  }
 
   function RunList() {
     return (
       <div id="runList">
-        {runs.map((run) => {
+        {runsRef.current.map((run) => {
           return <RunItem key={run.date + run.index} data={run}></RunItem>;
         })}
       </div>
@@ -231,7 +261,7 @@ export default function Page() {
         }}
       >
         <RunItemStat type="date" data={props.data}></RunItemStat>
-        <RunItemStat type="time" data={props.data}></RunItemStat>
+        <RunItemStat type="startTime" data={props.data}></RunItemStat>
         <RunItemStat type="duration" data={props.data}></RunItemStat>
         <RunItemStat type="distance" data={props.data}></RunItemStat>
       </div>
@@ -239,26 +269,7 @@ export default function Page() {
   }
 
   function RunItemStat(props) {
-    let content;
-    if (props.type === "date") {
-      content = props.data.render.date;
-    } else if (props.type === "time") {
-      content =
-        props.data.render.startTime[0] +
-        ":" +
-        props.data.render.startTime[1] +
-        ":" +
-        props.data.render.startTime[2];
-    } else if (props.type === "duration") {
-      content =
-        props.data.render.duration[0] +
-        ":" +
-        props.data.render.duration[1] +
-        ":" +
-        props.data.render.duration[2];
-    } else if (props.type === "distance") {
-      content = props.data.distance + " km";
-    }
+    let content = props.data.render[props.type];
     return (
       <>
         <p
@@ -271,8 +282,8 @@ export default function Page() {
       </>
     );
   }
+
   function runItemSelect(index) {
-    console.log(runs);
     setActiveItem(index);
   }
 
@@ -304,7 +315,7 @@ export default function Page() {
     <>
       <div id="body">
         <div id="left">
-          <p id="leftTitle">Runs:</p>
+          <RunListTitle></RunListTitle>
           <RunList></RunList>
           <AllRuns></AllRuns>
         </div>
