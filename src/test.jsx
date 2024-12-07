@@ -124,7 +124,7 @@ export default function Page() {
     constructor(run) {
       this.date = run.originalStartTime.split("T")[0];
       this.initialTime = dateTimeParser(run.originalStartTime);
-      this.duration = timeParser(run.duration);
+      this.duration = msToArray(run.duration);
       this.endTime = endTimeCalc(this.initialTime, this.duration);
       this.distance = run.distance.toFixed(2);
       this.speed = run.speed;
@@ -156,36 +156,11 @@ export default function Page() {
         let secs = Number(parsed[2]);
         return [hour, mins, secs];
       }
-      function timeParser(duration) {
-        let seconds = duration / 1000;
-        let mins = seconds / 60;
-        let hours = mins / 60;
-        if (hours < 1) {
-          hours = 0;
-        }
-        if (mins < 1) {
-          mins = 0;
-        }
-        if (mins % 1) {
-          let remainder = mins % 1;
-          mins -= remainder;
-          seconds = parseInt(remainder * 60);
-        } else seconds = 0;
-        return [hours, mins, seconds];
-      }
       function endTimeCalc(initialTime, duration) {
-        let hours = initialTime[0];
-        let mins = initialTime[1];
-        let secs = initialTime[2];
-        if (secs + duration[2] >= 60) {
-          mins++;
-          secs += duration[2] - 60;
-        } else secs += duration[2];
-        if (mins + duration[1] >= 60) {
-          hours++;
-          mins += duration[1] - 60;
-        } else mins += duration[1];
-        return [hours, mins, secs];
+        let initialTimeMs = arrayToMs(initialTime);
+        let durationMs = arrayToMs(duration);
+        let endTime = msToArray(initialTimeMs + durationMs);
+        return endTime;
       }
       function timeJoiner(time) {
         return time[0] + ":" + time[1] + ":" + time[2];
@@ -217,15 +192,56 @@ export default function Page() {
       }
       holder.push(newRun);
     }
-    console.log(holder);
     return holder;
   }
+
+  function msToArray(time) {
+    let hourIn = 3600000;
+    let minIn = 60000;
+    let secsIn = 1000;
+    let hours = 0;
+    let mins = 0;
+    let secs = 0;
+    if (time / hourIn >= 1) {
+      hours = time / hourIn;
+      let hourRemainder = hours % 1;
+      hours -= hourRemainder;
+      mins = hourRemainder * 60;
+      let minsRemainder = mins % 1;
+      mins -= minsRemainder;
+      secs = parseInt(minsRemainder * 60);
+      return [hours, mins, secs];
+    }
+    if (time / minIn >= 1) {
+      mins = time / minIn;
+      let minsRemainder = mins % 1;
+      mins -= minsRemainder;
+      secs = parseInt(minsRemainder * 60);
+      return [hours, mins, secs];
+    }
+    secs = parseInt(time / secsIn);
+    return [hours, mins, secs];
+  }
+
+  function arrayToMs(time) {
+    let total = 0;
+    let hourIn = 3600000;
+    let minIn = 60000;
+    let secIn = 1000;
+    total += time[0] * hourIn;
+    total += time[1] * minIn;
+    total += time[2] * secIn;
+    return total;
+  }
+
   const runsRef = useRef(runStatePacker());
+  const [activeItem, setActiveItem] = useState(0);
 
   function RunListTitle() {
     return (
       <div id="leftTitle">
         <p>Date</p>
+        <p>Start Time</p>
         <p>Duration</p>
         <p>Length</p>
       </div>
@@ -242,7 +258,6 @@ export default function Page() {
     );
   }
 
-  const [activeItem, setActiveItem] = useState("runItem0");
   function RunItem(props) {
     return (
       <div
@@ -256,8 +271,8 @@ export default function Page() {
                 backgroundColor: "white",
               }
         }
-        onClick={function () {
-          runItemSelect(props.data.index);
+        onClick={() => {
+          setActiveItem(props.data.index);
         }}
       >
         <RunItemStat type="date" data={props.data}></RunItemStat>
@@ -273,18 +288,14 @@ export default function Page() {
     return (
       <>
         <p
-          onClick={function () {
-            runItemSelect(props.data.index);
+          onClick={() => {
+            setActiveItem(props.data.index);
           }}
         >
           {content}
         </p>
       </>
     );
-  }
-
-  function runItemSelect(index) {
-    setActiveItem(index);
   }
 
   function AllRuns() {
@@ -301,8 +312,8 @@ export default function Page() {
                   backgroundColor: "white",
                 }
           }
-          onClick={function () {
-            runItemSelect("allRuns");
+          onClick={() => {
+            setActiveItem("allRuns");
           }}
         >
           All runs
