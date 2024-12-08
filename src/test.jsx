@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { LineChart, Line, XAxis, YAxis, Legend } from "recharts";
 import "./App.css";
 export default function Page() {
   //   method: "POST",
@@ -382,6 +383,36 @@ export default function Page() {
       </>
     );
   }
+  const chartData = chartDataGetter();
+  function chartDataGetter() {
+    let holder = [];
+    runsRef.current.forEach((run) => {
+      holder.push({
+        date: run.render.date,
+        duration: objectToMs(run.duration),
+        distance: run.distance,
+        renderDuration: run.render.duration,
+      });
+    });
+    console.log(holder);
+    return holder;
+  }
+
+  function Chart(props) {
+    return (
+      <LineChart width={600} height={400} data={chartData}>
+        <XAxis dataKey={props.xAxis}></XAxis>
+        <YAxis></YAxis>
+        <Line
+          type="linear"
+          isAnimationActive={false}
+          dataKey={props.yAxis}
+          stroke="#8884d8"
+          strokeWidth={2}
+        ></Line>
+      </LineChart>
+    );
+  }
 
   return (
     <>
@@ -391,7 +422,10 @@ export default function Page() {
           <RunList></RunList>
           <AllRuns></AllRuns>
         </div>
-        <div id="right"></div>
+        <div id="right">
+          <Chart xAxis="date" yAxis="duration"></Chart>
+          <Chart xAxis="date" yAxis="distance"></Chart>
+        </div>
       </div>
     </>
   );
