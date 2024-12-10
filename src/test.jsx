@@ -391,18 +391,38 @@ export default function Page() {
         date: run.render.date,
         duration: objectToMs(run.duration),
         distance: run.distance,
-        renderDuration: run.render.duration,
       });
     });
-    console.log(holder);
     return holder;
+  }
+
+  function msToChart(initialTime) {
+    let time = msToObject(initialTime);
+    let newTime = new Time(time.hours, time.mins, time.secs);
+    if (newTime.secs.toString().length < 2) {
+      newTime.secs = "0" + newTime.secs;
+    }
+    let renderString;
+    if (newTime.hours === 0 && newTime.mins === 0) {
+      renderString = newTime.secs;
+    } else if (newTime.hours === 0) {
+      renderString = newTime.mins + ":" + newTime.secs;
+    } else
+      renderString = newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
+    return renderString;
   }
 
   function Chart(props) {
     return (
       <LineChart width={600} height={400} data={chartData}>
-        <XAxis dataKey={props.xAxis}></XAxis>
-        <YAxis></YAxis>
+        <XAxis
+          dataKey={props.xAxis}
+          tickFormatter={props.xAcisFormatter}
+        ></XAxis>
+        <YAxis
+          dataKey={props.yAxis}
+          tickFormatter={props.yAxisFormatter}
+        ></YAxis>
         <Line
           type="linear"
           isAnimationActive={false}
@@ -423,7 +443,11 @@ export default function Page() {
           <AllRuns></AllRuns>
         </div>
         <div id="right">
-          <Chart xAxis="date" yAxis="duration"></Chart>
+          <Chart
+            xAxis="date"
+            yAxis="duration"
+            yAxisFormatter={msToChart}
+          ></Chart>
           <Chart xAxis="date" yAxis="distance"></Chart>
         </div>
       </div>
