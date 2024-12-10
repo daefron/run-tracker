@@ -3,10 +3,15 @@ p {
   font-size: 14px;
   width: 25%;
   text-align: center;
+  color: white;
+}
+.recharts-text{
+  fill: white;
 }
 #root {
-height: 100vh;
-width: 100vw;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(37, 36, 85);
 }
 #body {
   margin-left: 5%;
@@ -14,12 +19,13 @@ width: 100vw;
   width: 90vw;
   height: 90vh;
   display: flex;
+  background-color: rgb(17, 16, 66);
 }
 #left {
   width: 40%;
   height: 100%;
   outline: solid;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 #runList {
@@ -27,15 +33,14 @@ width: 100vw;
   flex-direction: column;
   height: 100%;
 }
-
 #leftTitle,
 #allRuns,
 .runItem {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   height: 40px;
   line-height: 40px;
-  outline: solid 1px black;
+  outline: solid 1px grey;
   padding-inline: 7px;
   vertical-align: middle;
   display: flex;
