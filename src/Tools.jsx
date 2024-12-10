@@ -73,6 +73,6 @@ export function msToChart(initialTime) {
 export function toAusDate(date) {
   let splitDate = date.split("-");
   return (
-    splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0][2] + splitDate[0][3]
+    splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0][2] + splitDate[0][3]
   );
 }

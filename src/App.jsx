@@ -24,17 +24,6 @@ export default function Page() {
           ></RunList>
         </div>
         <div id="right">
-        <div className="graphHolder" id="testGraph">
-            <p className="graphTitle">Test</p>
-            <ChartLine
-              xAxis="dateParsed"
-              yAxis="duration"
-              yAxisFormatter={msToChart}
-              lineColor="purple"
-              runs={runsRef.current}
-              activeRun={activeRun}
-            ></ChartLine>
-          </div>
           <div className="graphHolder" id="durationGraph">
             <div>
               <p className="graphTitle">Duration</p>

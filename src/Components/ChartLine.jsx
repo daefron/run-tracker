@@ -22,11 +22,12 @@ export function ChartLine(props) {
     }
     return days;
   }
-  function daysInMonth(month, year) {
-    return new Date(year, month + 1, 0).getDate();
-  }
+
+  const dateRangeAmount = useRef(20);
   const baselineDate = useRef(currentDate);
-  const [dateRange, setDateRange] = useState(dayArray(31));
+  const [dateRange, setDateRange] = useState(
+    dateArrayToRender(dayArray(dateRangeAmount.current))
+  );
 
   function dateParser(date) {
     let day = date.getDate();
@@ -38,9 +39,17 @@ export function ChartLine(props) {
   function dateArrayToRender(array) {
     let holder = [];
     array.forEach((date) => {
-      let separated = dateParser(date);
+      let separatedDate = dateParser(date);
+      separatedDate[1] += 1;
+      let holder2 = [];
+      separatedDate.forEach((digit) => {
+        if (digit.toString().length < 2) {
+          digit = "0" + digit;
+        } else digit = digit.toString();
+        holder2.push(digit);
+      });
       let parsedDate =
-        separated[0] + "-" + (separated[1] + 1) + "-" + separated[2];
+        holder2[0] + "/" + holder2[1] + "/" + holder2[2][2] + holder2[2][3];
       holder.push(parsedDate);
     });
     return holder;
@@ -49,20 +58,31 @@ export function ChartLine(props) {
   const chartData = chartDataGetter();
   function chartDataGetter() {
     let holder = [];
-    console.log(dateArrayToRender(dateRange));
-    props.runs.forEach((run) => {
-      holder.push({
-        id: run.id,
-        date: run.render.date,
-        duration: objectToMs(run.duration),
-        distance: run.distance,
-        dateParsed: dateArrayToRender(dateRange),
-      });
+    dateRange.forEach((date) => {
+      let runOnDate = props.runs.find((run) => run.render.date === date);
+      if (runOnDate) {
+        holder.push({
+          id: runOnDate.id,
+          date: date[0]+date[1],
+          duration: objectToMs(runOnDate.duration),
+          distance: runOnDate.distance,
+        });
+      } else {
+        holder.push({
+          id: null,
+          date: date[0]+date[1],
+          duration: null,
+          distance: null,
+        });
+      }
     });
     return holder;
   }
 
-  function DotTest({ payload, cx, cy }) {
+  function DotRender({ payload, cx, cy }) {
+    if (payload.id === null) {
+      return;
+    }
     let color = props.lineColor;
     if (payload.id === props.runs[props.activeRun].id) {
       color = "red";
@@ -94,6 +114,7 @@ export function ChartLine(props) {
           unit={props.xAxisUnit}
           padding={{ left: 10 }}
           dy={7}
+          ticks={0}
         />
         <YAxis
           dataKey={props.yAxis}
@@ -107,7 +128,8 @@ export function ChartLine(props) {
           dataKey={props.yAxis}
           stroke={props.lineColor}
           strokeWidth={2}
-          dot={<DotTest />}
+          dot={<DotRender />}
+          connectNulls
         />
         <Tooltip content={<TooltipContent />} isAnimationActive={false} />
       </LineChart>
