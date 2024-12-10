@@ -5,7 +5,7 @@ p {
   text-align: center;
   color: white;
 }
-.recharts-text{
+.recharts-text {
   fill: white;
 }
 #root {
@@ -22,7 +22,7 @@ p {
   background-color: rgb(17, 16, 66);
 }
 #left {
-  width: 40%;
+  width: 50%;
   height: 100%;
   outline: solid;
   display: flex;
@@ -44,10 +44,18 @@ p {
   padding-inline: 7px;
   vertical-align: middle;
   display: flex;
-  gap: 20px;
 }
 #right {
-  width: 60%;
+  width: 50%;
   height: 100%;
   outline: solid;
+}
+.recharts-tooltip-wrapper {
+  width: "fit-content";
+  display: "flex";
+  flex-direction: "column";
+  align-content: "center";
+}
+.recharts-tooltip-wrapper > p {
+  width: 100%;
 }

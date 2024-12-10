@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
 import { objectToMs } from "../Tools.jsx";
 export function ChartLine(props) {
   const chartData = chartDataGetter();
@@ -23,8 +23,23 @@ export function ChartLine(props) {
     return <circle r="3" cx={cx} cy={cy} fill={color}></circle>;
   }
 
+  function TooltipContent({ payload }) {
+    if (payload[0]) {
+      let currentRun = props.runs.find(
+        (run) => run.id === payload[0].payload.id
+      );
+      return (
+        <>
+          <p>date: {currentRun.render.date}</p>
+          <p>duration: {currentRun.render.duration}</p>
+          <p>distance: {currentRun.render.distance}</p>
+        </>
+      );
+    }
+  }
+
   return (
-    <LineChart width={600} height={400} data={chartData}>
+    <LineChart width={500} height={400} data={chartData}>
       <XAxis
         dataKey={props.xAxis}
         tickFormatter={props.xAxisFormatter}
@@ -43,6 +58,7 @@ export function ChartLine(props) {
         strokeWidth={2}
         dot={<DotTest />}
       />
+      <Tooltip content={<TooltipContent />} isAnimationActive={false} />
     </LineChart>
   );
 }
