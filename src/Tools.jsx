@@ -76,3 +76,37 @@ export function toAusDate(date) {
     splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0][2] + splitDate[0][3]
   );
 }
+
+export function dateArrayToRender(length, baselineDate) {
+  let days = [];
+  const currentDay = baselineDate.current.getDate();
+  const currentMonth = baselineDate.current.getMonth();
+  const currentYear = baselineDate.current.getFullYear();
+  for (let i = length; i >= 0; i--) {
+    let newDay = new Date(currentYear, currentMonth, currentDay - i);
+    days.push(newDay);
+  }
+  let holder = [];
+  days.forEach((date) => {
+    let separatedDate = dateParser(date);
+    separatedDate[1] += 1;
+    let holder2 = [];
+    separatedDate.forEach((digit) => {
+      if (digit.toString().length < 2) {
+        digit = "0" + digit;
+      } else digit = digit.toString();
+      holder2.push(digit);
+    });
+    let parsedDate =
+      holder2[0] + "/" + holder2[1] + "/" + holder2[2][2] + holder2[2][3];
+    holder.push(parsedDate);
+  });
+  return holder;
+
+  function dateParser(date) {
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    return [day, month, year];
+  }
+}
