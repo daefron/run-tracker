@@ -1,6 +1,7 @@
 import {
   ResponsiveContainer,
   LineChart,
+  CartesianGrid,
   Line,
   XAxis,
   YAxis,
@@ -45,8 +46,9 @@ export function ChartLine(props) {
     }
   }
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer minWidth={500} aspect={3}>
       <LineChart margin={{ top: 20, left: 20, right: 40 }} data={chartData}>
+        <CartesianGrid strokeDasharray="6 6" vertical={false} />
         <XAxis
           dataKey={props.xAxis}
           tickFormatter={props.xAxisFormatter}

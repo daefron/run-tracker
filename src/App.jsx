@@ -4,7 +4,6 @@ import { runsParser } from "./RunsParser.jsx";
 import { msToChart } from "./Tools.jsx";
 import { RunListTitle } from "./Components/RunListTitle.jsx";
 import { RunList } from "./Components/RunList.jsx";
-import { AllRuns } from "./Components/AllRuns.jsx";
 import "./App.css";
 export default function Page() {
   const runsRef = useRef(runsParser());
@@ -19,26 +18,26 @@ export default function Page() {
             activeRun={activeRun}
             setActiveRun={setActiveRun}
           ></RunList>
-          {/* <AllRuns */}
-            {/* activeRun={activeRun} */}
-            {/* setActiveRun={setActiveRun} */}
-          {/* ></AllRuns> */}
         </div>
         <div id="right">
-          <ChartLine
-            xAxis="date"
-            yAxis="duration"
-            yAxisFormatter={msToChart}
-            runs={runsRef.current}
-            activeRun={activeRun}
-          ></ChartLine>
-          <ChartLine
-            xAxis="date"
-            yAxis="distance"
-            yAxisUnit=" km"
-            runs={runsRef.current}
-            activeRun={activeRun}
+          <div className="graphHolder" id="durationGraph">
+            <ChartLine
+              xAxis="date"
+              yAxis="duration"
+              yAxisFormatter={msToChart}
+              runs={runsRef.current}
+              activeRun={activeRun}
             ></ChartLine>
+          </div>
+          <div className="graphHolder" id="distanceGraph">
+            <ChartLine
+              xAxis="date"
+              yAxis="distance"
+              yAxisUnit=" km"
+              runs={runsRef.current}
+              activeRun={activeRun}
+            ></ChartLine>
+          </div>
         </div>
       </div>
     </>

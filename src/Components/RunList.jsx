@@ -25,7 +25,7 @@ function RunItem(props) {
               backgroundColor: "rgb(37, 36, 85)",
             }
           : {
-              backgroundColor: "rgb(17, 16, 66)",
+              backgroundColor: "rgb(47, 47, 80)",
             }
       }
       onClick={() => {

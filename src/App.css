@@ -11,7 +11,7 @@ p {
 #root {
   height: 100vh;
   width: 100vw;
-  background-color: rgb(37, 36, 85);
+  background-color: rgb(23, 23, 46);
 }
 #body {
   margin-left: 50px;
@@ -19,12 +19,12 @@ p {
   width: 90vw;
   height: 90vh;
   display: flex;
-  background-color: rgb(17, 16, 66);
 }
 #left {
+  background-color: rgb(47, 47, 80);
+  /* padding: 5px; */
+  margin-right: 5px;
   width: 500px;
-  height: 100%;
-  outline: solid;
   display: flex;
   flex-direction: column;
 }
@@ -33,6 +33,9 @@ p {
   flex-direction: column;
   height: 100%;
 }
+#leftTitle {
+  background-color: rgb(70, 70, 109);
+}
 #leftTitle,
 #allRuns,
 .runItem {
@@ -40,15 +43,21 @@ p {
   justify-content: space-between;
   height: 40px;
   line-height: 40px;
-  outline: solid 1px grey;
   padding-inline: 7px;
   vertical-align: middle;
   display: flex;
 }
 #right {
+  height:800px;
   width: calc(100% - 500px);
-  height: 100%;
-  outline: solid;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.graphHolder {
+  background-color: rgb(47, 47, 80);
+  padding-bottom: 10px;
 }
 .recharts-tooltip-wrapper {
   width: "fit-content";
