@@ -88,7 +88,14 @@ export function runsParser() {
       };
       function toAusDate(date) {
         let splitDate = date.split("-");
-        return splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0];
+        return (
+          splitDate[2] +
+          "-" +
+          splitDate[1] +
+          "-" +
+          splitDate[0][2] +
+          splitDate[0][3]
+        );
       }
       function dateTimeParser(dateString) {
         let parsed = dateString.split("T")[1];

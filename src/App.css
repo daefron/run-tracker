@@ -14,15 +14,15 @@ p {
   background-color: rgb(37, 36, 85);
 }
 #body {
-  margin-left: 5%;
-  margin-top: 3%;
+  margin-left: 50px;
+  margin-top: 30px;
   width: 90vw;
   height: 90vh;
   display: flex;
   background-color: rgb(17, 16, 66);
 }
 #left {
-  width: 50%;
+  width: 500px;
   height: 100%;
   outline: solid;
   display: flex;
@@ -46,7 +46,7 @@ p {
   display: flex;
 }
 #right {
-  width: 50%;
+  width: calc(100% - 500px);
   height: 100%;
   outline: solid;
 }

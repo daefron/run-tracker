@@ -19,10 +19,10 @@ export default function Page() {
             activeRun={activeRun}
             setActiveRun={setActiveRun}
           ></RunList>
-          <AllRuns
-            activeRun={activeRun}
-            setActiveRun={setActiveRun}
-          ></AllRuns>
+          {/* <AllRuns */}
+            {/* activeRun={activeRun} */}
+            {/* setActiveRun={setActiveRun} */}
+          {/* ></AllRuns> */}
         </div>
         <div id="right">
           <ChartLine

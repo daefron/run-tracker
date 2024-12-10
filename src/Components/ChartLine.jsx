@@ -1,4 +1,11 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 import { objectToMs } from "../Tools.jsx";
 export function ChartLine(props) {
   const chartData = chartDataGetter();
@@ -30,35 +37,39 @@ export function ChartLine(props) {
       );
       return (
         <>
-          <p>date: {currentRun.render.date}</p>
-          <p>duration: {currentRun.render.duration}</p>
-          <p>distance: {currentRun.render.distance}</p>
+          <p>Date: {currentRun.render.date}</p>
+          <p>Duration: {currentRun.render.duration}</p>
+          <p>Distance: {currentRun.render.distance}</p>
         </>
       );
     }
   }
-
   return (
-    <LineChart width={500} height={400} data={chartData}>
-      <XAxis
-        dataKey={props.xAxis}
-        tickFormatter={props.xAxisFormatter}
-        unit={props.xAxisUnit}
-      />
-      <YAxis
-        dataKey={props.yAxis}
-        tickFormatter={props.yAxisFormatter}
-        unit={props.yAxisUnit}
-      />
-      <Line
-        type="linear"
-        isAnimationActive={false}
-        dataKey={props.yAxis}
-        stroke="#8884d8"
-        strokeWidth={2}
-        dot={<DotTest />}
-      />
-      <Tooltip content={<TooltipContent />} isAnimationActive={false} />
-    </LineChart>
+    <ResponsiveContainer width="100%" height={400}>
+      <LineChart margin={{ top: 20, left: 20, right: 40 }} data={chartData}>
+        <XAxis
+          dataKey={props.xAxis}
+          tickFormatter={props.xAxisFormatter}
+          unit={props.xAxisUnit}
+          padding={{ left: 10 }}
+          dy={7}
+        />
+        <YAxis
+          dataKey={props.yAxis}
+          tickFormatter={props.yAxisFormatter}
+          unit={props.yAxisUnit}
+          dx={-4}
+        />
+        <Line
+          type="linear"
+          isAnimationActive={false}
+          dataKey={props.yAxis}
+          stroke="#8884d8"
+          strokeWidth={2}
+          dot={<DotTest />}
+        />
+        <Tooltip content={<TooltipContent />} isAnimationActive={false} />
+      </LineChart>
+    </ResponsiveContainer>
   );
 }
