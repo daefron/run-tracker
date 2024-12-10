@@ -4,7 +4,7 @@ export function AllRuns(props) {
       <p
         id="allRuns"
         style={
-          props.activeItem === "allRuns"
+          props.activeRun === "allRuns"
             ? {
                 backgroundColor: "rgb(37, 36, 85)",
               }
@@ -13,7 +13,7 @@ export function AllRuns(props) {
               }
         }
         onClick={() => {
-          props.setActiveItem("allRuns");
+          props.setActiveRun("allRuns");
         }}
       >
         All runs

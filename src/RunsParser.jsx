@@ -12,6 +12,7 @@ export function runsParser() {
       pace: 360.81076300864294,
       speed: 9.977529411764706,
       steps: 2276,
+      logID: 8573498543895,
     },
     {
       activityName: "Run",
@@ -24,6 +25,7 @@ export function runsParser() {
       pace: 360.81076300864294,
       speed: 9.977529411764706,
       steps: 2276,
+      logID: 385763485634234,
     },
     {
       activityName: "Run",
@@ -36,6 +38,7 @@ export function runsParser() {
       pace: 360.81076300864294,
       speed: 9.977529411764706,
       steps: 2276,
+      logID: 45734834324,
     },
     {
       activityName: "Run",
@@ -49,6 +52,7 @@ export function runsParser() {
       pace: 360.81076300864294,
       speed: 9.977529411764706,
       steps: 2276,
+      logID: 2354685743,
     },
     {
       activityName: "Run",
@@ -62,11 +66,13 @@ export function runsParser() {
       pace: 360.81076300864294,
       speed: 9.977529411764706,
       steps: 2276,
+      logID: 358797632489234,
     },
   ];
 
   class Run {
     constructor(run) {
+      this.id = run.logID;
       this.date = run.originalStartTime.split("T")[0];
       this.initialTime = dateTimeParser(run.originalStartTime);
       this.duration = msToObject(run.duration);

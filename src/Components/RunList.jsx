@@ -6,8 +6,8 @@ export function RunList(props) {
           <RunItem
             key={run.date + run.index}
             data={run}
-            activeItem={props.activeItem}
-            setActiveItem={props.setActiveItem}
+            activeRun={props.activeRun}
+            setActiveRun={props.setActiveRun}
           ></RunItem>
         );
       })}
@@ -20,7 +20,7 @@ function RunItem(props) {
     <div
       className="runItem"
       style={
-        props.activeItem === props.data.index
+        props.activeRun === props.data.index
           ? {
               backgroundColor: "rgb(37, 36, 85)",
             }
@@ -29,40 +29,40 @@ function RunItem(props) {
             }
       }
       onClick={() => {
-        props.setActiveItem(props.data.index);
+        props.setActiveRun(props.data.index);
       }}
     >
       <RunItemStat
         type="date"
         data={props.data}
-        setActiveItem={props.setActiveItem}
+        setActiveRun={props.setActiveRun}
       ></RunItemStat>
       <RunItemStat
         type="startTime"
         data={props.data}
-        setActiveItem={props.setActiveItem}
+        setActiveRun={props.setActiveRun}
       ></RunItemStat>
       <RunItemStat
         type="duration"
         data={props.data}
-        setActiveItem={props.setActiveItem}
+        setActiveRun={props.setActiveRun}
       ></RunItemStat>
       <RunItemStat
         type="duration"
         diff={true}
         data={props.data}
-        setActiveItem={props.setActiveItem}
+        setActiveRun={props.setActiveRun}
       ></RunItemStat>
       <RunItemStat
         type="distance"
         data={props.data}
-        setActiveItem={props.setActiveItem}
+        setActiveRun={props.setActiveRun}
       ></RunItemStat>
       <RunItemStat
         type="distance"
         diff={true}
         data={props.data}
-        setActiveItem={props.setActiveItem}
+        setActiveRun={props.setActiveRun}
       ></RunItemStat>
     </div>
   );
@@ -82,7 +82,7 @@ function RunItemStat(props) {
       <p
         style={statStyle}
         onClick={() => {
-          props.setActiveItem(props.data.index);
+          props.setActiveRun(props.data.index);
         }}
       >
         {content}

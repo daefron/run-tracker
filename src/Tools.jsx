@@ -1,4 +1,4 @@
-export  function Time(hours, mins, secs) {
+export function Time(hours, mins, secs) {
   this.hours = hours;
   this.mins = mins;
   this.secs = secs;
@@ -57,7 +57,7 @@ export function msToObject(time) {
   return new Time(-hours, -mins, -secs);
 }
 
-export  function msToChart(initialTime) {
+export function msToChart(initialTime) {
   let time = msToObject(initialTime);
   let newTime = new Time(time.hours, time.mins, time.secs);
   if (newTime.secs.toString().length < 2) {
@@ -66,7 +66,6 @@ export  function msToChart(initialTime) {
   let renderString;
   if (newTime.hours === 0) {
     renderString = newTime.mins + ":" + newTime.secs;
-  } else
-    renderString = newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
+  } else renderString = newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
   return renderString;
 }
