@@ -24,19 +24,23 @@ export default function Page() {
         </div>
         <div id="right">
           <div className="graphHolder" id="durationGraph">
+            <p className="graphTitle">Duration</p>
             <ChartLine
               xAxis="date"
               yAxis="duration"
               yAxisFormatter={msToChart}
+              lineColor="green"
               runs={runsRef.current}
               activeRun={activeRun}
             ></ChartLine>
           </div>
           <div className="graphHolder" id="distanceGraph">
+            <p className="graphTitle">Distance</p>
             <ChartLine
               xAxis="date"
               yAxis="distance"
               yAxisUnit=" km"
+              lineColor="yellow"
               runs={runsRef.current}
               activeRun={activeRun}
             ></ChartLine>

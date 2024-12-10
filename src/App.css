@@ -1,10 +1,3 @@
-p {
-  margin: 0;
-  font-size: 14px;
-  width: 25%;
-  text-align: center;
-  color: white;
-}
 .recharts-text {
   fill: white;
 }
@@ -46,8 +39,16 @@ p {
   vertical-align: middle;
   display: flex;
 }
+#leftTitle > p,
+.runItem > p {
+  margin: 0;
+  font-size: 14px;
+  width: 25%;
+  text-align: center;
+  color: white;
+}
 #right {
-  height:800px;
+  height: 800px;
   width: calc(100% - 500px);
   margin-left: 5px;
   display: flex;
@@ -57,6 +58,16 @@ p {
 .graphHolder {
   background-color: rgb(50, 50, 70);
   padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.graphTitle {
+  margin: 0;
+  padding: 5px;
+  padding-bottom: 0;
+  font-weight: bold;
+
 }
 .recharts-tooltip-wrapper {
   width: "fit-content";
@@ -66,4 +77,6 @@ p {
 }
 .recharts-tooltip-wrapper > p {
   width: 100%;
+  margin: 0;
+  text-align: center;
 }

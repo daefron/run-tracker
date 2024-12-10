@@ -24,11 +24,11 @@ export function ChartLine(props) {
   }
 
   function DotTest({ payload, cx, cy }) {
-    let color = "blue";
+    let color = props.lineColor;
     if (payload.id === props.runs[props.activeRun].id) {
       color = "red";
     }
-    return <circle r="3" cx={cx} cy={cy} fill={color}></circle>;
+    return <circle r="4" cx={cx} cy={cy} fill={color}></circle>;
   }
 
   function TooltipContent({ payload }) {
@@ -48,7 +48,7 @@ export function ChartLine(props) {
   return (
     <ResponsiveContainer minWidth={500} aspect={3}>
       <LineChart margin={{ top: 20, left: 20, right: 40 }} data={chartData}>
-        <CartesianGrid strokeDasharray="6 6" vertical={false} />
+        <CartesianGrid strokeDasharray="5 20" vertical={false} />
         <XAxis
           dataKey={props.xAxis}
           tickFormatter={props.xAxisFormatter}
@@ -66,7 +66,7 @@ export function ChartLine(props) {
           type="linear"
           isAnimationActive={false}
           dataKey={props.yAxis}
-          stroke="#8884d8"
+          stroke={props.lineColor}
           strokeWidth={2}
           dot={<DotTest />}
         />
