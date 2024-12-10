@@ -8,6 +8,8 @@ export function RunList(props) {
             data={run}
             activeRun={props.activeRun}
             setActiveRun={props.setActiveRun}
+            hoverRun={props.hoverRun}
+            setHoverRun={props.setHoverRun}
           ></RunItem>
         );
       })}
@@ -21,15 +23,26 @@ function RunItem(props) {
       className="runItem"
       style={
         props.activeRun === props.data.index
+          ? props.hoverRun === props.data.index
+            ? {
+                backgroundColor: "rgb(40, 40, 90)",
+              }
+            : {
+                backgroundColor: "rgb(37, 36, 85)",
+              }
+          : props.hoverRun === props.data.index
           ? {
-              backgroundColor: "rgb(37, 36, 85)",
+              backgroundColor: "rgb(55, 55, 75)",
             }
           : {
-              backgroundColor: "rgb(47, 47, 80)",
+              backgroundColor: "rgb(50, 50, 70)",
             }
       }
       onClick={() => {
         props.setActiveRun(props.data.index);
+      }}
+      onMouseOver={() => {
+        props.setHoverRun(props.data.index);
       }}
     >
       <RunItemStat

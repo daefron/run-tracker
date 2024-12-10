@@ -9,7 +9,7 @@ export function AllRuns(props) {
                 backgroundColor: "rgb(37, 36, 85)",
               }
             : {
-                backgroundColor: "rgb(17, 16, 66)",
+                backgroundColor: "rgb(50, 50, 70)",
               }
         }
         onClick={() => {

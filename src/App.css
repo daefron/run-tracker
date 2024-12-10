@@ -11,7 +11,7 @@ p {
 #root {
   height: 100vh;
   width: 100vw;
-  background-color: rgb(23, 23, 46);
+  background-color: rgb(25, 25, 40);
 }
 #body {
   margin-left: 50px;
@@ -21,8 +21,7 @@ p {
   display: flex;
 }
 #left {
-  background-color: rgb(47, 47, 80);
-  /* padding: 5px; */
+  background-color: rgb(50, 50, 70);
   margin-right: 5px;
   width: 500px;
   display: flex;
@@ -34,7 +33,7 @@ p {
   height: 100%;
 }
 #leftTitle {
-  background-color: rgb(70, 70, 109);
+  background-color: rgb(65, 65, 85);
 }
 #leftTitle,
 #allRuns,
@@ -56,7 +55,7 @@ p {
   gap: 10px;
 }
 .graphHolder {
-  background-color: rgb(47, 47, 80);
+  background-color: rgb(50, 50, 70);
   padding-bottom: 10px;
 }
 .recharts-tooltip-wrapper {

@@ -8,6 +8,7 @@ import "./App.css";
 export default function Page() {
   const runsRef = useRef(runsParser());
   const [activeRun, setActiveRun] = useState(0);
+  const [hoverRun, setHoverRun] = useState(0);
   return (
     <>
       <div id="body">
@@ -17,6 +18,8 @@ export default function Page() {
             runs={runsRef.current}
             activeRun={activeRun}
             setActiveRun={setActiveRun}
+            hoverRun={hoverRun}
+            setHoverRun={setHoverRun}
           ></RunList>
         </div>
         <div id="right">
