@@ -1,4 +1,7 @@
 export function RunList(props) {
+  if (!props.runs) {
+    return;
+  }
   return (
     <div id="runList">
       {props.runs.map((run) => {

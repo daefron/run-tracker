@@ -1,75 +1,6 @@
 import { Time, objectToMs, msToObject, toAusDate } from "./Tools.jsx";
+import { testData } from "./TestData.jsx";
 export function runsParser() {
-  const testingData = [
-    {
-      activityName: "Run",
-      calories: 265,
-      distance: 2.24427,
-      distanceUnit: "Kilometer",
-      duration: 830000,
-      elevationGain: 0,
-      originalStartTime: "2024-11-22T11:20:24.000+11:00",
-      pace: 360.81076300864294,
-      speed: 9.977529411764706,
-      steps: 2276,
-      logID: 8573498543895,
-    },
-    {
-      activityName: "Run",
-      calories: 265,
-      distance: 1.54427,
-      distanceUnit: "Kilometer",
-      duration: 650000,
-      elevationGain: 0,
-      originalStartTime: "2024-11-24T09:10:22.000+11:00",
-      pace: 360.81076300864294,
-      speed: 9.977529411764706,
-      steps: 2276,
-      logID: 385763485634234,
-    },
-    {
-      activityName: "Run",
-      calories: 265,
-      distance: 2.94427,
-      distanceUnit: "Kilometer",
-      duration: 910000,
-      elevationGain: 0,
-      originalStartTime: "2024-11-27T15:50:58.000+11:00",
-      pace: 360.81076300864294,
-      speed: 9.977529411764706,
-      steps: 2276,
-      logID: 45734834324,
-    },
-    {
-      activityName: "Run",
-      calories: 265,
-      distance: 2.45427,
-      distanceUnit: "Kilometer",
-      duration: 1020000,
-      elevationGain: 0,
-      originalDuration: 1020000,
-      originalStartTime: "2024-11-29T07:30:02.000+11:00",
-      pace: 360.81076300864294,
-      speed: 9.977529411764706,
-      steps: 2276,
-      logID: 2354685743,
-    },
-    {
-      activityName: "Run",
-      calories: 265,
-      distance: 2.54427,
-      distanceUnit: "Kilometer",
-      duration: 920000,
-      elevationGain: 0,
-      originalDuration: 920000,
-      originalStartTime: "2024-12-01T12:30:28.000+11:00",
-      pace: 360.81076300864294,
-      speed: 9.977529411764706,
-      steps: 2276,
-      logID: 358797632489234,
-    },
-  ];
-
   class Run {
     constructor(run) {
       this.id = run.logID;
@@ -105,8 +36,8 @@ export function runsParser() {
   }
 
   let holder = [];
-  for (let i = 0; i !== testingData.length; i++) {
-    let newRun = new Run(testingData[i]);
+  for (let i = 0; i !== testData().length; i++) {
+    let newRun = new Run(testData()[i]);
     newRun.index = i;
     holder.push(newRun);
   }

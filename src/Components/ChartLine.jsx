@@ -9,6 +9,9 @@ import {
 } from "recharts";
 import { objectToMs, dateArrayToRender } from "../Tools.jsx";
 export function ChartLine(props) {
+  if (!props.runs) {
+    return;
+  }
   const chartData = chartDataGetter();
   function chartDataGetter() {
     let holder = [];
