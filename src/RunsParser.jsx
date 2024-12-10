@@ -1,4 +1,4 @@
-import { Time, objectToMs, msToObject } from "./Tools.jsx";
+import { Time, objectToMs, msToObject, toAusDate } from "./Tools.jsx";
 export function runsParser() {
   const testingData = [
     {
@@ -86,17 +86,7 @@ export function runsParser() {
         duration: renderDuration(this.duration, this),
         distance: this.distance + " km",
       };
-      function toAusDate(date) {
-        let splitDate = date.split("-");
-        return (
-          splitDate[2] +
-          "-" +
-          splitDate[1] +
-          "-" +
-          splitDate[0][2] +
-          splitDate[0][3]
-        );
-      }
+
       function dateTimeParser(dateString) {
         let parsed = dateString.split("T")[1];
         parsed = parsed.split("+")[0].split(":");

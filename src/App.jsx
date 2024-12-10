@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
-import { ChartLine } from "./Components/ChartLine.jsx";
 import { runsParser } from "./RunsParser.jsx";
 import { msToChart } from "./Tools.jsx";
+import { ChartLine } from "./Components/ChartLine.jsx";
 import { RunListTitle } from "./Components/RunListTitle.jsx";
 import { RunList } from "./Components/RunList.jsx";
+import { DateRange } from "./Components/DateRange.jsx";
 import "./App.css";
 export default function Page() {
   const runsRef = useRef(runsParser());
@@ -23,8 +24,22 @@ export default function Page() {
           ></RunList>
         </div>
         <div id="right">
+        <div className="graphHolder" id="testGraph">
+            <p className="graphTitle">Test</p>
+            <ChartLine
+              xAxis="dateParsed"
+              yAxis="duration"
+              yAxisFormatter={msToChart}
+              lineColor="purple"
+              runs={runsRef.current}
+              activeRun={activeRun}
+            ></ChartLine>
+          </div>
           <div className="graphHolder" id="durationGraph">
-            <p className="graphTitle">Duration</p>
+            <div>
+              <p className="graphTitle">Duration</p>
+              <DateRange runs={runsRef.current}></DateRange>
+            </div>
             <ChartLine
               xAxis="date"
               yAxis="duration"
