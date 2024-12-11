@@ -20,7 +20,16 @@ export function ChartLine(props) {
     }
     let color = payload.color;
     if (payload.payload.id === payload.runs[payload.activeRun].id) {
-      color = "red";
+      return (
+        <circle
+          r="4"
+          cx={payload.cx}
+          cy={payload.cy}
+          fill={color}
+          stroke="white"
+          strokeWidth={2}
+        ></circle>
+      );
     }
     return <circle r="4" cx={payload.cx} cy={payload.cy} fill={color}></circle>;
   }
@@ -49,7 +58,6 @@ export function ChartLine(props) {
       );
     }
   }
-
   function dateRangeChangeButton(amount) {
     props.dateRangeChange.current = amount;
     props.setDateRange(dateArrayToRender(amount, props.baselineDate));

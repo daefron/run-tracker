@@ -13,6 +13,8 @@ export function runsParser() {
       this.date = run.originalStartTime.split("T")[0];
       this.initialTime = dateTimeParser(run.originalStartTime);
       this.duration = msToObject(run.activeDuration);
+      this.activeDuration = run.activeDuration;
+      this.inactiveDuration = run.duration - run.activeDuration;
       this.endTime = endTimeCalc(this.initialTime, this.duration);
       this.distance = Number(run.distance.toFixed(2));
       this.speed = run.speed;
@@ -24,6 +26,7 @@ export function runsParser() {
         instance.bpm = instance.value;
         delete instance.value;
       });
+      this.heartRateZones = run.heartRateZones;
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),

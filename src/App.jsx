@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
 import { runsParser } from "./RunsParser.jsx";
-import { msToChart, dateArrayToRender } from "./Tools.jsx";
+import { dateArrayToRender } from "./Tools.jsx";
 import { RunList } from "./Components/RunList.jsx";
 import { ChartLine } from "./Components/ChartLine.jsx";
+import { ChartPie } from "./Components/ChartPie.jsx";
 import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
 import { apiCall } from "./APICaller.jsx";
@@ -39,9 +40,9 @@ export default function Page() {
         <ChartLine
           render="All runs"
           type="allRuns"
-          durationColor="orange"
-          distanceColor="yellow"
-          heartRateColor="brown"
+          durationColor="cornflowerBlue"
+          distanceColor="khaki"
+          heartRateColor="crimson"
           speedColor="salmon"
           runs={runsRef.current}
           activeRun={activeRun}
@@ -49,6 +50,18 @@ export default function Page() {
           dateRangeChange={dateRangeChange}
           dateRange={dateRange}
           setDateRange={setDateRange}
+        />
+        <ChartPie
+          render="Heart zone minutes"
+          type="heartZones"
+          runs={runsRef.current}
+          activeRun={activeRun}
+        />
+        <ChartPie
+          render="Active time"
+          type="activeTime"
+          runs={runsRef.current}
+          activeRun={activeRun}
         />
         <RunStats runs={runsRef.current} activeRun={activeRun} />
         <OverallStats runs={runsRef.current} />
