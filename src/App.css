@@ -24,6 +24,11 @@
 }
 #runStats {
   background-color: rgb(50, 50, 70);
+  grid-row: 1 / 4;
+  grid-column: 3 / 4;
+}
+#overallStats {
+  background-color: rgb(50, 50, 70);
   grid-row: 4 / 7;
   grid-column: 3 / 4;
 }
@@ -75,7 +80,8 @@
   line-height: 35px;
   padding-inline: 10px;
 }
-#runStatsTitle {
+#runStatsTitle,
+#overallStatsTitle {
   background-color: rgb(65, 65, 85);
   text-indent: 10px;
   margin: 0;
