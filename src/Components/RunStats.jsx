@@ -25,11 +25,15 @@ export function RunStats(props) {
       </div>
       <div className="runStat">
         <p className="statTitle">Steps: </p>
-        <p className="statContent">{run.steps}</p>
+        <p className="statContent">{run.steps + " steps"}</p>
       </div>
       <div className="runStat">
         <p className="statTitle">Calories: </p>
-        <p className="statContent">{run.calories}</p>
+        <p className="statContent">{run.calories + " cals"}</p>
+      </div>
+      <div className="runStat">
+        <p className="statTitle">Average heart rate: </p>
+        <p className="statContent">{run.heartRate + " bpm"}</p>
       </div>
     </div>
   );

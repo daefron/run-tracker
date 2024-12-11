@@ -18,6 +18,7 @@ export function runsParser() {
       this.speed = run.speed;
       this.steps = run.steps;
       this.calories = run.calories;
+      this.heartRate = run.averageHeartRate;
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),
