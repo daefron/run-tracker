@@ -77,9 +77,9 @@
 }
 #runStatsTitle {
   background-color: rgb(65, 65, 85);
-  text-indent: 5px;
+  text-indent: 10px;
   margin: 0;
-  padding: 5px;
+  line-height: 35px;
   font-weight: bold;
 }
 .runStat > p {
@@ -99,6 +99,7 @@
   flex-direction: column;
 }
 .graphTop {
+  background-color: rgb(65, 65, 85);
   display: flex;
   justify-content: space-between;
 }
@@ -106,17 +107,15 @@
   display: flex;
 }
 .graphDateHolder > p {
+  line-height: 35px;
   margin: 0;
-  padding: 5px;
-  padding-bottom: 0px;
-  margin-bottom: -5px;
+  padding-inline: 5px;
 }
 .graphTitle {
+  line-height: 35px;
   text-indent: 5px;
   margin: 0;
-  padding: 5px;
-  padding-bottom: 0px;
-  margin-bottom: -5px;
+  padding-inline: 5px;
   font-weight: bold;
 }
 .recharts-tooltip-wrapper {
