@@ -48,14 +48,26 @@
 .runItem {
   display: flex;
   line-height: 35px;
+  padding-inline: 10px;
 }
+#listTitle > p,
+.runItem > p {
+  width: 25%;
+}
+.diffStat > p,
 #listTitle > p,
 .runItem > p {
   margin: 0;
   font-size: 14px;
-  width: 25%;
   text-align: center;
   color: white;
+}
+.diffStat {
+  width: 25%;
+  display: flex;
+}
+.diffStat > p {
+  width: 50%;
 }
 .graphHolder {
   background-color: rgb(50, 50, 70);

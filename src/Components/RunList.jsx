@@ -7,10 +7,14 @@ export function RunList(props) {
       <div id="listTitle">
         <p>Date</p>
         <p>Start Time</p>
-        <p>Duration</p>
-        <p></p>
-        <p>Length</p>
-        <p></p>
+        <div className="diffStat">
+          <p>Duration</p>
+          <p></p>
+        </div>
+        <div className="diffStat">
+          <p>Length</p>
+          <p></p>
+        </div>
       </div>
       <div id="runListItems">
         {props.runs.map((run) => {
@@ -68,28 +72,32 @@ function RunItem(props) {
         data={props.data}
         setActiveRun={props.setActiveRun}
       ></RunItemStat>
-      <RunItemStat
-        type="duration"
-        data={props.data}
-        setActiveRun={props.setActiveRun}
-      ></RunItemStat>
-      <RunItemStat
-        type="duration"
-        diff={true}
-        data={props.data}
-        setActiveRun={props.setActiveRun}
-      ></RunItemStat>
-      <RunItemStat
-        type="distance"
-        data={props.data}
-        setActiveRun={props.setActiveRun}
-      ></RunItemStat>
-      <RunItemStat
-        type="distance"
-        diff={true}
-        data={props.data}
-        setActiveRun={props.setActiveRun}
-      ></RunItemStat>
+      <div className="diffStat">
+        <RunItemStat
+          type="duration"
+          data={props.data}
+          setActiveRun={props.setActiveRun}
+        ></RunItemStat>
+        <RunItemStat
+          type="duration"
+          diff={true}
+          data={props.data}
+          setActiveRun={props.setActiveRun}
+        ></RunItemStat>
+      </div>
+      <div className="diffStat">
+        <RunItemStat
+          type="distance"
+          data={props.data}
+          setActiveRun={props.setActiveRun}
+        ></RunItemStat>
+        <RunItemStat
+          type="distance"
+          diff={true}
+          data={props.data}
+          setActiveRun={props.setActiveRun}
+        ></RunItemStat>
+      </div>
     </div>
   );
 }
@@ -98,6 +106,7 @@ function RunItemStat(props) {
   let content = props.data.render[props.type];
   let statStyle = {};
   if (props.diff) {
+    statStyle.width = "30%";
     content = props.data.render[props.type + "Diff"];
     if (props.data[props.type + "Negative"]) {
       statStyle.color = "Red";

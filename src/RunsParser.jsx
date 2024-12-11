@@ -51,7 +51,7 @@ export function runsParser() {
         run.distanceNegative = true;
         run.distanceDiff *= -1;
       }
-      run.render.distanceDiff = Number(run.distanceDiff.toFixed(2)) + " km";
+      run.render.distanceDiff = Number(run.distanceDiff.toFixed(2));
       if (run.distanceNegative) {
         run.render.distanceDiff = "-" + run.render.distanceDiff;
       } else {
