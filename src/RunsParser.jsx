@@ -1,4 +1,10 @@
-import { Time, objectToMs, msToObject, toAusDate } from "./Tools.jsx";
+import {
+  Time,
+  objectToMs,
+  msToObject,
+  renderTime,
+  toAusDate,
+} from "./Tools.jsx";
 import { testData } from "./TestData.jsx";
 export function runsParser() {
   class Run {
@@ -65,17 +71,6 @@ export function runsParser() {
     run.nextRun = holder[run.index + 1];
   });
   return holder;
-
-  function renderTime(time) {
-    let newTime = [];
-    for (const number in time) {
-      if (time[number].toString().length < 2) {
-        newTime.push("0" + time[number]);
-      } else newTime.push(time[number]);
-    }
-    newTime = new Time(newTime[0], newTime[1], newTime[2]);
-    return newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
-  }
 
   function renderDurationDiff(time, run) {
     let newTime = new Time(time.hours, time.mins, time.secs);

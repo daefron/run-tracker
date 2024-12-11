@@ -70,6 +70,17 @@ export function msToChart(initialTime) {
   return renderString;
 }
 
+export function renderTime(time) {
+  let newTime = [];
+  for (const number in time) {
+    if (time[number].toString().length < 2) {
+      newTime.push("0" + time[number]);
+    } else newTime.push(time[number]);
+  }
+  newTime = new Time(newTime[0], newTime[1], newTime[2]);
+  return newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
+}
+
 export function toAusDate(date) {
   let splitDate = date.split("-");
   return (

@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
 import { runsParser } from "./RunsParser.jsx";
 import { msToChart, dateArrayToRender } from "./Tools.jsx";
-import { ChartLine } from "./Components/ChartLine.jsx";
 import { RunList } from "./Components/RunList.jsx";
+import { RunStats } from "./Components/RunStats.jsx";
+import { ChartLine } from "./Components/ChartLine.jsx";
 import "./App.css";
 export default function Page() {
   const runsRef = useRef(runsParser());
@@ -23,8 +24,8 @@ export default function Page() {
           setActiveRun={setActiveRun}
           hoverRun={hoverRun}
           setHoverRun={setHoverRun}
-        ></RunList>
-        <div id="runStats"></div>
+        />
+        <RunStats runs={runsRef.current} activeRun={activeRun} />
         <ChartLine
           render="Duration"
           xAxis="date"
@@ -37,7 +38,7 @@ export default function Page() {
           dateRangeChange={dateRangeChange}
           dateRange={dateRange}
           setDateRange={setDateRange}
-        ></ChartLine>
+        />
         <ChartLine
           render="Date"
           xAxis="date"
@@ -50,7 +51,7 @@ export default function Page() {
           dateRangeChange={dateRangeChange}
           dateRange={dateRange}
           setDateRange={setDateRange}
-        ></ChartLine>
+        />
       </div>
     </>
   );

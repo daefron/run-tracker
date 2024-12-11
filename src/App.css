@@ -14,18 +14,18 @@
   height: calc(100% - 60px);
   display: grid;
   gap: 20px;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 420px minmax(420px, 4fr) 260px;
   grid-template-rows: repeat(6, 1fr);
 }
 #runList {
   background-color: rgb(50, 50, 70);
-  grid-row: 1 / 4;
+  grid-row: 1 / 7;
   grid-column: 1 / 2;
 }
 #runStats {
   background-color: rgb(50, 50, 70);
   grid-row: 4 / 7;
-  grid-column: 1 / 2;
+  grid-column: 3 / 4;
 }
 #durationGraph {
   grid-row: 1 / 4;
@@ -68,6 +68,29 @@
 }
 .diffStat > p {
   width: 50%;
+}
+.runStat {
+  display: flex;
+  justify-content: space-between;
+  line-height: 35px;
+  padding-inline: 10px;
+}
+#runStatsTitle {
+  background-color: rgb(65, 65, 85);
+  text-indent: 5px;
+  margin: 0;
+  padding: 5px;
+  font-weight: bold;
+}
+.runStat > p {
+  margin: 0;
+  font-size: 14px;
+}
+.statTitle {
+  text-align: left;
+}
+.statContent {
+  text-align: right;
 }
 .graphHolder {
   background-color: rgb(50, 50, 70);
