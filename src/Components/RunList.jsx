@@ -7,14 +7,8 @@ export function RunList(props) {
       <div id="listTitle">
         <p>Date</p>
         <p>Start Time</p>
-        <div className="diffStat">
           <p>Duration</p>
-          <p></p>
-        </div>
-        <div className="diffStat">
           <p>Length</p>
-          <p></p>
-        </div>
       </div>
       <div id="runListItems">
         {props.runs.map((run) => {

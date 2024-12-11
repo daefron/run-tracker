@@ -3,11 +3,11 @@ export function apiCall() {
     key: "23PZCT",
     secret: "395d7ddec6dd2384c79bda6d6a1cce29",
     codeVerifier:
-      "5a2y1k4b6m5o6k4f3r091b48526x6307275i0b5u3p513o3l1d3g193z6k6y2e0x4k093u5r3w4l6u1e166z4k6r6q6q2l26666f1j593m146v4z312410362v421c0o",
-    codeChallenge: "oXFDEsd0T13Be7bG4VQgakfkeeJHpp6EWx4_wYDojPo",
-    state: "3g705j2b6i425b220164703r5l3b2p13",
+      "3w4k4y3d1j455k6y3g5c0o4w5z465r5d0k203d3k5o271u0p6i673j1p3d3924124u195962142h695p3x06513q4p531a0l6v1w472l07024w3c6t6x4p5j0z4p2z37",
+    codeChallenge: "9F9SqGpatE3pLH3sO8jaSMI4AeSDtc3ZTCTonQzBJ2k",
+    state: "1c6m4b0f4303372a400f0f6b6b0m0g3i",
     accessToken:
-      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1BaQ1QiLCJzdWIiOiJDQzgzR0siLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyYWN0IHJwcm8iLCJleHAiOjE3MzM4NjMzOTYsImlhdCI6MTczMzgzNDU5Nn0._cUZQZAwwPAllhWW565UbothJLbQpLkaFKAp8b3Xe6U",
+      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1BaQ1QiLCJzdWIiOiJDQzgzR0siLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByaXJuIHJveHkgcm51dCBycHJvIHJzbGUgcmNmIHJhY3QgcmxvYyBycmVzIHJ3ZWkgcmhyIHJ0ZW0iLCJleHAiOjE3MzM5MTQzMDcsImlhdCI6MTczMzg4NTUwN30.REqjjemB3gS7gTmJU4r1FTGnN0nhF8hlkB2L8BMFdys",
   };
 
   //   fetch("https://api.fitbit.com/oauth2/token", {
@@ -42,10 +42,10 @@ export function apiCall() {
   });
 
   let runs = [];
-   fetchPromise.then(function (result) {
+  fetchPromise.then(function (result) {
     runs = result.activities.filter(
       (activity) => activity.activityName === "Run"
     );
-    console.log(runs)
+    console.log(runs);
   });
 }

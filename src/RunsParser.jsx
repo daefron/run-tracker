@@ -9,7 +9,7 @@ import { testData } from "./TestData.jsx";
 export function runsParser() {
   class Run {
     constructor(run) {
-      this.id = run.logID;
+      this.id = run.logId;
       this.date = run.originalStartTime.split("T")[0];
       this.initialTime = dateTimeParser(run.originalStartTime);
       this.duration = msToObject(run.duration);
@@ -17,6 +17,7 @@ export function runsParser() {
       this.distance = Number(run.distance.toFixed(2));
       this.speed = run.speed;
       this.steps = run.steps;
+      this.calories = run.calories;
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),
@@ -42,13 +43,13 @@ export function runsParser() {
   }
 
   let holder = [];
-  for (let i = 0; i !== testData().length; i++) {
+  for (let i = 0; i < testData().length; i++) {
     let newRun = new Run(testData()[i]);
     newRun.index = i;
     holder.push(newRun);
   }
   holder.forEach((run) => {
-    run.lastRun = holder[run.index - 1];
+    run.lastRun = holder[run.index + 1];
     if (run.lastRun) {
       let competingDistance = run.lastRun.distance;
       let distance = run.distance;
@@ -100,7 +101,7 @@ export function runsParser() {
     return renderString;
   }
 
-  function renderDuration(time, run) {
+  function renderDuration(time) {
     let newTime = new Time(time.hours, time.mins, time.secs);
     for (const type in newTime) {
       if (newTime[type] < 0) {

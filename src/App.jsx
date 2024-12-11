@@ -5,6 +5,7 @@ import { RunList } from "./Components/RunList.jsx";
 import { ChartLine } from "./Components/ChartLine.jsx";
 import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
+import { apiCall } from "./APICaller.jsx";
 import "./App.css";
 export default function Page() {
   const runsRef = useRef(runsParser());
@@ -15,7 +16,6 @@ export default function Page() {
   const [dateRange, setDateRange] = useState(
     dateArrayToRender(31, baselineDate)
   );
-
   return (
     <>
       <div id="body">
@@ -40,7 +40,7 @@ export default function Page() {
           setDateRange={setDateRange}
         />
         <ChartLine
-          render="Date"
+          render="Distance"
           xAxis="date"
           yAxis="distance"
           yAxisUnit=" km"

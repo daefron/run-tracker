@@ -70,9 +70,7 @@
 .diffStat {
   width: 25%;
   display: flex;
-}
-.diffStat > p {
-  width: 50%;
+  gap:10px;
 }
 .runStat {
   display: flex;
