@@ -19,6 +19,12 @@ export function runsParser() {
       this.steps = run.steps;
       this.calories = run.calories;
       this.heartRate = run.averageHeartRate;
+      this.heartRateArray = run.heartRateArray;
+      this.heartRateArray.map((instance) => {
+        instance.bpm = instance.value;
+        delete instance.value;
+      });
+      console.log(this.heartRateArray);
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),

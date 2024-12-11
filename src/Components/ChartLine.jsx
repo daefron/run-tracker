@@ -3,6 +3,7 @@ import {
   LineChart,
   CartesianGrid,
   Line,
+  Legend,
   XAxis,
   YAxis,
   Tooltip,
@@ -12,43 +13,28 @@ export function ChartLine(props) {
   if (!props.runs) {
     return;
   }
-  const chartData = chartDataGetter();
-  function chartDataGetter() {
-    let holder = [];
-    props.dateRange.forEach((date) => {
-      let runOnDate = props.runs.find((run) => run.render.date === date);
-      if (runOnDate) {
-        holder.push({
-          id: runOnDate.id,
-          date: date[0] + date[1],
-          duration: objectToMs(runOnDate.duration),
-          distance: runOnDate.distance,
-        });
-      } else {
-        holder.push({
-          id: null,
-          date: date[0] + date[1],
-          duration: null,
-          distance: null,
-        });
-      }
-    });
-    return holder;
-  }
 
-  function DotRender({ payload, cx, cy }) {
-    if (payload.id === null) {
+  function DotRender(payload) {
+    if (payload.payload.id === null || payload.payload.bpm) {
       return;
     }
-    let color = props.lineColor;
-    if (payload.id === props.runs[props.activeRun].id) {
+    let color = payload.color;
+    if (payload.payload.id === payload.runs[payload.activeRun].id) {
       color = "red";
     }
-    return <circle r="4" cx={cx} cy={cy} fill={color}></circle>;
+    return <circle r="4" cx={payload.cx} cy={payload.cy} fill={color}></circle>;
   }
 
   function TooltipContent({ payload }) {
     if (payload[0]) {
+      if (payload[0].dataKey === "bpm") {
+        return (
+          <>
+            <p>Time: {payload[0].payload.time}</p>
+            <p>BPM: {payload[0].payload.bpm}</p>
+          </>
+        );
+      }
       let currentRun = props.runs.find(
         (run) => run.id === payload[0].payload.id
       );
@@ -81,9 +67,32 @@ export function ChartLine(props) {
     );
   }
 
-  return (
-    <>
-      <div className="graphHolder" id={props.yAxis + "Graph"}>
+  if (props.type === "allRuns") {
+    const chartData = chartDataGetter();
+    function chartDataGetter() {
+      let holder = [];
+      props.dateRange.forEach((date) => {
+        let runOnDate = props.runs.find((run) => run.render.date === date);
+        if (runOnDate) {
+          holder.push({
+            id: runOnDate.id,
+            date: date[0] + date[1],
+            duration: objectToMs(runOnDate.duration),
+            distance: runOnDate.distance,
+          });
+        } else {
+          holder.push({
+            id: null,
+            date: date[0] + date[1],
+            duration: null,
+            distance: null,
+          });
+        }
+      });
+      return holder;
+    }
+    return (
+      <div className="graphHolder" id={"allRunsGraph"}>
         <div className="graphTop">
           <p className="graphTitle">{props.render}</p>
           <div className="graphDateHolder">
@@ -174,33 +183,79 @@ export function ChartLine(props) {
         <ResponsiveContainer>
           <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
             <CartesianGrid strokeDasharray="5 20" vertical={false} />
-            <XAxis
-              dataKey={props.xAxis}
-              tickFormatter={props.xAxisFormatter}
-              unit={props.xAxisUnit}
-              padding={{ left: 10 }}
-              dy={7}
-              ticks={0}
-            />
-            <YAxis
-              dataKey={props.yAxis}
-              tickFormatter={props.yAxisFormatter}
-              unit={props.yAxisUnit}
-              dx={-4}
-            />
+            <Legend />
+            <XAxis dataKey="date" dy={5} />
+            <YAxis yAxisId="duration" hide />
             <Line
-              type="linear"
+              yAxisId="duration"
               isAnimationActive={false}
-              dataKey={props.yAxis}
-              stroke={props.lineColor}
+              dataKey="duration"
+              stroke={props.durationColor}
               strokeWidth={2}
-              dot={<DotRender />}
+              dot={
+                <DotRender
+                  color={props.durationColor}
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+              connectNulls
+            />
+            <YAxis yAxisId="distance" hide />
+            <Line
+              yAxisId="distance"
+              isAnimationActive={false}
+              dataKey="distance"
+              stroke={props.distanceColor}
+              strokeWidth={2}
+              dot={
+                <DotRender
+                  color={props.distanceColor}
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
               connectNulls
             />
             <Tooltip content={<TooltipContent />} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>
-    </>
-  );
+    );
+  } else if (props.type === "selected") {
+    const chartData = props.runs[props.activeRun].heartRateArray;
+    return (
+      <div className="graphHolder" id={"selectedGraph"}>
+        <div className="graphTop">
+          <p className="graphTitle">
+            {props.render} - {props.runs[props.activeRun].render.date}
+          </p>
+        </div>
+        <ResponsiveContainer>
+          <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
+            <CartesianGrid strokeDasharray="5 20" vertical={false} />
+            <Legend />
+            <XAxis dataKey="time" padding={{ left: 10 }} dy={7} hide/>
+            <YAxis yAxisId="bpm" hide />
+            <Line
+              yAxisId="bpm"
+              isAnimationActive={false}
+              dataKey="bpm"
+              stroke="green"
+              strokeWidth={2}
+              dot={
+                <DotRender
+                  color="green"
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+              connectNulls
+            />
+            <Tooltip content={<TooltipContent />} isAnimationActive={false} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    );
+  }
 }

@@ -27,11 +27,8 @@ export default function Page() {
           setHoverRun={setHoverRun}
         />
         <ChartLine
-          render="Duration"
-          xAxis="date"
-          yAxis="duration"
-          yAxisFormatter={msToChart}
-          lineColor="green"
+          render="Selected run"
+          type="selected"
           runs={runsRef.current}
           activeRun={activeRun}
           baselineDate={baselineDate}
@@ -40,11 +37,10 @@ export default function Page() {
           setDateRange={setDateRange}
         />
         <ChartLine
-          render="Distance"
-          xAxis="date"
-          yAxis="distance"
-          yAxisUnit=" km"
-          lineColor="yellow"
+          render="All runs"
+          type="allRuns"
+          durationColor="orange"
+          distanceColor="yellow"
           runs={runsRef.current}
           activeRun={activeRun}
           baselineDate={baselineDate}

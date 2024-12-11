@@ -32,11 +32,11 @@
   grid-row: 4 / 7;
   grid-column: 3 / 4;
 }
-#durationGraph {
+#selectedGraph {
   grid-row: 1 / 4;
   grid-column: 2 / 3;
 }
-#distanceGraph {
+#allRunsGraph {
   grid-row: 4 / 7;
   grid-column: 2 / 3;
 }
