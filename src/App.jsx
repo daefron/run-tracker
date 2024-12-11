@@ -41,6 +41,7 @@ export default function Page() {
           type="allRuns"
           durationColor="orange"
           distanceColor="yellow"
+          speedColor="salmon"
           runs={runsRef.current}
           activeRun={activeRun}
           baselineDate={baselineDate}

@@ -43,6 +43,7 @@ export function ChartLine(props) {
           <p>Date: {currentRun.render.date}</p>
           <p>Duration: {currentRun.render.duration}</p>
           <p>Distance: {currentRun.render.distance}</p>
+          <p>Speed: {currentRun.render.speed}</p>
         </>
       );
     }
@@ -66,7 +67,6 @@ export function ChartLine(props) {
       dateArrayToRender(props.dateRangeChange.current, props.baselineDate)
     );
   }
-
   if (props.type === "allRuns") {
     const chartData = chartDataGetter();
     function chartDataGetter() {
@@ -79,6 +79,7 @@ export function ChartLine(props) {
             date: date[0] + date[1],
             duration: objectToMs(runOnDate.duration),
             distance: runOnDate.distance,
+            speed: runOnDate.speed,
           });
         } else {
           holder.push({
@@ -86,6 +87,7 @@ export function ChartLine(props) {
             date: date[0] + date[1],
             duration: null,
             distance: null,
+            speed: null,
           });
         }
       });
@@ -217,6 +219,22 @@ export function ChartLine(props) {
               }
               connectNulls
             />
+            <YAxis yAxisId="speed" hide />
+            <Line
+              yAxisId="speed"
+              isAnimationActive={false}
+              dataKey="speed"
+              stroke={props.speedColor}
+              strokeWidth={2}
+              dot={
+                <DotRender
+                  color={props.speedColor}
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+              connectNulls
+            />
             <Tooltip content={<TooltipContent />} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>
@@ -235,7 +253,7 @@ export function ChartLine(props) {
           <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
             <CartesianGrid strokeDasharray="5 20" vertical={false} />
             <Legend />
-            <XAxis dataKey="time" padding={{ left: 10 }} dy={7} hide/>
+            <XAxis dataKey="time" padding={{ left: 10 }} dy={7} hide />
             <YAxis yAxisId="bpm" hide />
             <Line
               yAxisId="bpm"

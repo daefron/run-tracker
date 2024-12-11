@@ -12,7 +12,7 @@ export function runsParser() {
       this.id = run.logId;
       this.date = run.originalStartTime.split("T")[0];
       this.initialTime = dateTimeParser(run.originalStartTime);
-      this.duration = msToObject(run.duration);
+      this.duration = msToObject(run.activeDuration);
       this.endTime = endTimeCalc(this.initialTime, this.duration);
       this.distance = Number(run.distance.toFixed(2));
       this.speed = run.speed;
@@ -24,12 +24,12 @@ export function runsParser() {
         instance.bpm = instance.value;
         delete instance.value;
       });
-      console.log(this.heartRateArray);
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),
         duration: renderDuration(this.duration, this),
         distance: this.distance + " km",
+        speed: this.speed.toFixed(2) + " km/h",
       };
 
       function dateTimeParser(dateString) {
