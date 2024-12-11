@@ -5,41 +5,51 @@
   height: 100vh;
   width: 100vw;
   background-color: rgb(25, 25, 40);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #body {
-  margin-left: 50px;
-  margin-top: 30px;
-  width: 90vw;
-  height: 90vh;
-  display: flex;
-}
-#left {
-  background-color: rgb(50, 50, 70);
-  margin-right: 5px;
-  width: 500px;
-  display: flex;
-  flex-direction: column;
+  width: calc(100% - 60px);
+  height: calc(100% - 60px);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(6, 1fr);
 }
 #runList {
+  background-color: rgb(50, 50, 70);
+  grid-row: 1 / 4;
+  grid-column: 1 / 2;
+}
+#runStats {
+  background-color: rgb(50, 50, 70);
+  grid-row: 4 / 7;
+  grid-column: 1 / 2;
+}
+#durationGraph {
+  grid-row: 1 / 4;
+  grid-column: 2 / 3;
+}
+#distanceGraph {
+  grid-row: 4 / 7;
+  grid-column: 2 / 3;
+}
+#runListItems {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
-#leftTitle {
+#listTitle {
   background-color: rgb(65, 65, 85);
+  font-weight: bold;
 }
-#leftTitle,
+#listTitle,
 #allRuns,
 .runItem {
   display: flex;
-  justify-content: space-between;
-  height: 40px;
-  line-height: 40px;
-  padding-inline: 7px;
-  vertical-align: middle;
-  display: flex;
+  line-height: 35px;
 }
-#leftTitle > p,
+#listTitle > p,
 .runItem > p {
   margin: 0;
   font-size: 14px;
@@ -47,23 +57,13 @@
   text-align: center;
   color: white;
 }
-#right {
-  height: 800px;
-  width: calc(100% - 500px);
-  margin-left: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 .graphHolder {
   background-color: rgb(50, 50, 70);
   padding-bottom: 10px;
   display: flex;
   flex-direction: column;
-  align-items: start;
 }
 .graphTop {
-  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -71,13 +71,13 @@
   display: flex;
 }
 .graphDateHolder > p {
-  font-size: 16px;
   margin: 0;
   padding: 5px;
   padding-bottom: 0px;
   margin-bottom: -5px;
 }
 .graphTitle {
+  text-indent: 5px;
   margin: 0;
   padding: 5px;
   padding-bottom: 0px;

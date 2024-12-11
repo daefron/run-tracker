@@ -4,18 +4,28 @@ export function RunList(props) {
   }
   return (
     <div id="runList">
-      {props.runs.map((run) => {
-        return (
-          <RunItem
-            key={run.date + run.index}
-            data={run}
-            activeRun={props.activeRun}
-            setActiveRun={props.setActiveRun}
-            hoverRun={props.hoverRun}
-            setHoverRun={props.setHoverRun}
-          ></RunItem>
-        );
-      })}
+      <div id="listTitle">
+        <p>Date</p>
+        <p>Start Time</p>
+        <p>Duration</p>
+        <p></p>
+        <p>Length</p>
+        <p></p>
+      </div>
+      <div id="runListItems">
+        {props.runs.map((run) => {
+          return (
+            <RunItem
+              key={run.date + run.index}
+              data={run}
+              activeRun={props.activeRun}
+              setActiveRun={props.setActiveRun}
+              hoverRun={props.hoverRun}
+              setHoverRun={props.setHoverRun}
+            ></RunItem>
+          );
+        })}
+      </div>
     </div>
   );
 }

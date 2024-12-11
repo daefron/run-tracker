@@ -171,7 +171,7 @@ export function ChartLine(props) {
             </p>
           </div>
         </div>
-        <ResponsiveContainer minWidth={500} aspect={3}>
+        <ResponsiveContainer>
           <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
             <CartesianGrid strokeDasharray="5 20" vertical={false} />
             <XAxis

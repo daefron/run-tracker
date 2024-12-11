@@ -49,12 +49,18 @@ export function runsParser() {
       run.distanceDiff = distance - competingDistance;
       if (run.distanceDiff < 0) {
         run.distanceNegative = true;
+        run.distanceDiff *= -1;
       }
       run.render.distanceDiff = Number(run.distanceDiff.toFixed(2)) + " km";
+      if (run.distanceNegative) {
+        run.render.distanceDiff = "-" + run.render.distanceDiff;
+      } else {
+        run.render.distanceDiff = "+" + run.render.distanceDiff;
+      }
       let competingTime = objectToMs(run.lastRun.duration);
       let time = objectToMs(run.duration);
       run.durationDiff = msToObject(time - competingTime);
-      run.render.durationDiff = renderDuration(run.durationDiff, run);
+      run.render.durationDiff = renderDurationDiff(run.durationDiff, run);
     }
     run.nextRun = holder[run.index + 1];
   });
@@ -70,7 +76,8 @@ export function runsParser() {
     newTime = new Time(newTime[0], newTime[1], newTime[2]);
     return newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
   }
-  function renderDuration(time, run) {
+
+  function renderDurationDiff(time, run) {
     let newTime = new Time(time.hours, time.mins, time.secs);
     let negative;
     for (const type in newTime) {
@@ -92,7 +99,29 @@ export function runsParser() {
       renderString = newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
     if (negative) {
       renderString = "-" + renderString;
+    } else {
+      renderString = "+" + renderString;
     }
+    return renderString;
+  }
+
+  function renderDuration(time, run) {
+    let newTime = new Time(time.hours, time.mins, time.secs);
+    for (const type in newTime) {
+      if (newTime[type] < 0) {
+        newTime[type] *= -1;
+      }
+    }
+    if (newTime.secs.toString().length < 2) {
+      newTime.secs = "0" + newTime.secs;
+    }
+    let renderString;
+    if (newTime.hours === 0 && newTime.mins === 0) {
+      renderString = newTime.secs;
+    } else if (newTime.hours === 0) {
+      renderString = newTime.mins + ":" + newTime.secs;
+    } else
+      renderString = newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
     return renderString;
   }
 }
