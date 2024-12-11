@@ -11,7 +11,7 @@ export function OverallStats(props) {
       }
     }
     let average = total / all.length;
-    let averageRender = average.toFixed(3) + props.render;
+    let averageRender = average.toFixed(2) + props.render;
     if (props.unit === "duration") {
       averageRender = renderTime(msToObject(average));
     }
@@ -37,7 +37,7 @@ export function OverallStats(props) {
     }
     let totalRender = total + props.render;
     if (props.unit === "distance") {
-      totalRender = total.toFixed(3) + props.render;
+      totalRender = total.toFixed(2) + props.render;
     } else if (props.unit === "duration") {
       totalRender = renderTime(msToObject(total));
     }
@@ -86,6 +86,9 @@ export function OverallStats(props) {
       }
     }
     let findRender = target.render.date + " - " + target.render[props.unit];
+    if (props.unit === "speed") {
+      findRender = target.render.date + " - " + target.speed.toFixed(2) + " km/h";
+    }
     return (
       <div className="runStat" id={"find" + props.unit}>
         <p className="statTitle">
@@ -109,6 +112,8 @@ export function OverallStats(props) {
       <Find runs={props.runs} unit="duration" type="Highest" />
       <Find runs={props.runs} unit="duration" type="Lowest" />
       <Average runs={props.runs} unit="speed" render=" km/h" />
+      <Find runs={props.runs} unit="speed" type="Highest" />
+      <Find runs={props.runs} unit="speed" type="Lowest" />
     </div>
   );
 }
