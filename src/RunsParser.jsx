@@ -30,6 +30,7 @@ export function runsParser() {
         duration: renderDuration(this.duration, this),
         distance: this.distance + " km",
         speed: this.speed.toFixed(2) + " km/h",
+        heartRate: this.heartRate + " bpm",
       };
 
       function dateTimeParser(dateString) {

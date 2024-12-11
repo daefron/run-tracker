@@ -44,6 +44,7 @@ export function ChartLine(props) {
           <p>Duration: {currentRun.render.duration}</p>
           <p>Distance: {currentRun.render.distance}</p>
           <p>Speed: {currentRun.render.speed}</p>
+          <p>Heart rate: {currentRun.render.heartRate}</p>
         </>
       );
     }
@@ -80,14 +81,12 @@ export function ChartLine(props) {
             duration: objectToMs(runOnDate.duration),
             distance: runOnDate.distance,
             speed: runOnDate.speed,
+            heartRate: runOnDate.heartRate,
           });
         } else {
           holder.push({
             id: null,
             date: date[0] + date[1],
-            duration: null,
-            distance: null,
-            speed: null,
           });
         }
       });
@@ -229,6 +228,22 @@ export function ChartLine(props) {
               dot={
                 <DotRender
                   color={props.speedColor}
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+              connectNulls
+            />
+            <YAxis yAxisId="heartRate" hide />
+            <Line
+              yAxisId="heartRate"
+              isAnimationActive={false}
+              dataKey="heartRate"
+              stroke={props.heartRateColor}
+              strokeWidth={2}
+              dot={
+                <DotRender
+                  color={props.heartRateColor}
                   runs={props.runs}
                   activeRun={props.activeRun}
                 />
