@@ -1,4 +1,7 @@
 export function RunStats(props) {
+  if (!props.runs) {
+    return;
+  }
   let run = props.runs[props.activeRun];
   return (
     <div id="runStats">

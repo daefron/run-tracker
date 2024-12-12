@@ -1,5 +1,8 @@
 import { ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
 export function ChartPie(props) {
+  if (!props.runs) {
+    return;
+  }
   const activeRunData = activeRunGetter();
   function activeRunGetter() {
     return props.runs[props.activeRun];

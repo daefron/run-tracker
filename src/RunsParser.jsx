@@ -6,7 +6,10 @@ import {
   toAusDate,
 } from "./Tools.jsx";
 import { testData } from "./TestData.jsx";
-export function runsParser() {
+export function runsParser(runs) {
+  if (!runs || !runs[0] || !runs[0].heartRateArray) {
+    return;
+  }
   class Run {
     constructor(run) {
       this.id = run.logId;
@@ -22,10 +25,9 @@ export function runsParser() {
       this.calories = run.calories;
       this.heartRate = run.averageHeartRate;
       this.heartRateArray = run.heartRateArray;
-      this.heartRateArray.map((instance) => {
-        instance.bpm = instance.value;
-        delete instance.value;
-      });
+      for (const value of this.heartRateArray) {
+        value.bpm = value.value;
+      }
       this.heartRateZones = run.heartRateZones;
       this.render = {
         date: toAusDate(this.date),
@@ -54,8 +56,8 @@ export function runsParser() {
   }
 
   let holder = [];
-  for (let i = 0; i < testData().length; i++) {
-    let newRun = new Run(testData()[i]);
+  for (let i = 0; i < runs.length; i++) {
+    let newRun = new Run(runs[i]);
     newRun.index = i;
     holder.push(newRun);
   }

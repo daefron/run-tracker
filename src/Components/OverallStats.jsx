@@ -1,5 +1,8 @@
 import { Total, Average, Find } from "./StatTools.jsx";
 export function OverallStats(props) {
+  if (!props.runs) {
+    return;
+  }
   return (
     <div id="overallStats">
       <p id="overallStatsTitle">Overall stats</p>

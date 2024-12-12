@@ -1,5 +1,5 @@
 export function RunList(props) {
-  if (!props.runs) {
+  if (!props || !props.runs) {
     return;
   }
   return (
