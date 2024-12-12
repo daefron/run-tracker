@@ -4,13 +4,8 @@ export default function Main() {
   //data currently being manually input
   const authData = {
     key: "23PZCT",
-    secret: "395d7ddec6dd2384c79bda6d6a1cce29",
-    codeVerifier:
-      "3w4k4y3d1j455k6y3g5c0o4w5z465r5d0k203d3k5o271u0p6i673j1p3d3924124u195962142h695p3x06513q4p531a0l6v1w472l07024w3c6t6x4p5j0z4p2z37",
-    codeChallenge: "9F9SqGpatE3pLH3sO8jaSMI4AeSDtc3ZTCTonQzBJ2k",
-    state: "6z3k31384f1c5133630o5c6f5669532u",
     accessToken:
-      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1BaQ1QiLCJzdWIiOiJDQzgzR0siLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyYWN0IHJociIsImV4cCI6MTczNDAwNDM0MywiaWF0IjoxNzMzOTc1NTQzfQ.JAwlnAfbp6nG-1mFf2gmGqvxf5GDjII-KvOAhwvqZW0",
+      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1BaQ1QiLCJzdWIiOiJDQzgzR0siLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByaXJuIHJveHkgcnBybyBybnV0IHJzbGUgcmNmIHJhY3QgcnJlcyBybG9jIHJ3ZWkgcmhyIHJ0ZW0iLCJleHAiOjE3MzQwMzM4MTAsImlhdCI6MTczNDAwNTAxMH0.15a8VOY1BTf2y06CIIqm_lzEx7OktgqRpAiX3KgpB2g",
   };
   const [runs, setRuns] = useState([]);
   const [loading, setLoading] = useState(true);

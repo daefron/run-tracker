@@ -21,10 +21,23 @@ export function Page(props) {
     dateArrayToRender(31, baselineDate)
   );
   if (props.loading) {
-    return <div id="loadingHolder">
-      <p id="loadingText">Fetching Fitbit data</p>
-      <PulseLoader id="loadingSymbol" size={5} color="white"/>
+    return (
+      <div id="loadingHolder">
+        <div id="loadingTextHolder">
+          <p id="loadingText">Fetching Fitbit data</p>
+          <PulseLoader id="loadingSymbol" size={5} color="white" />
+        </div>
+        <div id="loadingBody" style={{ filter: "blur(10px)" }}>
+          <div id="allRunsGraph"></div>
+          <div id="selectedGraph"></div>
+          <div id="runStats"></div>
+          <div id="overallStats"></div>
+          <div id="runList"></div>
+          <div id="activeTimePie"></div>
+          <div id="heartZonesPie"></div>
+        </div>
       </div>
+    );
   }
   return (
     <>
