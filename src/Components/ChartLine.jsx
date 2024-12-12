@@ -21,14 +21,24 @@ export function ChartLine(props) {
     let color = payload.color;
     if (payload.payload.id === payload.runs[payload.activeRun].id) {
       return (
-        <circle
-          r="4"
-          cx={payload.cx}
-          cy={payload.cy}
-          fill={color}
-          stroke="white"
-          strokeWidth={2}
-        ></circle>
+        <>
+          <circle
+            r="4"
+            cx={payload.cx}
+            cy={payload.cy}
+            fill={color}
+            stroke="rgb(255, 255, 255, 0.2)"
+            strokeWidth={6}
+          ></circle>
+          <circle
+            r="4"
+            cx={payload.cx}
+            cy={payload.cy}
+            fill={color}
+            stroke="rgb(255, 255, 255)"
+            strokeWidth={1}
+          ></circle>
+        </>
       );
     }
     return <circle r="4" cx={payload.cx} cy={payload.cy} fill={color}></circle>;
@@ -208,6 +218,7 @@ export function ChartLine(props) {
                   activeRun={props.activeRun}
                 />
               }
+              activeDot={false}
               connectNulls
             />
             <YAxis yAxisId="distance" hide />
@@ -224,6 +235,7 @@ export function ChartLine(props) {
                   activeRun={props.activeRun}
                 />
               }
+              activeDot={false}
               connectNulls
             />
             <YAxis yAxisId="speed" hide />
@@ -240,6 +252,7 @@ export function ChartLine(props) {
                   activeRun={props.activeRun}
                 />
               }
+              activeDot={false}
               connectNulls
             />
             <YAxis yAxisId="heartRate" hide />
@@ -256,6 +269,7 @@ export function ChartLine(props) {
                   activeRun={props.activeRun}
                 />
               }
+              activeDot={false}
               connectNulls
             />
             <Tooltip content={<TooltipContent />} isAnimationActive={false} />
