@@ -6,6 +6,7 @@ import { ChartLine } from "./Components/ChartLine.jsx";
 import { ChartPie } from "./Components/ChartPie.jsx";
 import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
+import PulseLoader from "react-spinners/PulseLoader.js";
 import "./App.css";
 export function Page(props) {
   const [parsedRuns, setParsedRuns] = useState(runsParser(props.runs));
@@ -19,6 +20,12 @@ export function Page(props) {
   const [dateRange, setDateRange] = useState(
     dateArrayToRender(31, baselineDate)
   );
+  if (props.loading) {
+    return <div id="loadingHolder">
+      <p id="loadingText">Fetching Fitbit data</p>
+      <PulseLoader id="loadingSymbol" size={5} color="white"/>
+      </div>
+  }
   return (
     <>
       <div id="body">

@@ -13,8 +13,9 @@ export default function Main() {
       "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1BaQ1QiLCJzdWIiOiJDQzgzR0siLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyYWN0IHJociIsImV4cCI6MTczNDAwNDM0MywiaWF0IjoxNzMzOTc1NTQzfQ.JAwlnAfbp6nG-1mFf2gmGqvxf5GDjII-KvOAhwvqZW0",
   };
   const [runs, setRuns] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const getRuns = async () => {
+    setLoading(true);
     fetch(
       "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2000-01-01&sort=desc&offset=0&limit=100",
       {
@@ -51,6 +52,7 @@ export default function Main() {
               allHeartRateData[0][i]["activities-heart-intraday"].dataset;
           }
           setRuns(runs);
+          setLoading(false);
         });
       });
   };
@@ -58,5 +60,5 @@ export default function Main() {
     getRuns();
   }, []);
 
-  return <Page runs={runs}></Page>;
+  return <Page runs={runs} loading={loading}></Page>;
 }
