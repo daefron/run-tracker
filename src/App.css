@@ -2,6 +2,9 @@
   fill: white;
   user-select: none;
 }
+.recharts-legend-item-text {
+  user-select: none;
+}
 p {
   user-select: none;
 }
