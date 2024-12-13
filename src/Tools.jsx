@@ -1,4 +1,4 @@
-export function Time(hours, mins, secs) {
+function Time(hours, mins, secs) {
   this.hours = hours;
   this.mins = mins;
   this.secs = secs;
@@ -38,18 +38,6 @@ export function msToObject(time) {
     secs = parseInt(time / secsIn);
   }
   return new Time(hours, mins, secs);
-}
-
-export function msToChart(initialTime) {
-  let time = msToObject(initialTime);
-  if (time.secs.toString().length < 2) {
-    time.secs = "0" + time.secs;
-  }
-  let renderString = time.mins + ":" + time.secs;
-  if (time.hours) {
-    renderString = time.hours + ":" + renderString;
-  }
-  return renderString;
 }
 
 export function renderTime(time) {
@@ -99,4 +87,56 @@ export function dateTimeParser(dateString) {
   let mins = Number(parsed[1]);
   let secs = Number(parsed[2]);
   return new Time(hour, mins, secs);
+}
+
+export function compareRuns(run) {
+  run.render.distanceDiff = compareDistance();
+  run.render.durationDiff = compareDuration();
+  function compareDistance() {
+    let distanceDiff = run.distance - run.lastRun.distance;
+    if (distanceDiff < 0) {
+      run.distanceNegative = true;
+      distanceDiff *= -1;
+    }
+    let renderDistanceDiff = Number(distanceDiff.toFixed(2));
+    if (run.distanceNegative) {
+      return "-" + renderDistanceDiff;
+    } else {
+      return "+" + renderDistanceDiff;
+    }
+  }
+  function compareDuration() {
+    let competingTime = objectToMs(run.lastRun.duration);
+    let time = objectToMs(run.duration);
+    let durationDiff = msToObject(time - competingTime);
+    return renderDuration(durationDiff, run);
+  }
+}
+
+export function renderDuration(time, run) {
+  if (run) {
+    for (const type in time) {
+      if (time[type] < 0) {
+        time[type] *= -1;
+        run.durationNegative = true;
+      }
+    }
+  }
+  if (time.secs.toString().length < 2) {
+    time.secs = "0" + time.secs;
+  }
+  let renderString = time.secs;
+  if (time.mins) {
+    renderString = time.mins + ":" + renderString;
+  }
+  if (time.hours) {
+    renderString = time.hours + ":" + renderString;
+  }
+  if (run) {
+    if (run.durationNegative) {
+      return "-" + renderString;
+    }
+    return "+" + renderString;
+  }
+  return renderString;
 }

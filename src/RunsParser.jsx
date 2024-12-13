@@ -1,9 +1,10 @@
 import {
-  objectToMs,
   msToObject,
   renderTime,
   toAusDate,
   dateTimeParser,
+  compareRuns,
+  renderDuration,
 } from "./Tools.jsx";
 export function runsParser(runs) {
   if (!runs || !runs[0] || !runs[0].heartRateArray) {
@@ -38,8 +39,6 @@ export function runsParser(runs) {
     }
   }
 
-  return runMaker();
-
   function runMaker() {
     let runHolder = [];
     for (let i = 0; i < runs.length; i++) {
@@ -56,64 +55,5 @@ export function runsParser(runs) {
     return runHolder;
   }
 
-  function compareRuns(run) {
-    run.render.distanceDiff = compareDistance();
-    run.render.durationDiff = compareDuration();
-
-    function compareDistance() {
-      let distanceDiff = run.distance - run.lastRun.distance;
-      if (distanceDiff < 0) {
-        run.distanceNegative = true;
-        distanceDiff *= -1;
-      }
-      let renderDistanceDiff = Number(distanceDiff.toFixed(2));
-      if (run.distanceNegative) {
-        return "-" + renderDistanceDiff;
-      } else {
-        return "+" + renderDistanceDiff;
-      }
-    }
-
-    function compareDuration() {
-      let competingTime = objectToMs(run.lastRun.duration);
-      let time = objectToMs(run.duration);
-      let durationDiff = msToObject(time - competingTime);
-      return renderDuration(durationDiff, run);
-    }
-  }
-
-  function renderDuration(time, run) {
-    let negative;
-    if (run) {
-      negative = diffNegative();
-      function diffNegative() {
-        let negative;
-        for (const type in time) {
-          if (time[type] < 0) {
-            time[type] *= -1;
-            negative = true;
-            run.durationNegative = true;
-          }
-        }
-        return negative;
-      }
-    }
-    if (time.secs.toString().length < 2) {
-      time.secs = "0" + time.secs;
-    }
-    let renderString = time.secs;
-    if (time.mins) {
-      renderString = time.mins + ":" + renderString;
-    }
-    if (time.hours) {
-      renderString = time.hours + ":" + renderString;
-    }
-    if (run) {
-      if (negative) {
-        return "-" + renderString;
-      }
-      return "+" + renderString;
-    }
-    return renderString;
-  }
+  return runMaker();
 }
