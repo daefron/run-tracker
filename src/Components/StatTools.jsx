@@ -1,13 +1,13 @@
 import { msToObject, objectToMs, renderTime } from "../Tools";
 export function Average(props) {
   let average = findAverage();
-  let averageRender = average.toFixed(2) + props.render;
+  let averageRender = average.toFixed(props.decimals) + props.render;
   if (props.unit === "duration") {
     averageRender = renderTime(msToObject(average));
   }
   return (
     <div className="runStat" id={"average" + props.unit}>
-      <p className="statTitle">Average {props.unit}: </p>
+      <p className="statTitle">Average {props.name}: </p>
       <p className="statContent">{averageRender}</p>
     </div>
   );
@@ -83,13 +83,14 @@ export function Find(props) {
       }
       if (props.unit === "duration") {
         if (ifType || !objectToMs(target[props.unit])) {
-          return (target = all[i]);
+          target = all[i];
         }
       } else {
         if (ifDuration) {
-          return (target = all[i]);
+          target = all[i];
         }
       }
     }
+    return target;
   }
 }

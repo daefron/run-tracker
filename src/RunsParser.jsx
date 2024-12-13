@@ -5,6 +5,7 @@ import {
   dateTimeParser,
   compareRuns,
   renderDuration,
+  heartRateArrayParse,
 } from "./Tools.jsx";
 export function runsParser(runs) {
   if (!runs || !runs[0] || !runs[0].heartRateArray) {
@@ -23,11 +24,8 @@ export function runsParser(runs) {
       this.steps = run.steps;
       this.calories = run.calories;
       this.heartRate = run.averageHeartRate;
-      this.heartRateArray = run.heartRateArray;
-      for (const value of this.heartRateArray) {
-        value.bpm = value.value;
-      }
       this.heartRateZones = run.heartRateZones;
+      this.heartRateArray = heartRateArrayParse(run.heartRateArray);
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),

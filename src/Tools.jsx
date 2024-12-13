@@ -132,3 +132,27 @@ export function renderDuration(time) {
   }
   return renderString;
 }
+
+function timeParser(time) {
+  let parsed = time.split(":");
+  let hours = Number(parsed[0]);
+  let mins = Number(parsed[1]);
+  let secs = Number(parsed[2]);
+  let parsedTime = {
+    hours: hours,
+    mins: mins,
+    secs: secs,
+  };
+  return objectToMs(parsedTime);
+}
+
+export function heartRateArrayParse(array) {
+  const baselineTime = timeParser(array[0].time);
+  for (const record of array) {
+    record.bpm = record.value;
+    let recordTime = timeParser(record.time);
+    let difference = msToObject(recordTime - baselineTime);
+    record.time = renderTime(difference);
+  }
+  return array;
+}
