@@ -46,7 +46,7 @@ export function ChartLine(props) {
 
   function TooltipContent({ payload }) {
     if (payload[0]) {
-      if (payload[0].dataKey === "bpm") {
+      if (payload[0].payload.bpm) {
         return (
           <>
             <p>Time: {payload[0].payload.time}</p>
@@ -173,7 +173,7 @@ export function ChartLine(props) {
                 " - " +
                 props.dateRange[props.dateRangeChange.current]}
             </p>
-           <DateShiftButton value="right" render="->" />
+            <DateShiftButton value="right" render="->" />
           </div>
         </div>
         <ResponsiveContainer>
@@ -255,7 +255,38 @@ export function ChartLine(props) {
       </div>
     );
   } else if (props.type === "selected") {
-    const chartData = props.runs[props.activeRun].heartRateArray;
+    const chartData = bpmChartData(props.runs[props.activeRun].heartRateArray);
+    function bpmChartData(chartData) {
+      let zones = props.runs[props.activeRun].heartRateZones;
+      let holder = [];
+      chartData.forEach((entry) => {
+        for (const zone of zones) {
+          if (entry.bpm >= zone.min && entry.bpm <= zone.max) {
+            entry[zone.name] = entry.bpm;
+          }
+        }
+        holder.push(entry);
+      });
+      holder.forEach((entry, i) => {
+        if (holder[i + 1]) {
+          let nextEntry = holder[i + 1];
+          let entryKey = Object.keys(entry)[3];
+          let nextEntryKey = Object.keys(nextEntry)[3];
+          if (entryKey !== nextEntryKey) {
+            entry[nextEntryKey] = entry.value;
+          }
+        }
+        if (holder[i - 1]) {
+          let previousEntry = holder[i - 1];
+          let entryKey = Object.keys(entry)[3];
+          let previousEntryKey = Object.keys(previousEntry)[3];
+          if (entryKey !== previousEntryKey) {
+            entry[previousEntryKey] = entry.value;
+          }
+        }
+      });
+      return holder;
+    }
     return (
       <div className="graphHolder" id={"selectedGraph"}>
         <div className="graphTop">
@@ -267,12 +298,25 @@ export function ChartLine(props) {
           <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
             <CartesianGrid strokeDasharray="5 20" vertical={false} />
             <Legend />
-            <XAxis dataKey="time" padding={{ left: 10 }} dy={7} hide />
             <YAxis yAxisId="bpm" hide />
             <Line
               yAxisId="bpm"
               isAnimationActive={false}
-              dataKey="bpm"
+              dataKey="Other"
+              stroke="purple"
+              strokeWidth={2}
+              dot={
+                <DotRender
+                  color="purple"
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+            />
+            <Line
+              yAxisId="bpm"
+              isAnimationActive={false}
+              dataKey="Fat Burn"
               stroke="green"
               strokeWidth={2}
               dot={
@@ -282,7 +326,34 @@ export function ChartLine(props) {
                   activeRun={props.activeRun}
                 />
               }
-              connectNulls
+            />
+            <Line
+              yAxisId="bpm"
+              isAnimationActive={false}
+              dataKey="Cardio"
+              stroke="yellow"
+              strokeWidth={2}
+              dot={
+                <DotRender
+                  color="yellow"
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+            />
+            <Line
+              yAxisId="bpm"
+              isAnimationActive={false}
+              dataKey="Peak"
+              stroke="red"
+              strokeWidth={2}
+              dot={
+                <DotRender
+                  color="red"
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
             />
             <Tooltip content={<TooltipContent />} isAnimationActive={false} />
           </LineChart>
