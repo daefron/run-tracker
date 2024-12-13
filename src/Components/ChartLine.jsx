@@ -72,6 +72,13 @@ export function ChartLine(props) {
     props.dateRangeChange.current = amount;
     props.setDateRange(dateArrayToRender(amount, props.baselineDate));
   }
+  function activeRunShiftButton(direction) {
+    if (direction === "right" && props.activeRun) {
+      props.setActiveRun(props.activeRun - 1);
+    } else if (direction === "left" && props.runs[props.activeRun + 1]) {
+      props.setActiveRun(props.activeRun + 1);
+    }
+  }
   function dateRangeShiftButton(direction) {
     if (direction === "left") {
       props.baselineDate.current.setDate(
@@ -287,31 +294,40 @@ export function ChartLine(props) {
       });
       return holder;
     }
+    function ActiveRunShiftButton(props) {
+      return (
+        <p
+          onClick={() => {
+            activeRunShiftButton(props.value);
+          }}
+          style={{
+            cursor: "pointer",
+          }}
+        >
+          {props.render}
+        </p>
+      );
+    }
     return (
       <div className="graphHolder" id={"selectedGraph"}>
         <div className="graphTop">
-          <p className="graphTitle">
-            {props.render} - {props.runs[props.activeRun].render.date}
-          </p>
+          <p className="graphTitle">{props.render}</p>
+          <div className="graphDateHolder">
+            <ActiveRunShiftButton value="left" render="<-" />
+            <p>{props.runs[props.activeRun].render.date}</p>
+            <ActiveRunShiftButton value="right" render="->" />
+          </div>
         </div>
         <ResponsiveContainer>
           <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
             <CartesianGrid strokeDasharray="5 20" vertical={false} />
-            <Legend />
-            <YAxis yAxisId="bpm" hide />
             <Line
               yAxisId="bpm"
               isAnimationActive={false}
               dataKey="Other"
-              stroke="purple"
+              stroke="hotPink"
               strokeWidth={2}
-              dot={
-                <DotRender
-                  color="purple"
-                  runs={props.runs}
-                  activeRun={props.activeRun}
-                />
-              }
+              dot={<DotRender />}
             />
             <Line
               yAxisId="bpm"
@@ -319,13 +335,7 @@ export function ChartLine(props) {
               dataKey="Fat Burn"
               stroke="green"
               strokeWidth={2}
-              dot={
-                <DotRender
-                  color="green"
-                  runs={props.runs}
-                  activeRun={props.activeRun}
-                />
-              }
+              dot={<DotRender />}
             />
             <Line
               yAxisId="bpm"
@@ -333,13 +343,7 @@ export function ChartLine(props) {
               dataKey="Cardio"
               stroke="yellow"
               strokeWidth={2}
-              dot={
-                <DotRender
-                  color="yellow"
-                  runs={props.runs}
-                  activeRun={props.activeRun}
-                />
-              }
+              dot={<DotRender />}
             />
             <Line
               yAxisId="bpm"
@@ -347,14 +351,9 @@ export function ChartLine(props) {
               dataKey="Peak"
               stroke="red"
               strokeWidth={2}
-              dot={
-                <DotRender
-                  color="red"
-                  runs={props.runs}
-                  activeRun={props.activeRun}
-                />
-              }
+              dot={<DotRender />}
             />
+            <Legend />
             <Tooltip content={<TooltipContent />} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>

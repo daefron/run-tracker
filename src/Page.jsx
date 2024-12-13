@@ -85,6 +85,7 @@ export function Page(props) {
           dateRangeChange={dateRangeChange}
           dateRange={dateRange}
           setDateRange={setDateRange}
+          setActiveRun={setActiveRun}
         />
         <ChartLine
           render="All runs"
@@ -99,6 +100,7 @@ export function Page(props) {
           dateRangeChange={dateRangeChange}
           dateRange={dateRange}
           setDateRange={setDateRange}
+          setActiveRun={setActiveRun}
         />
         <ChartPie
           render="Heart zone minutes"
