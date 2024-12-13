@@ -3,11 +3,7 @@ export function ChartPie(props) {
   if (!props.runs) {
     return;
   }
-  const activeRunData = activeRunGetter();
-  function activeRunGetter() {
-    return props.runs[props.activeRun];
-  }
-  const pieData = dataGetter(activeRunData);
+  const pieData = dataGetter(props.runs[props.activeRun]);
   function dataGetter(run) {
     if (props.type === "heartZones") {
       return [

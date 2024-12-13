@@ -1,15 +1,6 @@
 import { msToObject, objectToMs, renderTime } from "../Tools";
 export function Average(props) {
-  let all = props.runs.map((run) => run[props.unit]);
-  let total = 0;
-  for (const unit of all) {
-    if (props.unit === "duration") {
-      total += objectToMs(unit);
-    } else {
-      total += unit;
-    }
-  }
-  let average = total / all.length;
+  let average = findAverage();
   let averageRender = average.toFixed(2) + props.render;
   if (props.unit === "duration") {
     averageRender = renderTime(msToObject(average));
@@ -20,20 +11,21 @@ export function Average(props) {
       <p className="statContent">{averageRender}</p>
     </div>
   );
+
+  function findAverage() {
+    let all = props.runs.map((run) => run[props.unit]);
+    if (props.unit === "duration") {
+      all.forEach((unit, i) => (all[i] = objectToMs(unit)));
+    }
+    let total = all.reduce(
+      (totalDistance, distance) => totalDistance + distance
+    );
+    return total / all.length;
+  }
 }
 
 export function Total(props) {
-  let all = props.runs.map((run) => run[props.unit]);
-  let total = 0;
-  for (const unit of all) {
-    if (props.unit === "duration") {
-      total += objectToMs(unit);
-    } else if (props.unit === "runs") {
-      total++;
-    } else {
-      total += unit;
-    }
-  }
+  let total = findTotal();
   let totalRender = total + props.render;
   if (props.unit === "distance") {
     totalRender = total.toFixed(2) + props.render;
@@ -46,44 +38,20 @@ export function Total(props) {
       <p className="statContent">{totalRender}</p>
     </div>
   );
+
+  function findTotal() {
+    let all = props.runs.map((run) => run[props.unit]);
+    if (props.unit === "duration") {
+      all.forEach((unit, i) => (all[i] = objectToMs(unit)));
+    } else if (props.unit === "runs") {
+      all.forEach((unit, i) => (all[i] = 1));
+    }
+    return all.reduce((totalDistance, distance) => totalDistance + distance);
+  }
 }
 
 export function Find(props) {
-  let target;
-  let all = props.runs;
-  if (props.type === "Highest") {
-    target = { [props.unit]: 0 };
-    for (let i = 0; i < all.length; i++) {
-      if (props.unit === "duration") {
-        if (
-          objectToMs(all[i][props.unit]) > objectToMs(target[props.unit]) ||
-          !objectToMs(target[props.unit])
-        ) {
-          target = all[i];
-        }
-      } else {
-        if (all[i][props.unit] > target[props.unit]) {
-          target = all[i];
-        }
-      }
-    }
-  } else if (props.type === "Lowest") {
-    target = { [props.unit]: Infinity };
-    for (let i = 0; i < all.length; i++) {
-      if (props.unit === "duration") {
-        if (
-          objectToMs(all[i][props.unit]) < objectToMs(target[props.unit]) ||
-          !objectToMs(target[props.unit])
-        ) {
-          target = all[i];
-        }
-      } else {
-        if (all[i][props.unit] < target[props.unit]) {
-          target = all[i];
-        }
-      }
-    }
-  }
+  let target = findTarget();
   let findRender = target.render.date + " - " + target.render[props.unit];
   if (props.unit === "speed") {
     findRender = target.render.date + " - " + target.speed.toFixed(2) + " km/h";
@@ -96,4 +64,32 @@ export function Find(props) {
       <p className="statContent">{findRender}</p>
     </div>
   );
+
+  function findTarget() {
+    let all = props.runs;
+    let targetBaseline = 0;
+    if (props.type === "Lowest") {
+      targetBaseline = Infinity;
+    }
+    let target = { [props.unit]: targetBaseline };
+    for (let i = 0; i < all.length; i++) {
+      let ifType =
+        objectToMs(all[i][props.unit]) > objectToMs(target[props.unit]);
+      let ifDuration = all[i][props.unit] > target[props.unit];
+      if (props.type === "Lowest") {
+        ifType =
+          objectToMs(all[i][props.unit]) < objectToMs(target[props.unit]);
+        ifDuration = all[i][props.unit] < target[props.unit];
+      }
+      if (props.unit === "duration") {
+        if (ifType || !objectToMs(target[props.unit])) {
+          return (target = all[i]);
+        }
+      } else {
+        if (ifDuration) {
+          return (target = all[i]);
+        }
+      }
+    }
+  }
 }

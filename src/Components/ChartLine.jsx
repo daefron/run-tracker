@@ -110,93 +110,70 @@ export function ChartLine(props) {
       });
       return holder;
     }
+    function DateRangeChangeButton(props) {
+      return (
+        <p
+          onClick={() => {
+            dateRangeChangeButton(props.value);
+          }}
+          style={
+            props.dateRangeChange.current === props.value
+              ? {
+                  fontWeight: "450",
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                }
+              : {
+                  fontWeight: "300",
+                  cursor: "pointer",
+                }
+          }
+        >
+          {props.render}
+        </p>
+      );
+    }
+    function DateShiftButton(props) {
+      return (
+        <p
+          onClick={() => {
+            dateRangeShiftButton(props.direction);
+          }}
+          style={{
+            cursor: "pointer",
+          }}
+        >
+          {props.render}
+        </p>
+      );
+    }
     return (
-      <div className="graphHolder" id={"allRunsGraph"}>
+      <div className="graphHolder" id="allRunsGraph">
         <div className="graphTop">
           <p className="graphTitle">{props.render}</p>
           <div className="graphDateHolder">
-            <p
-              onClick={() => {
-                dateRangeChangeButton(6);
-              }}
-              style={
-                props.dateRangeChange.current === 6
-                  ? {
-                      fontWeight: "450",
-                      textDecoration: "underline",
-                      cursor: "pointer",
-                    }
-                  : {
-                      fontWeight: "300",
-                      cursor: "pointer",
-                    }
-              }
-            >
-              W
-            </p>
-            <p
-              onClick={() => {
-                dateRangeChangeButton(31);
-              }}
-              style={
-                props.dateRangeChange.current === 31
-                  ? {
-                      fontWeight: "450",
-                      textDecoration: "underline",
-                      cursor: "pointer",
-                    }
-                  : {
-                      fontWeight: "300",
-                      cursor: "pointer",
-                    }
-              }
-            >
-              M
-            </p>
-            <p
-              onClick={() => {
-                dateRangeChangeButton(365);
-              }}
-              style={
-                props.dateRangeChange.current === 365
-                  ? {
-                      fontWeight: "450",
-                      textDecoration: "underline",
-                      cursor: "pointer",
-                    }
-                  : {
-                      fontWeight: "300",
-                      cursor: "pointer",
-                    }
-              }
-            >
-              Y
-            </p>
-            <p
-              onClick={() => {
-                dateRangeShiftButton("left");
-              }}
-              style={{
-                cursor: "pointer",
-              }}
-            >
-              {"<-"}
-            </p>
+            <DateRangeChangeButton
+              value={6}
+              render="W"
+              dateRangeChange={props.dateRangeChange}
+            />
+            <DateRangeChangeButton
+              value={31}
+              render="M"
+              dateRangeChange={props.dateRangeChange}
+            />
+            <DateRangeChangeButton
+              value={365}
+              render="Y"
+              dateRangeChange={props.dateRangeChange}
+            />
+            <DateShiftButton value="left" render="<-" />
             <p>
               {props.dateRange[0] +
                 " - " +
                 props.dateRange[props.dateRangeChange.current]}
             </p>
-            <p
-              onClick={() => {
-                dateRangeShiftButton("right");
-              }}
-              style={{
-                cursor: "pointer",
-              }}
-            >
-              {"->"}
-            </p>
+           <DateShiftButton value="right" render="->" />
           </div>
         </div>
         <ResponsiveContainer>

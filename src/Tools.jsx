@@ -5,28 +5,22 @@ export function Time(hours, mins, secs) {
 }
 
 export function objectToMs(time) {
-  let total = 0;
-  let hourIn = 3600000;
-  let minIn = 60000;
-  let secIn = 1000;
-  total += time.hours * hourIn;
-  total += time.mins * minIn;
-  total += time.secs * secIn;
-  return total;
+  const hourIn = 3600000;
+  const minIn = 60000;
+  const secIn = 1000;
+  return time.hours * hourIn + time.mins * minIn + time.secs * secIn;
 }
 
 export function msToObject(time) {
-  let hourIn = 3600000;
-  let minIn = 60000;
-  let secsIn = 1000;
-  if (time < 0) {
-    hourIn = -3600000;
-    minIn = -60000;
-    secsIn = -1000;
-  }
+  const hourIn = 3600000;
+  const minIn = 60000;
+  const secsIn = 1000;
   let hours = 0;
   let mins = 0;
   let secs = 0;
+  if (time < 0) {
+    time *= -1;
+  }
   if (time / hourIn >= 1) {
     hours = time / hourIn;
     let hourRemainder = hours % 1;
@@ -35,50 +29,37 @@ export function msToObject(time) {
     let minsRemainder = mins % 1;
     mins -= minsRemainder;
     secs = parseInt(minsRemainder * 60);
-    if (time > 0) {
-      return new Time(hours, mins, secs);
-    }
-    return new Time(-hours, -mins, -secs);
-  }
-  if (time / minIn >= 1) {
+  } else if (time / minIn >= 1) {
     mins = time / minIn;
     let minsRemainder = mins % 1;
     mins -= minsRemainder;
     secs = parseInt(minsRemainder * 60);
-    if (time > 0) {
-      return new Time(hours, mins, secs);
-    }
-    return new Time(-hours, -mins, -secs);
+  } else {
+    secs = parseInt(time / secsIn);
   }
-  secs = parseInt(time / secsIn);
-  if (time > 0) {
-    return new Time(hours, mins, secs);
-  }
-  return new Time(-hours, -mins, -secs);
+  return new Time(hours, mins, secs);
 }
 
 export function msToChart(initialTime) {
   let time = msToObject(initialTime);
-  let newTime = new Time(time.hours, time.mins, time.secs);
-  if (newTime.secs.toString().length < 2) {
-    newTime.secs = "0" + newTime.secs;
+  if (time.secs.toString().length < 2) {
+    time.secs = "0" + time.secs;
   }
-  let renderString;
-  if (newTime.hours === 0) {
-    renderString = newTime.mins + ":" + newTime.secs;
-  } else renderString = newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
+  let renderString = time.mins + ":" + time.secs;
+  if (time.hours) {
+    renderString = time.hours + ":" + renderString;
+  }
   return renderString;
 }
 
 export function renderTime(time) {
-  let newTime = [];
+  let parsedTime = [];
   for (const number in time) {
     if (time[number].toString().length < 2) {
-      newTime.push("0" + time[number]);
-    } else newTime.push(time[number]);
+      parsedTime.push("0" + time[number]);
+    } else parsedTime.push(time[number]);
   }
-  newTime = new Time(newTime[0], newTime[1], newTime[2]);
-  return newTime.hours + ":" + newTime.mins + ":" + newTime.secs;
+  return parsedTime[0] + ":" + parsedTime[1] + ":" + parsedTime[2];
 }
 
 export function toAusDate(date) {
@@ -89,35 +70,33 @@ export function toAusDate(date) {
 }
 
 export function dateArrayToRender(length, baselineDate) {
-  let days = [];
   const currentDay = baselineDate.current.getDate();
   const currentMonth = baselineDate.current.getMonth();
   const currentYear = baselineDate.current.getFullYear();
+  let days = [];
   for (let i = length; i >= 0; i--) {
-    let newDay = new Date(currentYear, currentMonth, currentDay - i);
-    days.push(newDay);
+    const newDate = new Date(currentYear, currentMonth, currentDay - i);
+    let date = {
+      day: newDate.getDate(),
+      month: newDate.getMonth() + 1,
+      year: newDate.getFullYear(),
+    };
+    for (const type in date) {
+      date[type] = date[type].toString();
+      if (date[type].length < 2) {
+        date[type] = "0" + date[type];
+      }
+    }
+    days.push(date.day + "/" + date.month + "/" + date.year[2] + date.year[3]);
   }
-  let holder = [];
-  days.forEach((date) => {
-    let separatedDate = dateParser(date);
-    separatedDate[1] += 1;
-    let holder2 = [];
-    separatedDate.forEach((digit) => {
-      if (digit.toString().length < 2) {
-        digit = "0" + digit;
-      } else digit = digit.toString();
-      holder2.push(digit);
-    });
-    let parsedDate =
-      holder2[0] + "/" + holder2[1] + "/" + holder2[2][2] + holder2[2][3];
-    holder.push(parsedDate);
-  });
-  return holder;
+  return days;
+}
 
-  function dateParser(date) {
-    let day = date.getDate();
-    let month = date.getMonth();
-    let year = date.getFullYear();
-    return [day, month, year];
-  }
+export function dateTimeParser(dateString) {
+  let parsed = dateString.split("T")[1];
+  parsed = parsed.split("+")[0].split(":");
+  let hour = Number(parsed[0]);
+  let mins = Number(parsed[1]);
+  let secs = Number(parsed[2]);
+  return new Time(hour, mins, secs);
 }
