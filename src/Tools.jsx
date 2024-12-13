@@ -18,8 +18,10 @@ export function msToObject(time) {
   let hours = 0;
   let mins = 0;
   let secs = 0;
+  let negative;
   if (time < 0) {
     time *= -1;
+    negative = true;
   }
   if (time / hourIn >= 1) {
     hours = time / hourIn;
@@ -36,6 +38,9 @@ export function msToObject(time) {
     secs = parseInt(minsRemainder * 60);
   } else {
     secs = parseInt(time / secsIn);
+  }
+  if (negative) {
+    return new Time(-hours, -mins, -secs);
   }
   return new Time(hours, mins, secs);
 }
