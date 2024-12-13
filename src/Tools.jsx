@@ -69,18 +69,16 @@ export function dateArrayToRender(length, baselineDate) {
   let days = [];
   for (let i = length; i >= 0; i--) {
     const newDate = new Date(currentYear, currentMonth, currentDay - i);
-    let date = {
-      day: newDate.getDate(),
-      month: newDate.getMonth() + 1,
-      year: newDate.getFullYear(),
-    };
-    for (const type in date) {
-      date[type] = date[type].toString();
-      if (date[type].length < 2) {
-        date[type] = "0" + date[type];
-      }
+    let day = newDate.getDate().toString();
+    if (day.length < 2) {
+      day = "0" + day;
     }
-    days.push(date.day + "/" + date.month + "/" + date.year[2] + date.year[3]);
+    let month = (newDate.getMonth() + 1).toString();
+    if (month.length < 2) {
+      month = "0" + month;
+    }
+    let year = newDate.getFullYear().toString();
+    days.push(day + "/" + month + "/" + year[2] + year[3]);
   }
   return days;
 }
@@ -101,32 +99,27 @@ export function compareRuns(run) {
     let distanceDiff = run.distance - run.lastRun.distance;
     if (distanceDiff < 0) {
       run.distanceNegative = true;
-      distanceDiff *= -1;
+      return distanceDiff.toFixed(2);
     }
-    let renderDistanceDiff = Number(distanceDiff.toFixed(2));
-    if (run.distanceNegative) {
-      return "-" + renderDistanceDiff;
-    } else {
-      return "+" + renderDistanceDiff;
-    }
+    return "+" + distanceDiff.toFixed(2);
   }
   function compareDuration() {
     let competingTime = objectToMs(run.lastRun.duration);
     let time = objectToMs(run.duration);
-    let durationDiff = msToObject(time - competingTime);
-    return renderDuration(durationDiff, run);
+    let durationDiff = time - competingTime;
+    if (durationDiff < 0) {
+      durationDiff *= -1;
+      run.durationNegative = true;
+    }
+    let renderString = renderDuration(msToObject(durationDiff));
+    if (run.durationNegative) {
+      return "-" + renderString;
+    }
+    return "+" + renderString;
   }
 }
 
-export function renderDuration(time, run) {
-  if (run) {
-    for (const type in time) {
-      if (time[type] < 0) {
-        time[type] *= -1;
-        run.durationNegative = true;
-      }
-    }
-  }
+export function renderDuration(time) {
   if (time.secs.toString().length < 2) {
     time.secs = "0" + time.secs;
   }
@@ -136,12 +129,6 @@ export function renderDuration(time, run) {
   }
   if (time.hours) {
     renderString = time.hours + ":" + renderString;
-  }
-  if (run) {
-    if (run.durationNegative) {
-      return "-" + renderString;
-    }
-    return "+" + renderString;
   }
   return renderString;
 }

@@ -137,7 +137,7 @@ export function ChartLine(props) {
       return (
         <p
           onClick={() => {
-            dateRangeShiftButton(props.direction);
+            dateRangeShiftButton(props.value);
           }}
           style={{
             cursor: "pointer",
