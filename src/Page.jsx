@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { runsParser } from "./RunsParser.jsx";
 import { dateArrayToRender } from "./Tools.jsx";
 import { RunList } from "./Components/RunList.jsx";
+import { Prediction } from "./Components/Prediction.jsx";
 import { ChartLine } from "./Components/ChartLine.jsx";
 import { ChartPie } from "./Components/ChartPie.jsx";
 import { OverallStats } from "./Components/OverallStats.jsx";
@@ -33,6 +34,7 @@ export function Page(props) {
               <p className="graphTitle">All runs</p>
             </div>
           </div>
+          <div id="prediction"></div>
           <div id="selectedGraph">
             <div className="graphTop">
               <p className="graphTitle">Selected run</p>
@@ -76,6 +78,7 @@ export function Page(props) {
           hoverRun={hoverRun}
           setHoverRun={setHoverRun}
         />
+        <Prediction runs={parsedRuns} activeRun={activeRun} />
         <ChartLine
           render="Selected run"
           type="selected"

@@ -10,52 +10,52 @@ export default function Main() {
   };
   const [runs, setRuns] = useState([]);
   const [loading, setLoading] = useState(true);
-  const getRuns = async () => {
-    setLoading(true);
-    fetch(
-      "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2000-01-01&sort=desc&offset=0&limit=100",
-      {
-        headers: {
-          Authorization: "Bearer " + authData.accessToken,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        let runs = data.activities.filter(
-          (activity) => activity.activityName === "Run"
-        );
-        let promiseArray = [];
-        runs.forEach((run) => {
-          let promise = new Promise(function (resolve) {
-            fetch(run.heartRateLink, {
-              headers: {
-                Authorization: "Bearer " + authData.accessToken,
-              },
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                resolve(data);
-              });
-          });
-          promiseArray.push(promise);
-        });
-        let allHeartRateData = [];
-        Promise.all(promiseArray).then((run) => {
-          allHeartRateData.push(run);
-          for (let i = 0; i < runs.length; i++) {
-            runs[i].heartRateArray =
-              allHeartRateData[0][i]["activities-heart-intraday"].dataset;
-          }
-          setRuns(runs);
-          setLoading(false);
-        });
-      });
-  };
-  useEffect(() => {
-    getRuns();
-  }, []);
+  // const getRuns = async () => {
+  //   setLoading(true);
+  //   fetch(
+  //     "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2000-01-01&sort=desc&offset=0&limit=100",
+  //     {
+  //       headers: {
+  //         Authorization: "Bearer " + authData.accessToken,
+  //       },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       let runs = data.activities.filter(
+  //         (activity) => activity.activityName === "Run"
+  //       );
+  //       let promiseArray = [];
+  //       runs.forEach((run) => {
+  //         let promise = new Promise(function (resolve) {
+  //           fetch(run.heartRateLink, {
+  //             headers: {
+  //               Authorization: "Bearer " + authData.accessToken,
+  //             },
+  //           })
+  //             .then((response) => response.json())
+  //             .then((data) => {
+  //               resolve(data);
+  //             });
+  //         });
+  //         promiseArray.push(promise);
+  //       });
+  //       let allHeartRateData = [];
+  //       Promise.all(promiseArray).then((run) => {
+  //         allHeartRateData.push(run);
+  //         for (let i = 0; i < runs.length; i++) {
+  //           runs[i].heartRateArray =
+  //             allHeartRateData[0][i]["activities-heart-intraday"].dataset;
+  //         }
+  //         setRuns(runs);
+  //         setLoading(false);
+  //       });
+  //     });
+  // };
+  // useEffect(() => {
+  //   getRuns();
+  // }, []);
 
-  return <Page runs={runs} loading={loading}></Page>;
-  // return <Page runs={testData()} ></Page>;
+  // return <Page runs={runs} loading={loading}></Page>;
+  return <Page runs={testData()} ></Page>;
 }

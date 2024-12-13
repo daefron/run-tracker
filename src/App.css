@@ -54,9 +54,13 @@ p {
   height: 18px;
 }
 #runList {
-  background-color: rgba(255, 255, 255, 0.5);
   background-color: rgb(50, 50, 70);
-  grid-row: 1 / 9;
+  grid-row: 1 / 5;
+  grid-column: 1 / 2;
+}
+#prediction {
+  background-color: rgb(50, 50, 70);
+  grid-row: 5 / 9;
   grid-column: 1 / 2;
 }
 #runStats {
