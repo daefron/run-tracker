@@ -13,7 +13,6 @@ export function ChartLine(props) {
   if (!props.runs) {
     return;
   }
-
   function DotRender(payload) {
     if (payload.payload.id === null || payload.payload.bpm) {
       return;
@@ -68,31 +67,7 @@ export function ChartLine(props) {
       );
     }
   }
-  function dateRangeChangeButton(amount) {
-    props.dateRangeChange.current = amount;
-    props.setDateRange(dateArrayToRender(amount, props.baselineDate));
-  }
-  function activeRunShiftButton(direction) {
-    if (direction === "right" && props.activeRun) {
-      props.setActiveRun(props.activeRun - 1);
-    } else if (direction === "left" && props.runs[props.activeRun + 1]) {
-      props.setActiveRun(props.activeRun + 1);
-    }
-  }
-  function dateRangeShiftButton(direction) {
-    if (direction === "left") {
-      props.baselineDate.current.setDate(
-        props.baselineDate.current.getDate() - props.dateRangeChange.current
-      );
-    } else {
-      props.baselineDate.current.setDate(
-        props.baselineDate.current.getDate() + props.dateRangeChange.current
-      );
-    }
-    props.setDateRange(
-      dateArrayToRender(props.dateRangeChange.current, props.baselineDate)
-    );
-  }
+
   if (props.type === "allRuns") {
     const chartData = chartDataGetter();
     function chartDataGetter() {
@@ -140,6 +115,10 @@ export function ChartLine(props) {
         </p>
       );
     }
+    function dateRangeChangeButton(amount) {
+      props.dateRangeChange.current = amount;
+      props.setDateRange(dateArrayToRender(amount, props.baselineDate));
+    }
     function DateShiftButton(props) {
       return (
         <p
@@ -152,6 +131,20 @@ export function ChartLine(props) {
         >
           {props.render}
         </p>
+      );
+    }
+    function dateRangeShiftButton(direction) {
+      if (direction === "left") {
+        props.baselineDate.current.setDate(
+          props.baselineDate.current.getDate() - props.dateRangeChange.current
+        );
+      } else {
+        props.baselineDate.current.setDate(
+          props.baselineDate.current.getDate() + props.dateRangeChange.current
+        );
+      }
+      props.setDateRange(
+        dateArrayToRender(props.dateRangeChange.current, props.baselineDate)
       );
     }
     return (
@@ -300,22 +293,49 @@ export function ChartLine(props) {
           onClick={() => {
             activeRunShiftButton(props.value);
           }}
-          style={{
-            cursor: "pointer",
-          }}
+          style={
+            (props.value === "right" && !props.activeRun) ||
+            (props.value === "left" &&
+              !props.runs[props.activeRun + 1])
+              ? {
+                  color: "dimGrey",
+                }
+              : {
+                  color: "white",
+                  cursor: "pointer",
+                }
+          }
         >
           {props.render}
         </p>
       );
+    }
+    console.log(props.activeRun);
+    function activeRunShiftButton(direction) {
+      if (direction === "right" && props.activeRun) {
+        props.setActiveRun(props.activeRun - 1);
+      } else if (direction === "left" && props.runs[props.activeRun + 1]) {
+        props.setActiveRun(props.activeRun + 1);
+      }
     }
     return (
       <div className="graphHolder" id={"selectedGraph"}>
         <div className="graphTop">
           <p className="graphTitle">{props.render}</p>
           <div className="graphDateHolder">
-            <ActiveRunShiftButton value="left" render="<-" />
+            <ActiveRunShiftButton
+              value="left"
+              render="<-"
+              activeRun={props.activeRun}
+              runs={props.runs}
+            />
             <p>{props.runs[props.activeRun].render.date}</p>
-            <ActiveRunShiftButton value="right" render="->" />
+            <ActiveRunShiftButton
+              value="right"
+              render="->"
+              activeRun={props.activeRun}
+              runs={props.runs}
+            />
           </div>
         </div>
         <ResponsiveContainer>
