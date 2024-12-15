@@ -9,7 +9,7 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-import { objectToMs, dateArrayToRender } from "../Tools.jsx";
+import { objectToMs, dateArrayToRender, trendLine } from "../Tools.jsx";
 export function ChartLine(props) {
   if (!props.runs) {
     return;
@@ -67,43 +67,6 @@ export function ChartLine(props) {
         </>
       );
     }
-  }
-
-  function trendLine(data, type) {
-    data.forEach((point, i) => {
-      point.order = i;
-    });
-    let dataSet = data.filter((point) => point.id);
-    const xData = dataSet.map((point) => point.order);
-    const yData = dataSet.map((point) => point[type]);
-    const xMean = average(xData);
-    const yMean = average(yData);
-    function average(data) {
-      const dataTotal = data.reduce((total, value) => total + value);
-      return dataTotal / data.length;
-    }
-    const xMinusxMean = xData.map((value) => value - xMean);
-    const yMinusyMean = yData.map((value) => value - yMean);
-    const xMinusxMeanSq = xMinusxMean.map((val) => Math.pow(val, 2));
-    const xy = [];
-    for (let x = 0; x < dataSet.length; x++) {
-      xy.push(xMinusxMean[x] * yMinusyMean[x]);
-    }
-    function sum(array) {
-      return array.reduce((total, value) => total + value);
-    }
-    const xySum = sum(xy);
-    const slope = xySum / sum(xMinusxMeanSq);
-    const slopeStart = yMean - slope * xMean;
-    console.log(type, slopeStart + slope * xData[0] - 1, slopeStart + slope * xData[xData.length -1] + 4);
-
-    return {
-      slope: slope,
-      slopeStart: slopeStart,
-      calcY: (x) => slopeStart + slope * x,
-      xStart: xData[0] - 1,
-      xEnd: xData[xData.length - 1] + 4,
-    };
   }
 
   if (props.type === "allRuns") {
@@ -223,7 +186,7 @@ export function ChartLine(props) {
             <CartesianGrid strokeDasharray="5 20" vertical={false} />
             <Legend />
             <XAxis dataKey="date" dy={5} />
-            <YAxis yAxisId="duration" domain={[0, "dataMax + 300000"]} hide  />
+            <YAxis yAxisId="duration" domain={[0, "dataMax + 300000"]} hide />
             <Line
               yAxisId="duration"
               isAnimationActive={false}
@@ -285,7 +248,7 @@ export function ChartLine(props) {
               ]}
               stroke={props.distanceColor}
             />
-            <YAxis yAxisId="speed" domain={[0, "dataMax + 4"]}  hide />
+            <YAxis yAxisId="speed" domain={[0, "dataMax + 4"]} hide />
             <Line
               yAxisId="speed"
               isAnimationActive={false}
@@ -316,7 +279,7 @@ export function ChartLine(props) {
               ]}
               stroke={props.speedColor}
             />
-            <YAxis yAxisId="heartRate" domain={[0, "dataMax + 40"]}  hide />
+            <YAxis yAxisId="heartRate" domain={[0, "dataMax + 40"]} hide />
             <Line
               yAxisId="heartRate"
               isAnimationActive={false}

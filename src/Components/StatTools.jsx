@@ -1,4 +1,4 @@
-import { msToObject, objectToMs, renderTime } from "../Tools";
+import { msToObject, objectToMs, renderTime, getAverage, getTotal } from "../Tools";
 export function Average(props) {
   let average = findAverage();
   let averageRender = average.toFixed(props.decimals) + props.render;
@@ -17,10 +17,7 @@ export function Average(props) {
     if (props.unit === "duration") {
       all.forEach((unit, i) => (all[i] = objectToMs(unit)));
     }
-    let total = all.reduce(
-      (totalDistance, distance) => totalDistance + distance
-    );
-    return total / all.length;
+    return getAverage(all);
   }
 }
 
@@ -46,7 +43,7 @@ export function Total(props) {
     } else if (props.unit === "runs") {
       all.forEach((unit, i) => (all[i] = 1));
     }
-    return all.reduce((totalDistance, distance) => totalDistance + distance);
+    return getTotal(all);
   }
 }
 

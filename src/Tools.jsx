@@ -156,3 +156,46 @@ export function heartRateArrayParse(array) {
   }
   return array;
 }
+
+export function getAverage(data) {
+  const dataTotal = data.reduce((total, value) => total + value);
+  return dataTotal / data.length;
+}
+
+export function getTotal(data) {
+  return data.reduce((total, value) => total + value);
+}
+
+export function trendLine(data, type) {
+  data.forEach((point, i) => {
+    point.order = i;
+  });
+  let dataSet = data.filter((point) => point.id);
+  const xData = dataSet.map((point) => point.order);
+  const yData = dataSet.map((point) => point[type]);
+  const xMean = getAverage(xData);
+  const yMean = getAverage(yData);
+  const xMinusxMean = xData.map((value) => value - xMean);
+  const yMinusyMean = yData.map((value) => value - yMean);
+  const xMinusxMeanSq = xMinusxMean.map((val) => Math.pow(val, 2));
+  const xy = [];
+  for (let x = 0; x < dataSet.length; x++) {
+    xy.push(xMinusxMean[x] * yMinusyMean[x]);
+  }
+  const xySum = getTotal(xy);
+  const slope = xySum / getTotal(xMinusxMeanSq);
+  const slopeStart = yMean - slope * xMean;
+  console.log(
+    type,
+    slopeStart + slope * xData[0] - 1,
+    slopeStart + slope * xData[xData.length - 1] + 4
+  );
+
+  return {
+    slope: slope,
+    slopeStart: slopeStart,
+    calcY: (x) => slopeStart + slope * x,
+    xStart: xData[0] - 1,
+    xEnd: xData[xData.length - 1] + 0,
+  };
+}
