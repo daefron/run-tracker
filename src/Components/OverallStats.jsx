@@ -73,7 +73,6 @@ export function OverallStats(props) {
         <p className="statContent">{findRender}</p>
       </div>
     );
-
     function findTarget() {
       let all = props.runs;
       let targetBaseline = 0;

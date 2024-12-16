@@ -27,7 +27,6 @@ export default function Main() {
   //       );
   //       let promiseArray = [];
   //       runs.forEach((run) => {
-  //         console.log(run);
   //         if (run.logType === "manual") {
   //           promiseArray.push(null);
   //           return;
@@ -54,8 +53,9 @@ export default function Main() {
   //               allHeartRateData[0][i]["activities-heart-intraday"].dataset;
   //           }
   //         }
-  //         setRuns(runs);
+  //         console.log(runs);
   //         setLoading(false);
+  //         setRuns(runs);
   //       });
   //     });
   // };
@@ -63,6 +63,11 @@ export default function Main() {
   //   getRuns();
   // }, []);
 
-  // return <Page runs={runs} loading={loading}></Page>;
-  return <Page runs={testData()} ></Page>;
+  useEffect(() => {
+    setTimeout(() => {
+      setRuns(testData());
+      setLoading(false);
+    }, 50);
+  }, []);
+  return <Page runs={runs} loading={loading} />;
 }

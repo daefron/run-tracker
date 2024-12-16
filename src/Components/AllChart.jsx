@@ -10,77 +10,88 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-export function AllChart(props) {
-  if (!props.runs || !props.predictedRuns) {
+export function AllChart({
+  runs,
+  predictedRuns,
+  dateRange,
+  setDateRange,
+  dateRangeChange,
+  baselineDate,
+  marginAmount,
+  activeRun,
+  render,
+  durationColor,
+  distanceColor,
+  speedColor,
+  heartRateColor,
+  predictedOnGraph,
+  trendlineOnGraph,
+}) {
+  if (!runs && !predictedRuns[0]) {
     return;
   }
-  function DateRangeChangeButton(props) {
+  function DateRangeChangeButton({ value, render, dateRangeChange }) {
     return (
       <p
         onClick={() => {
-          dateRangeChangeButton(props.value);
+          dateRangeChangeButton(value);
         }}
         className={
-          props.dateRangeChange.current === props.value
+          dateRangeChange.current === value
             ? "dateChangeActive"
             : "dateChangeInactive"
         }
       >
-        {props.render}
+        {render}
       </p>
     );
   }
   function dateRangeChangeButton(amount) {
-    props.dateRangeChange.current = amount;
-    props.setDateRange(
-      dateArrayToRender(amount, props.baselineDate, props.marginAmount)
-    );
+    dateRangeChange.current = amount;
+    setDateRange(dateArrayToRender(amount, baselineDate, marginAmount));
   }
-  function DateShiftButton(props) {
+
+  function DateShiftButton({ value, render }) {
     return (
       <p
         onClick={() => {
-          dateRangeShiftButton(props.value);
+          dateRangeShiftButton(value);
         }}
         style={{
           cursor: "pointer",
         }}
       >
-        {props.render}
+        {render}
       </p>
     );
   }
   function dateRangeShiftButton(direction) {
     if (direction === "left") {
-      props.baselineDate.current.setDate(
-        props.baselineDate.current.getDate() - props.dateRangeChange.current
+      baselineDate.current.setDate(
+        baselineDate.current.getDate() - dateRangeChange.current
       );
     } else {
-      props.baselineDate.current.setDate(
-        props.baselineDate.current.getDate() + props.dateRangeChange.current
+      baselineDate.current.setDate(
+        baselineDate.current.getDate() + dateRangeChange.current
       );
     }
-    props.setDateRange(
-      dateArrayToRender(
-        props.dateRangeChange.current,
-        props.baselineDate,
-        props.marginAmount
-      )
+    setDateRange(
+      dateArrayToRender(dateRangeChange.current, baselineDate, marginAmount)
     );
   }
   function TooltipContent({ payload }) {
     if (!payload[0]) {
       return;
     }
-    let currentRun = props.runs.find((run) => run.id === payload[0].payload.id);
+    let currentRun = runs.find((run) => run.id === payload[0].payload.id);
     if (!currentRun) {
       return (
         <>
-          <p>Date: {props.predictedRuns[0].render.date}</p>
-          <p>Duration: {props.predictedRuns[0].render.duration}</p>
-          <p>Distance: {props.predictedRuns[0].render.distance}</p>
-          <p>Speed: {props.predictedRuns[0].render.speed}</p>
-          <p>Heart rate: {props.predictedRuns[0].render.heartRate}</p>
+          <p>Date: {predictedRuns[0].render.date}</p>
+          <p>Duration: {predictedRuns[0].render.duration}</p>
+          <p>Distance: {predictedRuns[0].render.distance}</p>
+          <p>Speed: {predictedRuns[0].render.speed}</p>
+          <p>Heart rate: {predictedRuns[0].render.heartRate}</p>
         </>
       );
     }
@@ -191,15 +202,11 @@ export function AllChart(props) {
     "calories",
     "steps",
   ];
-  const predictionData = dateFiller(
-    props.predictedRuns,
-    props.dateRange,
-    types
-  );
-  const chartData = chartFiller(dateFiller(props.runs, props.dateRange, types));
+  const predictionData = dateFiller(predictedRuns, dateRange, types);
+  const chartData = chartFiller(dateFiller(runs, dateRange, types));
   function chartFiller(data) {
     for (let i = 0; i <= data.length; i++) {
-      props.predictedRuns.forEach((run) => {
+      predictedRuns.forEach((run) => {
         if (i === run.chartOrder) {
           for (const key in predictionData[i]) {
             if (key === "heartRate" && !run.heartRate) {
@@ -249,33 +256,31 @@ export function AllChart(props) {
     });
     return dateHolder;
   }
-  const dateGap = props.predictedRuns[0].gap;
+  const dateGap = predictedRuns[0].gap;
+  console.log(chartData)
+  console.log(dateGap);
   return (
     <div className="graphHolder" id="allRunsGraph">
       <div className="graphTop">
-        <p className="graphTitle">{props.render}</p>
+        <p className="graphTitle">{render}</p>
         <div className="graphDateHolder">
           <DateRangeChangeButton
             value={6}
             render="W"
-            dateRangeChange={props.dateRangeChange}
+            dateRangeChange={dateRangeChange}
           />
           <DateRangeChangeButton
             value={31}
             render="M"
-            dateRangeChange={props.dateRangeChange}
+            dateRangeChange={dateRangeChange}
           />
           <DateRangeChangeButton
             value={365}
             render="Y"
-            dateRangeChange={props.dateRangeChange}
+            dateRangeChange={dateRangeChange}
           />
           <DateShiftButton value="left" render="<-" />
-          <p>
-            {props.dateRange[0] +
-              " - " +
-              props.dateRange[props.dateRangeChange.current]}
-          </p>
+          <p>{dateRange[0] + " - " + dateRange[dateRangeChange.current]}</p>
           <DateShiftButton value="right" render="->" />
         </div>
       </div>
@@ -295,7 +300,7 @@ export function AllChart(props) {
             yAxisId="distance"
             strokeWidth={1}
             stroke="rgba(255, 255, 255, 0.1)"
-            x={props.dateRangeChange.current}
+            x={dateRangeChange.current}
           />
           {todayInGraph ? (
             <ReferenceLine
@@ -308,7 +313,7 @@ export function AllChart(props) {
           ) : (
             <></>
           )}
-          {newMonths[0] && props.dateRangeChange.current <= 32 ? (
+          {newMonths[0] && dateRangeChange.current <= 32 ? (
             <ReferenceLine
               yAxisId="distance"
               strokeWidth={1}
@@ -323,30 +328,30 @@ export function AllChart(props) {
             yAxisId="duration"
             isAnimationActive={false}
             dataKey="duration"
-            stroke={props.durationColor}
+            stroke={durationColor}
             strokeWidth={2}
             dot={
               <DotRender
-                color={props.durationColor}
-                runs={props.runs}
-                activeRun={props.activeRun}
+                color={durationColor}
+                runs={runs}
+                activeRun={activeRun}
               />
             }
             activeDot={false}
             connectNulls
           />
-          {props.predictedOnGraph ? (
+          {predictedOnGraph ? (
             <Line
               yAxisId="duration"
               isAnimationActive={false}
               dataKey="durationPrediction"
-              stroke={predictionColor(props.durationColor)}
+              stroke={predictionColor(durationColor)}
               strokeWidth={1}
               dot={
                 <PredictionDot
-                  color={predictionColor(props.durationColor)}
-                  runs={props.runs}
-                  activeRun={props.activeRun}
+                  color={predictionColor(durationColor)}
+                  runs={runs}
+                  activeRun={activeRun}
                 />
               }
               activeDot={false}
@@ -356,7 +361,7 @@ export function AllChart(props) {
           ) : (
             <></>
           )}
-          {props.trendlineOnGraph ? (
+          {trendlineOnGraph ? (
             <ReferenceLine
               yAxisId="duration"
               segment={[
@@ -369,7 +374,7 @@ export function AllChart(props) {
                   y: trends.duration.calcY(trends.duration.xEnd + dateGap),
                 },
               ]}
-              stroke={predictionColor(props.durationColor)}
+              stroke={predictionColor(durationColor)}
             />
           ) : (
             <></>
@@ -379,30 +384,30 @@ export function AllChart(props) {
             yAxisId="distance"
             isAnimationActive={false}
             dataKey="distance"
-            stroke={props.distanceColor}
+            stroke={distanceColor}
             strokeWidth={2}
             dot={
               <DotRender
-                color={props.distanceColor}
-                runs={props.runs}
-                activeRun={props.activeRun}
+                color={distanceColor}
+                runs={runs}
+                activeRun={activeRun}
               />
             }
             activeDot={false}
             connectNulls
           />
-          {props.predictedOnGraph ? (
+          {predictedOnGraph ? (
             <Line
               yAxisId="distance"
               isAnimationActive={false}
               dataKey="distancePrediction"
-              stroke={predictionColor(props.distanceColor)}
+              stroke={predictionColor(distanceColor)}
               strokeWidth={1}
               dot={
                 <PredictionDot
-                  color={predictionColor(props.distanceColor)}
-                  runs={props.runs}
-                  activeRun={props.activeRun}
+                  color={predictionColor(distanceColor)}
+                  runs={runs}
+                  activeRun={activeRun}
                 />
               }
               activeDot={false}
@@ -412,7 +417,7 @@ export function AllChart(props) {
           ) : (
             <></>
           )}
-          {props.trendlineOnGraph ? (
+          {trendlineOnGraph ? (
             <ReferenceLine
               yAxisId="distance"
               segment={[
@@ -425,7 +430,7 @@ export function AllChart(props) {
                   y: trends.distance.calcY(trends.distance.xEnd + dateGap),
                 },
               ]}
-              stroke={predictionColor(props.distanceColor)}
+              stroke={predictionColor(distanceColor)}
             />
           ) : (
             <></>
@@ -435,30 +440,26 @@ export function AllChart(props) {
             yAxisId="speed"
             isAnimationActive={false}
             dataKey="speed"
-            stroke={props.speedColor}
+            stroke={speedColor}
             strokeWidth={2}
             dot={
-              <DotRender
-                color={props.speedColor}
-                runs={props.runs}
-                activeRun={props.activeRun}
-              />
+              <DotRender color={speedColor} runs={runs} activeRun={activeRun} />
             }
             activeDot={false}
             connectNulls
           />
-          {props.predictedOnGraph ? (
+          {predictedOnGraph ? (
             <Line
               yAxisId="speed"
               isAnimationActive={false}
               dataKey="speedPrediction"
-              stroke={predictionColor(props.speedColor)}
+              stroke={predictionColor(speedColor)}
               strokeWidth={1}
               dot={
                 <PredictionDot
-                  color={predictionColor(props.speedColor)}
-                  runs={props.runs}
-                  activeRun={props.activeRun}
+                  color={predictionColor(speedColor)}
+                  runs={runs}
+                  activeRun={activeRun}
                 />
               }
               activeDot={false}
@@ -468,7 +469,7 @@ export function AllChart(props) {
           ) : (
             <></>
           )}
-          {props.trendlineOnGraph ? (
+          {trendlineOnGraph ? (
             <ReferenceLine
               yAxisId="speed"
               segment={[
@@ -481,7 +482,7 @@ export function AllChart(props) {
                   y: trends.speed.calcY(trends.speed.xEnd + dateGap),
                 },
               ]}
-              stroke={predictionColor(props.speedColor)}
+              stroke={predictionColor(speedColor)}
             />
           ) : (
             <></>
@@ -491,30 +492,30 @@ export function AllChart(props) {
             yAxisId="heartRate"
             isAnimationActive={false}
             dataKey="heartRate"
-            stroke={props.heartRateColor}
+            stroke={heartRateColor}
             strokeWidth={2}
             dot={
               <DotRender
-                color={props.heartRateColor}
-                runs={props.runs}
-                activeRun={props.activeRun}
+                color={heartRateColor}
+                runs={runs}
+                activeRun={activeRun}
               />
             }
             activeDot={false}
             connectNulls
           />
-          {props.predictedOnGraph ? (
+          {predictedOnGraph ? (
             <Line
               yAxisId="heartRate"
               isAnimationActive={false}
               dataKey="heartRatePrediction"
-              stroke={predictionColor(props.heartRateColor)}
+              stroke={predictionColor(heartRateColor)}
               strokeWidth={1}
               dot={
                 <PredictionDot
-                  color={predictionColor(props.heartRateColor)}
-                  runs={props.runs}
-                  activeRun={props.activeRun}
+                  color={predictionColor(heartRateColor)}
+                  runs={runs}
+                  activeRun={activeRun}
                 />
               }
               activeDot={false}
@@ -524,7 +525,7 @@ export function AllChart(props) {
           ) : (
             <></>
           )}
-          {props.trendlineOnGraph ? (
+          {trendlineOnGraph ? (
             <ReferenceLine
               yAxisId="heartRate"
               segment={[
@@ -537,7 +538,7 @@ export function AllChart(props) {
                   y: trends.heartRate.calcY(trends.heartRate.xEnd + dateGap),
                 },
               ]}
-              stroke={predictionColor(props.heartRateColor)}
+              stroke={predictionColor(heartRateColor)}
             />
           ) : (
             <></>

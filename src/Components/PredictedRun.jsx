@@ -42,7 +42,6 @@ export class PredictedRun {
       marginAmount.current = this.gap;
       setDateRange(dateArrayToRender(31, baselineDate, marginAmount));
     }
-
     function daysBeforeToData(daysBefore, date) {
       const currentDay = date.getDate();
       const currentMonth = date.getMonth();

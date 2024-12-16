@@ -169,7 +169,7 @@ export function heartRateArrayParse(array) {
 }
 
 export function getAverage(data) {
-  if (!data[0]) {
+  if (data[0] === undefined) {
     return;
   }
   const dataTotal = data.reduce((total, value) => total + value);
@@ -177,7 +177,7 @@ export function getAverage(data) {
 }
 
 export function getTotal(data) {
-  if (!data[0]) {
+  if (data[0] === undefined) {
     return;
   }
   return data.reduce((total, value) => total + value);
@@ -199,6 +199,7 @@ export function trendLine(data, type) {
     dataSet = dataSet.filter((point) => point.heartRate);
   }
   const xData = dataSet.map((point) => point.order);
+  console.log(xData, dataSet);
   const yData = dataSet.map((point) => point[type]);
   const xMean = getAverage(xData);
   const yMean = getAverage(yData);
@@ -216,7 +217,7 @@ export function trendLine(data, type) {
     slope: slope,
     slopeStart: slopeStart,
     calcY: (x) => slopeStart + slope * x,
-    xStart: xData[0] - 1,
+    xStart: xData[0],
     xEnd: xData[xData.length - 1],
   };
 }
@@ -224,7 +225,7 @@ export function trendLine(data, type) {
 export function dateFiller(runs, dateRange, types) {
   let holder = [];
   let lastHR;
-  for (let i = dateRange.length - 1; i > 0; i--) {
+  for (let i = dateRange.length - 1; i >= 0; i--) {
     let runOnDate = runs.find((run) => run.render.date === dateRange[i]);
     if (runOnDate) {
       runOnDate.chartOrder = i;
