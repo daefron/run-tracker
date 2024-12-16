@@ -1,9 +1,15 @@
-import { msToObject, objectToMs, renderTime, getAverage, getTotal } from "../Tools";
+import {
+  msToObject,
+  objectToMs,
+  renderTime,
+  getAverage,
+  getTotal,
+} from "../Tools";
 export function OverallStats(props) {
   if (!props.runs) {
     return;
   }
-  
+
   function Average(props) {
     let average = findAverage();
     let averageRender = average.toFixed(props.decimals) + props.render;
@@ -20,7 +26,7 @@ export function OverallStats(props) {
     function findAverage() {
       let all = props.runs.map((run) => run[props.unit]);
       if (props.unit === "duration") {
-        all.forEach((unit, i) => (all[i] = objectToMs(unit)));
+        all.forEach((unit, i) => (all[i] = unit));
       }
       return getAverage(all);
     }
@@ -44,7 +50,7 @@ export function OverallStats(props) {
     function findTotal() {
       let all = props.runs.map((run) => run[props.unit]);
       if (props.unit === "duration") {
-        all.forEach((unit, i) => (all[i] = objectToMs(unit)));
+        all.forEach((unit, i) => (all[i] = unit));
       } else if (props.unit === "runs") {
         all.forEach((unit, i) => (all[i] = 1));
       }
