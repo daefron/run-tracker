@@ -1,26 +1,27 @@
-import { objectToMs, msToObject } from "../Tools";
-export function Prediction(props) {
-  // let sortedRuns = [];
-  // for (let i = props.runs.length - 1; i >= 0; i--) {
-  //   sortedRuns.push(props.runs[i]);
-  // }
-  // let durations = [];
-  // let lengths = [];
-  // let bpms = [];
-  // sortedRuns.forEach((run) => {
-  //   durations.push(objectToMs(run.duration));
-  //   lengths.push(run.distance);
-  //   bpms.push(run.heartRate);
-  // });
-  // let durationGaps = [];
-  // durations.forEach((duration, i) => {
-  //   if (!i) {
-  //     return;
-  //   }
-  //   durationGaps.push(duration - durations[i - 1]);
-  // });
-  // let totalDurationGaps = durationGaps.reduce((total, value) => total + value);
-  // let averageDurationGap = totalDurationGaps / durationGaps.length;
-
-  return <div id="prediction"></div>;
+import { PredictedRun } from "./PredictedRun";
+export function PredictionStats(props) {
+  const types = [
+    "duration",
+    "distance",
+    "speed",
+    "heartRate",
+    "steps",
+    "calories",
+  ];
+  const nextRun = new PredictedRun(props, types);
+  return (
+    <div id="prediction">
+      <p id="runStatsTitle">Predicted next run stats</p>
+      {types.map((type) => {
+        return (
+          <div key={type} className="runStat">
+            <p className="statTitle">
+              {type.charAt(0).toUpperCase() + type.slice(1)}:
+            </p>
+            <p className="statContent">{nextRun.render[type]}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
 }

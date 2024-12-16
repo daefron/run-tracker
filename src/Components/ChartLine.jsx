@@ -9,7 +9,12 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-import { objectToMs, dateArrayToRender, trendLine } from "../Tools.jsx";
+import {
+  objectToMs,
+  dateArrayToRender,
+  trendLine,
+  dateFiller,
+} from "../Tools.jsx";
 export function ChartLine(props) {
   if (!props.runs) {
     return;
@@ -70,33 +75,12 @@ export function ChartLine(props) {
   }
 
   if (props.type === "allRuns") {
-    const chartData = chartDataGetter();
+    const types = ["duration", "distance", "speed", "heartRate"];
+    const chartData = dateFiller(props.runs, props.dateRange, types);
     const durationTrend = trendLine(chartData, "duration");
     const distanceTrend = trendLine(chartData, "distance");
     const speedTrend = trendLine(chartData, "speed");
     const heartRateTrend = trendLine(chartData, "heartRate");
-    function chartDataGetter() {
-      let holder = [];
-      props.dateRange.forEach((date) => {
-        let runOnDate = props.runs.find((run) => run.render.date === date);
-        if (runOnDate) {
-          holder.push({
-            id: runOnDate.id,
-            date: date[0] + date[1],
-            duration: objectToMs(runOnDate.duration),
-            distance: runOnDate.distance,
-            speed: runOnDate.speed,
-            heartRate: runOnDate.heartRate,
-          });
-        } else {
-          holder.push({
-            id: null,
-            date: date[0] + date[1],
-          });
-        }
-      });
-      return holder;
-    }
     function DateRangeChangeButton(props) {
       return (
         <p

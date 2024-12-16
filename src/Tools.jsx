@@ -62,6 +62,17 @@ export function toAusDate(date) {
   );
 }
 
+export function daysBeforeToRender(daysBefore, date) {
+  const currentDay = date.getDate();
+  const currentMonth = date.getMonth();
+  const currentYear = date.getFullYear();
+  const newDate = new Date(currentYear, currentMonth, currentDay - daysBefore);
+  const newDay = newDate.getDate().toString();
+  const newMonth = newDate.getMonth().toString();
+  const newYear = newDate.getFullYear().toString();
+  return newDay + "/" + newMonth + "/" + newYear[2] + newYear[3];
+}
+
 export function dateArrayToRender(length, baselineDate) {
   const currentDay = baselineDate.current.getDate();
   const currentMonth = baselineDate.current.getMonth();
@@ -166,6 +177,16 @@ export function getTotal(data) {
   return data.reduce((total, value) => total + value);
 }
 
+export function gapsBetween(data, type) {
+  let gaps = [];
+  data.forEach((value, i) => {
+    if (i > 0) {
+      gaps.push(value[type] - data[i - 1][type]);
+    }
+  });
+  return gaps;
+}
+
 export function trendLine(data, type) {
   data.forEach((point, i) => {
     point.order = i;
@@ -185,17 +206,38 @@ export function trendLine(data, type) {
   const xySum = getTotal(xy);
   const slope = xySum / getTotal(xMinusxMeanSq);
   const slopeStart = yMean - slope * xMean;
-  console.log(
-    type,
-    slopeStart + slope * xData[0] - 1,
-    slopeStart + slope * xData[xData.length - 1] + 4
-  );
-
   return {
     slope: slope,
     slopeStart: slopeStart,
     calcY: (x) => slopeStart + slope * x,
     xStart: xData[0] - 1,
-    xEnd: xData[xData.length - 1] + 0,
+    xEnd: xData[xData.length - 1],
   };
+}
+
+export function dateFiller(runs, dateRange, types) {
+  let holder = [];
+  dateRange.forEach((date) => {
+    let runOnDate = runs.find((run) => run.render.date === date);
+    if (runOnDate) {
+      let stats = {
+        id: runOnDate.id,
+        date: date[0] + date[1],
+      };
+      types.forEach((type) => {
+        if (type === "duration") {
+          stats[type] = objectToMs(runOnDate[type]);
+        } else {
+          stats[type] = runOnDate[type];
+        }
+      });
+      holder.push(stats);
+    } else {
+      holder.push({
+        id: null,
+        date: date[0] + date[1],
+      });
+    }
+  });
+  return holder;
 }
