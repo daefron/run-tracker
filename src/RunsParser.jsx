@@ -8,7 +8,7 @@ import {
   heartRateArrayParse,
 } from "./Tools.jsx";
 export function runsParser(runs) {
-  if (!runs || !runs[0] || !runs[0].heartRateArray) {
+  if (!runs || !runs[0]) {
     return;
   }
   class Run {
@@ -22,6 +22,14 @@ export function runsParser(runs) {
       this.steps = run.steps;
       this.calories = run.calories;
       this.activeDuration = run.activeDuration;
+      this.inactiveDuration = run.duration - run.activeDuration;
+      this.heartRate = run.averageHeartRate;
+      this.heartRateZones = run.heartRateZones;
+      this.heartRateZones[0].name = "Light";
+      this.heartRateZones[1].name = "Moderate";
+      this.heartRateZones[2].name = "Vigorous";
+      this.heartRateZones[3].name = "Peak";
+      this.heartRateArray = heartRateArrayParse(run.heartRateArray);
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),
@@ -30,18 +38,8 @@ export function runsParser(runs) {
         speed: this.speed.toFixed(2) + " km/h",
         steps: this.steps + " steps",
         calories: this.calories + " cals",
+        heartRate: this.heartRate + " bpm",
       };
-      if (run.logType === "tracker") {
-        this.inactiveDuration = run.duration - run.activeDuration;
-        this.heartRate = run.averageHeartRate;
-        this.heartRateZones = run.heartRateZones;
-        this.heartRateZones[0].name = "Light";
-        this.heartRateZones[1].name = "Moderate";
-        this.heartRateZones[2].name = "Vigorous";
-        this.heartRateZones[3].name = "Peak";
-        this.heartRateArray = heartRateArrayParse(run.heartRateArray);
-        this.render.heartRate = this.heartRate + " bpm";
-      }
     }
   }
 

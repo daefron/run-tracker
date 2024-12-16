@@ -12,20 +12,20 @@ import {
 } from "recharts";
 export function AllChart({
   runs,
-  predictedRuns,
   dateRange,
-  setDateRange,
   dateRangeChange,
   baselineDate,
-  marginAmount,
   activeRun,
   render,
   durationColor,
   distanceColor,
   speedColor,
   heartRateColor,
+  setDateRange,
   predictedOnGraph,
   trendlineOnGraph,
+  predictedRuns,
+  marginAmount,
 }) {
   if (!runs && !predictedRuns[0]) {
     return;
@@ -257,8 +257,6 @@ export function AllChart({
     return dateHolder;
   }
   const dateGap = predictedRuns[0].gap;
-  console.log(chartData)
-  console.log(dateGap);
   return (
     <div className="graphHolder" id="allRunsGraph">
       <div className="graphTop">
@@ -288,10 +286,10 @@ export function AllChart({
         <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
           <CartesianGrid
             stroke="rgba(255, 255, 255, 0.1)"
-            horizontalCoordinatesGenerator={(props) =>
-              gridMaker(props.height, 10)
+            horizontalCoordinatesGenerator={({ height }) =>
+              gridMaker(height, 10)
             }
-            verticalCoordinatesGenerator={(props) => gridMaker(props.width, 15)}
+            verticalCoordinatesGenerator={({ width }) => gridMaker(width, 15)}
           />
           <Legend />
           <XAxis dataKey="date" dy={5} />

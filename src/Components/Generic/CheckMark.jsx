@@ -1,21 +1,18 @@
-export function CheckMark(props) {
+export function CheckMark({ type, classRender, state, setState, text }) {
   return (
     <>
-      <label
-        key={props.type + "checkHolder"}
-        className={props.class + "CheckHolder"}
-      >
+      <label key={type + "checkHolder"} className={classRender + "CheckHolder"}>
         <input
-          id={props.type + "CheckMark"}
-          name={props.type}
+          id={type + "CheckMark"}
+          name={type}
           type="checkbox"
-          defaultChecked={props.state}
-          value={props.state}
+          defaultChecked={state}
+          value={state}
           onChange={() => {
-            props.setState(!props.state);
+            setState(!state);
           }}
         />
-        {props.text}
+        {text}
       </label>
     </>
   );

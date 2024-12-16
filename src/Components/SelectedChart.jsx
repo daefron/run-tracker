@@ -7,8 +7,13 @@ import {
   ReferenceLine,
   Tooltip,
 } from "recharts";
-export function SelectedChart(props) {
-  if (!props.runs) {
+export function SelectedChart({
+  runs,
+  activeRun,
+  render,
+  setActiveRun,
+}) {
+  if (!runs) {
     return;
   }
   function gridMaker(dimension, divider) {
@@ -29,9 +34,9 @@ export function SelectedChart(props) {
     }
   }
 
-  if (props.runs[props.activeRun].heartRateZones) {
-    const chartData = bpmChartData(props.runs[props.activeRun].heartRateArray);
-    const zones = zoneGetter(props.runs[props.activeRun].heartRateZones);
+  if (runs[activeRun].heartRateZones) {
+    const chartData = bpmChartData(runs[activeRun].heartRateArray);
+    const zones = zoneGetter(runs[activeRun].heartRateZones);
     function zoneGetter(data) {
       let parsedData = {};
       data.forEach((value) => {
@@ -40,7 +45,7 @@ export function SelectedChart(props) {
       return parsedData;
     }
     function bpmChartData(chartData) {
-      let zones = props.runs[props.activeRun].heartRateZones;
+      let zones = runs[activeRun].heartRateZones;
       let holder = [];
       chartData.forEach((entry) => {
         for (const zone of zones) {
@@ -70,15 +75,15 @@ export function SelectedChart(props) {
       });
       return holder;
     }
-    function ActiveRunShiftButton(props) {
+    function ActiveRunShiftButton({ value, render, activeRun, runs }) {
       return (
         <p
           onClick={() => {
-            activeRunShiftButton(props.value);
+            activeRunShiftButton(value);
           }}
           style={
-            (props.value === "right" && !props.activeRun) ||
-            (props.value === "left" && !props.runs[props.activeRun + 1])
+            (value === "right" && !activeRun) ||
+            (value === "left" && !runs[activeRun + 1])
               ? {
                   color: "dimGrey",
                 }
@@ -88,34 +93,34 @@ export function SelectedChart(props) {
                 }
           }
         >
-          {props.render}
+          {render}
         </p>
       );
     }
     function activeRunShiftButton(direction) {
-      if (direction === "right" && props.activeRun) {
-        props.setActiveRun(props.activeRun - 1);
-      } else if (direction === "left" && props.runs[props.activeRun + 1]) {
-        props.setActiveRun(props.activeRun + 1);
+      if (direction === "right" && activeRun) {
+        setActiveRun(activeRun - 1);
+      } else if (direction === "left" && runs[activeRun + 1]) {
+        setActiveRun(activeRun + 1);
       }
     }
     return (
       <div className="graphHolder" id={"selectedGraph"}>
         <div className="graphTop">
-          <p className="graphTitle">{props.render}</p>
+          <p className="graphTitle">{render}</p>
           <div className="graphDateHolder">
             <ActiveRunShiftButton
               value="left"
               render="<-"
-              activeRun={props.activeRun}
-              runs={props.runs}
+              activeRun={activeRun}
+              runs={runs}
             />
-            <p>{props.runs[props.activeRun].render.date}</p>
+            <p>{runs[activeRun].render.date}</p>
             <ActiveRunShiftButton
               value="right"
               render="->"
-              activeRun={props.activeRun}
-              runs={props.runs}
+              activeRun={activeRun}
+              runs={runs}
             />
           </div>
         </div>
@@ -123,12 +128,10 @@ export function SelectedChart(props) {
           <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
             <CartesianGrid
               stroke="rgba(255, 255, 255, 0.1)"
-              horizontalCoordinatesGenerator={(props) =>
-                gridMaker(props.height, 10)
+              horizontalCoordinatesGenerator={({ height }) =>
+                gridMaker(height, 10)
               }
-              verticalCoordinatesGenerator={(props) =>
-                gridMaker(props.width, 10)
-              }
+              verticalCoordinatesGenerator={({ width }) => gridMaker(width, 10)}
             />
             <Line
               yAxisId="bpm"
@@ -190,7 +193,7 @@ export function SelectedChart(props) {
     return (
       <div className="graphHolder" id={"selectedGraph"}>
         <div className="graphTop">
-          <p className="graphTitle">{props.render}</p>
+          <p className="graphTitle">{render}</p>
           <div className="graphDateHolder"></div>
         </div>
         <p className="noData">No data available for manual records</p>

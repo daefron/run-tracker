@@ -195,11 +195,7 @@ export function gapsBetween(data, type) {
 
 export function trendLine(data, type) {
   let dataSet = data.filter((point) => point.id);
-  if (type === "heartRate") {
-    dataSet = dataSet.filter((point) => point.heartRate);
-  }
   const xData = dataSet.map((point) => point.order);
-  console.log(xData, dataSet);
   const yData = dataSet.map((point) => point[type]);
   const xMean = getAverage(xData);
   const yMean = getAverage(yData);
@@ -224,7 +220,6 @@ export function trendLine(data, type) {
 
 export function dateFiller(runs, dateRange, types) {
   let holder = [];
-  let lastHR;
   for (let i = dateRange.length - 1; i >= 0; i--) {
     let runOnDate = runs.find((run) => run.render.date === dateRange[i]);
     if (runOnDate) {
@@ -236,14 +231,7 @@ export function dateFiller(runs, dateRange, types) {
         parsedDate: dateRange[i],
       };
       types.forEach((type) => {
-        if (type === "heartRate" && !runOnDate.heartRate) {
-          stats[type] = lastHR;
-        } else if (type === "heartRate" && runOnDate.heartRate) {
-          lastHR = runOnDate.heartRate;
-          stats[type] = runOnDate[type];
-        } else {
-          stats[type] = runOnDate[type];
-        }
+        stats[type] = runOnDate[type];
       });
       holder.push(stats);
     } else {

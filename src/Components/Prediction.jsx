@@ -30,7 +30,7 @@ export function PredictionStats({
         <CheckMark
           type="prediction"
           text="show on graph"
-          class="statsFooter"
+          classRender="statsFooter"
           checked="checked"
           state={predictedOnGraph}
           setState={setPredictedOnGraph}
@@ -38,7 +38,7 @@ export function PredictionStats({
         <CheckMark
           type="trendline"
           text="show trendline on graph"
-          class="statsFooter"
+          classRender="statsFooter"
           checked="checked"
           state={trendlineOnGraph}
           setState={setTrendlineOnGraph}

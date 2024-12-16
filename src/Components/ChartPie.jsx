@@ -6,14 +6,14 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-export function ChartPie(props) {
-  if (!props.runs) {
+export function ChartPie({ runs, activeRun, type, render }) {
+  if (!runs) {
     return;
   }
-  if (props.runs[props.activeRun].heartRateZones) {
-    const pieData = dataGetter(props.runs[props.activeRun]);
+  if (runs[activeRun].heartRateZones) {
+    const pieData = dataGetter(runs[activeRun]);
     function dataGetter(run) {
-      if (props.type === "heartZones") {
+      if (type === "heartZones") {
         return [
           {
             name: "moderate",
@@ -29,7 +29,7 @@ export function ChartPie(props) {
           },
         ];
       }
-      if (props.type === "activeTime") {
+      if (type === "activeTime") {
         return [
           {
             name: "active",
@@ -53,9 +53,9 @@ export function ChartPie(props) {
     }
     const colors = ["green", "yellow", "red"];
     return (
-      <div className="pieHolder" id={props.type + "Pie"}>
+      <div className="pieHolder" id={type + "Pie"}>
         <div className="graphTop">
-          <p className="graphTitle">{props.render}</p>
+          <p className="graphTitle">{render}</p>
         </div>
         <ResponsiveContainer>
           <PieChart>
@@ -82,9 +82,9 @@ export function ChartPie(props) {
     );
   } else {
     return (
-      <div className="pieHolder" id={props.type + "Pie"}>
+      <div className="pieHolder" id={type + "Pie"}>
         <div className="graphTop">
-          <p className="graphTitle">{props.render}</p>
+          <p className="graphTitle">{render}</p>
         </div>
         <p className="noData">No data available for manual records</p>
       </div>

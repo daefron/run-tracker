@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { runsParser } from "./RunsParser.jsx";
 import { dateArrayToRender } from "./Tools.jsx";
 import { RunList } from "./Components/RunList.jsx";
@@ -9,8 +9,8 @@ import { ChartPie } from "./Components/ChartPie.jsx";
 import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
 import { PredictedRun } from "./Components/PredictedRun.jsx";
-export function Loaded(props) {
-  const [parsedRuns, setParsedRuns] = useState(runsParser(props.runs));
+export function Loaded({ runs }) {
+  const parsedRuns = useRef(runsParser(runs));
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
   const baselineDate = useRef(new Date());
@@ -21,11 +21,11 @@ export function Loaded(props) {
   );
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
-  const [predictedRuns, setPredictedRuns] = useState([
+  const predictedRuns = useRef([
     new PredictedRun(
       baselineDate,
       dateRange,
-      parsedRuns,
+      parsedRuns.current,
       marginAmount,
       setDateRange
     ),
@@ -34,14 +34,14 @@ export function Loaded(props) {
     <>
       <div id="body">
         <RunList
-          runs={parsedRuns}
+          runs={parsedRuns.current}
           activeRun={activeRun}
           setActiveRun={setActiveRun}
           hoverRun={hoverRun}
           setHoverRun={setHoverRun}
         />
         <PredictionStats
-          predictedRuns={predictedRuns}
+          predictedRuns={predictedRuns.current}
           predictedOnGraph={predictedOnGraph}
           setPredictedOnGraph={setPredictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
@@ -49,52 +49,41 @@ export function Loaded(props) {
         />
         <SelectedChart
           render="Selected run"
-          type="selected"
-          runs={parsedRuns}
+          runs={parsedRuns.current}
           activeRun={activeRun}
-          baselineDate={baselineDate}
-          dateRangeChange={dateRangeChange}
-          dateRange={dateRange}
-          setDateRange={setDateRange}
           setActiveRun={setActiveRun}
-          predictedOnGraph={predictedOnGraph}
-          trendlineOnGraph={trendlineOnGraph}
-          predictedRuns={predictedRuns}
-          marginAmount={marginAmount}
         />
         <AllChart
           render="All runs"
-          type="allRuns"
           durationColor="rgb(100, 149, 237)"
           distanceColor="rgb(195, 177, 146)"
           heartRateColor="rgb(220, 20, 60)"
           speedColor="rgb(250, 128, 114)"
-          runs={parsedRuns}
+          runs={parsedRuns.current}
           activeRun={activeRun}
           baselineDate={baselineDate}
           dateRangeChange={dateRangeChange}
           dateRange={dateRange}
           setDateRange={setDateRange}
-          setActiveRun={setActiveRun}
           predictedOnGraph={predictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
-          predictedRuns={predictedRuns}
+          predictedRuns={predictedRuns.current}
           marginAmount={marginAmount}
         />
         <ChartPie
           render="Heart zone minutes"
           type="heartZones"
-          runs={parsedRuns}
+          runs={parsedRuns.current}
           activeRun={activeRun}
         />
         <ChartPie
           render="Active time"
           type="activeTime"
-          runs={parsedRuns}
+          runs={parsedRuns.current}
           activeRun={activeRun}
         />
-        <RunStats runs={parsedRuns} activeRun={activeRun} />
-        <OverallStats runs={parsedRuns} />
+        <RunStats runs={parsedRuns.current} activeRun={activeRun} />
+        <OverallStats runs={parsedRuns.current} />
       </div>
     </>
   );

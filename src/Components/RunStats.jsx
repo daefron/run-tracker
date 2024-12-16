@@ -1,6 +1,6 @@
 import { Stats } from "./Generic/Stats.jsx";
-export function RunStats(props) {
-  if (!props.runs) {
+export function RunStats({ runs, activeRun }) {
+  if (!runs) {
     return;
   }
   const types = [
@@ -11,7 +11,7 @@ export function RunStats(props) {
     "steps",
     "calories",
   ];
-  const run = props.runs[props.activeRun];
+  const run = runs[activeRun];
   return (
     <div id="runStats">
       <p id="runStatsTitle">Selected run stats</p>
@@ -23,7 +23,7 @@ export function RunStats(props) {
         <p className="statTitle">Start time: </p>
         <p className="statContent">{run.render.startTime}</p>
       </div>
-      <Stats run={run} types={types}/>
+      <Stats run={run} types={types} />
     </div>
   );
 }

@@ -1,19 +1,18 @@
-export function Stats(props) {
+export function Stats({ run, types }) {
   return (
     <>
-      {props.types.map((type) => {
-        return <Stat key={type + props.run.id} type={type} run={props.run} />;
+      {types.map((type) => {
+        return <Stat key={type + run.id} type={type} run={run} />;
       })}
     </>
   );
-  function Stat(props) {
-    const type = props.type;
+  function Stat({ type, run }) {
     return (
       <div className="runStat">
         <p className="statTitle">
           {type.charAt(0).toUpperCase() + type.slice(1)}:
         </p>
-        <p className="statContent">{props.run.render[type]}</p>
+        <p className="statContent">{run.render[type]}</p>
       </div>
     );
   }

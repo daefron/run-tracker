@@ -1,57 +1,56 @@
 import {
   msToObject,
-  objectToMs,
   renderTime,
   getAverage,
   getTotal,
 } from "../Tools";
-export function OverallStats(props) {
-  if (!props.runs) {
+export function OverallStats({ runs }) {
+  if (!runs) {
     return;
   }
 
-  function Average(props) {
+  function Average({ decimals, render, unit, name }) {
     let average = findAverage();
-    let averageRender = average.toFixed(props.decimals) + props.render;
-    if (props.unit === "duration") {
+    let averageRender = average.toFixed(decimals) + render;
+    if (unit === "duration") {
       averageRender = renderTime(msToObject(average));
     }
     return (
-      <div className="runStat" id={"average" + props.unit}>
-        <p className="statTitle">Average {props.name}: </p>
+      <div className="runStat" id={"average" + unit}>
+        <p className="statTitle">Average {name}: </p>
         <p className="statContent">{averageRender}</p>
       </div>
     );
 
     function findAverage() {
-      let all = props.runs.map((run) => run[props.unit]);
-      if (props.unit === "duration") {
+      let all = runs.map((run) => run[unit]);
+      if (unit === "duration") {
         all.forEach((unit, i) => (all[i] = unit));
       }
       return getAverage(all);
     }
   }
 
-  function Total(props) {
+  function Total({ render, unit }) {
     let total = findTotal();
-    let totalRender = total + props.render;
-    if (props.unit === "distance") {
-      totalRender = total.toFixed(2) + props.render;
-    } else if (props.unit === "duration") {
+    let totalRender = total + render;
+    if (unit === "distance") {
+      totalRender = total.toFixed(2) + render;
+    } else if (unit === "duration") {
       totalRender = renderTime(msToObject(total));
     }
     return (
-      <div className="runStat" id={"average" + props.unit}>
-        <p className="statTitle">Total {props.unit}: </p>
+      <div className="runStat" id={"average" + unit}>
+        <p className="statTitle">Total {unit}: </p>
         <p className="statContent">{totalRender}</p>
       </div>
     );
 
     function findTotal() {
-      let all = props.runs.map((run) => run[props.unit]);
-      if (props.unit === "duration") {
+      let all = runs.map((run) => run[unit]);
+      if (unit === "duration") {
         all.forEach((unit, i) => (all[i] = unit));
-      } else if (props.unit === "runs") {
+      } else if (unit === "runs") {
         all.forEach((unit, i) => (all[i] = 1));
       }
       return getTotal(all);
@@ -96,32 +95,29 @@ export function OverallStats(props) {
   return (
     <div id="overallStats">
       <p id="overallStatsTitle">Overall stats</p>
-      <Total runs={props.runs} unit="runs" render="" />
-      <Total runs={props.runs} unit="distance" render=" km" />
+      <Total runs={runs} unit="runs" render="" />
+      <Total runs={runs} unit="distance" render=" km" />
       <Average
-        runs={props.runs}
+        runs={runs}
         unit="distance"
         name="distance"
         decimals={2}
         render=" km"
       />
-      <Find runs={props.runs} unit="distance" type="Highest" />
-      <Find runs={props.runs} unit="distance" type="Lowest" />
-      <Total runs={props.runs} unit="duration" render="" />
-      <Average runs={props.runs} unit="duration" name="duration" render="" />
-      <Find runs={props.runs} unit="duration" type="Highest" />
-      <Find runs={props.runs} unit="duration" type="Lowest" />
+      <Find runs={runs} unit="distance" type="Highest" />
+      <Total runs={runs} unit="duration" render="" />
+      <Average runs={runs} unit="duration" name="duration" render="" />
+      <Find runs={runs} unit="duration" type="Highest" />
       <Average
-        runs={props.runs}
+        runs={runs}
         unit="speed"
         name="speed"
         decimals={2}
         render=" km/h"
       />
-      <Find runs={props.runs} unit="speed" type="Highest" />
-      <Find runs={props.runs} unit="speed" type="Lowest" />
+      <Find runs={runs} unit="speed" type="Highest" />
       <Average
-        runs={props.runs}
+        runs={runs}
         unit="heartRate"
         name="heart rate"
         decimals={0}

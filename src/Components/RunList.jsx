@@ -1,5 +1,11 @@
-export function RunList(props) {
-  if (!props.runs) {
+export function RunList({
+  runs,
+  activeRun,
+  setActiveRun,
+  hoverRun,
+  setHoverRun,
+}) {
+  if (!runs) {
     return;
   }
   return (
@@ -7,19 +13,19 @@ export function RunList(props) {
       <div id="listTitle">
         <p>Date</p>
         <p>Start Time</p>
-          <p>Duration</p>
-          <p>Length</p>
+        <p>Duration</p>
+        <p>Length</p>
       </div>
       <div id="runListItems">
-        {props.runs.map((run) => {
+        {runs.map((run) => {
           return (
             <RunItem
               key={run.date + run.index}
               data={run}
-              activeRun={props.activeRun}
-              setActiveRun={props.setActiveRun}
-              hoverRun={props.hoverRun}
-              setHoverRun={props.setHoverRun}
+              activeRun={activeRun}
+              setActiveRun={setActiveRun}
+              hoverRun={hoverRun}
+              setHoverRun={setHoverRun}
             ></RunItem>
           );
         })}
@@ -28,20 +34,20 @@ export function RunList(props) {
   );
 }
 
-function RunItem(props) {
+function RunItem({ activeRun, hoverRun, setActiveRun, setHoverRun, data }) {
   return (
     <div
       className="runItem"
       style={
-        props.activeRun === props.data.index
-          ? props.hoverRun === props.data.index
+        activeRun === data.index
+          ? hoverRun === data.index
             ? {
                 backgroundColor: "rgb(40, 40, 90)",
               }
             : {
                 backgroundColor: "rgb(37, 36, 85)",
               }
-          : props.hoverRun === props.data.index
+          : hoverRun === data.index
           ? {
               backgroundColor: "rgb(55, 55, 75)",
             }
@@ -50,59 +56,59 @@ function RunItem(props) {
             }
       }
       onClick={() => {
-        props.setActiveRun(props.data.index);
+        setActiveRun(data.index);
       }}
       onMouseOver={() => {
-        props.setHoverRun(props.data.index);
+        setHoverRun(data.index);
       }}
     >
       <RunItemStat
         type="date"
-        data={props.data}
-        setActiveRun={props.setActiveRun}
+        data={data}
+        setActiveRun={setActiveRun}
       ></RunItemStat>
       <RunItemStat
         type="startTime"
-        data={props.data}
-        setActiveRun={props.setActiveRun}
+        data={data}
+        setActiveRun={setActiveRun}
       ></RunItemStat>
       <div className="diffStat">
         <RunItemStat
           type="duration"
-          data={props.data}
-          setActiveRun={props.setActiveRun}
+          data={data}
+          setActiveRun={setActiveRun}
         ></RunItemStat>
         <RunItemStat
           type="duration"
           diff={true}
-          data={props.data}
-          setActiveRun={props.setActiveRun}
+          data={data}
+          setActiveRun={setActiveRun}
         ></RunItemStat>
       </div>
       <div className="diffStat">
         <RunItemStat
           type="distance"
-          data={props.data}
-          setActiveRun={props.setActiveRun}
+          data={data}
+          setActiveRun={setActiveRun}
         ></RunItemStat>
         <RunItemStat
           type="distance"
           diff={true}
-          data={props.data}
-          setActiveRun={props.setActiveRun}
+          data={data}
+          setActiveRun={setActiveRun}
         ></RunItemStat>
       </div>
     </div>
   );
 }
 
-function RunItemStat(props) {
-  let content = props.data.render[props.type];
+function RunItemStat({ type, data, setActiveRun, diff }) {
+  let content = data.render[type];
   let statStyle = {};
-  if (props.diff) {
+  if (diff) {
     statStyle.width = "30%";
-    content = props.data.render[props.type + "Diff"];
-    if (props.data[props.type + "Negative"]) {
+    content = data.render[type + "Diff"];
+    if (data[type + "Negative"]) {
       statStyle.color = "Red";
     } else statStyle.color = "Green";
   }
@@ -111,7 +117,7 @@ function RunItemStat(props) {
       <p
         style={statStyle}
         onClick={() => {
-          props.setActiveRun(props.data.index);
+          setActiveRun(data.index);
         }}
       >
         {content}
