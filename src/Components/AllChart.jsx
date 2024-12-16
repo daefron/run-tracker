@@ -162,13 +162,24 @@ export function AllChart(props) {
   function TodayLabel(payload) {
     return (
       <text
-        id="todayLabel"
         x={payload.viewBox.x}
         y={payload.viewBox.y + payload.viewBox.height - 10}
         fontSize="14"
         fill="white"
       >
         - today
+      </text>
+    );
+  }
+  function MonthLabel(payload) {
+    return (
+      <text
+        x={payload.viewBox.x}
+        y={payload.viewBox.y + payload.viewBox.height - 10}
+        fontSize="14"
+        fill="rgba(255, 255, 255, 0.3)"
+      >
+        - {payload.month}
       </text>
     );
   }
@@ -219,6 +230,20 @@ export function AllChart(props) {
         return chartData[i].order;
       }
     }
+  }
+  const newMonths = newMonthChecker();
+  function newMonthChecker() {
+    let dateHolder = [];
+    chartData.forEach((date) => {
+      if (date.date === "01") {
+        let day = Number(date.parsedDate[0] + date.parsedDate[1]);
+        let month = Number(date.parsedDate[3] + date.parsedDate[4] - 1);
+        let year = Number(20 + date.parsedDate[6] + date.parsedDate[7]);
+        let parsedMonth = new Date(year, month, day).toString().split(" ")[1];
+        dateHolder.push([date.order, parsedMonth]);
+      }
+    });
+    return dateHolder;
   }
   const dateGap = props.predictedRuns[0].gap;
   return (
@@ -275,6 +300,17 @@ export function AllChart(props) {
               x={todayInGraph}
               stroke="white"
               label={<TodayLabel />}
+            />
+          ) : (
+            <></>
+          )}
+          {newMonths[0] && props.dateRangeChange.current <= 32 ? (
+            <ReferenceLine
+              yAxisId="distance"
+              strokeWidth={1}
+              x={newMonths[0][0]}
+              stroke="rgba(255, 255, 255, 0.3)"
+              label={<MonthLabel month={newMonths[0][1]} />}
             />
           ) : (
             <></>
