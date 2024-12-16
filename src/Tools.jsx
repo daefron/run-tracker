@@ -73,16 +73,13 @@ export function daysBeforeToRender(daysBefore, date) {
   return newDay + "/" + newMonth + "/" + newYear[2] + newYear[3];
 }
 
-export function dateArrayToRender(length, baselineDate, negativeDates) {
+export function dateArrayToRender(length, baselineDate, marginAmount) {
   const currentDay = baselineDate.current.getDate();
   const currentMonth = baselineDate.current.getMonth();
   const currentYear = baselineDate.current.getFullYear();
-  if (!negativeDates) {
-    negativeDates = 0;
-  }
   let days = [];
-  for (let i = length; i >= negativeDates; i--) {
-    const newDate = new Date(currentYear, currentMonth, currentDay - i);
+  for (let i = length - marginAmount.current; i >= -marginAmount.current; i--) {
+    let newDate = new Date(currentYear, currentMonth, currentDay - i);
     let day = newDate.getDate().toString();
     if (day.length < 2) {
       day = "0" + day;
@@ -172,11 +169,17 @@ export function heartRateArrayParse(array) {
 }
 
 export function getAverage(data) {
+  if (!data[0]) {
+    return;
+  }
   const dataTotal = data.reduce((total, value) => total + value);
   return dataTotal / data.length;
 }
 
 export function getTotal(data) {
+  if (!data[0]) {
+    return;
+  }
   return data.reduce((total, value) => total + value);
 }
 
@@ -225,6 +228,7 @@ export function dateFiller(runs, dateRange, types) {
         id: runOnDate.id,
         date: date[0] + date[1],
         order: i,
+        parsedDate: date,
       };
       types.forEach((type) => {
         stats[type] = runOnDate[type];
@@ -235,6 +239,7 @@ export function dateFiller(runs, dateRange, types) {
         id: null,
         date: date[0] + date[1],
         order: i,
+        parsedDate: date,
       });
     }
   });

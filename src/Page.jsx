@@ -9,6 +9,7 @@ import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import "./App.css";
+import { PredictedRun } from "./Components/PredictedRun.jsx";
 export function Page(props) {
   const [parsedRuns, setParsedRuns] = useState(runsParser(props.runs));
   useEffect(() => {
@@ -17,12 +18,22 @@ export function Page(props) {
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
   const baselineDate = useRef(new Date());
+  const marginAmount = useRef(0);
   const dateRangeChange = useRef(31);
   const [dateRange, setDateRange] = useState(
-    dateArrayToRender(31, baselineDate)
+    dateArrayToRender(31, baselineDate, marginAmount)
   );
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
+  const [predictedRuns, setPredictedRuns] = useState([
+    new PredictedRun(
+      baselineDate,
+      dateRange,
+      parsedRuns,
+      marginAmount,
+      setDateRange
+    ),
+  ]);
   if (props.loading) {
     return (
       <div id="loadingHolder">
@@ -90,11 +101,14 @@ export function Page(props) {
         <PredictionStats
           runs={parsedRuns}
           dateRange={dateRange}
+          setDateRange={setDateRange}
           baselineDate={baselineDate}
           predictedOnGraph={predictedOnGraph}
           setPredictedOnGraph={setPredictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
           setTrendlineOnGraph={setTrendlineOnGraph}
+          marginAmount={marginAmount}
+          predictedRuns={predictedRuns}
         />
         <ChartLine
           render="Selected run"
@@ -108,6 +122,8 @@ export function Page(props) {
           setActiveRun={setActiveRun}
           predictedOnGraph={predictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
+          predictedRuns={predictedRuns}
+          marginAmount={marginAmount}
         />
         <ChartLine
           render="All runs"
@@ -125,6 +141,8 @@ export function Page(props) {
           setActiveRun={setActiveRun}
           predictedOnGraph={predictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
+          predictedRuns={predictedRuns}
+          marginAmount={marginAmount}
         />
         <ChartPie
           render="Heart zone minutes"

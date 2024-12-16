@@ -1,4 +1,3 @@
-import { PredictedRun } from "./PredictedRun";
 import { Stats } from "./Generic/Stats";
 import { CheckMark } from "./Generic/CheckMark";
 export function PredictionStats(props) {
@@ -10,25 +9,20 @@ export function PredictionStats(props) {
     "distance",
     "speed",
     "heartRate",
-    "steps",
     "calories",
+    "steps",
   ];
-  const nextRun = new PredictedRun(
-    props.baselineDate,
-    props.dateRange,
-    props.runs,
-    types
-  );
   return (
     <div id="predictionStats">
       <p id="runStatsTitle">Predicted next run stats</p>
       <div className="runStat">
         <p className="statTitle">Date: </p>
         <p className="statContent">
-          {nextRun.render.date} ({nextRun.gap} days from last run )
+          {props.predictedRuns[0].render.date} ({props.predictedRuns[0].gap}{" "}
+          days from last run )
         </p>
       </div>
-      <Stats run={nextRun} types={types} />
+      <Stats run={props.predictedRuns[0]} types={types} />
       <div className="statsFooter">
         <CheckMark
           type="prediction"

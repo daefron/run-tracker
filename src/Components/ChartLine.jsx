@@ -9,27 +9,11 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-import { useEffect } from "react";
 import { dateArrayToRender, trendLine, dateFiller } from "../Tools.jsx";
-import { PredictedRun } from "./PredictedRun.jsx";
 export function ChartLine(props) {
   if (!props.runs) {
     return;
   }
-  const types = [
-    "duration",
-    "distance",
-    "speed",
-    "heartRate",
-    "calories",
-    "steps",
-  ];
-  const predictedRun = new PredictedRun(
-    props.baselineDate,
-    props.dateRange,
-    props.runs,
-    types
-  );
 
   function DotRender(payload) {
     if (payload.payload.bpm || !payload.payload.id) {
@@ -98,11 +82,11 @@ export function ChartLine(props) {
       if (!currentRun) {
         return (
           <>
-            <p>Date: {predictedRun.render.date}</p>
-            <p>Duration: {predictedRun.render.duration}</p>
-            <p>Distance: {predictedRun.render.distance}</p>
-            <p>Speed: {predictedRun.render.speed}</p>
-            <p>Heart rate: {predictedRun.render.heartRate}</p>
+            <p>Date: {props.predictedRuns[0].render.date}</p>
+            <p>Duration: {props.predictedRuns[0].render.duration}</p>
+            <p>Distance: {props.predictedRuns[0].render.distance}</p>
+            <p>Speed: {props.predictedRuns[0].render.speed}</p>
+            <p>Heart rate: {props.predictedRuns[0].render.heartRate}</p>
           </>
         );
       }
@@ -132,12 +116,15 @@ export function ChartLine(props) {
     const distanceTrend = trendLine(chartData, "distance");
     const speedTrend = trendLine(chartData, "speed");
     const heartRateTrend = trendLine(chartData, "heartRate");
-    const predictionRuns = [predictedRun];
-    const predictionData = dateFiller(predictionRuns, props.dateRange, types);
+    const predictionData = dateFiller(
+      props.predictedRuns,
+      props.dateRange,
+      types
+    );
     addPredictionData();
     function addPredictionData() {
       chartData.forEach((value, i) => {
-        predictionRuns.forEach((run) => {
+        props.predictedRuns.forEach((run) => {
           if (i === run.chartOrder) {
             pushPredictionData();
           }
@@ -150,7 +137,21 @@ export function ChartLine(props) {
       });
       return chartData;
     }
-    const dateGap = predictedRun.gap;
+    const todayInGraph = todayChecker();
+    function todayChecker() {
+      const today = new Date();
+      const currentDay = today.getDate();
+      const currentMonth = today.getMonth() + 1;
+      const currentYear = today.getFullYear().toString();
+      const parsedToday =
+        currentDay + "/" + currentMonth + "/" + currentYear[2] + currentYear[3];
+      for (let i = 0; i < chartData.length; i++) {
+        if (parsedToday === chartData[i].parsedDate) {
+          return chartData[i].order;
+        }
+      }
+    }
+    const dateGap = props.predictedRuns[0].gap;
     function DateRangeChangeButton(props) {
       return (
         <p
@@ -176,7 +177,9 @@ export function ChartLine(props) {
     }
     function dateRangeChangeButton(amount) {
       props.dateRangeChange.current = amount;
-      props.setDateRange(dateArrayToRender(amount, props.baselineDate));
+      props.setDateRange(
+        dateArrayToRender(amount, props.baselineDate, props.marginAmount)
+      );
     }
     function DateShiftButton(props) {
       return (
@@ -203,7 +206,11 @@ export function ChartLine(props) {
         );
       }
       props.setDateRange(
-        dateArrayToRender(props.dateRangeChange.current, props.baselineDate)
+        dateArrayToRender(
+          props.dateRangeChange.current,
+          props.baselineDate,
+          props.marginAmount
+        )
       );
     }
     return (
@@ -241,6 +248,15 @@ export function ChartLine(props) {
             <Legend />
             <XAxis dataKey="date" dy={5} />
             <YAxis yAxisId="duration" domain={[0, "dataMax + 300000"]} hide />
+            {todayInGraph ? (
+              <ReferenceLine
+                yAxisId="distance"
+                strokeWidth={1}
+                x={todayInGraph}
+              />
+            ) : (
+              <></>
+            )}
             <Line
               yAxisId="duration"
               isAnimationActive={false}
