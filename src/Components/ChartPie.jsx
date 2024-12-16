@@ -15,11 +15,11 @@ export function ChartPie(props) {
     if (props.type === "heartZones") {
       return [
         {
-          name: "fatBurn",
+          name: "moderate",
           value: run.heartRateZones[1].minutes,
         },
         {
-          name: "cardio",
+          name: "vigorous",
           value: run.heartRateZones[2].minutes,
         },
         {

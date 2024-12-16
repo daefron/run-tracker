@@ -21,6 +21,8 @@ export function Page(props) {
   const [dateRange, setDateRange] = useState(
     dateArrayToRender(31, baselineDate)
   );
+  const [predictedOnGraph, setPredictedOnGraph] = useState(true);
+  const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
   if (props.loading) {
     return (
       <div id="loadingHolder">
@@ -81,7 +83,11 @@ export function Page(props) {
         <PredictionStats
           runs={parsedRuns}
           dateRange={dateRange}
-          baselineDate={baselineDate.current}
+          baselineDate={baselineDate}
+          predictedOnGraph={predictedOnGraph}
+          setPredictedOnGraph={setPredictedOnGraph}
+          trendlineOnGraph={trendlineOnGraph}
+          setTrendlineOnGraph={setTrendlineOnGraph}
         />
         <ChartLine
           render="Selected run"
@@ -93,14 +99,16 @@ export function Page(props) {
           dateRange={dateRange}
           setDateRange={setDateRange}
           setActiveRun={setActiveRun}
+          predictedOnGraph={predictedOnGraph}
+          trendlineOnGraph={trendlineOnGraph}
         />
         <ChartLine
           render="All runs"
           type="allRuns"
-          durationColor="cornflowerBlue"
-          distanceColor="khaki"
-          heartRateColor="crimson"
-          speedColor="salmon"
+          durationColor="rgb(100, 149, 237)"
+          distanceColor="rgb(195, 177, 146)"
+          heartRateColor="rgb(220, 20, 60)"
+          speedColor="rgb(250, 128, 114)"
           runs={parsedRuns}
           activeRun={activeRun}
           baselineDate={baselineDate}
@@ -108,6 +116,8 @@ export function Page(props) {
           dateRange={dateRange}
           setDateRange={setDateRange}
           setActiveRun={setActiveRun}
+          predictedOnGraph={predictedOnGraph}
+          trendlineOnGraph={trendlineOnGraph}
         />
         <ChartPie
           render="Heart zone minutes"

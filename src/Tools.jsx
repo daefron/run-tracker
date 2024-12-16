@@ -68,17 +68,20 @@ export function daysBeforeToRender(daysBefore, date) {
   const currentYear = date.getFullYear();
   const newDate = new Date(currentYear, currentMonth, currentDay - daysBefore);
   const newDay = newDate.getDate().toString();
-  const newMonth = newDate.getMonth().toString();
+  const newMonth = (newDate.getMonth() + 1).toString();
   const newYear = newDate.getFullYear().toString();
   return newDay + "/" + newMonth + "/" + newYear[2] + newYear[3];
 }
 
-export function dateArrayToRender(length, baselineDate) {
+export function dateArrayToRender(length, baselineDate, negativeDates) {
   const currentDay = baselineDate.current.getDate();
   const currentMonth = baselineDate.current.getMonth();
   const currentYear = baselineDate.current.getFullYear();
+  if (!negativeDates) {
+    negativeDates = 0;
+  }
   let days = [];
-  for (let i = length; i >= 0; i--) {
+  for (let i = length; i >= negativeDates; i--) {
     const newDate = new Date(currentYear, currentMonth, currentDay - i);
     let day = newDate.getDate().toString();
     if (day.length < 2) {
@@ -115,8 +118,8 @@ export function compareRuns(run) {
     return "+" + distanceDiff.toFixed(2);
   }
   function compareDuration() {
-    let competingTime = objectToMs(run.lastRun.duration);
-    let time = objectToMs(run.duration);
+    let competingTime = run.lastRun.duration;
+    let time = run.duration;
     let durationDiff = time - competingTime;
     if (durationDiff < 0) {
       durationDiff *= -1;
@@ -188,9 +191,6 @@ export function gapsBetween(data, type) {
 }
 
 export function trendLine(data, type) {
-  data.forEach((point, i) => {
-    point.order = i;
-  });
   let dataSet = data.filter((point) => point.id);
   const xData = dataSet.map((point) => point.order);
   const yData = dataSet.map((point) => point[type]);
@@ -217,25 +217,24 @@ export function trendLine(data, type) {
 
 export function dateFiller(runs, dateRange, types) {
   let holder = [];
-  dateRange.forEach((date) => {
+  dateRange.forEach((date, i) => {
     let runOnDate = runs.find((run) => run.render.date === date);
     if (runOnDate) {
+      runOnDate.chartOrder = i;
       let stats = {
         id: runOnDate.id,
         date: date[0] + date[1],
+        order: i,
       };
       types.forEach((type) => {
-        if (type === "duration") {
-          stats[type] = objectToMs(runOnDate[type]);
-        } else {
-          stats[type] = runOnDate[type];
-        }
+        stats[type] = runOnDate[type];
       });
       holder.push(stats);
     } else {
       holder.push({
         id: null,
         date: date[0] + date[1],
+        order: i,
       });
     }
   });

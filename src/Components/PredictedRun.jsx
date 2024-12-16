@@ -8,25 +8,24 @@ import {
   renderDuration,
 } from "../Tools";
 export class PredictedRun {
-  constructor(props, types) {
+  constructor(baselineDate, dateRange, runs, types) {
     this.id = "nextRun";
-    const dateRuns = dateFiller(props.runs, props.dateRange, types);
+    const dateRuns = dateFiller(runs, dateRange, types);
     const gap = getGapsAverage();
     this.gap = gap;
-    this.order = orderGetter();
-    const daysBefore = dateRuns.length - 1 - this.order;
-    this.date = daysBeforeToRender(daysBefore, props.baselineDate);
+    this.chartOrder = orderGetter();
+    const daysBefore = dateRuns.length - 1 - this.chartOrder;
+    this.date = daysBeforeToRender(daysBefore, baselineDate.current);
     typeMaker(this);
     this.render = {
-      date: this.date,
+      date: daysBeforeToRender(daysBefore, baselineDate.current),
       distance: this.distance.toFixed(2) + " km",
       duration: renderDuration(msToObject(this.duration)),
-      speed: this.speed.toFixed(2) + "km/h",
+      speed: this.speed.toFixed(2) + " km/h",
       heartRate: Math.round(this.heartRate) + " bpm",
       steps: Math.round(this.steps) + " steps",
       calories: Math.round(this.calories) + " cals",
     };
-
     function getGapsAverage() {
       dateRuns.forEach((point, i) => {
         point.order = i;
@@ -45,7 +44,7 @@ export class PredictedRun {
 
     function typeMaker(parent) {
       types.forEach((type) => {
-        parent[type] = trendLine(dateRuns, type).calcY(parent.order);
+        parent[type] = trendLine(dateRuns, type).calcY(parent.chartOrder);
       });
     }
   }

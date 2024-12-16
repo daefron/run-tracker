@@ -1,8 +1,17 @@
+import { Stats } from "./Generic/Stats.jsx";
 export function RunStats(props) {
   if (!props.runs) {
     return;
   }
-  let run = props.runs[props.activeRun];
+  const types = [
+    "duration",
+    "distance",
+    "speed",
+    "heartRate",
+    "steps",
+    "calories",
+  ];
+  const run = props.runs[props.activeRun];
   return (
     <div id="runStats">
       <p id="runStatsTitle">Selected run stats</p>
@@ -14,30 +23,7 @@ export function RunStats(props) {
         <p className="statTitle">Start time: </p>
         <p className="statContent">{run.render.startTime}</p>
       </div>
-      <div className="runStat">
-        <p className="statTitle">Duration: </p>
-        <p className="statContent">{run.render.duration}</p>
-      </div>
-      <div className="runStat">
-        <p className="statTitle">Distance: </p>
-        <p className="statContent">{run.render.distance}</p>
-      </div>
-      <div className="runStat">
-        <p className="statTitle">Average speed: </p>
-        <p className="statContent">{run.speed.toFixed(2) + " km/h"}</p>
-      </div>
-      <div className="runStat">
-        <p className="statTitle">Steps: </p>
-        <p className="statContent">{run.steps + " steps"}</p>
-      </div>
-      <div className="runStat">
-        <p className="statTitle">Calories: </p>
-        <p className="statContent">{run.calories + " cals"}</p>
-      </div>
-      <div className="runStat">
-        <p className="statTitle">Average heart rate: </p>
-        <p className="statContent">{run.heartRate + " bpm"}</p>
-      </div>
+      <Stats run={run} types={types}/>
     </div>
   );
 }

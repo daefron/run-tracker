@@ -5,7 +5,8 @@
 .recharts-legend-item-text {
   user-select: none;
 }
-p {
+p,
+label {
   user-select: none;
 }
 #root {
@@ -21,7 +22,7 @@ p {
   height: calc(100% - 60px);
   display: grid;
   gap: 20px;
-  grid-template-columns: 420px minmax(420px, 4fr) 260px 260px;
+  grid-template-columns: 420px minmax(420px, 4fr) 270px 260px;
   grid-template-rows: repeat(8, 1fr);
 }
 #loadingHolder {
@@ -58,7 +59,7 @@ p {
   grid-row: 1 / 5;
   grid-column: 1 / 2;
 }
-#prediction {
+#predictionStats {
   background-color: rgb(50, 50, 70);
   grid-row: 5 / 9;
   grid-column: 1 / 2;
@@ -103,7 +104,8 @@ p {
 }
 #listTitle,
 #allRuns,
-.runItem {
+.runItem,
+.statsFooter {
   display: flex;
   line-height: 35px;
   padding-inline: 10px;
@@ -148,6 +150,25 @@ p {
 }
 .statContent {
   text-align: right;
+}
+#predictionStats {
+  display: flex;
+  flex-direction: column;
+}
+.statsFooter {
+  margin-top: auto;
+  gap: 15px;
+}
+.statsFooterCheckHolder {
+  display: flex;
+  gap: 5px;
+  font-size: 14px;
+}
+.statsFooterCheckHolder,
+.statsFooterCheckHolder > input {
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .graphHolder {
   background-color: rgb(50, 50, 70);
