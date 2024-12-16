@@ -58,45 +58,35 @@ export function OverallStats(props) {
     }
   }
 
-  function Find(props) {
+  function Find({ runs, unit, type }) {
     let target = findTarget();
-    let findRender = target.render.date + " - " + target.render[props.unit];
-    if (props.unit === "speed") {
+    let findRender = target.render.date + " - " + target.render[unit];
+    if (unit === "speed") {
       findRender =
         target.render.date + " - " + target.speed.toFixed(2) + " km/h";
     }
     return (
-      <div className="runStat" id={"find" + props.unit}>
+      <div className="runStat" id={"find" + unit}>
         <p className="statTitle">
-          {props.type} {props.unit}:
+          {type} {unit}:
         </p>
         <p className="statContent">{findRender}</p>
       </div>
     );
     function findTarget() {
-      let all = props.runs;
-      let targetBaseline = 0;
-      if (props.type === "Lowest") {
-        targetBaseline = Infinity;
+      let target = { [unit]: 0 };
+      if (type === "Lowest") {
+        target[unit] = Infinity;
       }
-      let target = { [props.unit]: targetBaseline };
-      for (let i = 0; i < all.length; i++) {
-        let ifType =
-          objectToMs(all[i][props.unit]) > objectToMs(target[props.unit]);
-        let ifDuration = all[i][props.unit] > target[props.unit];
-        if (props.type === "Lowest") {
-          ifType =
-            objectToMs(all[i][props.unit]) < objectToMs(target[props.unit]);
-          ifDuration = all[i][props.unit] < target[props.unit];
+      for (let i = 0; i < runs.length; i++) {
+        let compareGreater = runs[i][unit];
+        let compareLesser = target[unit];
+        if (type === "Lowest") {
+          compareGreater = target[unit];
+          compareLesser = runs[i][unit];
         }
-        if (props.unit === "duration") {
-          if (ifType || !objectToMs(target[props.unit])) {
-            target = all[i];
-          }
-        } else {
-          if (ifDuration) {
-            target = all[i];
-          }
+        if (compareGreater > compareLesser) {
+          target = runs[i];
         }
       }
       return target;
