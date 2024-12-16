@@ -101,6 +101,27 @@ export function ChartLine(props) {
       );
     }
   }
+  function TodayLabel(payload) {
+    console.log(payload);
+    return (
+      <text
+        id="todayLabel"
+        x={payload.viewBox.x}
+        y={payload.viewBox.y + payload.viewBox.height - 10}
+        fontSize="14"
+        fill="white"
+      >
+        - today
+      </text>
+    );
+  }
+  function gridMaker(dimension, divider) {
+    let array = [];
+    for (let i = 20; i < dimension; i += dimension / divider) {
+      array.push(i);
+    }
+    return array;
+  }
 
   if (props.type === "allRuns") {
     const types = [
@@ -244,15 +265,31 @@ export function ChartLine(props) {
         </div>
         <ResponsiveContainer>
           <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
-            <CartesianGrid strokeDasharray="5 20" vertical={false} />
+            <CartesianGrid
+              stroke="rgba(255, 255, 255, 0.1)"
+              horizontalCoordinatesGenerator={(props) =>
+                gridMaker(props.height, 10)
+              }
+              verticalCoordinatesGenerator={(props) =>
+                gridMaker(props.width, 15)
+              }
+            />
             <Legend />
             <XAxis dataKey="date" dy={5} />
             <YAxis yAxisId="duration" domain={[0, "dataMax + 300000"]} hide />
+            <ReferenceLine
+              yAxisId="distance"
+              strokeWidth={1}
+              stroke="rgba(255, 255, 255, 0.1)"
+              x={props.dateRangeChange.current}
+            />
             {todayInGraph ? (
               <ReferenceLine
                 yAxisId="distance"
                 strokeWidth={1}
                 x={todayInGraph}
+                stroke="white"
+                label={<TodayLabel />}
               />
             ) : (
               <></>
@@ -547,6 +584,7 @@ export function ChartLine(props) {
         props.setActiveRun(props.activeRun + 1);
       }
     }
+    console.log(chartData);
     return (
       <div className="graphHolder" id={"selectedGraph"}>
         <div className="graphTop">
@@ -569,7 +607,15 @@ export function ChartLine(props) {
         </div>
         <ResponsiveContainer>
           <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
-            <CartesianGrid strokeDasharray="5 20" vertical={false} />
+            <CartesianGrid
+              stroke="rgba(255, 255, 255, 0.1)"
+              horizontalCoordinatesGenerator={(props) =>
+                gridMaker(props.height, 10)
+              }
+              verticalCoordinatesGenerator={(props) =>
+                gridMaker(props.width, 10)
+              }
+            />
             <Line
               yAxisId="bpm"
               isAnimationActive={false}
