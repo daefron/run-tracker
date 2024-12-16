@@ -1,7 +1,7 @@
 import { Stats } from "./Generic/Stats";
 import { CheckMark } from "./Generic/CheckMark";
 export function PredictionStats(props) {
-  if (!props.runs) {
+  if (!props.runs || !props.predictedRuns) {
     return;
   }
   const types = [

@@ -6,7 +6,7 @@ export default function Main() {
   const authData = {
     key: "23PZCT",
     accessToken:
-      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1BaQ1QiLCJzdWIiOiJDQzgzR0siLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByaXJuIHJveHkgcm51dCBycHJvIHJzbGUgcmNmIHJhY3QgcnJlcyBybG9jIHJ3ZWkgcmhyIHJ0ZW0iLCJleHAiOjE3MzQzNTM4OTcsImlhdCI6MTczNDMyNTA5N30.oJG1wIN04ZsUNs-_5wTLYCVaW1MX_snbg7H-m7NJO-4",
+      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1BaQ1QiLCJzdWIiOiJDQzgzR0siLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByaXJuIHJveHkgcnBybyBybnV0IHJzbGUgcmNmIHJhY3QgcnJlcyBybG9jIHJ3ZWkgcmhyIHJ0ZW0iLCJleHAiOjE3MzQzNzAwNDEsImlhdCI6MTczNDM0MTI0MX0.wtes5OoLC7nUhk0TQq2EfWT1Nj1QpSk7bMtrlw-DXTc",
   };
   const [runs, setRuns] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,6 +27,11 @@ export default function Main() {
   //       );
   //       let promiseArray = [];
   //       runs.forEach((run) => {
+  //         console.log(run);
+  //         if (run.logType === "manual") {
+  //           promiseArray.push(null);
+  //           return;
+  //         }
   //         let promise = new Promise(function (resolve) {
   //           fetch(run.heartRateLink, {
   //             headers: {
@@ -44,8 +49,10 @@ export default function Main() {
   //       Promise.all(promiseArray).then((run) => {
   //         allHeartRateData.push(run);
   //         for (let i = 0; i < runs.length; i++) {
-  //           runs[i].heartRateArray =
-  //             allHeartRateData[0][i]["activities-heart-intraday"].dataset;
+  //           if (promiseArray[i]) {
+  //             runs[i].heartRateArray =
+  //               allHeartRateData[0][i]["activities-heart-intraday"].dataset;
+  //           }
   //         }
   //         setRuns(runs);
   //         setLoading(false);

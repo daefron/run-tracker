@@ -11,7 +11,7 @@ import {
   Tooltip,
 } from "recharts";
 export function AllChart(props) {
-  if (!props.runs) {
+  if (!props.runs || !props.predictedRuns) {
     return;
   }
   function DateRangeChangeButton(props) {
@@ -202,7 +202,11 @@ export function AllChart(props) {
       props.predictedRuns.forEach((run) => {
         if (i === run.chartOrder) {
           for (const key in predictionData[i]) {
-            data[i][key + "Prediction"] = predictionData[i][key];
+            if (key === "heartRate" && !run.heartRate) {
+              data[i][key + "Prediction"] = null;
+            } else {
+              data[i][key + "Prediction"] = predictionData[i][key];
+            }
           }
         }
       });

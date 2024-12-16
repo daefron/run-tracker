@@ -670,7 +670,7 @@ export function testData() {
           Vigorous: 149,
         },
         {
-          time: "00:03:08",
+          time: "00:03:07",
           value: 149,
           bpm: 149,
           Vigorous: 149,
@@ -820,7 +820,7 @@ export function testData() {
           Vigorous: 148,
         },
         {
-          time: "00:04:02",
+          time: "00:04:00",
           value: 148,
           bpm: 148,
           Vigorous: 148,
@@ -856,13 +856,13 @@ export function testData() {
           Vigorous: 151,
         },
         {
-          time: "00:04:16",
+          time: "00:04:15",
           value: 150,
           bpm: 150,
           Vigorous: 150,
         },
         {
-          time: "00:04:19",
+          time: "00:04:17",
           value: 150,
           bpm: 150,
           Vigorous: 150,
@@ -892,13 +892,13 @@ export function testData() {
           Vigorous: 152,
         },
         {
-          time: "00:04:31",
+          time: "00:04:30",
           value: 151,
           bpm: 151,
           Vigorous: 151,
         },
         {
-          time: "00:04:34",
+          time: "00:04:32",
           value: 151,
           bpm: 151,
           Vigorous: 151,
@@ -940,13 +940,13 @@ export function testData() {
           Vigorous: 152,
         },
         {
-          time: "00:04:48",
+          time: "00:04:46",
           value: 152,
           bpm: 152,
           Vigorous: 152,
         },
         {
-          time: "00:04:49",
+          time: "00:04:47",
           value: 151,
           bpm: 151,
           Vigorous: 151,
@@ -976,13 +976,13 @@ export function testData() {
           Vigorous: 149,
         },
         {
-          time: "00:05:01",
+          time: "00:05:00",
           value: 149,
           bpm: 149,
           Vigorous: 149,
         },
         {
-          time: "00:05:02",
+          time: "00:05:00",
           value: 148,
           bpm: 148,
           Vigorous: 148,
@@ -1018,7 +1018,7 @@ export function testData() {
           Vigorous: 148,
         },
         {
-          time: "00:05:18",
+          time: "00:05:16",
           value: 148,
           bpm: 148,
           Vigorous: 148,
@@ -1054,13 +1054,13 @@ export function testData() {
           Vigorous: 150,
         },
         {
-          time: "00:05:32",
+          time: "00:05:30",
           value: 150,
           bpm: 150,
           Vigorous: 150,
         },
         {
-          time: "00:05:33",
+          time: "00:05:31",
           value: 151,
           bpm: 151,
           Vigorous: 151,
@@ -1102,7 +1102,7 @@ export function testData() {
           Vigorous: 152,
         },
         {
-          time: "00:05:49",
+          time: "00:05:47",
           value: 152,
           bpm: 152,
           Vigorous: 152,
@@ -1144,13 +1144,13 @@ export function testData() {
           Vigorous: 153,
         },
         {
-          time: "00:06:02",
+          time: "00:06:00",
           value: 152,
           bpm: 152,
           Vigorous: 152,
         },
         {
-          time: "00:06:03",
+          time: "00:06:01",
           value: 153,
           bpm: 153,
           Vigorous: 153,
@@ -1192,14 +1192,14 @@ export function testData() {
           Vigorous: 169,
         },
         {
-          time: "00:06:17",
+          time: "00:06:15",
           value: 172,
           bpm: 172,
           Vigorous: 172,
           Peak: 172,
         },
         {
-          time: "00:06:19",
+          time: "00:06:17",
           value: 173,
           bpm: 173,
           Peak: 173,
@@ -1244,13 +1244,13 @@ export function testData() {
           Peak: 175,
         },
         {
-          time: "00:06:33",
+          time: "00:06:31",
           value: 175,
           bpm: 175,
           Peak: 175,
         },
         {
-          time: "00:06:34",
+          time: "00:06:32",
           value: 177,
           bpm: 177,
           Peak: 177,
@@ -1286,7 +1286,7 @@ export function testData() {
           Peak: 177,
         },
         {
-          time: "00:06:49",
+          time: "00:06:47",
           value: 177,
           bpm: 177,
           Peak: 177,
@@ -1322,7 +1322,7 @@ export function testData() {
           Peak: 178,
         },
         {
-          time: "00:07:02",
+          time: "00:07:00",
           value: 178,
           bpm: 178,
           Peak: 178,
@@ -1352,13 +1352,13 @@ export function testData() {
           Peak: 177,
         },
         {
-          time: "00:07:16",
+          time: "00:07:15",
           value: 177,
           bpm: 177,
           Peak: 177,
         },
         {
-          time: "00:07:19",
+          time: "00:07:17",
           value: 177,
           bpm: 177,
           Peak: 177,
@@ -1394,13 +1394,13 @@ export function testData() {
           Peak: 176,
         },
         {
-          time: "00:07:32",
+          time: "00:07:30",
           value: 177,
           bpm: 177,
           Peak: 177,
         },
         {
-          time: "00:07:34",
+          time: "00:07:32",
           value: 176,
           bpm: 176,
           Peak: 176,
@@ -1442,7 +1442,7 @@ export function testData() {
           Peak: 178,
         },
         {
-          time: "00:07:47",
+          time: "00:07:46",
           value: 179,
           bpm: 179,
           Peak: 179,
@@ -6080,7 +6080,7 @@ export function testData() {
           bpm: 150,
         },
         {
-          time: "00:03:08",
+          time: "00:03:07",
           value: 150,
           bpm: 150,
         },
@@ -6225,12 +6225,12 @@ export function testData() {
           bpm: 163,
         },
         {
-          time: "00:04:02",
+          time: "00:04:00",
           value: 165,
           bpm: 165,
         },
         {
-          time: "00:04:04",
+          time: "00:04:02",
           value: 158,
           bpm: 158,
         },
@@ -6260,12 +6260,12 @@ export function testData() {
           bpm: 162,
         },
         {
-          time: "00:04:16",
+          time: "00:04:15",
           value: 157,
           bpm: 157,
         },
         {
-          time: "00:04:18",
+          time: "00:04:16",
           value: 159,
           bpm: 159,
         },
@@ -6300,12 +6300,12 @@ export function testData() {
           bpm: 156,
         },
         {
-          time: "00:04:31",
+          time: "00:04:30",
           value: 158,
           bpm: 158,
         },
         {
-          time: "00:04:33",
+          time: "00:04:31",
           value: 153,
           bpm: 153,
         },
@@ -6345,7 +6345,7 @@ export function testData() {
           bpm: 156,
         },
         {
-          time: "00:04:49",
+          time: "00:04:47",
           value: 156,
           bpm: 156,
         },
@@ -6380,12 +6380,12 @@ export function testData() {
           bpm: 158,
         },
         {
-          time: "00:05:03",
+          time: "00:05:01",
           value: 158,
           bpm: 158,
         },
         {
-          time: "00:05:04",
+          time: "00:05:02",
           value: 160,
           bpm: 160,
         },
@@ -6420,12 +6420,12 @@ export function testData() {
           bpm: 156,
         },
         {
-          time: "00:05:18",
+          time: "00:05:16",
           value: 156,
           bpm: 156,
         },
         {
-          time: "00:05:19",
+          time: "00:05:17",
           value: 153,
           bpm: 153,
         },
@@ -6455,17 +6455,17 @@ export function testData() {
           bpm: 159,
         },
         {
-          time: "00:05:31",
+          time: "00:05:30",
           value: 155,
           bpm: 155,
         },
         {
-          time: "00:05:33",
+          time: "00:05:31",
           value: 158,
           bpm: 158,
         },
         {
-          time: "00:05:34",
+          time: "00:05:32",
           value: 157,
           bpm: 157,
         },
@@ -6495,12 +6495,12 @@ export function testData() {
           bpm: 160,
         },
         {
-          time: "00:05:47",
+          time: "00:05:46",
           value: 160,
           bpm: 160,
         },
         {
-          time: "00:05:48",
+          time: "00:05:46",
           value: 159,
           bpm: 159,
         },
@@ -6535,12 +6535,12 @@ export function testData() {
           bpm: 160,
         },
         {
-          time: "00:06:01",
+          time: "00:06:00",
           value: 161,
           bpm: 161,
         },
         {
-          time: "00:06:03",
+          time: "00:06:01",
           value: 159,
           bpm: 159,
         },
@@ -6575,12 +6575,12 @@ export function testData() {
           bpm: 174,
         },
         {
-          time: "00:06:17",
+          time: "00:06:15",
           value: 171,
           bpm: 171,
         },
         {
-          time: "00:06:19",
+          time: "00:06:17",
           value: 169,
           bpm: 169,
         },
@@ -6615,12 +6615,12 @@ export function testData() {
           bpm: 172,
         },
         {
-          time: "00:06:32",
+          time: "00:06:30",
           value: 173,
           bpm: 173,
         },
         {
-          time: "00:06:34",
+          time: "00:06:32",
           value: 172,
           bpm: 172,
         },
@@ -6655,7 +6655,7 @@ export function testData() {
           bpm: 167,
         },
         {
-          time: "00:06:47",
+          time: "00:06:46",
           value: 169,
           bpm: 169,
         },
@@ -6690,12 +6690,12 @@ export function testData() {
           bpm: 164,
         },
         {
-          time: "00:07:01",
+          time: "00:07:00",
           value: 165,
           bpm: 165,
         },
         {
-          time: "00:07:03",
+          time: "00:07:01",
           value: 162,
           bpm: 162,
         },
@@ -6725,12 +6725,12 @@ export function testData() {
           bpm: 160,
         },
         {
-          time: "00:07:16",
+          time: "00:07:15",
           value: 161,
           bpm: 161,
         },
         {
-          time: "00:07:18",
+          time: "00:07:16",
           value: 162,
           bpm: 162,
         },
@@ -6765,7 +6765,7 @@ export function testData() {
           bpm: 162,
         },
         {
-          time: "00:07:32",
+          time: "00:07:30",
           value: 161,
           bpm: 161,
         },
@@ -6800,12 +6800,12 @@ export function testData() {
           bpm: 160,
         },
         {
-          time: "00:07:47",
+          time: "00:07:46",
           value: 160,
           bpm: 160,
         },
         {
-          time: "00:07:49",
+          time: "00:07:47",
           value: 159,
           bpm: 159,
         },
@@ -8040,7 +8040,7 @@ export function testData() {
           bpm: 149,
         },
         {
-          time: "00:02:08",
+          time: "00:02:07",
           value: 150,
           bpm: 150,
         },
@@ -8270,12 +8270,12 @@ export function testData() {
           bpm: 156,
         },
         {
-          time: "00:04:01",
+          time: "00:04:00",
           value: 155,
           bpm: 155,
         },
         {
-          time: "00:04:03",
+          time: "00:04:01",
           value: 154,
           bpm: 154,
         },
@@ -8305,12 +8305,12 @@ export function testData() {
           bpm: 147,
         },
         {
-          time: "00:04:16",
+          time: "00:04:15",
           value: 148,
           bpm: 148,
         },
         {
-          time: "00:04:18",
+          time: "00:04:16",
           value: 147,
           bpm: 147,
         },
@@ -8345,12 +8345,12 @@ export function testData() {
           bpm: 151,
         },
         {
-          time: "00:04:33",
+          time: "00:04:31",
           value: 151,
           bpm: 151,
         },
         {
-          time: "00:04:34",
+          time: "00:04:32",
           value: 148,
           bpm: 148,
         },
@@ -8385,7 +8385,7 @@ export function testData() {
           bpm: 148,
         },
         {
-          time: "00:04:47",
+          time: "00:04:46",
           value: 148,
           bpm: 148,
         },
@@ -8420,12 +8420,12 @@ export function testData() {
           bpm: 148,
         },
         {
-          time: "00:05:02",
+          time: "00:05:00",
           value: 147,
           bpm: 147,
         },
         {
-          time: "00:05:04",
+          time: "00:05:02",
           value: 146,
           bpm: 146,
         },
@@ -8450,12 +8450,12 @@ export function testData() {
           bpm: 150,
         },
         {
-          time: "00:05:16",
+          time: "00:05:15",
           value: 149,
           bpm: 149,
         },
         {
-          time: "00:05:18",
+          time: "00:05:16",
           value: 148,
           bpm: 148,
         },
@@ -8485,12 +8485,12 @@ export function testData() {
           bpm: 152,
         },
         {
-          time: "00:05:31",
+          time: "00:05:30",
           value: 151,
           bpm: 151,
         },
         {
-          time: "00:05:34",
+          time: "00:05:32",
           value: 151,
           bpm: 151,
         },
@@ -8520,7 +8520,7 @@ export function testData() {
           bpm: 154,
         },
         {
-          time: "00:05:47",
+          time: "00:05:46",
           value: 154,
           bpm: 154,
         },
@@ -8550,12 +8550,12 @@ export function testData() {
           bpm: 156,
         },
         {
-          time: "00:06:02",
+          time: "00:06:00",
           value: 154,
           bpm: 154,
         },
         {
-          time: "00:06:04",
+          time: "00:06:02",
           value: 157,
           bpm: 157,
         },
@@ -8590,12 +8590,12 @@ export function testData() {
           bpm: 158,
         },
         {
-          time: "00:06:18",
+          time: "00:06:16",
           value: 158,
           bpm: 158,
         },
         {
-          time: "00:06:19",
+          time: "00:06:17",
           value: 157,
           bpm: 157,
         },
@@ -8625,12 +8625,12 @@ export function testData() {
           bpm: 156,
         },
         {
-          time: "00:06:31",
+          time: "00:06:30",
           value: 158,
           bpm: 158,
         },
         {
-          time: "00:06:33",
+          time: "00:06:31",
           value: 159,
           bpm: 159,
         },
@@ -8665,12 +8665,12 @@ export function testData() {
           bpm: 160,
         },
         {
-          time: "00:06:47",
+          time: "00:06:46",
           value: 160,
           bpm: 160,
         },
         {
-          time: "00:06:48",
+          time: "00:06:46",
           value: 159,
           bpm: 159,
         },
@@ -8700,12 +8700,12 @@ export function testData() {
           bpm: 158,
         },
         {
-          time: "00:07:01",
+          time: "00:07:00",
           value: 159,
           bpm: 159,
         },
         {
-          time: "00:07:04",
+          time: "00:07:02",
           value: 159,
           bpm: 159,
         },
@@ -8735,7 +8735,7 @@ export function testData() {
           bpm: 160,
         },
         {
-          time: "00:07:17",
+          time: "00:07:15",
           value: 161,
           bpm: 161,
         },
@@ -8770,17 +8770,17 @@ export function testData() {
           bpm: 160,
         },
         {
-          time: "00:07:31",
+          time: "00:07:30",
           value: 160,
           bpm: 160,
         },
         {
-          time: "00:07:32",
+          time: "00:07:30",
           value: 159,
           bpm: 159,
         },
         {
-          time: "00:07:34",
+          time: "00:07:32",
           value: 160,
           bpm: 160,
         },
@@ -8805,7 +8805,7 @@ export function testData() {
           bpm: 158,
         },
         {
-          time: "00:07:47",
+          time: "00:07:46",
           value: 159,
           bpm: 159,
         },
@@ -11205,7 +11205,7 @@ export function testData() {
           bpm: 151,
         },
         {
-          time: "00:03:08",
+          time: "00:03:07",
           value: 150,
           bpm: 150,
         },
@@ -11325,12 +11325,12 @@ export function testData() {
           bpm: 155,
         },
         {
-          time: "00:04:01",
+          time: "00:04:00",
           value: 154,
           bpm: 154,
         },
         {
-          time: "00:04:04",
+          time: "00:04:02",
           value: 154,
           bpm: 154,
         },
@@ -11360,7 +11360,7 @@ export function testData() {
           bpm: 155,
         },
         {
-          time: "00:04:18",
+          time: "00:04:16",
           value: 155,
           bpm: 155,
         },
@@ -11385,12 +11385,12 @@ export function testData() {
           bpm: 156,
         },
         {
-          time: "00:04:32",
+          time: "00:04:30",
           value: 155,
           bpm: 155,
         },
         {
-          time: "00:04:34",
+          time: "00:04:32",
           value: 156,
           bpm: 156,
         },
@@ -11420,12 +11420,12 @@ export function testData() {
           bpm: 156,
         },
         {
-          time: "00:04:48",
+          time: "00:04:46",
           value: 156,
           bpm: 156,
         },
         {
-          time: "00:04:49",
+          time: "00:04:47",
           value: 155,
           bpm: 155,
         },
@@ -11455,12 +11455,12 @@ export function testData() {
           bpm: 156,
         },
         {
-          time: "00:05:01",
+          time: "00:05:00",
           value: 157,
           bpm: 157,
         },
         {
-          time: "00:05:04",
+          time: "00:05:02",
           value: 157,
           bpm: 157,
         },
@@ -11485,12 +11485,12 @@ export function testData() {
           bpm: 159,
         },
         {
-          time: "00:05:16",
+          time: "00:05:15",
           value: 157,
           bpm: 157,
         },
         {
-          time: "00:05:18",
+          time: "00:05:16",
           value: 158,
           bpm: 158,
         },
@@ -11520,17 +11520,17 @@ export function testData() {
           bpm: 158,
         },
         {
-          time: "00:05:31",
+          time: "00:05:30",
           value: 158,
           bpm: 158,
         },
         {
-          time: "00:05:32",
+          time: "00:05:30",
           value: 159,
           bpm: 159,
         },
         {
-          time: "00:05:33",
+          time: "00:05:31",
           value: 160,
           bpm: 160,
         },
@@ -11565,12 +11565,12 @@ export function testData() {
           bpm: 191,
         },
         {
-          time: "00:05:47",
+          time: "00:05:46",
           value: 192,
           bpm: 192,
         },
         {
-          time: "00:05:49",
+          time: "00:05:47",
           value: 194,
           bpm: 194,
         },
@@ -11600,12 +11600,12 @@ export function testData() {
           bpm: 193,
         },
         {
-          time: "00:06:03",
+          time: "00:06:01",
           value: 193,
           bpm: 193,
         },
         {
-          time: "00:06:04",
+          time: "00:06:02",
           value: 192,
           bpm: 192,
         },
@@ -11630,7 +11630,7 @@ export function testData() {
           bpm: 193,
         },
         {
-          time: "00:06:18",
+          time: "00:06:16",
           value: 193,
           bpm: 193,
         },
@@ -11660,12 +11660,12 @@ export function testData() {
           bpm: 195,
         },
         {
-          time: "00:06:32",
+          time: "00:06:30",
           value: 195,
           bpm: 195,
         },
         {
-          time: "00:06:33",
+          time: "00:06:31",
           value: 194,
           bpm: 194,
         },
@@ -11700,7 +11700,7 @@ export function testData() {
           bpm: 194,
         },
         {
-          time: "00:06:48",
+          time: "00:06:46",
           value: 194,
           bpm: 194,
         },
@@ -11730,7 +11730,7 @@ export function testData() {
           bpm: 192,
         },
         {
-          time: "00:07:03",
+          time: "00:07:01",
           value: 192,
           bpm: 192,
         },
@@ -11765,12 +11765,12 @@ export function testData() {
           bpm: 190,
         },
         {
-          time: "00:07:17",
+          time: "00:07:15",
           value: 191,
           bpm: 191,
         },
         {
-          time: "00:07:19",
+          time: "00:07:17",
           value: 190,
           bpm: 190,
         },
@@ -11800,12 +11800,12 @@ export function testData() {
           bpm: 193,
         },
         {
-          time: "00:07:33",
+          time: "00:07:31",
           value: 193,
           bpm: 193,
         },
         {
-          time: "00:07:34",
+          time: "00:07:32",
           value: 192,
           bpm: 192,
         },
@@ -11840,7 +11840,7 @@ export function testData() {
           bpm: 186,
         },
         {
-          time: "00:07:49",
+          time: "00:07:47",
           value: 186,
           bpm: 186,
         },
@@ -13685,12 +13685,12 @@ export function testData() {
           bpm: 181,
         },
         {
-          time: "00:04:02",
+          time: "00:04:00",
           value: 181,
           bpm: 181,
         },
         {
-          time: "00:04:03",
+          time: "00:04:01",
           value: 182,
           bpm: 182,
         },
@@ -13715,12 +13715,12 @@ export function testData() {
           bpm: 184,
         },
         {
-          time: "00:04:16",
+          time: "00:04:15",
           value: 184,
           bpm: 184,
         },
         {
-          time: "00:04:19",
+          time: "00:04:17",
           value: 184,
           bpm: 184,
         },
@@ -13745,12 +13745,12 @@ export function testData() {
           bpm: 184,
         },
         {
-          time: "00:04:32",
+          time: "00:04:30",
           value: 184,
           bpm: 184,
         },
         {
-          time: "00:04:34",
+          time: "00:04:32",
           value: 185,
           bpm: 185,
         },
@@ -13780,7 +13780,7 @@ export function testData() {
           bpm: 182,
         },
         {
-          time: "00:04:47",
+          time: "00:04:46",
           value: 183,
           bpm: 183,
         },
@@ -13810,12 +13810,12 @@ export function testData() {
           bpm: 182,
         },
         {
-          time: "00:05:01",
+          time: "00:05:00",
           value: 182,
           bpm: 182,
         },
         {
-          time: "00:05:04",
+          time: "00:05:02",
           value: 183,
           bpm: 183,
         },
@@ -13845,12 +13845,12 @@ export function testData() {
           bpm: 182,
         },
         {
-          time: "00:05:16",
+          time: "00:05:15",
           value: 181,
           bpm: 181,
         },
         {
-          time: "00:05:19",
+          time: "00:05:17",
           value: 181,
           bpm: 181,
         },
@@ -13875,12 +13875,12 @@ export function testData() {
           bpm: 179,
         },
         {
-          time: "00:05:31",
+          time: "00:05:30",
           value: 178,
           bpm: 178,
         },
         {
-          time: "00:05:33",
+          time: "00:05:31",
           value: 179,
           bpm: 179,
         },
@@ -13915,7 +13915,7 @@ export function testData() {
           bpm: 178,
         },
         {
-          time: "00:05:47",
+          time: "00:05:46",
           value: 181,
           bpm: 181,
         },
@@ -13945,12 +13945,12 @@ export function testData() {
           bpm: 181,
         },
         {
-          time: "00:06:03",
+          time: "00:06:01",
           value: 181,
           bpm: 181,
         },
         {
-          time: "00:06:04",
+          time: "00:06:02",
           value: 182,
           bpm: 182,
         },
@@ -13975,12 +13975,12 @@ export function testData() {
           bpm: 182,
         },
         {
-          time: "00:06:17",
+          time: "00:06:15",
           value: 183,
           bpm: 183,
         },
         {
-          time: "00:06:19",
+          time: "00:06:17",
           value: 182,
           bpm: 182,
         },
@@ -14010,12 +14010,12 @@ export function testData() {
           bpm: 183,
         },
         {
-          time: "00:06:31",
+          time: "00:06:30",
           value: 182,
           bpm: 182,
         },
         {
-          time: "00:06:34",
+          time: "00:06:32",
           value: 182,
           bpm: 182,
         },
@@ -14045,7 +14045,7 @@ export function testData() {
           bpm: 185,
         },
         {
-          time: "00:06:48",
+          time: "00:06:46",
           value: 184,
           bpm: 184,
         },
@@ -14075,7 +14075,7 @@ export function testData() {
           bpm: 186,
         },
         {
-          time: "00:07:02",
+          time: "00:07:00",
           value: 186,
           bpm: 186,
         },
@@ -14105,7 +14105,7 @@ export function testData() {
           bpm: 186,
         },
         {
-          time: "00:07:18",
+          time: "00:07:16",
           value: 186,
           bpm: 186,
         },
@@ -14130,7 +14130,7 @@ export function testData() {
           bpm: 185,
         },
         {
-          time: "00:07:32",
+          time: "00:07:30",
           value: 186,
           bpm: 186,
         },
@@ -14155,12 +14155,12 @@ export function testData() {
           bpm: 186,
         },
         {
-          time: "00:07:47",
+          time: "00:07:46",
           value: 186,
           bpm: 186,
         },
         {
-          time: "00:07:48",
+          time: "00:07:46",
           value: 185,
           bpm: 185,
         },
@@ -15170,6 +15170,126 @@ export function testData() {
           bpm: 183,
         },
       ],
+    },
+    {
+      logId: 6590435974522634000,
+      activityTypeId: 90009,
+      activityName: "Run",
+      calories: 38,
+      distance: 5,
+      steps: 4144,
+      speed: 10,
+      pace: 360,
+      duration: 1800000,
+      activeDuration: 1800000,
+      activityLevel: [
+        {
+          minutes: 30,
+          name: "sedentary",
+        },
+        {
+          minutes: 0,
+          name: "lightly",
+        },
+        {
+          minutes: 0,
+          name: "fairly",
+        },
+        {
+          minutes: 0,
+          name: "very",
+        },
+      ],
+      distanceUnit: "Kilometer",
+      source: {
+        type: "api",
+        name: "Fitbit for Android",
+        id: "228VSR",
+        url: "https://www.fitbit.com/android",
+        trackerFeatures: ["DISTANCE", "STEPS", "PACE", "CALORIES", "HEARTRATE"],
+      },
+      logType: "manual",
+      manualValuesSpecified: {
+        calories: false,
+        distance: true,
+        steps: false,
+      },
+      intervalWorkoutData: {
+        intervalSummaries: [],
+        numRepeats: 0,
+      },
+      heartRateZones: [
+        {
+          minutes: 30,
+          caloriesOut: 39.3219,
+          name: "Out of Range",
+          min: 30,
+          max: 220,
+        },
+        {
+          minutes: 0,
+          caloriesOut: 0,
+          name: "Fat Burn",
+          min: 30,
+          max: 220,
+        },
+        {
+          minutes: 0,
+          caloriesOut: 0,
+          name: "Cardio",
+          min: 30,
+          max: 220,
+        },
+        {
+          minutes: 0,
+          caloriesOut: 0,
+          name: "Peak",
+          min: 30,
+          max: 220,
+        },
+      ],
+      activeZoneMinutes: {
+        totalMinutes: 0,
+        minutesInHeartRateZones: [
+          {
+            minutes: 0,
+            zoneName: "Out of Range",
+            order: 0,
+            type: "OUT_OF_ZONE",
+            minuteMultiplier: 0,
+          },
+          {
+            minutes: 0,
+            zoneName: "Fat Burn",
+            order: 1,
+            type: "FAT_BURN",
+            minuteMultiplier: 1,
+          },
+          {
+            minutes: 0,
+            zoneName: "Cardio",
+            order: 2,
+            type: "CARDIO",
+            minuteMultiplier: 2,
+          },
+          {
+            minutes: 0,
+            zoneName: "Peak",
+            order: 3,
+            type: "PEAK",
+            minuteMultiplier: 2,
+          },
+        ],
+      },
+      inProgress: false,
+      caloriesLink:
+        "https://api.fitbit.com/1/user/-/activities/calories/date/2024-11-27/2024-11-27/1min/time/19:56/20:26.json",
+      lastModified: "2024-12-16T09:26:50.762Z",
+      startTime: "2024-11-27T19:56:34.111+11:00",
+      originalStartTime: "2024-11-27T19:56:34.111+11:00",
+      originalDuration: 1800000,
+      elevationGain: 0,
+      hasActiveZoneMinutes: true,
     },
   ];
 }

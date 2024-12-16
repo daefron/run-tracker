@@ -17,29 +17,31 @@ export function runsParser(runs) {
       this.date = run.originalStartTime.split("T")[0];
       this.initialTime = dateTimeParser(run.originalStartTime);
       this.duration = run.activeDuration;
-      this.activeDuration = run.activeDuration;
-      this.inactiveDuration = run.duration - run.activeDuration;
       this.distance = Number(run.distance.toFixed(2));
       this.speed = run.speed;
       this.steps = run.steps;
       this.calories = run.calories;
-      this.heartRate = run.averageHeartRate;
-      this.heartRateZones = run.heartRateZones;
-      this.heartRateZones[0].name = "Light";
-      this.heartRateZones[1].name = "Moderate";
-      this.heartRateZones[2].name = "Vigorous";
-      this.heartRateZones[3].name = "Peak";
-      this.heartRateArray = heartRateArrayParse(run.heartRateArray);
+      this.activeDuration = run.activeDuration;
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),
         duration: renderDuration(msToObject(this.duration)),
         distance: this.distance + " km",
         speed: this.speed.toFixed(2) + " km/h",
-        heartRate: this.heartRate + " bpm",
         steps: this.steps + " steps",
         calories: this.calories + " cals",
       };
+      if (run.logType === "tracker") {
+        this.inactiveDuration = run.duration - run.activeDuration;
+        this.heartRate = run.averageHeartRate;
+        this.heartRateZones = run.heartRateZones;
+        this.heartRateZones[0].name = "Light";
+        this.heartRateZones[1].name = "Moderate";
+        this.heartRateZones[2].name = "Vigorous";
+        this.heartRateZones[3].name = "Peak";
+        this.heartRateArray = heartRateArrayParse(run.heartRateArray);
+        this.render.heartRate = this.heartRate + " bpm";
+      }
     }
   }
 

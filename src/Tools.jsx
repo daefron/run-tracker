@@ -195,6 +195,9 @@ export function gapsBetween(data, type) {
 
 export function trendLine(data, type) {
   let dataSet = data.filter((point) => point.id);
+  if (type === "heartRate") {
+    dataSet = dataSet.filter((point) => point.heartRate);
+  }
   const xData = dataSet.map((point) => point.order);
   const yData = dataSet.map((point) => point[type]);
   const xMean = getAverage(xData);
@@ -220,28 +223,40 @@ export function trendLine(data, type) {
 
 export function dateFiller(runs, dateRange, types) {
   let holder = [];
-  dateRange.forEach((date, i) => {
-    let runOnDate = runs.find((run) => run.render.date === date);
+  let lastHR;
+  for (let i = dateRange.length - 1; i > 0; i--) {
+    let runOnDate = runs.find((run) => run.render.date === dateRange[i]);
     if (runOnDate) {
       runOnDate.chartOrder = i;
       let stats = {
         id: runOnDate.id,
-        date: date[0] + date[1],
+        date: dateRange[i][0] + dateRange[i][1],
         order: i,
-        parsedDate: date,
+        parsedDate: dateRange[i],
       };
       types.forEach((type) => {
-        stats[type] = runOnDate[type];
+        if (type === "heartRate" && !runOnDate.heartRate) {
+          stats[type] = lastHR;
+        } else if (type === "heartRate" && runOnDate.heartRate) {
+          lastHR = runOnDate.heartRate;
+          stats[type] = runOnDate[type];
+        } else {
+          stats[type] = runOnDate[type];
+        }
       });
       holder.push(stats);
     } else {
       holder.push({
         id: null,
-        date: date[0] + date[1],
+        date: dateRange[i][0] + dateRange[i][1],
         order: i,
-        parsedDate: date,
+        parsedDate: dateRange[i],
       });
     }
-  });
-  return holder;
+  }
+  let holder2 = [];
+  for (let i = holder.length - 1; i >= 0; i--) {
+    holder2.push(holder[i]);
+  }
+  return holder2;
 }

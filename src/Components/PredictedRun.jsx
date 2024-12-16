@@ -9,6 +9,9 @@ import {
 } from "../Tools";
 export class PredictedRun {
   constructor(baselineDate, dateRange, runs, marginAmount, setDateRange) {
+    if (!runs) {
+      return;
+    }
     const types = [
       "duration",
       "distance",
@@ -37,9 +40,7 @@ export class PredictedRun {
 
     if (this.date > baselineDate.current) {
       marginAmount.current = this.gap;
-      setDateRange(
-        dateArrayToRender(31, baselineDate, marginAmount)
-      );
+      setDateRange(dateArrayToRender(31, baselineDate, marginAmount));
     }
 
     function daysBeforeToData(daysBefore, date) {

@@ -15,6 +15,15 @@ export function Page(props) {
   const [parsedRuns, setParsedRuns] = useState(runsParser(props.runs));
   useEffect(() => {
     setParsedRuns(runsParser(props.runs));
+    // setPredictedRuns(
+    //   new PredictedRun(
+    //     baselineDate,
+    //     dateRange,
+    //     parsedRuns,
+    //     marginAmount,
+    //     setDateRange
+    //   )
+    // );
   }, [props.runs]);
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
