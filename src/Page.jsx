@@ -3,7 +3,8 @@ import { runsParser } from "./RunsParser.jsx";
 import { dateArrayToRender } from "./Tools.jsx";
 import { RunList } from "./Components/RunList.jsx";
 import { PredictionStats } from "./Components/Prediction.jsx";
-import { ChartLine } from "./Components/ChartLine.jsx";
+import { AllChart } from "./Components/AllChart.jsx";
+import { SelectedChart } from "./Components/SelectedChart.jsx";
 import { ChartPie } from "./Components/ChartPie.jsx";
 import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
@@ -103,14 +104,10 @@ export function Page(props) {
           dateRange={dateRange}
           setDateRange={setDateRange}
           baselineDate={baselineDate}
-          predictedOnGraph={predictedOnGraph}
-          setPredictedOnGraph={setPredictedOnGraph}
-          trendlineOnGraph={trendlineOnGraph}
-          setTrendlineOnGraph={setTrendlineOnGraph}
           marginAmount={marginAmount}
           predictedRuns={predictedRuns}
         />
-        <ChartLine
+        <SelectedChart
           render="Selected run"
           type="selected"
           runs={parsedRuns}
@@ -125,7 +122,7 @@ export function Page(props) {
           predictedRuns={predictedRuns}
           marginAmount={marginAmount}
         />
-        <ChartLine
+        <AllChart
           render="All runs"
           type="allRuns"
           durationColor="rgb(100, 149, 237)"

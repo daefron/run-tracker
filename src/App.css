@@ -189,6 +189,17 @@ label {
   margin: 0;
   padding-inline: 5px;
 }
+.dateChangeInactive,
+.dateChangeActive {
+  cursor: pointer;
+}
+.dateChangeActive {
+  font-weight: 450;
+  text-decoration: underline;
+}
+.dateChangeInactive {
+  font-weight: 300;
+}
 .graphTitle {
   line-height: 35px;
   text-indent: 5px;
