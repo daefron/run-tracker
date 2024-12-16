@@ -37,7 +37,6 @@ export function SelectedChart(props) {
   }
   function bpmChartData(chartData) {
     let zones = props.runs[props.activeRun].heartRateZones;
-    console.log(zones);
     let holder = [];
     chartData.forEach((entry) => {
       for (const zone of zones) {

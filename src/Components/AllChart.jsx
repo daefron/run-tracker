@@ -295,37 +295,45 @@ export function AllChart(props) {
             activeDot={false}
             connectNulls
           />
-          <Line
-            yAxisId="duration"
-            isAnimationActive={false}
-            dataKey="durationPrediction"
-            stroke={predictionColor(props.durationColor)}
-            strokeWidth={1}
-            dot={
-              <PredictionDot
-                color={predictionColor(props.durationColor)}
-                runs={props.runs}
-                activeRun={props.activeRun}
-              />
-            }
-            activeDot={false}
-            legendType="none"
-            connectNulls
-          />
-          <ReferenceLine
-            yAxisId="duration"
-            segment={[
-              {
-                x: trends.duration.xStart,
-                y: trends.duration.calcY(trends.duration.xStart),
-              },
-              {
-                x: trends.duration.xEnd + dateGap,
-                y: trends.duration.calcY(trends.duration.xEnd + dateGap),
-              },
-            ]}
-            stroke={predictionColor(props.durationColor)}
-          />
+          {props.predictedOnGraph ? (
+            <Line
+              yAxisId="duration"
+              isAnimationActive={false}
+              dataKey="durationPrediction"
+              stroke={predictionColor(props.durationColor)}
+              strokeWidth={1}
+              dot={
+                <PredictionDot
+                  color={predictionColor(props.durationColor)}
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+              activeDot={false}
+              legendType="none"
+              connectNulls
+            />
+          ) : (
+            <></>
+          )}
+          {props.trendlineOnGraph ? (
+            <ReferenceLine
+              yAxisId="duration"
+              segment={[
+                {
+                  x: trends.duration.xStart,
+                  y: trends.duration.calcY(trends.duration.xStart),
+                },
+                {
+                  x: trends.duration.xEnd + dateGap,
+                  y: trends.duration.calcY(trends.duration.xEnd + dateGap),
+                },
+              ]}
+              stroke={predictionColor(props.durationColor)}
+            />
+          ) : (
+            <></>
+          )}
           <YAxis yAxisId="distance" domain={[0, "dataMax + 1"]} hide />
           <Line
             yAxisId="distance"
@@ -343,37 +351,45 @@ export function AllChart(props) {
             activeDot={false}
             connectNulls
           />
-          <Line
-            yAxisId="distance"
-            isAnimationActive={false}
-            dataKey="distancePrediction"
-            stroke={predictionColor(props.distanceColor)}
-            strokeWidth={1}
-            dot={
-              <PredictionDot
-                color={predictionColor(props.distanceColor)}
-                runs={props.runs}
-                activeRun={props.activeRun}
-              />
-            }
-            activeDot={false}
-            legendType="none"
-            connectNulls
-          />
-          <ReferenceLine
-            yAxisId="distance"
-            segment={[
-              {
-                x: trends.distance.xStart,
-                y: trends.distance.calcY(trends.distance.xStart),
-              },
-              {
-                x: trends.distance.xEnd + dateGap,
-                y: trends.distance.calcY(trends.distance.xEnd + dateGap),
-              },
-            ]}
-            stroke={predictionColor(props.distanceColor)}
-          />
+          {props.predictedOnGraph ? (
+            <Line
+              yAxisId="distance"
+              isAnimationActive={false}
+              dataKey="distancePrediction"
+              stroke={predictionColor(props.distanceColor)}
+              strokeWidth={1}
+              dot={
+                <PredictionDot
+                  color={predictionColor(props.distanceColor)}
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+              activeDot={false}
+              legendType="none"
+              connectNulls
+            />
+          ) : (
+            <></>
+          )}
+          {props.trendlineOnGraph ? (
+            <ReferenceLine
+              yAxisId="distance"
+              segment={[
+                {
+                  x: trends.distance.xStart,
+                  y: trends.distance.calcY(trends.distance.xStart),
+                },
+                {
+                  x: trends.distance.xEnd + dateGap,
+                  y: trends.distance.calcY(trends.distance.xEnd + dateGap),
+                },
+              ]}
+              stroke={predictionColor(props.distanceColor)}
+            />
+          ) : (
+            <></>
+          )}
           <YAxis yAxisId="speed" domain={[0, "dataMax + 4"]} hide />
           <Line
             yAxisId="speed"
@@ -391,38 +407,45 @@ export function AllChart(props) {
             activeDot={false}
             connectNulls
           />
-
-          <Line
-            yAxisId="speed"
-            isAnimationActive={false}
-            dataKey="speedPrediction"
-            stroke={predictionColor(props.speedColor)}
-            strokeWidth={1}
-            dot={
-              <PredictionDot
-                color={predictionColor(props.speedColor)}
-                runs={props.runs}
-                activeRun={props.activeRun}
-              />
-            }
-            activeDot={false}
-            legendType="none"
-            connectNulls
-          />
-          <ReferenceLine
-            yAxisId="speed"
-            segment={[
-              {
-                x: trends.speed.xStart,
-                y: trends.speed.calcY(trends.speed.xStart),
-              },
-              {
-                x: trends.speed.xEnd + dateGap,
-                y: trends.speed.calcY(trends.speed.xEnd + dateGap),
-              },
-            ]}
-            stroke={predictionColor(props.speedColor)}
-          />
+          {props.predictedOnGraph ? (
+            <Line
+              yAxisId="speed"
+              isAnimationActive={false}
+              dataKey="speedPrediction"
+              stroke={predictionColor(props.speedColor)}
+              strokeWidth={1}
+              dot={
+                <PredictionDot
+                  color={predictionColor(props.speedColor)}
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+              activeDot={false}
+              legendType="none"
+              connectNulls
+            />
+          ) : (
+            <></>
+          )}
+          {props.trendlineOnGraph ? (
+            <ReferenceLine
+              yAxisId="speed"
+              segment={[
+                {
+                  x: trends.speed.xStart,
+                  y: trends.speed.calcY(trends.speed.xStart),
+                },
+                {
+                  x: trends.speed.xEnd + dateGap,
+                  y: trends.speed.calcY(trends.speed.xEnd + dateGap),
+                },
+              ]}
+              stroke={predictionColor(props.speedColor)}
+            />
+          ) : (
+            <></>
+          )}
           <YAxis yAxisId="heartRate" domain={[0, "dataMax + 40"]} hide />
           <Line
             yAxisId="heartRate"
@@ -440,38 +463,45 @@ export function AllChart(props) {
             activeDot={false}
             connectNulls
           />
-
-          <Line
-            yAxisId="heartRate"
-            isAnimationActive={false}
-            dataKey="heartRatePrediction"
-            stroke={predictionColor(props.heartRateColor)}
-            strokeWidth={1}
-            dot={
-              <PredictionDot
-                color={predictionColor(props.heartRateColor)}
-                runs={props.runs}
-                activeRun={props.activeRun}
-              />
-            }
-            activeDot={false}
-            legendType="none"
-            connectNulls
-          />
-          <ReferenceLine
-            yAxisId="heartRate"
-            segment={[
-              {
-                x: trends.heartRate.xStart,
-                y: trends.heartRate.calcY(trends.heartRate.xStart),
-              },
-              {
-                x: trends.heartRate.xEnd + dateGap,
-                y: trends.heartRate.calcY(trends.heartRate.xEnd + dateGap),
-              },
-            ]}
-            stroke={predictionColor(props.heartRateColor)}
-          />
+          {props.predictedOnGraph ? (
+            <Line
+              yAxisId="heartRate"
+              isAnimationActive={false}
+              dataKey="heartRatePrediction"
+              stroke={predictionColor(props.heartRateColor)}
+              strokeWidth={1}
+              dot={
+                <PredictionDot
+                  color={predictionColor(props.heartRateColor)}
+                  runs={props.runs}
+                  activeRun={props.activeRun}
+                />
+              }
+              activeDot={false}
+              legendType="none"
+              connectNulls
+            />
+          ) : (
+            <></>
+          )}
+          {props.trendlineOnGraph ? (
+            <ReferenceLine
+              yAxisId="heartRate"
+              segment={[
+                {
+                  x: trends.heartRate.xStart,
+                  y: trends.heartRate.calcY(trends.heartRate.xStart),
+                },
+                {
+                  x: trends.heartRate.xEnd + dateGap,
+                  y: trends.heartRate.calcY(trends.heartRate.xEnd + dateGap),
+                },
+              ]}
+              stroke={predictionColor(props.heartRateColor)}
+            />
+          ) : (
+            <></>
+          )}
           <Tooltip content={<TooltipContent />} isAnimationActive={false} />
         </LineChart>
       </ResponsiveContainer>

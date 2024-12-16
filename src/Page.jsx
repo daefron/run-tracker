@@ -106,6 +106,10 @@ export function Page(props) {
           baselineDate={baselineDate}
           marginAmount={marginAmount}
           predictedRuns={predictedRuns}
+          predictedOnGraph={predictedOnGraph}
+          trendlineOnGraph={trendlineOnGraph}
+          setPredictedOnGraph={setPredictedOnGraph}
+          setTrendlineOnGraph={setTrendlineOnGraph}
         />
         <SelectedChart
           render="Selected run"
