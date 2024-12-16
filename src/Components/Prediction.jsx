@@ -2,6 +2,9 @@ import { PredictedRun } from "./PredictedRun";
 import { Stats } from "./Generic/Stats";
 import { CheckMark } from "./Generic/CheckMark";
 export function PredictionStats(props) {
+  if (!props.runs) {
+    return;
+  }
   const types = [
     "duration",
     "distance",

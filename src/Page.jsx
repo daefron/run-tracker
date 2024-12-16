@@ -36,7 +36,14 @@ export function Page(props) {
               <p className="graphTitle">All runs</p>
             </div>
           </div>
-          <div id="prediction"></div>
+          <div id="predictionStats">
+            <p id="runStatsTitle">Predicted next run stats</p>
+            <div className="runStat">
+              <p className="statTitle">Date: </p>
+              <p className="statContent"></p>
+            </div>
+            <div className="statsFooter"></div>
+          </div>
           <div id="selectedGraph">
             <div className="graphTop">
               <p className="graphTitle">Selected run</p>

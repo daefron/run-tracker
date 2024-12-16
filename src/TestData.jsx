@@ -1,6 +1,7587 @@
 export function testData() {
   return [
     {
+      logId: 813149558839223400,
+      activityTypeId: 90009,
+      activityName: "Run",
+      calories: 489,
+      distance: 5.43401,
+      steps: 4852,
+      speed: 10.167586278586278,
+      pace: 354.0663340700514,
+      averageHeartRate: 159,
+      duration: 1926000,
+      activeDuration: 1924000,
+      activityLevel: [
+        {
+          minutes: 0,
+          name: "sedentary",
+        },
+        {
+          minutes: 0,
+          name: "lightly",
+        },
+        {
+          minutes: 0,
+          name: "fairly",
+        },
+        {
+          minutes: 32,
+          name: "very",
+        },
+      ],
+      distanceUnit: "Kilometer",
+      source: {
+        type: "tracker",
+        name: "Inspire 3",
+        id: "E1D82A22963F",
+        url: "https://www.fitbit.com/",
+        trackerFeatures: [
+          "DISTANCE",
+          "STEPS",
+          "GPS",
+          "PACE",
+          "CALORIES",
+          "HEARTRATE",
+          "VO2_MAX",
+        ],
+      },
+      logType: "tracker",
+      manualValuesSpecified: {
+        calories: false,
+        distance: false,
+        steps: false,
+      },
+      intervalWorkoutData: {
+        intervalSummaries: [],
+        numRepeats: 0,
+      },
+      heartRateZones: [
+        {
+          minutes: 1,
+          caloriesOut: 28.59296,
+          name: "Light",
+          min: 30,
+          max: 113,
+        },
+        {
+          minutes: 1,
+          caloriesOut: 13.906576,
+          name: "Moderate",
+          min: 114,
+          max: 139,
+        },
+        {
+          minutes: 23,
+          caloriesOut: 331.678336,
+          name: "Vigorous",
+          min: 140,
+          max: 172,
+        },
+        {
+          minutes: 7,
+          caloriesOut: 115.02168,
+          name: "Peak",
+          min: 173,
+          max: 220,
+        },
+      ],
+      activeZoneMinutes: {
+        totalMinutes: 31,
+        minutesInHeartRateZones: [
+          {
+            minutes: 0,
+            zoneName: "Out of Range",
+            order: 0,
+            type: "OUT_OF_ZONE",
+            minuteMultiplier: 0,
+          },
+          {
+            minutes: 1,
+            zoneName: "Fat Burn",
+            order: 1,
+            type: "FAT_BURN",
+            minuteMultiplier: 1,
+          },
+          {
+            minutes: 23,
+            zoneName: "Cardio",
+            order: 2,
+            type: "CARDIO",
+            minuteMultiplier: 2,
+          },
+          {
+            minutes: 7,
+            zoneName: "Peak",
+            order: 3,
+            type: "PEAK",
+            minuteMultiplier: 2,
+          },
+        ],
+      },
+      inProgress: false,
+      caloriesLink:
+        "https://api.fitbit.com/1/user/-/activities/calories/date/2024-12-15/2024-12-15/1min/time/10:25/10:57.json",
+      heartRateLink:
+        "https://api.fitbit.com/1/user/-/activities/heart/date/2024-12-15/2024-12-15/1sec/time/10:25:38/10:57:44.json",
+      tcxLink:
+        "https://api.fitbit.com/1/user/-/activities/813149558839223480.tcx",
+      lastModified: "2024-12-15T00:01:23.752Z",
+      startTime: "2024-12-15T10:25:38.000+11:00",
+      originalStartTime: "2024-12-15T10:25:38.000+11:00",
+      originalDuration: 1926000,
+      elevationGain: 0,
+      hasActiveZoneMinutes: true,
+      heartRateArray: [
+        {
+          time: "00:00:00",
+          value: 101,
+          bpm: 101,
+          Light: 101,
+        },
+        {
+          time: "00:00:02",
+          value: 99,
+          bpm: 99,
+          Light: 99,
+        },
+        {
+          time: "00:00:04",
+          value: 99,
+          bpm: 99,
+          Light: 99,
+        },
+        {
+          time: "00:00:07",
+          value: 99,
+          bpm: 99,
+          Light: 99,
+        },
+        {
+          time: "00:00:09",
+          value: 102,
+          bpm: 102,
+          Light: 102,
+        },
+        {
+          time: "00:00:11",
+          value: 104,
+          bpm: 104,
+          Light: 104,
+        },
+        {
+          time: "00:00:14",
+          value: 104,
+          bpm: 104,
+          Light: 104,
+        },
+        {
+          time: "00:00:15",
+          value: 105,
+          bpm: 105,
+          Light: 105,
+        },
+        {
+          time: "00:00:17",
+          value: 111,
+          bpm: 111,
+          Light: 111,
+        },
+        {
+          time: "00:00:19",
+          value: 105,
+          bpm: 105,
+          Light: 105,
+        },
+        {
+          time: "00:00:22",
+          value: 105,
+          bpm: 105,
+          Light: 105,
+        },
+        {
+          time: "00:00:23",
+          value: 110,
+          bpm: 110,
+          Light: 110,
+        },
+        {
+          time: "00:00:26",
+          value: 110,
+          bpm: 110,
+          Light: 110,
+        },
+        {
+          time: "00:00:27",
+          value: 112,
+          bpm: 112,
+          Light: 112,
+          Moderate: 112,
+        },
+        {
+          time: "00:00:29",
+          value: 119,
+          bpm: 119,
+          Moderate: 119,
+          Light: 119,
+        },
+        {
+          time: "00:00:32",
+          value: 121,
+          bpm: 121,
+          Moderate: 121,
+        },
+        {
+          time: "00:00:34",
+          value: 123,
+          bpm: 123,
+          Moderate: 123,
+        },
+        {
+          time: "00:00:36",
+          value: 121,
+          bpm: 121,
+          Moderate: 121,
+        },
+        {
+          time: "00:00:38",
+          value: 124,
+          bpm: 124,
+          Moderate: 124,
+        },
+        {
+          time: "00:00:40",
+          value: 127,
+          bpm: 127,
+          Moderate: 127,
+        },
+        {
+          time: "00:00:42",
+          value: 129,
+          bpm: 129,
+          Moderate: 129,
+        },
+        {
+          time: "00:00:44",
+          value: 135,
+          bpm: 135,
+          Moderate: 135,
+        },
+        {
+          time: "00:00:46",
+          value: 139,
+          bpm: 139,
+          Moderate: 139,
+        },
+        {
+          time: "00:00:48",
+          value: 138,
+          bpm: 138,
+          Moderate: 138,
+        },
+        {
+          time: "00:00:51",
+          value: 138,
+          bpm: 138,
+          Moderate: 138,
+          Vigorous: 138,
+        },
+        {
+          time: "00:00:52",
+          value: 140,
+          bpm: 140,
+          Vigorous: 140,
+          Moderate: 140,
+        },
+        {
+          time: "00:00:54",
+          value: 141,
+          bpm: 141,
+          Vigorous: 141,
+        },
+        {
+          time: "00:00:55",
+          value: 143,
+          bpm: 143,
+          Vigorous: 143,
+        },
+        {
+          time: "00:00:57",
+          value: 141,
+          bpm: 141,
+          Vigorous: 141,
+          Moderate: 141,
+        },
+        {
+          time: "00:00:59",
+          value: 135,
+          bpm: 135,
+          Moderate: 135,
+          Vigorous: 135,
+        },
+        {
+          time: "00:01:02",
+          value: 135,
+          bpm: 135,
+          Moderate: 135,
+          Vigorous: 135,
+        },
+        {
+          time: "00:01:03",
+          value: 140,
+          bpm: 140,
+          Vigorous: 140,
+          Moderate: 140,
+        },
+        {
+          time: "00:01:06",
+          value: 140,
+          bpm: 140,
+          Vigorous: 140,
+        },
+        {
+          time: "00:01:07",
+          value: 147,
+          bpm: 147,
+          Vigorous: 147,
+        },
+        {
+          time: "00:01:11",
+          value: 146,
+          bpm: 146,
+          Vigorous: 146,
+        },
+        {
+          time: "00:01:11",
+          value: 144,
+          bpm: 144,
+          Vigorous: 144,
+        },
+        {
+          time: "00:01:15",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:01:17",
+          value: 147,
+          bpm: 147,
+          Vigorous: 147,
+        },
+        {
+          time: "00:01:18",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:01:19",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:01:23",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:01:23",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:01:26",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:01:26",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:01:30",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:01:32",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:01:34",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:01:36",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:01:38",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:01:40",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:01:42",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:01:45",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:01:48",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:01:51",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:01:53",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:01:55",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:01:57",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:01:59",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:02:00",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:02:05",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:02:06",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:02:07",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:02:12",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:02:14",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:02:15",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:02:19",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:02:22",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:02:23",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:02:23",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:02:29",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:02:30",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:02:30",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:02:35",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:02:37",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:02:38",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:02:38",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:02:44",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:02:46",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:02:49",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:02:51",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:02:53",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:02:53",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:02:58",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:03:00",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:03:00",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:03:04",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:03:06",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:03:07",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:08",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:12",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:03:14",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:15",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:15",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:03:19",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:22",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:23",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:03:23",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:03:27",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:03:30",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:03:30",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:34",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:37",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:38",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:38",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:03:44",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:03:46",
+          value: 147,
+          bpm: 147,
+          Vigorous: 147,
+        },
+        {
+          time: "00:03:46",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:03:51",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:03:53",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:03:53",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:03:59",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:04:00",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:04:00",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:04:02",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:04:08",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:04:11",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:04:13",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:04:15",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:04:15",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:04:16",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:04:19",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:04:25",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:04:27",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:04:30",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:04:30",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:04:31",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:04:34",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:04:38",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:04:40",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:04:42",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:04:44",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:04:46",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:04:46",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:04:48",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:04:49",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:04:55",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:04:57",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:04:59",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:05:00",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:05:01",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:05:02",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:05:08",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:05:11",
+          value: 147,
+          bpm: 147,
+          Vigorous: 147,
+        },
+        {
+          time: "00:05:14",
+          value: 147,
+          bpm: 147,
+          Vigorous: 147,
+        },
+        {
+          time: "00:05:15",
+          value: 147,
+          bpm: 147,
+          Vigorous: 147,
+        },
+        {
+          time: "00:05:15",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:05:18",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:05:24",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:05:27",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:05:28",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:05:30",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:05:30",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:05:32",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:05:33",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:05:39",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:05:42",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:05:43",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:05:45",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:05:46",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:05:46",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:05:49",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:05:53",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:05:55",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:05:57",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:06:00",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:06:00",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:06:00",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:06:02",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:06:03",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:06:08",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:06:10",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:06:12",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:06:14",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:06:15",
+          value: 167,
+          bpm: 167,
+          Vigorous: 167,
+        },
+        {
+          time: "00:06:15",
+          value: 169,
+          bpm: 169,
+          Vigorous: 169,
+        },
+        {
+          time: "00:06:17",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:06:19",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:06:24",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+          Peak: 171,
+        },
+        {
+          time: "00:06:26",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:06:28",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:06:30",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+        },
+        {
+          time: "00:06:30",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:06:30",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:06:33",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:06:34",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:06:40",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:06:43",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:06:45",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:06:46",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:06:46",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:06:49",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:06:54",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:06:56",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:06:59",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:07:00",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:07:00",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:07:02",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:07:08",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:07:11",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:07:14",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:07:15",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:07:16",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:07:19",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:07:25",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:07:28",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:07:29",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:07:30",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:07:30",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:07:32",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:07:34",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:07:40",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:07:41",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:07:42",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:07:44",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:07:46",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:07:46",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:07:47",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:07:53",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:07:54",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:07:56",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:07:58",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:08:00",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:08:01",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:08:05",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:08:07",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:08:09",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:08:11",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:08:13",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:08:16",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:08:18",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:08:20",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:08:24",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:08:26",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:08:28",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:08:30",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:08:31",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:08:33",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:08:37",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:08:37",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:08:41",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:08:43",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:08:46",
+          value: 181,
+          bpm: 181,
+          Peak: 181,
+        },
+        {
+          time: "00:08:48",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:08:50",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:08:52",
+          value: 181,
+          bpm: 181,
+          Peak: 181,
+        },
+        {
+          time: "00:08:54",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:08:54",
+          value: 181,
+          bpm: 181,
+          Peak: 181,
+        },
+        {
+          time: "00:08:56",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:00",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:03",
+          value: 181,
+          bpm: 181,
+          Peak: 181,
+        },
+        {
+          time: "00:09:05",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:07",
+          value: 181,
+          bpm: 181,
+          Peak: 181,
+        },
+        {
+          time: "00:09:09",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:11",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:15",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:16",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:20",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:22",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:24",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:26",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:28",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:31",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:33",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:35",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:39",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:39",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:43",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:45",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:09:46",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:48",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:50",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:09:52",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:56",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:09:56",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:10:00",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:10:01",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:10:03",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:10:07",
+          value: 180,
+          bpm: 180,
+          Peak: 180,
+        },
+        {
+          time: "00:10:09",
+          value: 179,
+          bpm: 179,
+          Peak: 179,
+        },
+        {
+          time: "00:10:11",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:10:15",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:10:16",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:10:18",
+          value: 177,
+          bpm: 177,
+          Peak: 177,
+        },
+        {
+          time: "00:10:20",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:10:22",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:10:26",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:10:28",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:10:31",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:10:33",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:10:35",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:10:39",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:10:41",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:10:45",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:10:48",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:10:50",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+        },
+        {
+          time: "00:10:54",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:10:56",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:10:58",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:11:00",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:11:01",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:11:03",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:11:05",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:11:07",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:11:09",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:11:13",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:11:13",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:11:16",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:11:18",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:11:22",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:11:24",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:11:28",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:11:31",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:11:33",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:11:37",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:11:39",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:11:41",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:11:43",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:11:46",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:11:48",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+        },
+        {
+          time: "00:11:50",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+        },
+        {
+          time: "00:11:54",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+        },
+        {
+          time: "00:11:56",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:11:58",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:12:00",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+        },
+        {
+          time: "00:12:01",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+        },
+        {
+          time: "00:12:05",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+        },
+        {
+          time: "00:12:07",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+        },
+        {
+          time: "00:12:11",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+        },
+        {
+          time: "00:12:13",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+        },
+        {
+          time: "00:12:16",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:12:18",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:12:22",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+        },
+        {
+          time: "00:12:24",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:12:28",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:12:30",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:12:31",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:12:33",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:12:35",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:12:39",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:12:39",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:12:41",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:12:45",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+          Vigorous: 174,
+        },
+        {
+          time: "00:12:46",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:12:48",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+          Vigorous: 174,
+        },
+        {
+          time: "00:12:50",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:12:52",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:12:54",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+          Peak: 171,
+        },
+        {
+          time: "00:12:56",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:12:58",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:13:01",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+          Vigorous: 174,
+        },
+        {
+          time: "00:13:03",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:13:05",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:13:07",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:13:09",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:13:13",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:13:16",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:13:16",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:13:18",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:13:20",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+          Peak: 171,
+        },
+        {
+          time: "00:13:22",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+          Vigorous: 174,
+        },
+        {
+          time: "00:13:24",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:13:26",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:13:30",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:13:33",
+          value: 175,
+          bpm: 175,
+          Peak: 175,
+        },
+        {
+          time: "00:13:35",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:13:39",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:13:41",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:13:43",
+          value: 169,
+          bpm: 169,
+          Vigorous: 169,
+          Peak: 169,
+        },
+        {
+          time: "00:13:45",
+          value: 164,
+          bpm: 164,
+          Vigorous: 164,
+        },
+        {
+          time: "00:13:46",
+          value: 165,
+          bpm: 165,
+          Vigorous: 165,
+        },
+        {
+          time: "00:13:48",
+          value: 167,
+          bpm: 167,
+          Vigorous: 167,
+        },
+        {
+          time: "00:13:50",
+          value: 165,
+          bpm: 165,
+          Vigorous: 165,
+        },
+        {
+          time: "00:13:52",
+          value: 168,
+          bpm: 168,
+          Vigorous: 168,
+        },
+        {
+          time: "00:13:54",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+        },
+        {
+          time: "00:13:56",
+          value: 170,
+          bpm: 170,
+          Vigorous: 170,
+        },
+        {
+          time: "00:14:00",
+          value: 170,
+          bpm: 170,
+          Vigorous: 170,
+          Peak: 170,
+        },
+        {
+          time: "00:14:01",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:14:03",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+          Peak: 171,
+        },
+        {
+          time: "00:14:05",
+          value: 170,
+          bpm: 170,
+          Vigorous: 170,
+          Peak: 170,
+        },
+        {
+          time: "00:14:05",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+          Vigorous: 173,
+        },
+        {
+          time: "00:14:07",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+          Peak: 171,
+        },
+        {
+          time: "00:14:09",
+          value: 170,
+          bpm: 170,
+          Vigorous: 170,
+        },
+        {
+          time: "00:14:11",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:14:13",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+          Vigorous: 174,
+        },
+        {
+          time: "00:14:16",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:14:18",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+        },
+        {
+          time: "00:14:20",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:14:22",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+        },
+        {
+          time: "00:14:24",
+          value: 173,
+          bpm: 173,
+          Peak: 173,
+        },
+        {
+          time: "00:14:26",
+          value: 174,
+          bpm: 174,
+          Peak: 174,
+          Vigorous: 174,
+        },
+        {
+          time: "00:14:28",
+          value: 172,
+          bpm: 172,
+          Vigorous: 172,
+          Peak: 172,
+        },
+        {
+          time: "00:14:30",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+        },
+        {
+          time: "00:14:33",
+          value: 166,
+          bpm: 166,
+          Vigorous: 166,
+        },
+        {
+          time: "00:14:35",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:14:37",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:14:39",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:14:41",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:14:43",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:14:45",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:14:46",
+          value: 166,
+          bpm: 166,
+          Vigorous: 166,
+        },
+        {
+          time: "00:14:48",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:14:50",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:14:52",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:14:54",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:14:56",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:14:58",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:15:00",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:15:03",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:15:03",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:15:05",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:15:09",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:15:09",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:15:11",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:15:15",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:15:16",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:15:18",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:15:20",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:15:22",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:15:24",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:15:26",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:15:28",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:15:31",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:15:33",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:15:35",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:15:37",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:15:39",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:15:41",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:15:41",
+          value: 147,
+          bpm: 147,
+          Vigorous: 147,
+        },
+        {
+          time: "00:15:43",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:15:46",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:15:48",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:15:50",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:15:52",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:15:54",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:15:56",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:15:58",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:16:00",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:16:02",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:16:03",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:16:06",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:16:07",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:16:07",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:16:11",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:16:11",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:16:15",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:16:18",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:16:18",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:16:21",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:16:22",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:16:26",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:16:29",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:16:30",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:16:32",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:16:33",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:16:36",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:16:37",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:16:40",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:16:41",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:16:44",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:16:45",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:16:48",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:16:51",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:16:52",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:16:55",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:16:56",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:16:59",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:17:02",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:17:03",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:17:07",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:17:11",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:17:14",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:17:15",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:17:17",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:17:18",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:17:22",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:17:22",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:17:26",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:17:26",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:17:30",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:17:33",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:17:33",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:17:36",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:17:37",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:17:40",
+          value: 164,
+          bpm: 164,
+          Vigorous: 164,
+        },
+        {
+          time: "00:17:41",
+          value: 165,
+          bpm: 165,
+          Vigorous: 165,
+        },
+        {
+          time: "00:17:41",
+          value: 166,
+          bpm: 166,
+          Vigorous: 166,
+        },
+        {
+          time: "00:17:45",
+          value: 167,
+          bpm: 167,
+          Vigorous: 167,
+        },
+        {
+          time: "00:17:47",
+          value: 165,
+          bpm: 165,
+          Vigorous: 165,
+        },
+        {
+          time: "00:17:48",
+          value: 165,
+          bpm: 165,
+          Vigorous: 165,
+        },
+        {
+          time: "00:17:51",
+          value: 166,
+          bpm: 166,
+          Vigorous: 166,
+        },
+        {
+          time: "00:17:52",
+          value: 165,
+          bpm: 165,
+          Vigorous: 165,
+        },
+        {
+          time: "00:17:55",
+          value: 164,
+          bpm: 164,
+          Vigorous: 164,
+        },
+        {
+          time: "00:17:56",
+          value: 165,
+          bpm: 165,
+          Vigorous: 165,
+        },
+        {
+          time: "00:18:00",
+          value: 165,
+          bpm: 165,
+          Vigorous: 165,
+        },
+        {
+          time: "00:18:00",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:18:03",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:18:06",
+          value: 164,
+          bpm: 164,
+          Vigorous: 164,
+        },
+        {
+          time: "00:18:07",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:18:10",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:18:11",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:18:14",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:18:17",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:18:18",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:18:18",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:18:22",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:18:25",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:18:26",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:18:26",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:18:30",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:18:33",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:18:33",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:18:37",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:18:37",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:18:41",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:18:41",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:18:45",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:18:47",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:18:48",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:18:51",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:18:52",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:18:52",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:18:56",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:00",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:02",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:19:03",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:19:06",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:07",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:10",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:19:11",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:19:14",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:17",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:18",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:19:18",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:21",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:22",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:25",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:26",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:29",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:30",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:33",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:33",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:37",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:41",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:44",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:45",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:48",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:48",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:19:52",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:52",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:19:56",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:19:59",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:20:02",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:20:03",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:06",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:20:07",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:11",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:20:14",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:20:15",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:18",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:18",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:20:22",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:20:22",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:25",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:20:26",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:30",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:20:33",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:20:36",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:37",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:40",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:20:41",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:44",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:20:45",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:20:48",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:20:52",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:20:55",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:20:56",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:20:59",
+          value: 171,
+          bpm: 171,
+          Vigorous: 171,
+          Peak: 171,
+        },
+        {
+          time: "00:21:00",
+          value: 181,
+          bpm: 181,
+          Peak: 181,
+          Vigorous: 181,
+        },
+        {
+          time: "00:21:03",
+          value: 178,
+          bpm: 178,
+          Peak: 178,
+        },
+        {
+          time: "00:21:03",
+          value: 176,
+          bpm: 176,
+          Peak: 176,
+          Vigorous: 176,
+        },
+        {
+          time: "00:21:07",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+          Peak: 162,
+        },
+        {
+          time: "00:21:07",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:21:11",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:21:14",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:21:15",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:21:17",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:21:18",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:21:22",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:21:22",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:21:26",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:21:29",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:21:30",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:21:33",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:21:33",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:21:36",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:21:37",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:21:40",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:21:41",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:21:45",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:21:47",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:21:48",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:21:51",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:21:52",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:21:55",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:21:56",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:22:00",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:22:03",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:22:03",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:22:06",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:22:07",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:22:11",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:22:14",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:22:15",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:22:18",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:22:21",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:22:22",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:22:26",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:22:26",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:22:30",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:22:33",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:22:36",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:22:37",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:22:41",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:22:41",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:22:45",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:22:47",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:22:48",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:22:52",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:22:55",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:22:56",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:22:59",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:23:00",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:23:02",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:23:03",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:23:06",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:23:07",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:23:10",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:23:11",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:23:15",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:23:15",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:23:18",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:23:21",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:23:22",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:23:25",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:23:26",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:23:29",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:23:30",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:23:33",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:23:33",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:23:37",
+          value: 164,
+          bpm: 164,
+          Vigorous: 164,
+        },
+        {
+          time: "00:23:37",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:23:41",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:23:44",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:23:45",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:23:48",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:23:51",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:23:52",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:23:56",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:23:59",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:24:00",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:24:02",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:24:03",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:24:06",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:24:07",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:24:10",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:24:11",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:24:14",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:24:15",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:24:18",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:24:21",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:24:22",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:24:22",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:24:25",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:24:26",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:24:30",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:24:33",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:24:33",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:24:37",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:24:41",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:24:41",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:24:45",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:24:47",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:24:48",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:24:52",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:24:52",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:24:56",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:24:56",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:25:00",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:02",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:25:03",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:25:06",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:25:07",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:25:10",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:25:11",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:25:15",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:25:17",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:18",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:22",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:26",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:26",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:29",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:25:30",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:33",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:33",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:25:37",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:25:40",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:41",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:25:44",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:25:45",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:25:48",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:25:48",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:25:52",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:25:55",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:25:56",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:25:59",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:26:00",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:26:03",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:26:03",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:07",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:26:07",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:26:11",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:26:15",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:18",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:21",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:22",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:26:22",
+          value: 148,
+          bpm: 148,
+          Vigorous: 148,
+        },
+        {
+          time: "00:26:26",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:26:26",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:30",
+          value: 149,
+          bpm: 149,
+          Vigorous: 149,
+        },
+        {
+          time: "00:26:32",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:33",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:37",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:41",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:41",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:26:45",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:26:47",
+          value: 150,
+          bpm: 150,
+          Vigorous: 150,
+        },
+        {
+          time: "00:26:48",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:26:52",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:26:55",
+          value: 151,
+          bpm: 151,
+          Vigorous: 151,
+        },
+        {
+          time: "00:26:56",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:27:00",
+          value: 152,
+          bpm: 152,
+          Vigorous: 152,
+        },
+        {
+          time: "00:27:00",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:27:03",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:27:03",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:27:07",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:27:10",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:27:11",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:27:14",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:27:15",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:27:18",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:27:18",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:27:22",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:27:22",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:27:26",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:27:29",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:27:30",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:27:32",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:27:33",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:27:37",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:27:37",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:27:41",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:27:45",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:27:48",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:27:48",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:27:51",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:27:52",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:27:56",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:27:59",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:28:02",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:28:03",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:28:07",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:28:10",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:28:11",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:28:14",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:17",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:18",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:28:22",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:22",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:28:25",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:26",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:29",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:28:30",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:28:33",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:33",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:28:37",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:28:37",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:28:41",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:44",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:47",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:28:48",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:48",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:28:52",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:28:52",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:56",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:28:56",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:29:00",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:29:03",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:29:03",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:07",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:10",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:11",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:29:11",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:15",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:29:17",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:18",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:21",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:29:22",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:25",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:26",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:29:29",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:30",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:29:33",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:29:37",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:29:40",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:41",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:45",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:48",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:29:52",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:29:52",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:29:56",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:29:56",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:30:00",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:30:03",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:30:06",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:30:07",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:30:10",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:30:11",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:30:11",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:30:15",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:30:17",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:30:18",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:30:21",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:30:22",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:30:26",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:30:26",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:30:30",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:30:33",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:30:33",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:30:36",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:30:37",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:30:40",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:30:41",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:30:44",
+          value: 160,
+          bpm: 160,
+          Vigorous: 160,
+        },
+        {
+          time: "00:30:45",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:30:47",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:30:48",
+          value: 163,
+          bpm: 163,
+          Vigorous: 163,
+        },
+        {
+          time: "00:30:51",
+          value: 164,
+          bpm: 164,
+          Vigorous: 164,
+        },
+        {
+          time: "00:30:52",
+          value: 164,
+          bpm: 164,
+          Vigorous: 164,
+        },
+        {
+          time: "00:30:55",
+          value: 165,
+          bpm: 165,
+          Vigorous: 165,
+        },
+        {
+          time: "00:30:56",
+          value: 164,
+          bpm: 164,
+          Vigorous: 164,
+        },
+        {
+          time: "00:30:59",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:31:02",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:31:03",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:31:03",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:31:07",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:31:11",
+          value: 161,
+          bpm: 161,
+          Vigorous: 161,
+        },
+        {
+          time: "00:31:11",
+          value: 162,
+          bpm: 162,
+          Vigorous: 162,
+        },
+        {
+          time: "00:31:14",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:31:17",
+          value: 159,
+          bpm: 159,
+          Vigorous: 159,
+        },
+        {
+          time: "00:31:18",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:31:22",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:31:22",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:31:26",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:31:29",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:31:30",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:31:32",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:31:33",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:31:37",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:31:37",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:31:41",
+          value: 153,
+          bpm: 153,
+          Vigorous: 153,
+        },
+        {
+          time: "00:31:41",
+          value: 154,
+          bpm: 154,
+          Vigorous: 154,
+        },
+        {
+          time: "00:31:45",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:31:48",
+          value: 155,
+          bpm: 155,
+          Vigorous: 155,
+        },
+        {
+          time: "00:31:48",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:31:51",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:31:52",
+          value: 156,
+          bpm: 156,
+          Vigorous: 156,
+        },
+        {
+          time: "00:31:55",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:31:56",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+        {
+          time: "00:32:00",
+          value: 158,
+          bpm: 158,
+          Vigorous: 158,
+        },
+        {
+          time: "00:32:00",
+          value: 157,
+          bpm: 157,
+          Vigorous: 157,
+        },
+      ],
+    },
+    {
+      logId: 7698502886730533000,
+      activityTypeId: 90009,
+      activityName: "Run",
+      calories: 189,
+      distance: 2.10595,
+      steps: 1916,
+      speed: 9.782477419354839,
+      pace: 368.00493838885063,
+      averageHeartRate: 152,
+      duration: 777000,
+      activeDuration: 775000,
+      activityLevel: [
+        {
+          minutes: 0,
+          name: "sedentary",
+        },
+        {
+          minutes: 0,
+          name: "lightly",
+        },
+        {
+          minutes: 0,
+          name: "fairly",
+        },
+        {
+          minutes: 13,
+          name: "very",
+        },
+      ],
+      distanceUnit: "Kilometer",
+      source: {
+        type: "tracker",
+        name: "Inspire 3",
+        id: "E1D82A22963F",
+        url: "https://www.fitbit.com/",
+        trackerFeatures: [
+          "DISTANCE",
+          "STEPS",
+          "GPS",
+          "PACE",
+          "CALORIES",
+          "HEARTRATE",
+          "VO2_MAX",
+        ],
+      },
+      logType: "tracker",
+      manualValuesSpecified: {
+        calories: false,
+        distance: false,
+        steps: false,
+      },
+      intervalWorkoutData: {
+        intervalSummaries: [],
+        numRepeats: 0,
+      },
+      heartRateZones: [
+        {
+          minutes: 0,
+          caloriesOut: 24.174048,
+          name: "Light",
+          min: 30,
+          max: 113,
+        },
+        {
+          minutes: 1,
+          caloriesOut: 13.906576,
+          name: "Moderate",
+          min: 114,
+          max: 139,
+        },
+        {
+          minutes: 11,
+          caloriesOut: 151.41272,
+          name: "Vigorous",
+          min: 140,
+          max: 172,
+        },
+        {
+          minutes: 0,
+          caloriesOut: 0,
+          name: "Peak",
+          min: 173,
+          max: 220,
+        },
+      ],
+      activeZoneMinutes: {
+        totalMinutes: 12,
+        minutesInHeartRateZones: [
+          {
+            minutes: 0,
+            zoneName: "Out of Range",
+            order: 0,
+            type: "OUT_OF_ZONE",
+            minuteMultiplier: 0,
+          },
+          {
+            minutes: 1,
+            zoneName: "Fat Burn",
+            order: 1,
+            type: "FAT_BURN",
+            minuteMultiplier: 1,
+          },
+          {
+            minutes: 11,
+            zoneName: "Cardio",
+            order: 2,
+            type: "CARDIO",
+            minuteMultiplier: 2,
+          },
+          {
+            minutes: 0,
+            zoneName: "Peak",
+            order: 3,
+            type: "PEAK",
+            minuteMultiplier: 2,
+          },
+        ],
+      },
+      inProgress: false,
+      caloriesLink:
+        "https://api.fitbit.com/1/user/-/activities/calories/date/2024-12-12/2024-12-12/1min/time/15:55/16:08.json",
+      heartRateLink:
+        "https://api.fitbit.com/1/user/-/activities/heart/date/2024-12-12/2024-12-12/1sec/time/15:55:31/16:08:28.json",
+      tcxLink:
+        "https://api.fitbit.com/1/user/-/activities/7698502886730533256.tcx",
+      lastModified: "2024-12-12T05:14:38.770Z",
+      startTime: "2024-12-12T15:55:31.000+11:00",
+      originalStartTime: "2024-12-12T15:55:31.000+11:00",
+      originalDuration: 777000,
+      elevationGain: 0,
+      hasActiveZoneMinutes: true,
+      heartRateArray: [
+        {
+          time: "00:00:00",
+          value: 106,
+          bpm: 106,
+        },
+        {
+          time: "00:00:01",
+          value: 107,
+          bpm: 107,
+        },
+        {
+          time: "00:00:03",
+          value: 106,
+          bpm: 106,
+        },
+        {
+          time: "00:00:05",
+          value: 103,
+          bpm: 103,
+        },
+        {
+          time: "00:00:07",
+          value: 104,
+          bpm: 104,
+        },
+        {
+          time: "00:00:09",
+          value: 106,
+          bpm: 106,
+        },
+        {
+          time: "00:00:11",
+          value: 105,
+          bpm: 105,
+        },
+        {
+          time: "00:00:13",
+          value: 106,
+          bpm: 106,
+        },
+        {
+          time: "00:00:15",
+          value: 105,
+          bpm: 105,
+        },
+        {
+          time: "00:00:18",
+          value: 105,
+          bpm: 105,
+        },
+        {
+          time: "00:00:21",
+          value: 105,
+          bpm: 105,
+        },
+        {
+          time: "00:00:24",
+          value: 105,
+          bpm: 105,
+        },
+        {
+          time: "00:00:27",
+          value: 105,
+          bpm: 105,
+        },
+        {
+          time: "00:00:30",
+          value: 106,
+          bpm: 106,
+        },
+        {
+          time: "00:00:33",
+          value: 106,
+          bpm: 106,
+        },
+        {
+          time: "00:00:34",
+          value: 107,
+          bpm: 107,
+        },
+        {
+          time: "00:00:36",
+          value: 108,
+          bpm: 108,
+        },
+        {
+          time: "00:00:38",
+          value: 109,
+          bpm: 109,
+        },
+        {
+          time: "00:00:41",
+          value: 109,
+          bpm: 109,
+        },
+        {
+          time: "00:00:42",
+          value: 110,
+          bpm: 110,
+        },
+        {
+          time: "00:00:44",
+          value: 111,
+          bpm: 111,
+        },
+        {
+          time: "00:00:47",
+          value: 111,
+          bpm: 111,
+        },
+        {
+          time: "00:00:48",
+          value: 113,
+          bpm: 113,
+        },
+        {
+          time: "00:00:49",
+          value: 115,
+          bpm: 115,
+        },
+        {
+          time: "00:00:51",
+          value: 114,
+          bpm: 114,
+        },
+        {
+          time: "00:00:53",
+          value: 115,
+          bpm: 115,
+        },
+        {
+          time: "00:00:55",
+          value: 117,
+          bpm: 117,
+        },
+        {
+          time: "00:00:57",
+          value: 115,
+          bpm: 115,
+        },
+        {
+          time: "00:01:00",
+          value: 115,
+          bpm: 115,
+        },
+        {
+          time: "00:01:00",
+          value: 121,
+          bpm: 121,
+        },
+        {
+          time: "00:01:03",
+          value: 122,
+          bpm: 122,
+        },
+        {
+          time: "00:01:03",
+          value: 127,
+          bpm: 127,
+        },
+        {
+          time: "00:01:07",
+          value: 127,
+          bpm: 127,
+        },
+        {
+          time: "00:01:07",
+          value: 128,
+          bpm: 128,
+        },
+        {
+          time: "00:01:11",
+          value: 131,
+          bpm: 131,
+        },
+        {
+          time: "00:01:14",
+          value: 131,
+          bpm: 131,
+        },
+        {
+          time: "00:01:15",
+          value: 130,
+          bpm: 130,
+        },
+        {
+          time: "00:01:18",
+          value: 131,
+          bpm: 131,
+        },
+        {
+          time: "00:01:19",
+          value: 130,
+          bpm: 130,
+        },
+        {
+          time: "00:01:22",
+          value: 132,
+          bpm: 132,
+        },
+        {
+          time: "00:01:23",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:01:26",
+          value: 131,
+          bpm: 131,
+        },
+        {
+          time: "00:01:26",
+          value: 137,
+          bpm: 137,
+        },
+        {
+          time: "00:01:30",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:01:32",
+          value: 129,
+          bpm: 129,
+        },
+        {
+          time: "00:01:34",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:01:36",
+          value: 135,
+          bpm: 135,
+        },
+        {
+          time: "00:01:37",
+          value: 128,
+          bpm: 128,
+        },
+        {
+          time: "00:01:38",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:01:41",
+          value: 140,
+          bpm: 140,
+        },
+        {
+          time: "00:01:42",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:01:45",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:01:47",
+          value: 139,
+          bpm: 139,
+        },
+        {
+          time: "00:01:49",
+          value: 137,
+          bpm: 137,
+        },
+        {
+          time: "00:01:51",
+          value: 138,
+          bpm: 138,
+        },
+        {
+          time: "00:01:53",
+          value: 141,
+          bpm: 141,
+        },
+        {
+          time: "00:01:55",
+          value: 139,
+          bpm: 139,
+        },
+        {
+          time: "00:01:57",
+          value: 140,
+          bpm: 140,
+        },
+        {
+          time: "00:01:59",
+          value: 141,
+          bpm: 141,
+        },
+        {
+          time: "00:02:00",
+          value: 140,
+          bpm: 140,
+        },
+        {
+          time: "00:02:00",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:02:04",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:02:06",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:02:07",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:02:07",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:02:12",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:02:14",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:02:15",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:02:15",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:02:20",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:22",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:23",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:02:23",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:27",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:29",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:30",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:30",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:35",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:02:37",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:38",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:38",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:02:43",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:02:46",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:02:46",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:02:46",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:02:50",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:52",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:02:53",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:02:53",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:58",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:03:00",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:03:00",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:03:04",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:03:06",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:03:07",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:03:08",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:03:12",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:13",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:03:15",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:15",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:19",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:03:21",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:23",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:23",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:03:27",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:03:29",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:03:30",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:03:30",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:03:35",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:03:36",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:03:38",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:03:38",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:03:43",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:03:44",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:03:46",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:03:46",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:03:50",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:03:52",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:03:53",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:03:53",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:03:58",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:04:00",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:04:00",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:04:00",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:04:02",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:04:04",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:04:09",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:04:11",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:04:13",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:04:15",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:04:15",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:04:16",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:04:18",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:04:23",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:04:24",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:04:26",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:04:28",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:04:30",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:30",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:31",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:04:33",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:04:38",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:40",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:04:42",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:04:44",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:46",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:46",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:46",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:49",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:53",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:04:55",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:04:57",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:04:59",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:05:00",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:05:00",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:03",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:04",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:10",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:11",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:05:12",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:15",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:15",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:05:15",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:05:18",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:05:19",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:05:24",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:05:26",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:05:28",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:05:30",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:05:30",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:05:31",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:05:33",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:34",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:05:39",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:05:41",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:43",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:05:45",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:05:46",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:47",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:48",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:05:53",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:55",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:58",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:59",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:06:00",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:06:00",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:06:01",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:06:03",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:06:08",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:06:10",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:06:12",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:06:14",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:06:15",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:06:15",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:06:17",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:06:19",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:06:24",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:06:25",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:06:27",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:06:29",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:06:30",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:06:30",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:06:32",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:06:34",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:06:39",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:06:41",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:06:43",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:06:45",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:06:46",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:06:46",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:06:47",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:06:53",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:06:54",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:06:57",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:06:58",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:07:00",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:07:00",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:07:01",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:07:03",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:08",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:07:10",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:07:12",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:15",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:15",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:16",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:07:18",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:23",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:25",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:27",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:07:29",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:30",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:07:30",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:32",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:07:38",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:40",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:07:42",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:44",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:07:46",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:46",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:47",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:49",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:07:54",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:07:56",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:07:58",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:08:01",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:08:03",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:08:05",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:08:07",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:08:09",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:08:11",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:08:13",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:08:15",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:08:16",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:08:18",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:08:22",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:08:22",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:08:24",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:08:26",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:08:28",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:08:30",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:08:31",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:08:33",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:08:35",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:08:37",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:08:39",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:08:41",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:08:43",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:08:46",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:08:48",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:08:48",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:08:52",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:08:52",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:08:54",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:08:56",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:09:00",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:09:01",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:03",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:09:05",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:09:07",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:09",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:09:11",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:09:11",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:09:13",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:09:16",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:09:18",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:09:20",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:22",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:09:24",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:09:26",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:09:28",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:31",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:31",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:09:33",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:35",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:09:39",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:41",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:09:43",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:09:45",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:09:46",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:09:48",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:09:50",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:09:54",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:09:54",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:09:56",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:09:58",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:10:00",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:10:03",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:10:03",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:10:05",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:10:09",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:10:09",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:10:13",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:10:13",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:10:16",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:10:18",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:10:20",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:10:22",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:10:24",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:10:24",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:10:26",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:10:28",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:10:31",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:10:33",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:10:35",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:10:37",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:10:39",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:10:41",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:10:43",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:10:45",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:10:46",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:10:48",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:10:50",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:10:52",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:10:54",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:10:56",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:10:58",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:11:00",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:11:03",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:11:03",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:11:05",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:11:07",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:11:09",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:11:11",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:11:15",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:11:16",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:11:20",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:11:20",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:11:22",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:11:24",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:11:26",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:11:28",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:11:31",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:11:33",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:11:35",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:11:35",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:11:37",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:11:41",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:11:41",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:11:43",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:11:46",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:11:48",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:11:50",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:11:52",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:11:54",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:11:56",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:11:58",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:12:00",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:12:01",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:12:03",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:12:05",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:12:07",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:12:09",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:12:11",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:12:13",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:12:15",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:12:16",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:12:20",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:12:20",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:12:22",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:12:24",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:12:26",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:12:28",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:12:31",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:12:31",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:12:33",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:12:35",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:12:37",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:12:39",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:12:41",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:12:43",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:12:46",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:12:48",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:48",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:12:50",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:12:52",
+          value: 185,
+          bpm: 185,
+        },
+      ],
+    },
+    {
       logId: 6389969899346115000,
       activityTypeId: 90009,
       activityName: "Run",
@@ -60,21 +7641,21 @@ export function testData() {
         {
           minutes: 0,
           caloriesOut: 13.149897,
-          name: "Out of Range",
+          name: "Light",
           min: 30,
           max: 112,
         },
         {
           minutes: 1,
           caloriesOut: 14.191473,
-          name: "Fat Burn",
+          name: "Moderate",
           min: 113,
           max: 139,
         },
         {
           minutes: 12,
           caloriesOut: 188.65344,
-          name: "Cardio",
+          name: "Vigorous",
           min: 140,
           max: 172,
         },
@@ -120,2336 +7701,6 @@ export function testData() {
         ],
       },
       inProgress: false,
-      heartRateArray: [
-        {
-          time: "09:25:29",
-          value: 120,
-        },
-        {
-          time: "09:25:31",
-          value: 119,
-        },
-        {
-          time: "09:25:33",
-          value: 121,
-        },
-        {
-          time: "09:25:35",
-          value: 127,
-        },
-        {
-          time: "09:25:37",
-          value: 126,
-        },
-        {
-          time: "09:25:39",
-          value: 129,
-        },
-        {
-          time: "09:25:41",
-          value: 128,
-        },
-        {
-          time: "09:25:43",
-          value: 125,
-        },
-        {
-          time: "09:25:44",
-          value: 127,
-        },
-        {
-          time: "09:25:46",
-          value: 124,
-        },
-        {
-          time: "09:25:48",
-          value: 123,
-        },
-        {
-          time: "09:25:50",
-          value: 127,
-        },
-        {
-          time: "09:25:52",
-          value: 130,
-        },
-        {
-          time: "09:25:54",
-          value: 129,
-        },
-        {
-          time: "09:25:56",
-          value: 133,
-        },
-        {
-          time: "09:25:58",
-          value: 135,
-        },
-        {
-          time: "09:26:00",
-          value: 133,
-        },
-        {
-          time: "09:26:02",
-          value: 134,
-        },
-        {
-          time: "09:26:05",
-          value: 134,
-        },
-        {
-          time: "09:26:06",
-          value: 128,
-        },
-        {
-          time: "09:26:07",
-          value: 138,
-        },
-        {
-          time: "09:26:09",
-          value: 140,
-        },
-        {
-          time: "09:26:11",
-          value: 137,
-        },
-        {
-          time: "09:26:13",
-          value: 141,
-        },
-        {
-          time: "09:26:15",
-          value: 143,
-        },
-        {
-          time: "09:26:18",
-          value: 143,
-        },
-        {
-          time: "09:26:19",
-          value: 144,
-        },
-        {
-          time: "09:26:22",
-          value: 144,
-        },
-        {
-          time: "09:26:25",
-          value: 146,
-        },
-        {
-          time: "09:26:27",
-          value: 147,
-        },
-        {
-          time: "09:26:30",
-          value: 147,
-        },
-        {
-          time: "09:26:33",
-          value: 147,
-        },
-        {
-          time: "09:26:34",
-          value: 149,
-        },
-        {
-          time: "09:26:36",
-          value: 150,
-        },
-        {
-          time: "09:26:38",
-          value: 148,
-        },
-        {
-          time: "09:26:41",
-          value: 148,
-        },
-        {
-          time: "09:26:42",
-          value: 150,
-        },
-        {
-          time: "09:26:44",
-          value: 149,
-        },
-        {
-          time: "09:26:46",
-          value: 148,
-        },
-        {
-          time: "09:26:49",
-          value: 148,
-        },
-        {
-          time: "09:26:50",
-          value: 147,
-        },
-        {
-          time: "09:26:53",
-          value: 147,
-        },
-        {
-          time: "09:26:56",
-          value: 147,
-        },
-        {
-          time: "09:26:57",
-          value: 149,
-        },
-        {
-          time: "09:26:59",
-          value: 150,
-        },
-        {
-          time: "09:27:01",
-          value: 151,
-        },
-        {
-          time: "09:27:03",
-          value: 150,
-        },
-        {
-          time: "09:27:06",
-          value: 150,
-        },
-        {
-          time: "09:27:07",
-          value: 149,
-        },
-        {
-          time: "09:27:09",
-          value: 148,
-        },
-        {
-          time: "09:27:11",
-          value: 151,
-        },
-        {
-          time: "09:27:13",
-          value: 149,
-        },
-        {
-          time: "09:27:15",
-          value: 147,
-        },
-        {
-          time: "09:27:17",
-          value: 149,
-        },
-        {
-          time: "09:27:19",
-          value: 148,
-        },
-        {
-          time: "09:27:20",
-          value: 147,
-        },
-        {
-          time: "09:27:22",
-          value: 149,
-        },
-        {
-          time: "09:27:25",
-          value: 149,
-        },
-        {
-          time: "09:27:26",
-          value: 150,
-        },
-        {
-          time: "09:27:29",
-          value: 150,
-        },
-        {
-          time: "09:27:30",
-          value: 151,
-        },
-        {
-          time: "09:27:32",
-          value: 150,
-        },
-        {
-          time: "09:27:34",
-          value: 149,
-        },
-        {
-          time: "09:27:36",
-          value: 148,
-        },
-        {
-          time: "09:27:38",
-          value: 149,
-        },
-        {
-          time: "09:27:40",
-          value: 150,
-        },
-        {
-          time: "09:27:42",
-          value: 149,
-        },
-        {
-          time: "09:27:45",
-          value: 151,
-        },
-        {
-          time: "09:27:47",
-          value: 149,
-        },
-        {
-          time: "09:27:49",
-          value: 148,
-        },
-        {
-          time: "09:27:51",
-          value: 149,
-        },
-        {
-          time: "09:27:53",
-          value: 148,
-        },
-        {
-          time: "09:27:56",
-          value: 148,
-        },
-        {
-          time: "09:27:59",
-          value: 148,
-        },
-        {
-          time: "09:28:01",
-          value: 149,
-        },
-        {
-          time: "09:28:03",
-          value: 148,
-        },
-        {
-          time: "09:28:06",
-          value: 148,
-        },
-        {
-          time: "09:28:08",
-          value: 149,
-        },
-        {
-          time: "09:28:11",
-          value: 149,
-        },
-        {
-          time: "09:28:14",
-          value: 149,
-        },
-        {
-          time: "09:28:16",
-          value: 150,
-        },
-        {
-          time: "09:28:19",
-          value: 150,
-        },
-        {
-          time: "09:28:22",
-          value: 150,
-        },
-        {
-          time: "09:28:24",
-          value: 151,
-        },
-        {
-          time: "09:28:26",
-          value: 152,
-        },
-        {
-          time: "09:28:28",
-          value: 151,
-        },
-        {
-          time: "09:28:31",
-          value: 151,
-        },
-        {
-          time: "09:28:34",
-          value: 151,
-        },
-        {
-          time: "09:28:35",
-          value: 152,
-        },
-        {
-          time: "09:28:38",
-          value: 152,
-        },
-        {
-          time: "09:28:41",
-          value: 152,
-        },
-        {
-          time: "09:28:44",
-          value: 152,
-        },
-        {
-          time: "09:28:47",
-          value: 153,
-        },
-        {
-          time: "09:28:50",
-          value: 153,
-        },
-        {
-          time: "09:28:53",
-          value: 153,
-        },
-        {
-          time: "09:28:56",
-          value: 153,
-        },
-        {
-          time: "09:28:59",
-          value: 153,
-        },
-        {
-          time: "09:29:00",
-          value: 154,
-        },
-        {
-          time: "09:29:02",
-          value: 153,
-        },
-        {
-          time: "09:29:05",
-          value: 153,
-        },
-        {
-          time: "09:29:06",
-          value: 152,
-        },
-        {
-          time: "09:29:09",
-          value: 152,
-        },
-        {
-          time: "09:29:12",
-          value: 153,
-        },
-        {
-          time: "09:29:15",
-          value: 153,
-        },
-        {
-          time: "09:29:18",
-          value: 153,
-        },
-        {
-          time: "09:29:19",
-          value: 154,
-        },
-        {
-          time: "09:29:21",
-          value: 155,
-        },
-        {
-          time: "09:29:23",
-          value: 155,
-        },
-        {
-          time: "09:29:26",
-          value: 155,
-        },
-        {
-          time: "09:29:27",
-          value: 156,
-        },
-        {
-          time: "09:29:30",
-          value: 156,
-        },
-        {
-          time: "09:29:33",
-          value: 155,
-        },
-        {
-          time: "09:29:35",
-          value: 154,
-        },
-        {
-          time: "09:29:38",
-          value: 154,
-        },
-        {
-          time: "09:29:39",
-          value: 150,
-        },
-        {
-          time: "09:29:41",
-          value: 148,
-        },
-        {
-          time: "09:29:44",
-          value: 147,
-        },
-        {
-          time: "09:29:47",
-          value: 147,
-        },
-        {
-          time: "09:29:48",
-          value: 148,
-        },
-        {
-          time: "09:29:50",
-          value: 147,
-        },
-        {
-          time: "09:29:53",
-          value: 147,
-        },
-        {
-          time: "09:29:54",
-          value: 148,
-        },
-        {
-          time: "09:29:56",
-          value: 149,
-        },
-        {
-          time: "09:29:58",
-          value: 150,
-        },
-        {
-          time: "09:30:01",
-          value: 150,
-        },
-        {
-          time: "09:30:02",
-          value: 151,
-        },
-        {
-          time: "09:30:05",
-          value: 151,
-        },
-        {
-          time: "09:30:06",
-          value: 148,
-        },
-        {
-          time: "09:30:07",
-          value: 146,
-        },
-        {
-          time: "09:30:10",
-          value: 146,
-        },
-        {
-          time: "09:30:11",
-          value: 147,
-        },
-        {
-          time: "09:30:14",
-          value: 147,
-        },
-        {
-          time: "09:30:15",
-          value: 149,
-        },
-        {
-          time: "09:30:17",
-          value: 148,
-        },
-        {
-          time: "09:30:19",
-          value: 148,
-        },
-        {
-          time: "09:30:22",
-          value: 148,
-        },
-        {
-          time: "09:30:23",
-          value: 147,
-        },
-        {
-          time: "09:30:26",
-          value: 147,
-        },
-        {
-          time: "09:30:27",
-          value: 148,
-        },
-        {
-          time: "09:30:29",
-          value: 147,
-        },
-        {
-          time: "09:30:32",
-          value: 148,
-        },
-        {
-          time: "09:30:34",
-          value: 147,
-        },
-        {
-          time: "09:30:36",
-          value: 146,
-        },
-        {
-          time: "09:30:38",
-          value: 147,
-        },
-        {
-          time: "09:30:41",
-          value: 147,
-        },
-        {
-          time: "09:30:44",
-          value: 149,
-        },
-        {
-          time: "09:30:46",
-          value: 150,
-        },
-        {
-          time: "09:30:48",
-          value: 149,
-        },
-        {
-          time: "09:30:50",
-          value: 148,
-        },
-        {
-          time: "09:30:53",
-          value: 148,
-        },
-        {
-          time: "09:30:54",
-          value: 150,
-        },
-        {
-          time: "09:30:57",
-          value: 150,
-        },
-        {
-          time: "09:31:00",
-          value: 150,
-        },
-        {
-          time: "09:31:01",
-          value: 152,
-        },
-        {
-          time: "09:31:03",
-          value: 151,
-        },
-        {
-          time: "09:31:06",
-          value: 151,
-        },
-        {
-          time: "09:31:07",
-          value: 152,
-        },
-        {
-          time: "09:31:09",
-          value: 153,
-        },
-        {
-          time: "09:31:11",
-          value: 154,
-        },
-        {
-          time: "09:31:14",
-          value: 154,
-        },
-        {
-          time: "09:31:17",
-          value: 154,
-        },
-        {
-          time: "09:31:19",
-          value: 154,
-        },
-        {
-          time: "09:31:22",
-          value: 155,
-        },
-        {
-          time: "09:31:24",
-          value: 154,
-        },
-        {
-          time: "09:31:27",
-          value: 154,
-        },
-        {
-          time: "09:31:30",
-          value: 154,
-        },
-        {
-          time: "09:31:32",
-          value: 156,
-        },
-        {
-          time: "09:31:34",
-          value: 154,
-        },
-        {
-          time: "09:31:36",
-          value: 157,
-        },
-        {
-          time: "09:31:38",
-          value: 157,
-        },
-        {
-          time: "09:31:40",
-          value: 155,
-        },
-        {
-          time: "09:31:42",
-          value: 156,
-        },
-        {
-          time: "09:31:43",
-          value: 155,
-        },
-        {
-          time: "09:31:45",
-          value: 156,
-        },
-        {
-          time: "09:31:47",
-          value: 158,
-        },
-        {
-          time: "09:31:50",
-          value: 158,
-        },
-        {
-          time: "09:31:51",
-          value: 157,
-        },
-        {
-          time: "09:31:53",
-          value: 158,
-        },
-        {
-          time: "09:31:55",
-          value: 157,
-        },
-        {
-          time: "09:31:58",
-          value: 157,
-        },
-        {
-          time: "09:31:59",
-          value: 158,
-        },
-        {
-          time: "09:32:01",
-          value: 156,
-        },
-        {
-          time: "09:32:03",
-          value: 158,
-        },
-        {
-          time: "09:32:05",
-          value: 159,
-        },
-        {
-          time: "09:32:07",
-          value: 158,
-        },
-        {
-          time: "09:32:08",
-          value: 157,
-        },
-        {
-          time: "09:32:10",
-          value: 158,
-        },
-        {
-          time: "09:32:13",
-          value: 158,
-        },
-        {
-          time: "09:32:14",
-          value: 158,
-        },
-        {
-          time: "09:32:16",
-          value: 160,
-        },
-        {
-          time: "09:32:19",
-          value: 160,
-        },
-        {
-          time: "09:32:20",
-          value: 159,
-        },
-        {
-          time: "09:32:22",
-          value: 160,
-        },
-        {
-          time: "09:32:24",
-          value: 159,
-        },
-        {
-          time: "09:32:26",
-          value: 157,
-        },
-        {
-          time: "09:32:28",
-          value: 159,
-        },
-        {
-          time: "09:32:30",
-          value: 158,
-        },
-        {
-          time: "09:32:33",
-          value: 159,
-        },
-        {
-          time: "09:32:36",
-          value: 159,
-        },
-        {
-          time: "09:32:39",
-          value: 160,
-        },
-        {
-          time: "09:32:42",
-          value: 160,
-        },
-        {
-          time: "09:32:43",
-          value: 159,
-        },
-        {
-          time: "09:32:45",
-          value: 161,
-        },
-        {
-          time: "09:32:47",
-          value: 160,
-        },
-        {
-          time: "09:32:49",
-          value: 161,
-        },
-        {
-          time: "09:32:52",
-          value: 161,
-        },
-        {
-          time: "09:32:53",
-          value: 160,
-        },
-        {
-          time: "09:32:55",
-          value: 161,
-        },
-        {
-          time: "09:32:56",
-          value: 162,
-        },
-        {
-          time: "09:32:58",
-          value: 161,
-        },
-        {
-          time: "09:33:00",
-          value: 160,
-        },
-        {
-          time: "09:33:03",
-          value: 160,
-        },
-        {
-          time: "09:33:04",
-          value: 159,
-        },
-        {
-          time: "09:33:06",
-          value: 160,
-        },
-        {
-          time: "09:33:08",
-          value: 160,
-        },
-        {
-          time: "09:33:10",
-          value: 160,
-        },
-        {
-          time: "09:33:13",
-          value: 160,
-        },
-        {
-          time: "09:33:16",
-          value: 158,
-        },
-        {
-          time: "09:33:19",
-          value: 159,
-        },
-        {
-          time: "09:33:22",
-          value: 159,
-        },
-        {
-          time: "09:33:23",
-          value: 160,
-        },
-        {
-          time: "09:33:25",
-          value: 161,
-        },
-        {
-          time: "09:33:27",
-          value: 160,
-        },
-        {
-          time: "09:33:29",
-          value: 161,
-        },
-        {
-          time: "09:33:31",
-          value: 160,
-        },
-        {
-          time: "09:33:33",
-          value: 163,
-        },
-        {
-          time: "09:33:36",
-          value: 163,
-        },
-        {
-          time: "09:33:37",
-          value: 164,
-        },
-        {
-          time: "09:33:39",
-          value: 163,
-        },
-        {
-          time: "09:33:41",
-          value: 167,
-        },
-        {
-          time: "09:33:43",
-          value: 166,
-        },
-        {
-          time: "09:33:44",
-          value: 164,
-        },
-        {
-          time: "09:33:46",
-          value: 163,
-        },
-        {
-          time: "09:33:48",
-          value: 164,
-        },
-        {
-          time: "09:33:50",
-          value: 162,
-        },
-        {
-          time: "09:33:53",
-          value: 162,
-        },
-        {
-          time: "09:33:56",
-          value: 162,
-        },
-        {
-          time: "09:33:58",
-          value: 163,
-        },
-        {
-          time: "09:34:01",
-          value: 163,
-        },
-        {
-          time: "09:34:02",
-          value: 161,
-        },
-        {
-          time: "09:34:04",
-          value: 160,
-        },
-        {
-          time: "09:34:06",
-          value: 161,
-        },
-        {
-          time: "09:34:07",
-          value: 161,
-        },
-        {
-          time: "09:34:09",
-          value: 160,
-        },
-        {
-          time: "09:34:11",
-          value: 161,
-        },
-        {
-          time: "09:34:13",
-          value: 160,
-        },
-        {
-          time: "09:34:16",
-          value: 160,
-        },
-        {
-          time: "09:34:19",
-          value: 161,
-        },
-        {
-          time: "09:34:22",
-          value: 161,
-        },
-        {
-          time: "09:34:23",
-          value: 166,
-        },
-        {
-          time: "09:34:25",
-          value: 169,
-        },
-        {
-          time: "09:34:27",
-          value: 171,
-        },
-        {
-          time: "09:34:29",
-          value: 172,
-        },
-        {
-          time: "09:34:31",
-          value: 173,
-        },
-        {
-          time: "09:34:34",
-          value: 175,
-        },
-        {
-          time: "09:34:36",
-          value: 176,
-        },
-        {
-          time: "09:34:39",
-          value: 176,
-        },
-        {
-          time: "09:34:40",
-          value: 177,
-        },
-        {
-          time: "09:34:42",
-          value: 175,
-        },
-        {
-          time: "09:34:44",
-          value: 174,
-        },
-        {
-          time: "09:34:46",
-          value: 177,
-        },
-        {
-          time: "09:34:49",
-          value: 177,
-        },
-        {
-          time: "09:34:52",
-          value: 176,
-        },
-        {
-          time: "09:34:55",
-          value: 176,
-        },
-        {
-          time: "09:34:58",
-          value: 176,
-        },
-        {
-          time: "09:34:59",
-          value: 178,
-        },
-        {
-          time: "09:35:01",
-          value: 177,
-        },
-        {
-          time: "09:35:03",
-          value: 178,
-        },
-        {
-          time: "09:35:05",
-          value: 179,
-        },
-        {
-          time: "09:35:07",
-          value: 178,
-        },
-        {
-          time: "09:35:09",
-          value: 179,
-        },
-        {
-          time: "09:35:11",
-          value: 178,
-        },
-        {
-          time: "09:35:14",
-          value: 178,
-        },
-        {
-          time: "09:35:17",
-          value: 177,
-        },
-        {
-          time: "09:35:19",
-          value: 175,
-        },
-        {
-          time: "09:35:22",
-          value: 174,
-        },
-        {
-          time: "09:35:25",
-          value: 174,
-        },
-        {
-          time: "09:35:28",
-          value: 175,
-        },
-        {
-          time: "09:35:31",
-          value: 175,
-        },
-        {
-          time: "09:35:32",
-          value: 174,
-        },
-        {
-          time: "09:35:35",
-          value: 174,
-        },
-        {
-          time: "09:35:38",
-          value: 174,
-        },
-        {
-          time: "09:35:40",
-          value: 175,
-        },
-        {
-          time: "09:35:43",
-          value: 176,
-        },
-        {
-          time: "09:35:45",
-          value: 177,
-        },
-        {
-          time: "09:35:48",
-          value: 177,
-        },
-        {
-          time: "09:35:51",
-          value: 177,
-        },
-        {
-          time: "09:35:54",
-          value: 177,
-        },
-        {
-          time: "09:35:57",
-          value: 175,
-        },
-        {
-          time: "09:35:59",
-          value: 174,
-        },
-        {
-          time: "09:36:01",
-          value: 176,
-        },
-        {
-          time: "09:36:04",
-          value: 176,
-        },
-        {
-          time: "09:36:05",
-          value: 175,
-        },
-        {
-          time: "09:36:08",
-          value: 175,
-        },
-        {
-          time: "09:36:11",
-          value: 175,
-        },
-        {
-          time: "09:36:14",
-          value: 174,
-        },
-        {
-          time: "09:36:16",
-          value: 174,
-        },
-        {
-          time: "09:36:18",
-          value: 175,
-        },
-        {
-          time: "09:36:21",
-          value: 175,
-        },
-        {
-          time: "09:36:22",
-          value: 174,
-        },
-        {
-          time: "09:36:24",
-          value: 175,
-        },
-        {
-          time: "09:36:26",
-          value: 174,
-        },
-        {
-          time: "09:36:28",
-          value: 173,
-        },
-        {
-          time: "09:36:30",
-          value: 175,
-        },
-        {
-          time: "09:36:33",
-          value: 175,
-        },
-        {
-          time: "09:36:36",
-          value: 175,
-        },
-        {
-          time: "09:36:39",
-          value: 175,
-        },
-        {
-          time: "09:36:41",
-          value: 174,
-        },
-        {
-          time: "09:36:43",
-          value: 173,
-        },
-        {
-          time: "09:36:45",
-          value: 174,
-        },
-        {
-          time: "09:36:47",
-          value: 175,
-        },
-        {
-          time: "09:36:49",
-          value: 174,
-        },
-        {
-          time: "09:36:52",
-          value: 174,
-        },
-        {
-          time: "09:36:53",
-          value: 175,
-        },
-        {
-          time: "09:36:55",
-          value: 177,
-        },
-        {
-          time: "09:36:56",
-          value: 176,
-        },
-        {
-          time: "09:36:58",
-          value: 177,
-        },
-        {
-          time: "09:37:01",
-          value: 177,
-        },
-        {
-          time: "09:37:04",
-          value: 178,
-        },
-        {
-          time: "09:37:06",
-          value: 177,
-        },
-        {
-          time: "09:37:08",
-          value: 176,
-        },
-        {
-          time: "09:37:10",
-          value: 178,
-        },
-        {
-          time: "09:37:13",
-          value: 178,
-        },
-        {
-          time: "09:37:14",
-          value: 177,
-        },
-        {
-          time: "09:37:17",
-          value: 177,
-        },
-        {
-          time: "09:37:19",
-          value: 176,
-        },
-        {
-          time: "09:37:21",
-          value: 177,
-        },
-        {
-          time: "09:37:23",
-          value: 176,
-        },
-        {
-          time: "09:37:26",
-          value: 176,
-        },
-        {
-          time: "09:37:27",
-          value: 177,
-        },
-        {
-          time: "09:37:29",
-          value: 178,
-        },
-        {
-          time: "09:37:32",
-          value: 178,
-        },
-        {
-          time: "09:37:35",
-          value: 177,
-        },
-        {
-          time: "09:37:38",
-          value: 177,
-        },
-        {
-          time: "09:37:41",
-          value: 177,
-        },
-        {
-          time: "09:37:43",
-          value: 176,
-        },
-        {
-          time: "09:37:44",
-          value: 177,
-        },
-        {
-          time: "09:37:47",
-          value: 177,
-        },
-        {
-          time: "09:37:48",
-          value: 178,
-        },
-        {
-          time: "09:37:51",
-          value: 178,
-        },
-        {
-          time: "09:37:54",
-          value: 177,
-        },
-        {
-          time: "09:37:57",
-          value: 177,
-        },
-        {
-          time: "09:38:00",
-          value: 177,
-        },
-        {
-          time: "09:38:03",
-          value: 177,
-        },
-        {
-          time: "09:38:04",
-          value: 178,
-        },
-        {
-          time: "09:38:06",
-          value: 177,
-        },
-        {
-          time: "09:38:07",
-          value: 176,
-        },
-        {
-          time: "09:38:09",
-          value: 177,
-        },
-        {
-          time: "09:38:12",
-          value: 177,
-        },
-        {
-          time: "09:38:13",
-          value: 176,
-        },
-        {
-          time: "09:38:15",
-          value: 175,
-        },
-        {
-          time: "09:38:17",
-          value: 176,
-        },
-        {
-          time: "09:38:19",
-          value: 175,
-        },
-        {
-          time: "09:38:21",
-          value: 174,
-        },
-        {
-          time: "09:38:24",
-          value: 174,
-        },
-        {
-          time: "09:38:27",
-          value: 174,
-        },
-        {
-          time: "09:38:30",
-          value: 174,
-        },
-        {
-          time: "09:38:32",
-          value: 173,
-        },
-        {
-          time: "09:38:34",
-          value: 174,
-        },
-        {
-          time: "09:38:36",
-          value: 173,
-        },
-        {
-          time: "09:38:38",
-          value: 174,
-        },
-        {
-          time: "09:38:40",
-          value: 173,
-        },
-        {
-          time: "09:38:43",
-          value: 173,
-        },
-        {
-          time: "09:38:46",
-          value: 172,
-        },
-        {
-          time: "09:38:49",
-          value: 172,
-        },
-        {
-          time: "09:38:52",
-          value: 172,
-        },
-        {
-          time: "09:38:54",
-          value: 171,
-        },
-        {
-          time: "09:38:55",
-          value: 172,
-        },
-        {
-          time: "09:38:57",
-          value: 171,
-        },
-        {
-          time: "09:39:00",
-          value: 171,
-        },
-        {
-          time: "09:39:01",
-          value: 170,
-        },
-        {
-          time: "09:39:03",
-          value: 169,
-        },
-        {
-          time: "09:39:05",
-          value: 170,
-        },
-        {
-          time: "09:39:08",
-          value: 170,
-        },
-        {
-          time: "09:39:11",
-          value: 171,
-        },
-        {
-          time: "09:39:14",
-          value: 171,
-        },
-        {
-          time: "09:39:15",
-          value: 170,
-        },
-        {
-          time: "09:39:17",
-          value: 171,
-        },
-        {
-          time: "09:39:20",
-          value: 173,
-        },
-        {
-          time: "09:39:22",
-          value: 172,
-        },
-        {
-          time: "09:39:25",
-          value: 172,
-        },
-        {
-          time: "09:39:28",
-          value: 173,
-        },
-        {
-          time: "09:39:30",
-          value: 174,
-        },
-        {
-          time: "09:39:33",
-          value: 174,
-        },
-        {
-          time: "09:39:36",
-          value: 174,
-        },
-        {
-          time: "09:39:38",
-          value: 172,
-        },
-        {
-          time: "09:39:40",
-          value: 174,
-        },
-        {
-          time: "09:39:43",
-          value: 174,
-        },
-        {
-          time: "09:39:45",
-          value: 175,
-        },
-        {
-          time: "09:39:47",
-          value: 174,
-        },
-        {
-          time: "09:39:50",
-          value: 174,
-        },
-        {
-          time: "09:39:51",
-          value: 175,
-        },
-        {
-          time: "09:39:53",
-          value: 174,
-        },
-        {
-          time: "09:39:55",
-          value: 170,
-        },
-        {
-          time: "09:39:57",
-          value: 166,
-        },
-        {
-          time: "09:39:59",
-          value: 160,
-        },
-        {
-          time: "09:40:01",
-          value: 163,
-        },
-        {
-          time: "09:40:03",
-          value: 164,
-        },
-        {
-          time: "09:40:05",
-          value: 165,
-        },
-        {
-          time: "09:40:07",
-          value: 164,
-        },
-        {
-          time: "09:40:08",
-          value: 165,
-        },
-        {
-          time: "09:40:10",
-          value: 168,
-        },
-        {
-          time: "09:40:12",
-          value: 173,
-        },
-        {
-          time: "09:40:14",
-          value: 175,
-        },
-        {
-          time: "09:40:16",
-          value: 175,
-        },
-        {
-          time: "09:40:18",
-          value: 177,
-        },
-        {
-          time: "09:40:20",
-          value: 178,
-        },
-        {
-          time: "09:40:23",
-          value: 178,
-        },
-        {
-          time: "09:40:26",
-          value: 173,
-        },
-        {
-          time: "09:40:28",
-          value: 165,
-        },
-        {
-          time: "09:40:30",
-          value: 171,
-        },
-        {
-          time: "09:40:31",
-          value: 176,
-        },
-        {
-          time: "09:40:33",
-          value: 177,
-        },
-        {
-          time: "09:40:35",
-          value: 178,
-        },
-        {
-          time: "09:40:37",
-          value: 179,
-        },
-        {
-          time: "09:40:39",
-          value: 178,
-        },
-        {
-          time: "09:40:41",
-          value: 179,
-        },
-        {
-          time: "09:40:43",
-          value: 178,
-        },
-        {
-          time: "09:40:45",
-          value: 177,
-        },
-        {
-          time: "09:40:47",
-          value: 178,
-        },
-        {
-          time: "09:40:49",
-          value: 177,
-        },
-        {
-          time: "09:40:51",
-          value: 178,
-        },
-        {
-          time: "09:40:54",
-          value: 178,
-        },
-        {
-          time: "09:40:56",
-          value: 179,
-        },
-        {
-          time: "09:40:59",
-          value: 179,
-        },
-        {
-          time: "09:41:00",
-          value: 180,
-        },
-        {
-          time: "09:41:02",
-          value: 181,
-        },
-        {
-          time: "09:41:05",
-          value: 181,
-        },
-        {
-          time: "09:41:08",
-          value: 181,
-        },
-        {
-          time: "09:41:10",
-          value: 180,
-        },
-        {
-          time: "09:41:12",
-          value: 181,
-        },
-        {
-          time: "09:41:14",
-          value: 181,
-        },
-        {
-          time: "09:41:17",
-          value: 181,
-        },
-        {
-          time: "09:41:18",
-          value: 180,
-        },
-        {
-          time: "09:41:19",
-          value: 181,
-        },
-        {
-          time: "09:41:21",
-          value: 180,
-        },
-        {
-          time: "09:41:24",
-          value: 180,
-        },
-        {
-          time: "09:41:27",
-          value: 180,
-        },
-        {
-          time: "09:41:30",
-          value: 180,
-        },
-        {
-          time: "09:41:33",
-          value: 180,
-        },
-        {
-          time: "09:41:35",
-          value: 179,
-        },
-        {
-          time: "09:41:37",
-          value: 180,
-        },
-        {
-          time: "09:41:40",
-          value: 180,
-        },
-        {
-          time: "09:41:43",
-          value: 180,
-        },
-        {
-          time: "09:41:46",
-          value: 180,
-        },
-        {
-          time: "09:41:49",
-          value: 180,
-        },
-        {
-          time: "09:41:50",
-          value: 179,
-        },
-        {
-          time: "09:41:53",
-          value: 179,
-        },
-        {
-          time: "09:41:56",
-          value: 179,
-        },
-        {
-          time: "09:41:59",
-          value: 179,
-        },
-        {
-          time: "09:42:00",
-          value: 180,
-        },
-        {
-          time: "09:42:02",
-          value: 179,
-        },
-        {
-          time: "09:42:05",
-          value: 179,
-        },
-        {
-          time: "09:42:06",
-          value: 178,
-        },
-        {
-          time: "09:42:09",
-          value: 177,
-        },
-        {
-          time: "09:42:12",
-          value: 177,
-        },
-        {
-          time: "09:42:13",
-          value: 176,
-        },
-        {
-          time: "09:42:15",
-          value: 177,
-        },
-        {
-          time: "09:42:17",
-          value: 177,
-        },
-        {
-          time: "09:42:19",
-          value: 175,
-        },
-        {
-          time: "09:42:21",
-          value: 176,
-        },
-        {
-          time: "09:42:23",
-          value: 175,
-        },
-        {
-          time: "09:42:26",
-          value: 175,
-        },
-        {
-          time: "09:42:27",
-          value: 173,
-        },
-        {
-          time: "09:42:29",
-          value: 175,
-        },
-        {
-          time: "09:42:31",
-          value: 171,
-        },
-        {
-          time: "09:42:32",
-          value: 173,
-        },
-        {
-          time: "09:42:34",
-          value: 170,
-        },
-        {
-          time: "09:42:36",
-          value: 171,
-        },
-        {
-          time: "09:42:39",
-          value: 171,
-        },
-        {
-          time: "09:42:40",
-          value: 167,
-        },
-        {
-          time: "09:42:42",
-          value: 168,
-        },
-        {
-          time: "09:42:44",
-          value: 169,
-        },
-        {
-          time: "09:42:46",
-          value: 168,
-        },
-        {
-          time: "09:42:49",
-          value: 168,
-        },
-        {
-          time: "09:42:50",
-          value: 171,
-        },
-        {
-          time: "09:42:52",
-          value: 170,
-        },
-        {
-          time: "09:42:54",
-          value: 172,
-        },
-        {
-          time: "09:42:55",
-          value: 174,
-        },
-        {
-          time: "09:42:57",
-          value: 172,
-        },
-        {
-          time: "09:42:59",
-          value: 170,
-        },
-        {
-          time: "09:43:02",
-          value: 170,
-        },
-        {
-          time: "09:43:03",
-          value: 168,
-        },
-        {
-          time: "09:43:05",
-          value: 169,
-        },
-        {
-          time: "09:43:07",
-          value: 170,
-        },
-        {
-          time: "09:43:09",
-          value: 169,
-        },
-        {
-          time: "09:43:11",
-          value: 174,
-        },
-        {
-          time: "09:43:13",
-          value: 175,
-        },
-        {
-          time: "09:43:15",
-          value: 173,
-        },
-        {
-          time: "09:43:18",
-          value: 173,
-        },
-        {
-          time: "09:43:19",
-          value: 174,
-        },
-        {
-          time: "09:43:21",
-          value: 173,
-        },
-        {
-          time: "09:43:23",
-          value: 171,
-        },
-        {
-          time: "09:43:26",
-          value: 171,
-        },
-        {
-          time: "09:43:27",
-          value: 169,
-        },
-        {
-          time: "09:43:29",
-          value: 167,
-        },
-        {
-          time: "09:43:30",
-          value: 172,
-        },
-        {
-          time: "09:43:32",
-          value: 164,
-        },
-        {
-          time: "09:43:34",
-          value: 167,
-        },
-        {
-          time: "09:43:36",
-          value: 175,
-        },
-        {
-          time: "09:43:38",
-          value: 174,
-        },
-        {
-          time: "09:43:40",
-          value: 155,
-        },
-        {
-          time: "09:43:42",
-          value: 153,
-        },
-        {
-          time: "09:43:44",
-          value: 155,
-        },
-        {
-          time: "09:43:46",
-          value: 154,
-        },
-        {
-          time: "09:43:48",
-          value: 152,
-        },
-        {
-          time: "09:43:50",
-          value: 153,
-        },
-        {
-          time: "09:43:53",
-          value: 155,
-        },
-        {
-          time: "09:43:55",
-          value: 158,
-        },
-        {
-          time: "09:43:57",
-          value: 153,
-        },
-        {
-          time: "09:44:00",
-          value: 153,
-        },
-        {
-          time: "09:44:01",
-          value: 165,
-        },
-        {
-          time: "09:44:03",
-          value: 161,
-        },
-        {
-          time: "09:44:06",
-          value: 161,
-        },
-        {
-          time: "09:44:07",
-          value: 165,
-        },
-        {
-          time: "09:44:09",
-          value: 168,
-        },
-        {
-          time: "09:44:11",
-          value: 169,
-        },
-        {
-          time: "09:44:13",
-          value: 167,
-        },
-        {
-          time: "09:44:15",
-          value: 161,
-        },
-        {
-          time: "09:44:17",
-          value: 165,
-        },
-        {
-          time: "09:44:18",
-          value: 164,
-        },
-        {
-          time: "09:44:20",
-          value: 163,
-        },
-        {
-          time: "09:44:22",
-          value: 167,
-        },
-        {
-          time: "09:44:24",
-          value: 160,
-        },
-        {
-          time: "09:44:26",
-          value: 168,
-        },
-        {
-          time: "09:44:28",
-          value: 171,
-        },
-        {
-          time: "09:44:30",
-          value: 176,
-        },
-        {
-          time: "09:44:32",
-          value: 178,
-        },
-        {
-          time: "09:44:34",
-          value: 181,
-        },
-        {
-          time: "09:44:37",
-          value: 181,
-        },
-        {
-          time: "09:44:38",
-          value: 180,
-        },
-        {
-          time: "09:44:40",
-          value: 179,
-        },
-        {
-          time: "09:44:41",
-          value: 178,
-        },
-        {
-          time: "09:44:43",
-          value: 177,
-        },
-        {
-          time: "09:44:45",
-          value: 175,
-        },
-        {
-          time: "09:44:47",
-          value: 178,
-        },
-        {
-          time: "09:44:49",
-          value: 174,
-        },
-        {
-          time: "09:44:51",
-          value: 176,
-        },
-        {
-          time: "09:44:53",
-          value: 178,
-        },
-        {
-          time: "09:44:55",
-          value: 177,
-        },
-        {
-          time: "09:44:57",
-          value: 178,
-        },
-        {
-          time: "09:44:59",
-          value: 177,
-        },
-        {
-          time: "09:45:01",
-          value: 178,
-        },
-        {
-          time: "09:45:03",
-          value: 177,
-        },
-        {
-          time: "09:45:05",
-          value: 169,
-        },
-        {
-          time: "09:45:06",
-          value: 168,
-        },
-        {
-          time: "09:45:08",
-          value: 174,
-        },
-        {
-          time: "09:45:10",
-          value: 167,
-        },
-        {
-          time: "09:45:12",
-          value: 165,
-        },
-        {
-          time: "09:45:14",
-          value: 163,
-        },
-        {
-          time: "09:45:17",
-          value: 163,
-        },
-        {
-          time: "09:45:18",
-          value: 167,
-        },
-        {
-          time: "09:45:20",
-          value: 173,
-        },
-        {
-          time: "09:45:22",
-          value: 175,
-        },
-        {
-          time: "09:45:24",
-          value: 176,
-        },
-        {
-          time: "09:45:26",
-          value: 178,
-        },
-        {
-          time: "09:45:29",
-          value: 180,
-        },
-        {
-          time: "09:45:32",
-          value: 180,
-        },
-        {
-          time: "09:45:33",
-          value: 173,
-        },
-        {
-          time: "09:45:35",
-          value: 179,
-        },
-        {
-          time: "09:45:37",
-          value: 178,
-        },
-        {
-          time: "09:45:39",
-          value: 180,
-        },
-        {
-          time: "09:45:41",
-          value: 181,
-        },
-        {
-          time: "09:45:44",
-          value: 181,
-        },
-        {
-          time: "09:45:45",
-          value: 183,
-        },
-        {
-          time: "09:45:48",
-          value: 183,
-        },
-        {
-          time: "09:45:49",
-          value: 184,
-        },
-        {
-          time: "09:45:52",
-          value: 184,
-        },
-        {
-          time: "09:45:53",
-          value: 183,
-        },
-        {
-          time: "09:45:54",
-          value: 184,
-        },
-        {
-          time: "09:45:56",
-          value: 185,
-        },
-        {
-          time: "09:45:59",
-          value: 185,
-        },
-        {
-          time: "09:46:00",
-          value: 186,
-        },
-        {
-          time: "09:46:02",
-          value: 185,
-        },
-        {
-          time: "09:46:04",
-          value: 186,
-        },
-        {
-          time: "09:46:07",
-          value: 186,
-        },
-        {
-          time: "09:46:10",
-          value: 187,
-        },
-        {
-          time: "09:46:12",
-          value: 185,
-        },
-        {
-          time: "09:46:15",
-          value: 185,
-        },
-        {
-          time: "09:46:18",
-          value: 185,
-        },
-        {
-          time: "09:46:21",
-          value: 185,
-        },
-        {
-          time: "09:46:23",
-          value: 184,
-        },
-      ],
       caloriesLink:
         "https://api.fitbit.com/1/user/-/activities/calories/date/2024-12-09/2024-12-09/1min/time/9:25/9:46.json",
       heartRateLink:
@@ -2462,6 +7713,2918 @@ export function testData() {
       originalDuration: 1257000,
       elevationGain: 0,
       hasActiveZoneMinutes: true,
+      heartRateArray: [
+        {
+          time: "00:00:00",
+          value: 120,
+          bpm: 120,
+        },
+        {
+          time: "00:00:02",
+          value: 119,
+          bpm: 119,
+        },
+        {
+          time: "00:00:04",
+          value: 121,
+          bpm: 121,
+        },
+        {
+          time: "00:00:06",
+          value: 127,
+          bpm: 127,
+        },
+        {
+          time: "00:00:08",
+          value: 126,
+          bpm: 126,
+        },
+        {
+          time: "00:00:10",
+          value: 129,
+          bpm: 129,
+        },
+        {
+          time: "00:00:12",
+          value: 128,
+          bpm: 128,
+        },
+        {
+          time: "00:00:14",
+          value: 125,
+          bpm: 125,
+        },
+        {
+          time: "00:00:15",
+          value: 127,
+          bpm: 127,
+        },
+        {
+          time: "00:00:17",
+          value: 124,
+          bpm: 124,
+        },
+        {
+          time: "00:00:19",
+          value: 123,
+          bpm: 123,
+        },
+        {
+          time: "00:00:21",
+          value: 127,
+          bpm: 127,
+        },
+        {
+          time: "00:00:23",
+          value: 130,
+          bpm: 130,
+        },
+        {
+          time: "00:00:25",
+          value: 129,
+          bpm: 129,
+        },
+        {
+          time: "00:00:27",
+          value: 133,
+          bpm: 133,
+        },
+        {
+          time: "00:00:29",
+          value: 135,
+          bpm: 135,
+        },
+        {
+          time: "00:00:31",
+          value: 133,
+          bpm: 133,
+        },
+        {
+          time: "00:00:33",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:00:36",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:00:37",
+          value: 128,
+          bpm: 128,
+        },
+        {
+          time: "00:00:38",
+          value: 138,
+          bpm: 138,
+        },
+        {
+          time: "00:00:40",
+          value: 140,
+          bpm: 140,
+        },
+        {
+          time: "00:00:42",
+          value: 137,
+          bpm: 137,
+        },
+        {
+          time: "00:00:44",
+          value: 141,
+          bpm: 141,
+        },
+        {
+          time: "00:00:46",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:00:49",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:00:50",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:00:53",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:00:56",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:00:58",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:01:00",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:01:03",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:01:03",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:01:07",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:01:07",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:01:11",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:01:11",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:01:15",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:01:17",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:01:19",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:01:21",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:01:23",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:01:26",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:01:26",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:01:30",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:01:32",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:01:34",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:01:37",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:01:38",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:01:40",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:01:42",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:01:44",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:01:46",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:01:48",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:01:49",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:01:51",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:01:53",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:01:56",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:01:57",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:00",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:00",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:02:00",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:05",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:07",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:07",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:08",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:13",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:15",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:02:15",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:20",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:22",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:23",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:27",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:30",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:30",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:34",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:37",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:02:38",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:42",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:45",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:02:46",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:50",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:53",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:53",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:02:57",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:02:59",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:03:00",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:03:05",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:03:06",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:07",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:12",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:15",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:15",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:21",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:23",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:27",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:30",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:30",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:30",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:36",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:37",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:38",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:43",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:46",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:49",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:50",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:52",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:03:53",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:03:57",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:03:58",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:00",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:01",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:03",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:04:09",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:04:10",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:04:12",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:04:15",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:04:15",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:04:16",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:04:18",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:04:24",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:04:25",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:04:27",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:04:29",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:04:30",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:04:30",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:04:33",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:04:34",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:04:38",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:04:41",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:04:42",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:04:45",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:04:46",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:04:46",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:04:47",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:04:53",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:04:54",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:04:57",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:04:58",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:05:00",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:05:00",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:05:02",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:05:04",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:05:09",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:05:12",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:05:15",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:05:15",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:05:16",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:05:18",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:05:24",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:05:25",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:05:28",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:05:30",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:05:30",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:05:31",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:05:34",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:05:38",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:05:40",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:05:42",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:05:45",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:05:46",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:05:47",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:05:53",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:05:55",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:05:58",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:06:00",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:06:00",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:06:02",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:06:04",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:06:09",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:06:11",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:06:13",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:06:14",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:06:15",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:06:15",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:06:18",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:06:19",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:06:24",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:06:26",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:06:29",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:06:30",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:06:30",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:06:31",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:06:33",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:06:38",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:06:39",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:06:41",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:06:44",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:06:45",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:06:46",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:06:47",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:06:48",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:06:53",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:06:55",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:06:57",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:06:59",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:07:00",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:07:01",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:07:04",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:07:10",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:13",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:14",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:07:15",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:07:15",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:17",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:07:23",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:07:24",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:26",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:07:27",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:07:29",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:07:30",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:31",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:32",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:07:34",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:39",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:41",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:44",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:46",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:07:47",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:07:53",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:07:54",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:07:56",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:07:58",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:08:00",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:08:01",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:08:03",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:08:07",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:08:07",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:08:09",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:08:11",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:08:13",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:08:15",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:08:16",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:08:18",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:08:20",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:08:24",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:08:26",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:08:28",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:08:31",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:08:33",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:08:35",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:08:37",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:08:37",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:08:39",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:08:41",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:08:43",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:08:46",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:08:50",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:08:52",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:08:54",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:08:56",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:08:58",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:09:00",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:09:01",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:09:05",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:09:07",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:09:09",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:09:11",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:09:13",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:09:15",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:09:16",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:09:20",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:09:22",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:09:26",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:09:28",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:09:30",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:09:31",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:09:33",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:09:35",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:09:37",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:09:39",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:09:41",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:09:45",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:09:48",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:09:50",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:09:52",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:09:56",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:09:58",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:01",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:03",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:10:05",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:10:09",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:10:11",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:13",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:10:16",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:10:18",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:10:22",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:10:24",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:10:28",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:30",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:10:31",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:10:35",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:10:35",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:39",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:41",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:45",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:10:46",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:10:48",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:52",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:52",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:10:54",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:10:56",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:10:58",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:11:01",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:11:03",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:11:07",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:11:09",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:11:11",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:11:13",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:11:16",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:11:18",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:11:20",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:11:22",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:11:24",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:11:26",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:11:26",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:11:28",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:11:31",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:11:35",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:11:37",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:11:39",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:11:41",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:11:43",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:11:45",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:11:48",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:11:50",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:11:52",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:11:54",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:11:56",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:11:58",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:00",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:12:03",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:12:05",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:09",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:11",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:13",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:12:15",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:18",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:18",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:12:22",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:12:24",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:28",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:31",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:33",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:35",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:12:37",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:37",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:12:39",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:43",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:43",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:12:46",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:12:48",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:12:50",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:12:52",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:12:54",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:12:58",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:13:01",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:13:03",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:13:05",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:13:07",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:13:09",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:13:11",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:13:13",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:13:16",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:13:20",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:13:22",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:13:24",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:13:26",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:13:28",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:13:31",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:13:31",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:13:33",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:13:35",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:13:39",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:13:41",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:13:45",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:13:46",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:13:48",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:13:50",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:13:52",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:13:56",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:13:58",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:14:01",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:14:03",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:14:07",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:14:09",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:14:11",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:14:13",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:14:16",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:14:18",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:14:20",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:14:22",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:14:24",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:14:26",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:14:28",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:14:30",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:14:31",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:14:33",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:14:35",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:14:37",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:14:39",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:14:41",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:14:43",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:14:45",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:14:46",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:14:48",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:14:50",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:14:54",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:14:56",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:14:58",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:15:01",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:15:01",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:15:03",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:15:05",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:15:07",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:15:09",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:15:11",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:15:13",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:15:16",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:15:18",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:15:20",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:15:22",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:15:24",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:15:26",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:15:30",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:15:31",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:15:33",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:15:35",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:15:39",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:15:41",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:15:43",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:15:45",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:15:48",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:15:48",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:15:50",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:15:52",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:15:54",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:15:58",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:16:00",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:16:03",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:16:06",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:16:07",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:16:11",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:16:14",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:16:17",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:16:18",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:16:21",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:16:22",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:16:26",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:16:30",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:16:30",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:16:33",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:16:36",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:16:37",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:16:40",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:16:41",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:16:44",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:16:45",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:16:48",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:16:48",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:16:52",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:16:52",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:16:56",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:16:56",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:17:00",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:17:02",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:17:03",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:17:03",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:17:07",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:17:10",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:17:11",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:17:11",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:17:15",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:17:17",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:17:18",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:17:21",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:17:22",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:17:25",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:17:26",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:17:26",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:17:30",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:17:33",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:17:33",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:17:36",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:17:37",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:17:40",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:17:41",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:17:44",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:17:45",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:17:48",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:17:48",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:17:52",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:17:52",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:17:56",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:17:56",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:18:00",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:18:00",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:18:03",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:18:03",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:18:07",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:18:07",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:18:11",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:18:11",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:18:15",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:18:17",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:18:18",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:18:21",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:18:22",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:18:26",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:18:26",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:18:30",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:18:32",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:18:33",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:18:37",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:18:37",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:18:40",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:18:41",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:18:44",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:18:45",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:18:48",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:18:48",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:18:51",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:18:52",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:18:55",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:18:56",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:18:59",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:19:00",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:19:03",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:19:03",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:19:07",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:19:07",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:19:11",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:19:11",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:19:14",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:19:15",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:19:18",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:19:18",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:19:22",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:19:22",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:19:26",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:19:26",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:19:30",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:19:32",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:19:33",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:19:36",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:19:37",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:19:37",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:19:41",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:19:41",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:19:45",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:19:48",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:19:48",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:19:51",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:19:52",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:19:55",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:19:56",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:20:00",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:20:03",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:20:03",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:20:06",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:20:07",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:20:10",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:20:11",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:20:15",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:20:15",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:20:18",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:20:18",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:20:22",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:20:22",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:20:25",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:20:26",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:20:30",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:20:30",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:20:33",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:20:33",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:20:37",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:20:41",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:20:41",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:20:45",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:20:48",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:20:52",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:20:52",
+          value: 184,
+          bpm: 184,
+        },
+      ],
     },
     {
       logId: 2128703669839613200,
@@ -2523,21 +10686,21 @@ export function testData() {
         {
           minutes: 0,
           caloriesOut: 15.01141,
-          name: "Out of Range",
+          name: "Light",
           min: 30,
           max: 110,
         },
         {
           minutes: 1,
           caloriesOut: 15.01141,
-          name: "Fat Burn",
+          name: "Moderate",
           min: 111,
           max: 137,
         },
         {
           minutes: 11,
           caloriesOut: 165.647076,
-          name: "Cardio",
+          name: "Vigorous",
           min: 138,
           max: 171,
         },
@@ -2583,1808 +10746,6 @@ export function testData() {
         ],
       },
       inProgress: false,
-      heartRateArray: [
-        {
-          time: "18:54:40",
-          value: 134,
-        },
-        {
-          time: "18:54:42",
-          value: 133,
-        },
-        {
-          time: "18:54:44",
-          value: 134,
-        },
-        {
-          time: "18:54:47",
-          value: 134,
-        },
-        {
-          time: "18:54:48",
-          value: 135,
-        },
-        {
-          time: "18:54:51",
-          value: 135,
-        },
-        {
-          time: "18:54:52",
-          value: 138,
-        },
-        {
-          time: "18:54:54",
-          value: 142,
-        },
-        {
-          time: "18:54:57",
-          value: 140,
-        },
-        {
-          time: "18:54:59",
-          value: 143,
-        },
-        {
-          time: "18:55:01",
-          value: 145,
-        },
-        {
-          time: "18:55:04",
-          value: 145,
-        },
-        {
-          time: "18:55:05",
-          value: 146,
-        },
-        {
-          time: "18:55:07",
-          value: 147,
-        },
-        {
-          time: "18:55:09",
-          value: 149,
-        },
-        {
-          time: "18:55:11",
-          value: 150,
-        },
-        {
-          time: "18:55:13",
-          value: 152,
-        },
-        {
-          time: "18:55:15",
-          value: 151,
-        },
-        {
-          time: "18:55:17",
-          value: 150,
-        },
-        {
-          time: "18:55:18",
-          value: 148,
-        },
-        {
-          time: "18:55:21",
-          value: 148,
-        },
-        {
-          time: "18:55:22",
-          value: 146,
-        },
-        {
-          time: "18:55:24",
-          value: 147,
-        },
-        {
-          time: "18:55:27",
-          value: 147,
-        },
-        {
-          time: "18:55:28",
-          value: 154,
-        },
-        {
-          time: "18:55:30",
-          value: 157,
-        },
-        {
-          time: "18:55:32",
-          value: 159,
-        },
-        {
-          time: "18:55:34",
-          value: 159,
-        },
-        {
-          time: "18:55:36",
-          value: 162,
-        },
-        {
-          time: "18:55:38",
-          value: 161,
-        },
-        {
-          time: "18:55:40",
-          value: 156,
-        },
-        {
-          time: "18:55:42",
-          value: 157,
-        },
-        {
-          time: "18:55:43",
-          value: 158,
-        },
-        {
-          time: "18:55:45",
-          value: 162,
-        },
-        {
-          time: "18:55:47",
-          value: 160,
-        },
-        {
-          time: "18:55:49",
-          value: 159,
-        },
-        {
-          time: "18:55:51",
-          value: 160,
-        },
-        {
-          time: "18:55:53",
-          value: 161,
-        },
-        {
-          time: "18:55:55",
-          value: 163,
-        },
-        {
-          time: "18:55:57",
-          value: 162,
-        },
-        {
-          time: "18:55:59",
-          value: 163,
-        },
-        {
-          time: "18:56:01",
-          value: 162,
-        },
-        {
-          time: "18:56:03",
-          value: 163,
-        },
-        {
-          time: "18:56:05",
-          value: 163,
-        },
-        {
-          time: "18:56:07",
-          value: 163,
-        },
-        {
-          time: "18:56:09",
-          value: 164,
-        },
-        {
-          time: "18:56:11",
-          value: 161,
-        },
-        {
-          time: "18:56:13",
-          value: 160,
-        },
-        {
-          time: "18:56:15",
-          value: 163,
-        },
-        {
-          time: "18:56:16",
-          value: 162,
-        },
-        {
-          time: "18:56:18",
-          value: 161,
-        },
-        {
-          time: "18:56:20",
-          value: 166,
-        },
-        {
-          time: "18:56:22",
-          value: 160,
-        },
-        {
-          time: "18:56:24",
-          value: 158,
-        },
-        {
-          time: "18:56:26",
-          value: 158,
-        },
-        {
-          time: "18:56:29",
-          value: 158,
-        },
-        {
-          time: "18:56:32",
-          value: 156,
-        },
-        {
-          time: "18:56:34",
-          value: 154,
-        },
-        {
-          time: "18:56:37",
-          value: 154,
-        },
-        {
-          time: "18:56:38",
-          value: 155,
-        },
-        {
-          time: "18:56:40",
-          value: 153,
-        },
-        {
-          time: "18:56:43",
-          value: 154,
-        },
-        {
-          time: "18:56:45",
-          value: 153,
-        },
-        {
-          time: "18:56:47",
-          value: 154,
-        },
-        {
-          time: "18:56:50",
-          value: 154,
-        },
-        {
-          time: "18:56:53",
-          value: 155,
-        },
-        {
-          time: "18:56:56",
-          value: 155,
-        },
-        {
-          time: "18:56:59",
-          value: 154,
-        },
-        {
-          time: "18:57:02",
-          value: 154,
-        },
-        {
-          time: "18:57:05",
-          value: 154,
-        },
-        {
-          time: "18:57:06",
-          value: 155,
-        },
-        {
-          time: "18:57:09",
-          value: 155,
-        },
-        {
-          time: "18:57:12",
-          value: 156,
-        },
-        {
-          time: "18:57:14",
-          value: 155,
-        },
-        {
-          time: "18:57:16",
-          value: 154,
-        },
-        {
-          time: "18:57:19",
-          value: 154,
-        },
-        {
-          time: "18:57:20",
-          value: 153,
-        },
-        {
-          time: "18:57:22",
-          value: 152,
-        },
-        {
-          time: "18:57:25",
-          value: 152,
-        },
-        {
-          time: "18:57:28",
-          value: 152,
-        },
-        {
-          time: "18:57:31",
-          value: 150,
-        },
-        {
-          time: "18:57:33",
-          value: 150,
-        },
-        {
-          time: "18:57:35",
-          value: 151,
-        },
-        {
-          time: "18:57:37",
-          value: 150,
-        },
-        {
-          time: "18:57:39",
-          value: 151,
-        },
-        {
-          time: "18:57:41",
-          value: 152,
-        },
-        {
-          time: "18:57:43",
-          value: 151,
-        },
-        {
-          time: "18:57:46",
-          value: 151,
-        },
-        {
-          time: "18:57:49",
-          value: 151,
-        },
-        {
-          time: "18:57:51",
-          value: 150,
-        },
-        {
-          time: "18:57:54",
-          value: 150,
-        },
-        {
-          time: "18:57:56",
-          value: 152,
-        },
-        {
-          time: "18:57:58",
-          value: 154,
-        },
-        {
-          time: "18:58:00",
-          value: 153,
-        },
-        {
-          time: "18:58:03",
-          value: 153,
-        },
-        {
-          time: "18:58:04",
-          value: 154,
-        },
-        {
-          time: "18:58:07",
-          value: 154,
-        },
-        {
-          time: "18:58:08",
-          value: 153,
-        },
-        {
-          time: "18:58:11",
-          value: 153,
-        },
-        {
-          time: "18:58:14",
-          value: 153,
-        },
-        {
-          time: "18:58:16",
-          value: 154,
-        },
-        {
-          time: "18:58:17",
-          value: 153,
-        },
-        {
-          time: "18:58:19",
-          value: 154,
-        },
-        {
-          time: "18:58:22",
-          value: 154,
-        },
-        {
-          time: "18:58:23",
-          value: 152,
-        },
-        {
-          time: "18:58:25",
-          value: 153,
-        },
-        {
-          time: "18:58:27",
-          value: 154,
-        },
-        {
-          time: "18:58:29",
-          value: 153,
-        },
-        {
-          time: "18:58:31",
-          value: 154,
-        },
-        {
-          time: "18:58:34",
-          value: 154,
-        },
-        {
-          time: "18:58:37",
-          value: 154,
-        },
-        {
-          time: "18:58:39",
-          value: 155,
-        },
-        {
-          time: "18:58:42",
-          value: 155,
-        },
-        {
-          time: "18:58:44",
-          value: 154,
-        },
-        {
-          time: "18:58:47",
-          value: 154,
-        },
-        {
-          time: "18:58:48",
-          value: 153,
-        },
-        {
-          time: "18:58:51",
-          value: 153,
-        },
-        {
-          time: "18:58:52",
-          value: 154,
-        },
-        {
-          time: "18:58:55",
-          value: 154,
-        },
-        {
-          time: "18:58:58",
-          value: 155,
-        },
-        {
-          time: "18:59:01",
-          value: 155,
-        },
-        {
-          time: "18:59:04",
-          value: 156,
-        },
-        {
-          time: "18:59:07",
-          value: 157,
-        },
-        {
-          time: "18:59:09",
-          value: 156,
-        },
-        {
-          time: "18:59:12",
-          value: 156,
-        },
-        {
-          time: "18:59:15",
-          value: 155,
-        },
-        {
-          time: "18:59:17",
-          value: 156,
-        },
-        {
-          time: "18:59:19",
-          value: 155,
-        },
-        {
-          time: "18:59:21",
-          value: 156,
-        },
-        {
-          time: "18:59:24",
-          value: 156,
-        },
-        {
-          time: "18:59:25",
-          value: 157,
-        },
-        {
-          time: "18:59:28",
-          value: 156,
-        },
-        {
-          time: "18:59:31",
-          value: 156,
-        },
-        {
-          time: "18:59:32",
-          value: 155,
-        },
-        {
-          time: "18:59:34",
-          value: 156,
-        },
-        {
-          time: "18:59:36",
-          value: 156,
-        },
-        {
-          time: "18:59:38",
-          value: 155,
-        },
-        {
-          time: "18:59:40",
-          value: 156,
-        },
-        {
-          time: "18:59:43",
-          value: 156,
-        },
-        {
-          time: "18:59:44",
-          value: 157,
-        },
-        {
-          time: "18:59:47",
-          value: 157,
-        },
-        {
-          time: "18:59:48",
-          value: 158,
-        },
-        {
-          time: "18:59:51",
-          value: 158,
-        },
-        {
-          time: "18:59:54",
-          value: 158,
-        },
-        {
-          time: "18:59:57",
-          value: 159,
-        },
-        {
-          time: "18:59:59",
-          value: 157,
-        },
-        {
-          time: "19:00:01",
-          value: 158,
-        },
-        {
-          time: "19:00:04",
-          value: 158,
-        },
-        {
-          time: "19:00:05",
-          value: 159,
-        },
-        {
-          time: "19:00:08",
-          value: 159,
-        },
-        {
-          time: "19:00:09",
-          value: 160,
-        },
-        {
-          time: "19:00:11",
-          value: 158,
-        },
-        {
-          time: "19:00:14",
-          value: 158,
-        },
-        {
-          time: "19:00:15",
-          value: 159,
-        },
-        {
-          time: "19:00:16",
-          value: 160,
-        },
-        {
-          time: "19:00:18",
-          value: 161,
-        },
-        {
-          time: "19:00:20",
-          value: 171,
-        },
-        {
-          time: "19:00:22",
-          value: 184,
-        },
-        {
-          time: "19:00:24",
-          value: 186,
-        },
-        {
-          time: "19:00:26",
-          value: 190,
-        },
-        {
-          time: "19:00:28",
-          value: 191,
-        },
-        {
-          time: "19:00:30",
-          value: 192,
-        },
-        {
-          time: "19:00:32",
-          value: 194,
-        },
-        {
-          time: "19:00:34",
-          value: 193,
-        },
-        {
-          time: "19:00:37",
-          value: 193,
-        },
-        {
-          time: "19:00:38",
-          value: 192,
-        },
-        {
-          time: "19:00:40",
-          value: 193,
-        },
-        {
-          time: "19:00:43",
-          value: 193,
-        },
-        {
-          time: "19:00:46",
-          value: 193,
-        },
-        {
-          time: "19:00:47",
-          value: 192,
-        },
-        {
-          time: "19:00:49",
-          value: 193,
-        },
-        {
-          time: "19:00:52",
-          value: 193,
-        },
-        {
-          time: "19:00:55",
-          value: 193,
-        },
-        {
-          time: "19:00:58",
-          value: 193,
-        },
-        {
-          time: "19:01:01",
-          value: 193,
-        },
-        {
-          time: "19:01:03",
-          value: 194,
-        },
-        {
-          time: "19:01:04",
-          value: 193,
-        },
-        {
-          time: "19:01:06",
-          value: 194,
-        },
-        {
-          time: "19:01:09",
-          value: 194,
-        },
-        {
-          time: "19:01:12",
-          value: 195,
-        },
-        {
-          time: "19:01:15",
-          value: 195,
-        },
-        {
-          time: "19:01:16",
-          value: 194,
-        },
-        {
-          time: "19:01:18",
-          value: 195,
-        },
-        {
-          time: "19:01:20",
-          value: 194,
-        },
-        {
-          time: "19:01:22",
-          value: 193,
-        },
-        {
-          time: "19:01:24",
-          value: 194,
-        },
-        {
-          time: "19:01:27",
-          value: 194,
-        },
-        {
-          time: "19:01:28",
-          value: 194,
-        },
-        {
-          time: "19:01:31",
-          value: 194,
-        },
-        {
-          time: "19:01:34",
-          value: 194,
-        },
-        {
-          time: "19:01:35",
-          value: 193,
-        },
-        {
-          time: "19:01:37",
-          value: 192,
-        },
-        {
-          time: "19:01:40",
-          value: 192,
-        },
-        {
-          time: "19:01:43",
-          value: 192,
-        },
-        {
-          time: "19:01:46",
-          value: 192,
-        },
-        {
-          time: "19:01:49",
-          value: 193,
-        },
-        {
-          time: "19:01:51",
-          value: 192,
-        },
-        {
-          time: "19:01:52",
-          value: 191,
-        },
-        {
-          time: "19:01:54",
-          value: 190,
-        },
-        {
-          time: "19:01:56",
-          value: 189,
-        },
-        {
-          time: "19:01:58",
-          value: 190,
-        },
-        {
-          time: "19:02:00",
-          value: 191,
-        },
-        {
-          time: "19:02:02",
-          value: 190,
-        },
-        {
-          time: "19:02:04",
-          value: 193,
-        },
-        {
-          time: "19:02:07",
-          value: 193,
-        },
-        {
-          time: "19:02:08",
-          value: 192,
-        },
-        {
-          time: "19:02:10",
-          value: 193,
-        },
-        {
-          time: "19:02:13",
-          value: 193,
-        },
-        {
-          time: "19:02:16",
-          value: 193,
-        },
-        {
-          time: "19:02:17",
-          value: 192,
-        },
-        {
-          time: "19:02:19",
-          value: 191,
-        },
-        {
-          time: "19:02:21",
-          value: 193,
-        },
-        {
-          time: "19:02:23",
-          value: 191,
-        },
-        {
-          time: "19:02:25",
-          value: 188,
-        },
-        {
-          time: "19:02:27",
-          value: 189,
-        },
-        {
-          time: "19:02:29",
-          value: 186,
-        },
-        {
-          time: "19:02:32",
-          value: 186,
-        },
-        {
-          time: "19:02:33",
-          value: 189,
-        },
-        {
-          time: "19:02:35",
-          value: 184,
-        },
-        {
-          time: "19:02:37",
-          value: 177,
-        },
-        {
-          time: "19:02:39",
-          value: 176,
-        },
-        {
-          time: "19:02:40",
-          value: 171,
-        },
-        {
-          time: "19:02:42",
-          value: 174,
-        },
-        {
-          time: "19:02:44",
-          value: 175,
-        },
-        {
-          time: "19:02:47",
-          value: 175,
-        },
-        {
-          time: "19:02:48",
-          value: 182,
-        },
-        {
-          time: "19:02:50",
-          value: 184,
-        },
-        {
-          time: "19:02:52",
-          value: 186,
-        },
-        {
-          time: "19:02:54",
-          value: 190,
-        },
-        {
-          time: "19:02:56",
-          value: 192,
-        },
-        {
-          time: "19:02:59",
-          value: 192,
-        },
-        {
-          time: "19:03:00",
-          value: 190,
-        },
-        {
-          time: "19:03:03",
-          value: 190,
-        },
-        {
-          time: "19:03:04",
-          value: 189,
-        },
-        {
-          time: "19:03:05",
-          value: 188,
-        },
-        {
-          time: "19:03:07",
-          value: 187,
-        },
-        {
-          time: "19:03:09",
-          value: 184,
-        },
-        {
-          time: "19:03:11",
-          value: 181,
-        },
-        {
-          time: "19:03:13",
-          value: 180,
-        },
-        {
-          time: "19:03:15",
-          value: 174,
-        },
-        {
-          time: "19:03:17",
-          value: 168,
-        },
-        {
-          time: "19:03:19",
-          value: 165,
-        },
-        {
-          time: "19:03:21",
-          value: 171,
-        },
-        {
-          time: "19:03:23",
-          value: 166,
-        },
-        {
-          time: "19:03:26",
-          value: 166,
-        },
-        {
-          time: "19:03:27",
-          value: 162,
-        },
-        {
-          time: "19:03:28",
-          value: 161,
-        },
-        {
-          time: "19:03:31",
-          value: 161,
-        },
-        {
-          time: "19:03:32",
-          value: 158,
-        },
-        {
-          time: "19:03:35",
-          value: 158,
-        },
-        {
-          time: "19:03:36",
-          value: 159,
-        },
-        {
-          time: "19:03:38",
-          value: 158,
-        },
-        {
-          time: "19:03:41",
-          value: 158,
-        },
-        {
-          time: "19:03:42",
-          value: 157,
-        },
-        {
-          time: "19:03:45",
-          value: 157,
-        },
-        {
-          time: "19:03:46",
-          value: 156,
-        },
-        {
-          time: "19:03:49",
-          value: 156,
-        },
-        {
-          time: "19:03:50",
-          value: 157,
-        },
-        {
-          time: "19:03:52",
-          value: 159,
-        },
-        {
-          time: "19:03:53",
-          value: 156,
-        },
-        {
-          time: "19:03:55",
-          value: 162,
-        },
-        {
-          time: "19:03:57",
-          value: 165,
-        },
-        {
-          time: "19:03:59",
-          value: 163,
-        },
-        {
-          time: "19:04:01",
-          value: 161,
-        },
-        {
-          time: "19:04:03",
-          value: 162,
-        },
-        {
-          time: "19:04:05",
-          value: 163,
-        },
-        {
-          time: "19:04:07",
-          value: 162,
-        },
-        {
-          time: "19:04:09",
-          value: 161,
-        },
-        {
-          time: "19:04:11",
-          value: 160,
-        },
-        {
-          time: "19:04:13",
-          value: 161,
-        },
-        {
-          time: "19:04:16",
-          value: 161,
-        },
-        {
-          time: "19:04:19",
-          value: 161,
-        },
-        {
-          time: "19:04:22",
-          value: 161,
-        },
-        {
-          time: "19:04:24",
-          value: 160,
-        },
-        {
-          time: "19:04:27",
-          value: 160,
-        },
-        {
-          time: "19:04:28",
-          value: 159,
-        },
-        {
-          time: "19:04:30",
-          value: 158,
-        },
-        {
-          time: "19:04:33",
-          value: 158,
-        },
-        {
-          time: "19:04:34",
-          value: 157,
-        },
-        {
-          time: "19:04:36",
-          value: 156,
-        },
-        {
-          time: "19:04:38",
-          value: 157,
-        },
-        {
-          time: "19:04:40",
-          value: 156,
-        },
-        {
-          time: "19:04:43",
-          value: 155,
-        },
-        {
-          time: "19:04:45",
-          value: 153,
-        },
-        {
-          time: "19:04:47",
-          value: 154,
-        },
-        {
-          time: "19:04:49",
-          value: 153,
-        },
-        {
-          time: "19:04:52",
-          value: 153,
-        },
-        {
-          time: "19:04:55",
-          value: 153,
-        },
-        {
-          time: "19:04:57",
-          value: 152,
-        },
-        {
-          time: "19:04:59",
-          value: 151,
-        },
-        {
-          time: "19:05:02",
-          value: 151,
-        },
-        {
-          time: "19:05:03",
-          value: 149,
-        },
-        {
-          time: "19:05:04",
-          value: 148,
-        },
-        {
-          time: "19:05:07",
-          value: 148,
-        },
-        {
-          time: "19:05:10",
-          value: 150,
-        },
-        {
-          time: "19:05:12",
-          value: 150,
-        },
-        {
-          time: "19:05:14",
-          value: 149,
-        },
-        {
-          time: "19:05:17",
-          value: 149,
-        },
-        {
-          time: "19:05:20",
-          value: 149,
-        },
-        {
-          time: "19:05:22",
-          value: 148,
-        },
-        {
-          time: "19:05:25",
-          value: 148,
-        },
-        {
-          time: "19:05:26",
-          value: 149,
-        },
-        {
-          time: "19:05:29",
-          value: 148,
-        },
-        {
-          time: "19:05:32",
-          value: 148,
-        },
-        {
-          time: "19:05:33",
-          value: 146,
-        },
-        {
-          time: "19:05:36",
-          value: 146,
-        },
-        {
-          time: "19:05:37",
-          value: 145,
-        },
-        {
-          time: "19:05:40",
-          value: 145,
-        },
-        {
-          time: "19:05:41",
-          value: 144,
-        },
-        {
-          time: "19:05:44",
-          value: 144,
-        },
-        {
-          time: "19:05:47",
-          value: 144,
-        },
-        {
-          time: "19:05:50",
-          value: 144,
-        },
-        {
-          time: "19:05:53",
-          value: 144,
-        },
-        {
-          time: "19:05:56",
-          value: 144,
-        },
-        {
-          time: "19:05:59",
-          value: 144,
-        },
-        {
-          time: "19:06:02",
-          value: 144,
-        },
-        {
-          time: "19:06:05",
-          value: 144,
-        },
-        {
-          time: "19:06:06",
-          value: 145,
-        },
-        {
-          time: "19:06:08",
-          value: 146,
-        },
-        {
-          time: "19:06:10",
-          value: 145,
-        },
-        {
-          time: "19:06:12",
-          value: 146,
-        },
-        {
-          time: "19:06:14",
-          value: 145,
-        },
-        {
-          time: "19:06:16",
-          value: 144,
-        },
-        {
-          time: "19:06:19",
-          value: 144,
-        },
-        {
-          time: "19:06:22",
-          value: 144,
-        },
-        {
-          time: "19:06:25",
-          value: 145,
-        },
-        {
-          time: "19:06:28",
-          value: 145,
-        },
-        {
-          time: "19:06:31",
-          value: 145,
-        },
-        {
-          time: "19:06:34",
-          value: 145,
-        },
-        {
-          time: "19:06:35",
-          value: 144,
-        },
-        {
-          time: "19:06:38",
-          value: 144,
-        },
-        {
-          time: "19:06:41",
-          value: 144,
-        },
-        {
-          time: "19:06:44",
-          value: 142,
-        },
-        {
-          time: "19:06:46",
-          value: 143,
-        },
-        {
-          time: "19:06:48",
-          value: 144,
-        },
-        {
-          time: "19:06:51",
-          value: 144,
-        },
-        {
-          time: "19:06:54",
-          value: 143,
-        },
-        {
-          time: "19:06:57",
-          value: 143,
-        },
-        {
-          time: "19:06:58",
-          value: 142,
-        },
-        {
-          time: "19:07:01",
-          value: 142,
-        },
-        {
-          time: "19:07:02",
-          value: 143,
-        },
-        {
-          time: "19:07:04",
-          value: 142,
-        },
-        {
-          time: "19:07:07",
-          value: 142,
-        },
-        {
-          time: "19:07:10",
-          value: 142,
-        },
-        {
-          time: "19:07:11",
-          value: 143,
-        },
-        {
-          time: "19:07:13",
-          value: 144,
-        },
-        {
-          time: "19:07:15",
-          value: 143,
-        },
-        {
-          time: "19:07:18",
-          value: 143,
-        },
-        {
-          time: "19:07:21",
-          value: 143,
-        },
-        {
-          time: "19:07:23",
-          value: 143,
-        },
-        {
-          time: "19:07:25",
-          value: 144,
-        },
-        {
-          time: "19:07:27",
-          value: 145,
-        },
-        {
-          time: "19:07:28",
-          value: 144,
-        },
-        {
-          time: "19:07:31",
-          value: 144,
-        },
-        {
-          time: "19:07:32",
-          value: 145,
-        },
-        {
-          time: "19:07:34",
-          value: 144,
-        },
-        {
-          time: "19:07:37",
-          value: 144,
-        },
-        {
-          time: "19:07:40",
-          value: 143,
-        },
-        {
-          time: "19:07:42",
-          value: 142,
-        },
-        {
-          time: "19:07:44",
-          value: 141,
-        },
-        {
-          time: "19:07:46",
-          value: 142,
-        },
-        {
-          time: "19:07:49",
-          value: 142,
-        },
-        {
-          time: "19:07:50",
-          value: 143,
-        },
-        {
-          time: "19:07:52",
-          value: 142,
-        },
-        {
-          time: "19:07:55",
-          value: 142,
-        },
-        {
-          time: "19:07:58",
-          value: 142,
-        },
-        {
-          time: "19:07:59",
-          value: 143,
-        },
-        {
-          time: "19:08:01",
-          value: 144,
-        },
-        {
-          time: "19:08:04",
-          value: 144,
-        },
-        {
-          time: "19:08:07",
-          value: 144,
-        },
-        {
-          time: "19:08:09",
-          value: 143,
-        },
-        {
-          time: "19:08:11",
-          value: 142,
-        },
-        {
-          time: "19:08:13",
-          value: 141,
-        },
-        {
-          time: "19:08:16",
-          value: 142,
-        },
-        {
-          time: "19:08:18",
-          value: 141,
-        },
-        {
-          time: "19:08:20",
-          value: 142,
-        },
-        {
-          time: "19:08:22",
-          value: 145,
-        },
-        {
-          time: "19:08:24",
-          value: 144,
-        },
-        {
-          time: "19:08:26",
-          value: 142,
-        },
-        {
-          time: "19:08:28",
-          value: 141,
-        },
-        {
-          time: "19:08:31",
-          value: 141,
-        },
-        {
-          time: "19:08:32",
-          value: 145,
-        },
-        {
-          time: "19:08:34",
-          value: 147,
-        },
-        {
-          time: "19:08:36",
-          value: 152,
-        },
-        {
-          time: "19:08:38",
-          value: 155,
-        },
-        {
-          time: "19:08:40",
-          value: 157,
-        },
-        {
-          time: "19:08:41",
-          value: 158,
-        },
-        {
-          time: "19:08:43",
-          value: 159,
-        },
-        {
-          time: "19:08:45",
-          value: 161,
-        },
-        {
-          time: "19:08:48",
-          value: 161,
-        },
-        {
-          time: "19:08:51",
-          value: 163,
-        },
-        {
-          time: "19:08:53",
-          value: 164,
-        },
-        {
-          time: "19:08:55",
-          value: 166,
-        },
-        {
-          time: "19:08:58",
-          value: 166,
-        },
-        {
-          time: "19:08:59",
-          value: 167,
-        },
-        {
-          time: "19:09:01",
-          value: 168,
-        },
-        {
-          time: "19:09:03",
-          value: 170,
-        },
-        {
-          time: "19:09:04",
-          value: 171,
-        },
-        {
-          time: "19:09:06",
-          value: 172,
-        },
-        {
-          time: "19:09:08",
-          value: 173,
-        },
-        {
-          time: "19:09:11",
-          value: 173,
-        },
-        {
-          time: "19:09:12",
-          value: 175,
-        },
-        {
-          time: "19:09:14",
-          value: 176,
-        },
-        {
-          time: "19:09:16",
-          value: 177,
-        },
-        {
-          time: "19:09:18",
-          value: 178,
-        },
-        {
-          time: "19:09:21",
-          value: 178,
-        },
-        {
-          time: "19:09:22",
-          value: 179,
-        },
-        {
-          time: "19:09:24",
-          value: 178,
-        },
-        {
-          time: "19:09:26",
-          value: 179,
-        },
-        {
-          time: "19:09:28",
-          value: 181,
-        },
-        {
-          time: "19:09:31",
-          value: 182,
-        },
-        {
-          time: "19:09:34",
-          value: 182,
-        },
-        {
-          time: "19:09:35",
-          value: 183,
-        },
-        {
-          time: "19:09:38",
-          value: 183,
-        },
-        {
-          time: "19:09:39",
-          value: 184,
-        },
-        {
-          time: "19:09:41",
-          value: 183,
-        },
-        {
-          time: "19:09:43",
-          value: 185,
-        },
-        {
-          time: "19:09:46",
-          value: 185,
-        },
-        {
-          time: "19:09:49",
-          value: 186,
-        },
-        {
-          time: "19:09:52",
-          value: 187,
-        },
-        {
-          time: "19:09:55",
-          value: 187,
-        },
-        {
-          time: "19:09:56",
-          value: 188,
-        },
-        {
-          time: "19:09:59",
-          value: 188,
-        },
-        {
-          time: "19:10:00",
-          value: 187,
-        },
-        {
-          time: "19:10:02",
-          value: 188,
-        },
-        {
-          time: "19:10:04",
-          value: 187,
-        },
-        {
-          time: "19:10:06",
-          value: 188,
-        },
-        {
-          time: "19:10:09",
-          value: 188,
-        },
-        {
-          time: "19:10:12",
-          value: 188,
-        },
-        {
-          time: "19:10:15",
-          value: 188,
-        },
-        {
-          time: "19:10:16",
-          value: 187,
-        },
-        {
-          time: "19:10:17",
-          value: 188,
-        },
-        {
-          time: "19:10:20",
-          value: 188,
-        },
-        {
-          time: "19:10:23",
-          value: 188,
-        },
-        {
-          time: "19:10:26",
-          value: 188,
-        },
-        {
-          time: "19:10:29",
-          value: 189,
-        },
-        {
-          time: "19:10:31",
-          value: 188,
-        },
-        {
-          time: "19:10:34",
-          value: 188,
-        },
-        {
-          time: "19:10:35",
-          value: 189,
-        },
-        {
-          time: "19:10:37",
-          value: 188,
-        },
-        {
-          time: "19:10:40",
-          value: 188,
-        },
-        {
-          time: "19:10:43",
-          value: 188,
-        },
-        {
-          time: "19:10:44",
-          value: 187,
-        },
-        {
-          time: "19:10:47",
-          value: 187,
-        },
-        {
-          time: "19:10:50",
-          value: 187,
-        },
-        {
-          time: "19:10:52",
-          value: 188,
-        },
-        {
-          time: "19:10:54",
-          value: 189,
-        },
-        {
-          time: "19:10:56",
-          value: 188,
-        },
-        {
-          time: "19:10:59",
-          value: 188,
-        },
-        {
-          time: "19:11:02",
-          value: 187,
-        },
-      ],
       caloriesLink:
         "https://api.fitbit.com/1/user/-/activities/calories/date/2024-12-04/2024-12-04/1min/time/18:54/19:11.json",
       heartRateLink:
@@ -4397,6 +10758,2258 @@ export function testData() {
       originalDuration: 985000,
       elevationGain: 0,
       hasActiveZoneMinutes: true,
+      heartRateArray: [
+        {
+          time: "00:00:00",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:00:02",
+          value: 133,
+          bpm: 133,
+        },
+        {
+          time: "00:00:04",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:00:07",
+          value: 134,
+          bpm: 134,
+        },
+        {
+          time: "00:00:08",
+          value: 135,
+          bpm: 135,
+        },
+        {
+          time: "00:00:11",
+          value: 135,
+          bpm: 135,
+        },
+        {
+          time: "00:00:12",
+          value: 138,
+          bpm: 138,
+        },
+        {
+          time: "00:00:14",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:00:17",
+          value: 140,
+          bpm: 140,
+        },
+        {
+          time: "00:00:19",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:00:21",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:00:24",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:00:25",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:00:27",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:00:29",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:00:31",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:00:33",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:00:35",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:00:37",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:00:38",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:00:41",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:00:42",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:00:44",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:00:47",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:00:48",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:00:50",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:00:52",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:00:54",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:00:56",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:00:58",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:01:00",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:01:02",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:01:03",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:01:03",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:01:07",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:01:07",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:01:11",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:01:11",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:01:15",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:01:17",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:01:19",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:01:21",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:01:23",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:01:25",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:01:26",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:01:29",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:01:30",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:01:33",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:01:34",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:01:36",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:01:38",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:01:40",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:01:42",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:01:44",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:01:46",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:01:49",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:01:52",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:01:53",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:01:57",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:01:57",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:02:00",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:02:00",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:02:05",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:02:07",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:02:07",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:02:13",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:02:15",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:02:19",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:02:22",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:02:23",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:02:23",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:02:29",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:02:30",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:02:34",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:02:36",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:02:38",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:02:38",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:02:42",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:02:45",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:02:46",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:02:51",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:53",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:53",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:02:57",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:02:59",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:03:00",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:00",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:03:06",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:03:07",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:03:08",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:03:14",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:03:15",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:15",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:20",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:23",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:23",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:27",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:28",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:30",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:34",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:36",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:37",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:38",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:42",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:43",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:03:45",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:46",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:49",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:03:51",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:53",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:57",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:03:59",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:00",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:01",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:04:04",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:04:08",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:04:11",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:04:12",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:04:15",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:04:15",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:18",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:24",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:27",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:04:29",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:30",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:32",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:34",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:39",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:41",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:44",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:45",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:04:46",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:48",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:49",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:04:54",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:56",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:04:58",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:05:00",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:05:00",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:05:01",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:05:04",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:05:08",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:11",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:14",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:15",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:05:16",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:05:18",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:24",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:25",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:05:28",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:05:29",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:30",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:31",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:05:32",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:05:33",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:05:38",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:05:40",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:05:42",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:05:44",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:05:46",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:05:46",
+          value: 191,
+          bpm: 191,
+        },
+        {
+          time: "00:05:47",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:05:49",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:05:54",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:05:57",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:05:58",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:06:00",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:00",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:03",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:04",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:06:09",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:12",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:15",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:15",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:18",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:23",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:24",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:26",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:29",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:30",
+          value: 195,
+          bpm: 195,
+        },
+        {
+          time: "00:06:32",
+          value: 195,
+          bpm: 195,
+        },
+        {
+          time: "00:06:33",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:38",
+          value: 195,
+          bpm: 195,
+        },
+        {
+          time: "00:06:40",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:42",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:44",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:46",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:46",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:48",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:54",
+          value: 194,
+          bpm: 194,
+        },
+        {
+          time: "00:06:55",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:06:57",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:07:00",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:07:00",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:07:03",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:07:09",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:07:11",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:07:12",
+          value: 191,
+          bpm: 191,
+        },
+        {
+          time: "00:07:14",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:07:15",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:07:15",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:07:17",
+          value: 191,
+          bpm: 191,
+        },
+        {
+          time: "00:07:19",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:07:24",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:07:27",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:07:28",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:07:30",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:07:30",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:07:33",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:07:34",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:07:39",
+          value: 191,
+          bpm: 191,
+        },
+        {
+          time: "00:07:41",
+          value: 193,
+          bpm: 193,
+        },
+        {
+          time: "00:07:43",
+          value: 191,
+          bpm: 191,
+        },
+        {
+          time: "00:07:45",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:07:46",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:07:46",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:49",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:53",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:07:55",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:07:57",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:07:59",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:08:00",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:08:01",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:08:03",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:08:07",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:08:07",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:08:09",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:08:11",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:13",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:08:16",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:08:18",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:08:20",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:08:22",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:08:24",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:08:24",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:08:26",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:28",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:08:31",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:08:33",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:08:35",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:08:37",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:08:39",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:08:41",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:08:43",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:08:46",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:08:46",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:08:48",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:08:50",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:08:52",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:08:54",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:08:56",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:08:58",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:09:01",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:09:01",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:09:05",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:09:05",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:09:09",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:09:09",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:09:11",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:09:13",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:09:15",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:09:16",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:09:18",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:09:20",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:22",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:09:24",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:09:26",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:09:28",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:31",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:09:33",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:35",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:39",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:41",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:09:43",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:09:46",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:09:48",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:09:50",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:09:52",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:09:54",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:09:56",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:09:58",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:10:00",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:10:03",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:10:05",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:10:07",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:10:09",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:10:11",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:10:15",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:10:16",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:10:18",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:10:22",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:10:22",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:10:24",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:10:26",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:10:30",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:10:31",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:10:33",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:10:37",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:10:39",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:10:41",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:10:45",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:10:46",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:10:48",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:10:52",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:10:52",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:10:56",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:10:56",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:11:00",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:11:01",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:03",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:07",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:09",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:13",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:16",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:18",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:22",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:24",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:26",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:11:28",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:11:30",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:11:31",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:11:33",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:11:35",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:39",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:41",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:45",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:11:48",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:11:50",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:11:54",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:11:54",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:11:58",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:12:01",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:12:03",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:12:05",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:12:07",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:12:11",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:12:13",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:12:16",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:12:18",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:12:20",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:12:22",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:12:24",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:12:26",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:12:30",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:12:31",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:12:33",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:12:35",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:12:37",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:12:41",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:12:43",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:12:45",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:12:46",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:12:48",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:12:50",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:12:52",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:12:54",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:12:56",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:13:00",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:13:01",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:03",
+          value: 141,
+          bpm: 141,
+        },
+        {
+          time: "00:13:05",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:09",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:09",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:13:11",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:15",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:18",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:18",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:13:20",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:13:24",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:13:26",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:13:28",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:13:31",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:33",
+          value: 141,
+          bpm: 141,
+        },
+        {
+          time: "00:13:35",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:37",
+          value: 141,
+          bpm: 141,
+        },
+        {
+          time: "00:13:39",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:41",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:13:43",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:13:46",
+          value: 142,
+          bpm: 142,
+        },
+        {
+          time: "00:13:48",
+          value: 141,
+          bpm: 141,
+        },
+        {
+          time: "00:13:50",
+          value: 141,
+          bpm: 141,
+        },
+        {
+          time: "00:13:52",
+          value: 145,
+          bpm: 145,
+        },
+        {
+          time: "00:13:54",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:13:56",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:13:58",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:14:00",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:14:01",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:14:03",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:14:05",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:14:07",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:14:11",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:14:13",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:14:15",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:14:18",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:14:18",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:14:20",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:14:22",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:14:24",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:14:26",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:14:28",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:14:31",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:14:31",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:14:33",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:14:35",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:14:37",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:14:41",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:14:41",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:14:43",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:14:46",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:14:48",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:14:50",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:14:54",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:14:54",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:14:58",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:14:58",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:15:01",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:15:03",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:15:05",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:15:09",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:15:11",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:15:15",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:15:16",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:18",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:20",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:15:22",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:24",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:15:26",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:28",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:31",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:35",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:35",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:15:37",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:39",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:43",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:46",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:48",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:15:50",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:54",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:15:54",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:15:56",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:16:00",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:16:03",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:16:03",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:16:07",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:16:10",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:16:11",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:16:14",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:16:15",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:16:18",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:16:22",
+          value: 187,
+          bpm: 187,
+        },
+      ],
     },
     {
       logId: 2474517443734024000,
@@ -4458,21 +13071,21 @@ export function testData() {
         {
           minutes: 0,
           caloriesOut: 15.047635,
-          name: "Out of Range",
+          name: "Light",
           min: 30,
           max: 114,
         },
         {
           minutes: 1,
           caloriesOut: 16.356125,
-          name: "Fat Burn",
+          name: "Moderate",
           min: 115,
           max: 140,
         },
         {
           minutes: 3,
           caloriesOut: 53.517382,
-          name: "Cardio",
+          name: "Vigorous",
           min: 141,
           max: 172,
         },
@@ -4518,1628 +13131,6 @@ export function testData() {
         ],
       },
       inProgress: false,
-      heartRateArray: [
-        {
-          time: "12:30:29",
-          value: 110,
-        },
-        {
-          time: "12:30:32",
-          value: 110,
-        },
-        {
-          time: "12:30:33",
-          value: 113,
-        },
-        {
-          time: "12:30:35",
-          value: 112,
-        },
-        {
-          time: "12:30:37",
-          value: 116,
-        },
-        {
-          time: "12:30:39",
-          value: 120,
-        },
-        {
-          time: "12:30:41",
-          value: 131,
-        },
-        {
-          time: "12:30:43",
-          value: 141,
-        },
-        {
-          time: "12:30:45",
-          value: 136,
-        },
-        {
-          time: "12:30:47",
-          value: 139,
-        },
-        {
-          time: "12:30:48",
-          value: 143,
-        },
-        {
-          time: "12:30:50",
-          value: 144,
-        },
-        {
-          time: "12:30:52",
-          value: 147,
-        },
-        {
-          time: "12:30:54",
-          value: 148,
-        },
-        {
-          time: "12:30:56",
-          value: 149,
-        },
-        {
-          time: "12:30:58",
-          value: 152,
-        },
-        {
-          time: "12:31:00",
-          value: 154,
-        },
-        {
-          time: "12:31:02",
-          value: 153,
-        },
-        {
-          time: "12:31:04",
-          value: 155,
-        },
-        {
-          time: "12:31:06",
-          value: 156,
-        },
-        {
-          time: "12:31:08",
-          value: 155,
-        },
-        {
-          time: "12:31:10",
-          value: 156,
-        },
-        {
-          time: "12:31:13",
-          value: 156,
-        },
-        {
-          time: "12:31:15",
-          value: 158,
-        },
-        {
-          time: "12:31:17",
-          value: 159,
-        },
-        {
-          time: "12:31:19",
-          value: 159,
-        },
-        {
-          time: "12:31:22",
-          value: 159,
-        },
-        {
-          time: "12:31:23",
-          value: 160,
-        },
-        {
-          time: "12:31:25",
-          value: 161,
-        },
-        {
-          time: "12:31:28",
-          value: 161,
-        },
-        {
-          time: "12:31:31",
-          value: 161,
-        },
-        {
-          time: "12:31:33",
-          value: 160,
-        },
-        {
-          time: "12:31:36",
-          value: 161,
-        },
-        {
-          time: "12:31:38",
-          value: 160,
-        },
-        {
-          time: "12:31:40",
-          value: 161,
-        },
-        {
-          time: "12:31:43",
-          value: 161,
-        },
-        {
-          time: "12:31:44",
-          value: 163,
-        },
-        {
-          time: "12:31:47",
-          value: 163,
-        },
-        {
-          time: "12:31:48",
-          value: 164,
-        },
-        {
-          time: "12:31:51",
-          value: 164,
-        },
-        {
-          time: "12:31:54",
-          value: 164,
-        },
-        {
-          time: "12:31:56",
-          value: 165,
-        },
-        {
-          time: "12:31:58",
-          value: 166,
-        },
-        {
-          time: "12:32:01",
-          value: 166,
-        },
-        {
-          time: "12:32:04",
-          value: 166,
-        },
-        {
-          time: "12:32:05",
-          value: 167,
-        },
-        {
-          time: "12:32:08",
-          value: 167,
-        },
-        {
-          time: "12:32:09",
-          value: 168,
-        },
-        {
-          time: "12:32:11",
-          value: 167,
-        },
-        {
-          time: "12:32:13",
-          value: 168,
-        },
-        {
-          time: "12:32:16",
-          value: 168,
-        },
-        {
-          time: "12:32:19",
-          value: 168,
-        },
-        {
-          time: "12:32:21",
-          value: 168,
-        },
-        {
-          time: "12:32:24",
-          value: 168,
-        },
-        {
-          time: "12:32:26",
-          value: 169,
-        },
-        {
-          time: "12:32:29",
-          value: 169,
-        },
-        {
-          time: "12:32:30",
-          value: 170,
-        },
-        {
-          time: "12:32:33",
-          value: 170,
-        },
-        {
-          time: "12:32:36",
-          value: 171,
-        },
-        {
-          time: "12:32:38",
-          value: 173,
-        },
-        {
-          time: "12:32:41",
-          value: 173,
-        },
-        {
-          time: "12:32:44",
-          value: 174,
-        },
-        {
-          time: "12:32:47",
-          value: 173,
-        },
-        {
-          time: "12:32:49",
-          value: 174,
-        },
-        {
-          time: "12:32:51",
-          value: 173,
-        },
-        {
-          time: "12:32:54",
-          value: 173,
-        },
-        {
-          time: "12:32:55",
-          value: 175,
-        },
-        {
-          time: "12:32:57",
-          value: 176,
-        },
-        {
-          time: "12:32:59",
-          value: 174,
-        },
-        {
-          time: "12:33:02",
-          value: 174,
-        },
-        {
-          time: "12:33:03",
-          value: 175,
-        },
-        {
-          time: "12:33:06",
-          value: 175,
-        },
-        {
-          time: "12:33:09",
-          value: 175,
-        },
-        {
-          time: "12:33:11",
-          value: 176,
-        },
-        {
-          time: "12:33:14",
-          value: 176,
-        },
-        {
-          time: "12:33:17",
-          value: 176,
-        },
-        {
-          time: "12:33:18",
-          value: 177,
-        },
-        {
-          time: "12:33:20",
-          value: 178,
-        },
-        {
-          time: "12:33:23",
-          value: 178,
-        },
-        {
-          time: "12:33:24",
-          value: 178,
-        },
-        {
-          time: "12:33:27",
-          value: 178,
-        },
-        {
-          time: "12:33:30",
-          value: 178,
-        },
-        {
-          time: "12:33:33",
-          value: 178,
-        },
-        {
-          time: "12:33:35",
-          value: 176,
-        },
-        {
-          time: "12:33:38",
-          value: 176,
-        },
-        {
-          time: "12:33:41",
-          value: 176,
-        },
-        {
-          time: "12:33:43",
-          value: 177,
-        },
-        {
-          time: "12:33:46",
-          value: 177,
-        },
-        {
-          time: "12:33:47",
-          value: 176,
-        },
-        {
-          time: "12:33:49",
-          value: 174,
-        },
-        {
-          time: "12:33:51",
-          value: 179,
-        },
-        {
-          time: "12:33:53",
-          value: 182,
-        },
-        {
-          time: "12:33:55",
-          value: 181,
-        },
-        {
-          time: "12:33:57",
-          value: 182,
-        },
-        {
-          time: "12:34:00",
-          value: 181,
-        },
-        {
-          time: "12:34:03",
-          value: 181,
-        },
-        {
-          time: "12:34:06",
-          value: 181,
-        },
-        {
-          time: "12:34:09",
-          value: 181,
-        },
-        {
-          time: "12:34:12",
-          value: 180,
-        },
-        {
-          time: "12:34:14",
-          value: 181,
-        },
-        {
-          time: "12:34:17",
-          value: 181,
-        },
-        {
-          time: "12:34:18",
-          value: 180,
-        },
-        {
-          time: "12:34:20",
-          value: 181,
-        },
-        {
-          time: "12:34:23",
-          value: 180,
-        },
-        {
-          time: "12:34:25",
-          value: 182,
-        },
-        {
-          time: "12:34:27",
-          value: 183,
-        },
-        {
-          time: "12:34:29",
-          value: 180,
-        },
-        {
-          time: "12:34:31",
-          value: 181,
-        },
-        {
-          time: "12:34:34",
-          value: 181,
-        },
-        {
-          time: "12:34:35",
-          value: 182,
-        },
-        {
-          time: "12:34:37",
-          value: 183,
-        },
-        {
-          time: "12:34:40",
-          value: 183,
-        },
-        {
-          time: "12:34:43",
-          value: 183,
-        },
-        {
-          time: "12:34:45",
-          value: 184,
-        },
-        {
-          time: "12:34:48",
-          value: 184,
-        },
-        {
-          time: "12:34:51",
-          value: 184,
-        },
-        {
-          time: "12:34:54",
-          value: 184,
-        },
-        {
-          time: "12:34:56",
-          value: 185,
-        },
-        {
-          time: "12:34:58",
-          value: 184,
-        },
-        {
-          time: "12:35:01",
-          value: 184,
-        },
-        {
-          time: "12:35:04",
-          value: 184,
-        },
-        {
-          time: "12:35:06",
-          value: 185,
-        },
-        {
-          time: "12:35:08",
-          value: 184,
-        },
-        {
-          time: "12:35:10",
-          value: 183,
-        },
-        {
-          time: "12:35:13",
-          value: 183,
-        },
-        {
-          time: "12:35:16",
-          value: 183,
-        },
-        {
-          time: "12:35:17",
-          value: 182,
-        },
-        {
-          time: "12:35:19",
-          value: 183,
-        },
-        {
-          time: "12:35:22",
-          value: 183,
-        },
-        {
-          time: "12:35:25",
-          value: 182,
-        },
-        {
-          time: "12:35:27",
-          value: 183,
-        },
-        {
-          time: "12:35:29",
-          value: 182,
-        },
-        {
-          time: "12:35:32",
-          value: 182,
-        },
-        {
-          time: "12:35:33",
-          value: 182,
-        },
-        {
-          time: "12:35:36",
-          value: 183,
-        },
-        {
-          time: "12:35:39",
-          value: 183,
-        },
-        {
-          time: "12:35:40",
-          value: 182,
-        },
-        {
-          time: "12:35:43",
-          value: 182,
-        },
-        {
-          time: "12:35:44",
-          value: 183,
-        },
-        {
-          time: "12:35:46",
-          value: 182,
-        },
-        {
-          time: "12:35:48",
-          value: 181,
-        },
-        {
-          time: "12:35:51",
-          value: 181,
-        },
-        {
-          time: "12:35:54",
-          value: 181,
-        },
-        {
-          time: "12:35:56",
-          value: 180,
-        },
-        {
-          time: "12:35:59",
-          value: 178,
-        },
-        {
-          time: "12:36:01",
-          value: 179,
-        },
-        {
-          time: "12:36:03",
-          value: 178,
-        },
-        {
-          time: "12:36:05",
-          value: 179,
-        },
-        {
-          time: "12:36:07",
-          value: 180,
-        },
-        {
-          time: "12:36:09",
-          value: 178,
-        },
-        {
-          time: "12:36:11",
-          value: 174,
-        },
-        {
-          time: "12:36:13",
-          value: 173,
-        },
-        {
-          time: "12:36:15",
-          value: 168,
-        },
-        {
-          time: "12:36:17",
-          value: 178,
-        },
-        {
-          time: "12:36:19",
-          value: 181,
-        },
-        {
-          time: "12:36:22",
-          value: 181,
-        },
-        {
-          time: "12:36:25",
-          value: 181,
-        },
-        {
-          time: "12:36:28",
-          value: 181,
-        },
-        {
-          time: "12:36:31",
-          value: 181,
-        },
-        {
-          time: "12:36:32",
-          value: 181,
-        },
-        {
-          time: "12:36:35",
-          value: 181,
-        },
-        {
-          time: "12:36:36",
-          value: 182,
-        },
-        {
-          time: "12:36:39",
-          value: 182,
-        },
-        {
-          time: "12:36:42",
-          value: 183,
-        },
-        {
-          time: "12:36:45",
-          value: 183,
-        },
-        {
-          time: "12:36:46",
-          value: 182,
-        },
-        {
-          time: "12:36:49",
-          value: 183,
-        },
-        {
-          time: "12:36:51",
-          value: 182,
-        },
-        {
-          time: "12:36:54",
-          value: 182,
-        },
-        {
-          time: "12:36:55",
-          value: 183,
-        },
-        {
-          time: "12:36:57",
-          value: 182,
-        },
-        {
-          time: "12:36:59",
-          value: 183,
-        },
-        {
-          time: "12:37:02",
-          value: 183,
-        },
-        {
-          time: "12:37:03",
-          value: 182,
-        },
-        {
-          time: "12:37:06",
-          value: 182,
-        },
-        {
-          time: "12:37:09",
-          value: 183,
-        },
-        {
-          time: "12:37:11",
-          value: 184,
-        },
-        {
-          time: "12:37:14",
-          value: 184,
-        },
-        {
-          time: "12:37:17",
-          value: 184,
-        },
-        {
-          time: "12:37:18",
-          value: 185,
-        },
-        {
-          time: "12:37:20",
-          value: 184,
-        },
-        {
-          time: "12:37:22",
-          value: 185,
-        },
-        {
-          time: "12:37:25",
-          value: 185,
-        },
-        {
-          time: "12:37:26",
-          value: 186,
-        },
-        {
-          time: "12:37:29",
-          value: 186,
-        },
-        {
-          time: "12:37:32",
-          value: 186,
-        },
-        {
-          time: "12:37:34",
-          value: 186,
-        },
-        {
-          time: "12:37:37",
-          value: 186,
-        },
-        {
-          time: "12:37:39",
-          value: 185,
-        },
-        {
-          time: "12:37:41",
-          value: 186,
-        },
-        {
-          time: "12:37:44",
-          value: 186,
-        },
-        {
-          time: "12:37:47",
-          value: 186,
-        },
-        {
-          time: "12:37:50",
-          value: 186,
-        },
-        {
-          time: "12:37:53",
-          value: 186,
-        },
-        {
-          time: "12:37:56",
-          value: 186,
-        },
-        {
-          time: "12:37:59",
-          value: 186,
-        },
-        {
-          time: "12:38:02",
-          value: 185,
-        },
-        {
-          time: "12:38:04",
-          value: 186,
-        },
-        {
-          time: "12:38:07",
-          value: 186,
-        },
-        {
-          time: "12:38:10",
-          value: 187,
-        },
-        {
-          time: "12:38:13",
-          value: 187,
-        },
-        {
-          time: "12:38:16",
-          value: 186,
-        },
-        {
-          time: "12:38:19",
-          value: 186,
-        },
-        {
-          time: "12:38:20",
-          value: 185,
-        },
-        {
-          time: "12:38:23",
-          value: 186,
-        },
-        {
-          time: "12:38:26",
-          value: 186,
-        },
-        {
-          time: "12:38:29",
-          value: 186,
-        },
-        {
-          time: "12:38:32",
-          value: 186,
-        },
-        {
-          time: "12:38:35",
-          value: 185,
-        },
-        {
-          time: "12:38:37",
-          value: 186,
-        },
-        {
-          time: "12:38:40",
-          value: 186,
-        },
-        {
-          time: "12:38:43",
-          value: 186,
-        },
-        {
-          time: "12:38:46",
-          value: 186,
-        },
-        {
-          time: "12:38:47",
-          value: 186,
-        },
-        {
-          time: "12:38:50",
-          value: 186,
-        },
-        {
-          time: "12:38:53",
-          value: 186,
-        },
-        {
-          time: "12:38:56",
-          value: 187,
-        },
-        {
-          time: "12:38:59",
-          value: 187,
-        },
-        {
-          time: "12:39:02",
-          value: 187,
-        },
-        {
-          time: "12:39:05",
-          value: 187,
-        },
-        {
-          time: "12:39:08",
-          value: 187,
-        },
-        {
-          time: "12:39:11",
-          value: 187,
-        },
-        {
-          time: "12:39:14",
-          value: 187,
-        },
-        {
-          time: "12:39:17",
-          value: 188,
-        },
-        {
-          time: "12:39:19",
-          value: 187,
-        },
-        {
-          time: "12:39:21",
-          value: 188,
-        },
-        {
-          time: "12:39:24",
-          value: 188,
-        },
-        {
-          time: "12:39:25",
-          value: 187,
-        },
-        {
-          time: "12:39:28",
-          value: 187,
-        },
-        {
-          time: "12:39:31",
-          value: 187,
-        },
-        {
-          time: "12:39:33",
-          value: 188,
-        },
-        {
-          time: "12:39:36",
-          value: 187,
-        },
-        {
-          time: "12:39:39",
-          value: 187,
-        },
-        {
-          time: "12:39:42",
-          value: 187,
-        },
-        {
-          time: "12:39:44",
-          value: 185,
-        },
-        {
-          time: "12:39:46",
-          value: 184,
-        },
-        {
-          time: "12:39:48",
-          value: 185,
-        },
-        {
-          time: "12:39:51",
-          value: 185,
-        },
-        {
-          time: "12:39:54",
-          value: 185,
-        },
-        {
-          time: "12:39:57",
-          value: 185,
-        },
-        {
-          time: "12:39:58",
-          value: 186,
-        },
-        {
-          time: "12:40:01",
-          value: 186,
-        },
-        {
-          time: "12:40:03",
-          value: 187,
-        },
-        {
-          time: "12:40:05",
-          value: 188,
-        },
-        {
-          time: "12:40:07",
-          value: 187,
-        },
-        {
-          time: "12:40:09",
-          value: 186,
-        },
-        {
-          time: "12:40:11",
-          value: 187,
-        },
-        {
-          time: "12:40:13",
-          value: 188,
-        },
-        {
-          time: "12:40:16",
-          value: 188,
-        },
-        {
-          time: "12:40:19",
-          value: 188,
-        },
-        {
-          time: "12:40:22",
-          value: 188,
-        },
-        {
-          time: "12:40:25",
-          value: 188,
-        },
-        {
-          time: "12:40:28",
-          value: 188,
-        },
-        {
-          time: "12:40:30",
-          value: 187,
-        },
-        {
-          time: "12:40:32",
-          value: 188,
-        },
-        {
-          time: "12:40:35",
-          value: 188,
-        },
-        {
-          time: "12:40:36",
-          value: 189,
-        },
-        {
-          time: "12:40:39",
-          value: 189,
-        },
-        {
-          time: "12:40:40",
-          value: 188,
-        },
-        {
-          time: "12:40:43",
-          value: 188,
-        },
-        {
-          time: "12:40:46",
-          value: 188,
-        },
-        {
-          time: "12:40:49",
-          value: 188,
-        },
-        {
-          time: "12:40:51",
-          value: 189,
-        },
-        {
-          time: "12:40:53",
-          value: 188,
-        },
-        {
-          time: "12:40:56",
-          value: 188,
-        },
-        {
-          time: "12:40:57",
-          value: 189,
-        },
-        {
-          time: "12:41:00",
-          value: 189,
-        },
-        {
-          time: "12:41:01",
-          value: 188,
-        },
-        {
-          time: "12:41:03",
-          value: 189,
-        },
-        {
-          time: "12:41:06",
-          value: 189,
-        },
-        {
-          time: "12:41:07",
-          value: 190,
-        },
-        {
-          time: "12:41:10",
-          value: 190,
-        },
-        {
-          time: "12:41:11",
-          value: 189,
-        },
-        {
-          time: "12:41:14",
-          value: 189,
-        },
-        {
-          time: "12:41:17",
-          value: 189,
-        },
-        {
-          time: "12:41:20",
-          value: 189,
-        },
-        {
-          time: "12:41:23",
-          value: 189,
-        },
-        {
-          time: "12:41:24",
-          value: 188,
-        },
-        {
-          time: "12:41:27",
-          value: 188,
-        },
-        {
-          time: "12:41:30",
-          value: 188,
-        },
-        {
-          time: "12:41:32",
-          value: 187,
-        },
-        {
-          time: "12:41:35",
-          value: 187,
-        },
-        {
-          time: "12:41:38",
-          value: 187,
-        },
-        {
-          time: "12:41:39",
-          value: 186,
-        },
-        {
-          time: "12:41:42",
-          value: 186,
-        },
-        {
-          time: "12:41:45",
-          value: 186,
-        },
-        {
-          time: "12:41:47",
-          value: 187,
-        },
-        {
-          time: "12:41:49",
-          value: 186,
-        },
-        {
-          time: "12:41:52",
-          value: 186,
-        },
-        {
-          time: "12:41:55",
-          value: 186,
-        },
-        {
-          time: "12:41:58",
-          value: 186,
-        },
-        {
-          time: "12:42:00",
-          value: 187,
-        },
-        {
-          time: "12:42:02",
-          value: 186,
-        },
-        {
-          time: "12:42:05",
-          value: 186,
-        },
-        {
-          time: "12:42:06",
-          value: 186,
-        },
-        {
-          time: "12:42:09",
-          value: 186,
-        },
-        {
-          time: "12:42:10",
-          value: 187,
-        },
-        {
-          time: "12:42:13",
-          value: 187,
-        },
-        {
-          time: "12:42:16",
-          value: 187,
-        },
-        {
-          time: "12:42:19",
-          value: 187,
-        },
-        {
-          time: "12:42:20",
-          value: 186,
-        },
-        {
-          time: "12:42:23",
-          value: 186,
-        },
-        {
-          time: "12:42:25",
-          value: 187,
-        },
-        {
-          time: "12:42:28",
-          value: 187,
-        },
-        {
-          time: "12:42:31",
-          value: 185,
-        },
-        {
-          time: "12:42:33",
-          value: 179,
-        },
-        {
-          time: "12:42:35",
-          value: 164,
-        },
-        {
-          time: "12:42:37",
-          value: 150,
-        },
-        {
-          time: "12:42:39",
-          value: 151,
-        },
-        {
-          time: "12:42:41",
-          value: 150,
-        },
-        {
-          time: "12:42:43",
-          value: 148,
-        },
-        {
-          time: "12:42:45",
-          value: 146,
-        },
-        {
-          time: "12:42:47",
-          value: 147,
-        },
-        {
-          time: "12:42:48",
-          value: 148,
-        },
-        {
-          time: "12:42:50",
-          value: 151,
-        },
-        {
-          time: "12:42:52",
-          value: 149,
-        },
-        {
-          time: "12:42:55",
-          value: 149,
-        },
-        {
-          time: "12:42:56",
-          value: 152,
-        },
-        {
-          time: "12:42:58",
-          value: 166,
-        },
-        {
-          time: "12:43:00",
-          value: 171,
-        },
-        {
-          time: "12:43:02",
-          value: 177,
-        },
-        {
-          time: "12:43:04",
-          value: 180,
-        },
-        {
-          time: "12:43:06",
-          value: 182,
-        },
-        {
-          time: "12:43:08",
-          value: 180,
-        },
-        {
-          time: "12:43:10",
-          value: 174,
-        },
-        {
-          time: "12:43:11",
-          value: 179,
-        },
-        {
-          time: "12:43:13",
-          value: 182,
-        },
-        {
-          time: "12:43:15",
-          value: 184,
-        },
-        {
-          time: "12:43:17",
-          value: 182,
-        },
-        {
-          time: "12:43:19",
-          value: 180,
-        },
-        {
-          time: "12:43:21",
-          value: 168,
-        },
-        {
-          time: "12:43:23",
-          value: 166,
-        },
-        {
-          time: "12:43:25",
-          value: 173,
-        },
-        {
-          time: "12:43:27",
-          value: 178,
-        },
-        {
-          time: "12:43:29",
-          value: 181,
-        },
-        {
-          time: "12:43:31",
-          value: 184,
-        },
-        {
-          time: "12:43:33",
-          value: 185,
-        },
-        {
-          time: "12:43:35",
-          value: 182,
-        },
-        {
-          time: "12:43:36",
-          value: 170,
-        },
-        {
-          time: "12:43:38",
-          value: 158,
-        },
-        {
-          time: "12:43:40",
-          value: 157,
-        },
-        {
-          time: "12:43:42",
-          value: 165,
-        },
-        {
-          time: "12:43:44",
-          value: 179,
-        },
-        {
-          time: "12:43:46",
-          value: 185,
-        },
-        {
-          time: "12:43:49",
-          value: 185,
-        },
-        {
-          time: "12:43:50",
-          value: 183,
-        },
-        {
-          time: "12:43:52",
-          value: 176,
-        },
-        {
-          time: "12:43:54",
-          value: 184,
-        },
-        {
-          time: "12:43:57",
-          value: 184,
-        },
-        {
-          time: "12:43:58",
-          value: 182,
-        },
-        {
-          time: "12:43:59",
-          value: 177,
-        },
-        {
-          time: "12:44:01",
-          value: 160,
-        },
-        {
-          time: "12:44:03",
-          value: 155,
-        },
-        {
-          time: "12:44:05",
-          value: 154,
-        },
-        {
-          time: "12:44:07",
-          value: 152,
-        },
-        {
-          time: "12:44:09",
-          value: 153,
-        },
-        {
-          time: "12:44:11",
-          value: 154,
-        },
-        {
-          time: "12:44:13",
-          value: 158,
-        },
-        {
-          time: "12:44:15",
-          value: 167,
-        },
-        {
-          time: "12:44:17",
-          value: 162,
-        },
-        {
-          time: "12:44:19",
-          value: 169,
-        },
-        {
-          time: "12:44:21",
-          value: 176,
-        },
-        {
-          time: "12:44:23",
-          value: 166,
-        },
-        {
-          time: "12:44:24",
-          value: 168,
-        },
-        {
-          time: "12:44:26",
-          value: 169,
-        },
-        {
-          time: "12:44:28",
-          value: 164,
-        },
-        {
-          time: "12:44:30",
-          value: 173,
-        },
-        {
-          time: "12:44:32",
-          value: 175,
-        },
-        {
-          time: "12:44:34",
-          value: 177,
-        },
-        {
-          time: "12:44:36",
-          value: 182,
-        },
-        {
-          time: "12:44:38",
-          value: 185,
-        },
-        {
-          time: "12:44:40",
-          value: 188,
-        },
-        {
-          time: "12:44:42",
-          value: 190,
-        },
-        {
-          time: "12:44:44",
-          value: 191,
-        },
-        {
-          time: "12:44:47",
-          value: 192,
-        },
-        {
-          time: "12:44:50",
-          value: 192,
-        },
-        {
-          time: "12:44:51",
-          value: 191,
-        },
-        {
-          time: "12:44:53",
-          value: 190,
-        },
-        {
-          time: "12:44:55",
-          value: 189,
-        },
-        {
-          time: "12:44:57",
-          value: 187,
-        },
-        {
-          time: "12:44:59",
-          value: 188,
-        },
-        {
-          time: "12:45:02",
-          value: 188,
-        },
-        {
-          time: "12:45:03",
-          value: 187,
-        },
-        {
-          time: "12:45:05",
-          value: 188,
-        },
-        {
-          time: "12:45:08",
-          value: 188,
-        },
-        {
-          time: "12:45:09",
-          value: 185,
-        },
-        {
-          time: "12:45:11",
-          value: 186,
-        },
-        {
-          time: "12:45:12",
-          value: 187,
-        },
-        {
-          time: "12:45:14",
-          value: 187,
-        },
-        {
-          time: "12:45:16",
-          value: 191,
-        },
-        {
-          time: "12:45:18",
-          value: 190,
-        },
-        {
-          time: "12:45:20",
-          value: 188,
-        },
-        {
-          time: "12:45:22",
-          value: 186,
-        },
-        {
-          time: "12:45:24",
-          value: 180,
-        },
-        {
-          time: "12:45:26",
-          value: 171,
-        },
-        {
-          time: "12:45:28",
-          value: 167,
-        },
-        {
-          time: "12:45:30",
-          value: 159,
-        },
-        {
-          time: "12:45:32",
-          value: 157,
-        },
-        {
-          time: "12:45:34",
-          value: 160,
-        },
-        {
-          time: "12:45:35",
-          value: 161,
-        },
-        {
-          time: "12:45:37",
-          value: 166,
-        },
-        {
-          time: "12:45:39",
-          value: 169,
-        },
-        {
-          time: "12:45:41",
-          value: 172,
-        },
-        {
-          time: "12:45:43",
-          value: 180,
-        },
-        {
-          time: "12:45:45",
-          value: 183,
-        },
-      ],
       caloriesLink:
         "https://api.fitbit.com/1/user/-/activities/calories/date/2024-12-01/2024-12-01/1min/time/12:30/12:45.json",
       heartRateLink:
@@ -6152,6 +13143,2033 @@ export function testData() {
       originalDuration: 920000,
       elevationGain: 0,
       hasActiveZoneMinutes: true,
+      heartRateArray: [
+        {
+          time: "00:00:00",
+          value: 110,
+          bpm: 110,
+        },
+        {
+          time: "00:00:03",
+          value: 110,
+          bpm: 110,
+        },
+        {
+          time: "00:00:04",
+          value: 113,
+          bpm: 113,
+        },
+        {
+          time: "00:00:06",
+          value: 112,
+          bpm: 112,
+        },
+        {
+          time: "00:00:08",
+          value: 116,
+          bpm: 116,
+        },
+        {
+          time: "00:00:10",
+          value: 120,
+          bpm: 120,
+        },
+        {
+          time: "00:00:12",
+          value: 131,
+          bpm: 131,
+        },
+        {
+          time: "00:00:14",
+          value: 141,
+          bpm: 141,
+        },
+        {
+          time: "00:00:16",
+          value: 136,
+          bpm: 136,
+        },
+        {
+          time: "00:00:18",
+          value: 139,
+          bpm: 139,
+        },
+        {
+          time: "00:00:19",
+          value: 143,
+          bpm: 143,
+        },
+        {
+          time: "00:00:21",
+          value: 144,
+          bpm: 144,
+        },
+        {
+          time: "00:00:23",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:00:25",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:00:27",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:00:29",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:00:31",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:00:33",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:00:35",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:00:37",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:00:39",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:00:41",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:00:44",
+          value: 156,
+          bpm: 156,
+        },
+        {
+          time: "00:00:46",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:00:48",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:00:50",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:00:53",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:00:54",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:00:56",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:00:59",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:01:02",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:01:03",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:01:07",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:01:07",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:01:11",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:01:14",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:01:15",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:01:18",
+          value: 163,
+          bpm: 163,
+        },
+        {
+          time: "00:01:19",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:01:22",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:01:25",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:01:26",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:01:29",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:01:32",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:01:34",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:01:36",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:01:38",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:01:40",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:01:42",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:01:44",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:01:47",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:01:49",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:01:52",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:01:55",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:01:57",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:02:00",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:02:00",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:02:04",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:02:07",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:02:07",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:02:12",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:02:15",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:02:15",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:02:20",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:02:22",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:02:23",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:02:23",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:02:28",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:02:30",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:02:30",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:02:34",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:02:37",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:02:38",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:02:42",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:02:45",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:02:46",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:02:49",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:02:51",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:02:53",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:02:53",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:02:58",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:03:00",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:03:04",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:03:06",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:03:07",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:03:12",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:03:14",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:03:15",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:03:15",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:03:20",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:03:22",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:03:23",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:03:23",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:03:28",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:03:30",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:03:34",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:03:37",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:03:38",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:03:43",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:03:45",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:03:46",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:03:49",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:03:51",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:03:53",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:03:53",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:03:58",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:04:00",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:04:00",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:04:02",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:04:03",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:04:08",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:04:11",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:04:14",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:04:15",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:04:16",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:04:19",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:04:25",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:04:27",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:04:29",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:04:30",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:04:32",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:04:34",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:04:39",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:04:41",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:04:44",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:04:46",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:04:46",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:04:47",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:04:53",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:04:56",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:04:58",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:05:00",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:05:00",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:05:01",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:05:04",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:05:10",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:05:11",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:05:14",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:05:15",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:05:15",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:05:16",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:05:19",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:05:25",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:05:27",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:05:30",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:05:30",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:05:31",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:05:33",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:05:38",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:05:40",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:05:42",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:05:44",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:05:46",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:05:46",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:05:47",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:05:53",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:05:56",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:05:59",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:06:00",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:06:00",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:06:03",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:06:04",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:06:10",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:06:13",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:06:15",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:06:15",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:06:17",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:06:19",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:06:25",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:06:26",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:06:28",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:06:30",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:06:30",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:06:31",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:06:34",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:06:40",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:06:42",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:06:45",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:06:46",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:06:46",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:06:48",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:06:53",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:06:56",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:06:57",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:00",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:00",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:02",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:08",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:10",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:07:12",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:15",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:15",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:18",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:24",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:27",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:30",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:30",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:07:32",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:38",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:41",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:07:44",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:07:46",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:47",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:48",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:07:54",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:07:57",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:00",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:03",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:05",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:08:07",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:11",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:13",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:16",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:18",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:20",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:24",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:08:26",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:30",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:33",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:35",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:39",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:41",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:45",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:48",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:08:50",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:52",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:08:54",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:08:56",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:08:58",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:09:01",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:09:03",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:09:07",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:09:09",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:09:13",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:09:15",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:09:16",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:09:18",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:09:22",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:09:24",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:09:28",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:09:28",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:09:31",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:09:33",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:09:35",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:09:37",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:09:39",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:09:41",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:09:43",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:09:46",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:09:50",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:09:52",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:09:56",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:09:58",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:01",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:10:03",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:05",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:07",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:09",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:11",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:13",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:16",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:20",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:22",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:24",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:26",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:28",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:31",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:31",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:33",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:37",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:37",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:10:41",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:10:41",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:45",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:48",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:50",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:54",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:10:54",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:10:58",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:11:01",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:11:03",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:05",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:09",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:09",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:13",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:16",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:18",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:20",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:22",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:26",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:28",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:31",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:33",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:35",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:37",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:39",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:41",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:43",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:46",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:50",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:50",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:54",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:11:56",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:11:58",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:12:01",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:12:03",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:12:05",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:12:07",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:12:09",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:12:11",
+          value: 150,
+          bpm: 150,
+        },
+        {
+          time: "00:12:13",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:12:16",
+          value: 146,
+          bpm: 146,
+        },
+        {
+          time: "00:12:18",
+          value: 147,
+          bpm: 147,
+        },
+        {
+          time: "00:12:18",
+          value: 148,
+          bpm: 148,
+        },
+        {
+          time: "00:12:20",
+          value: 151,
+          bpm: 151,
+        },
+        {
+          time: "00:12:22",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:12:26",
+          value: 149,
+          bpm: 149,
+        },
+        {
+          time: "00:12:26",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:12:28",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:12:31",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:12:33",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:12:35",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:12:37",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:12:39",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:12:41",
+          value: 174,
+          bpm: 174,
+        },
+        {
+          time: "00:12:41",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:12:43",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:12:46",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:12:48",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:12:50",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:12:52",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:12:54",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:12:56",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:12:58",
+          value: 178,
+          bpm: 178,
+        },
+        {
+          time: "00:13:00",
+          value: 181,
+          bpm: 181,
+        },
+        {
+          time: "00:13:01",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:13:03",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:13:05",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:13:07",
+          value: 170,
+          bpm: 170,
+        },
+        {
+          time: "00:13:09",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:13:11",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:13:13",
+          value: 165,
+          bpm: 165,
+        },
+        {
+          time: "00:13:15",
+          value: 179,
+          bpm: 179,
+        },
+        {
+          time: "00:13:16",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:13:20",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:13:20",
+          value: 183,
+          bpm: 183,
+        },
+        {
+          time: "00:13:22",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:13:24",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:13:28",
+          value: 184,
+          bpm: 184,
+        },
+        {
+          time: "00:13:28",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:13:30",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:13:31",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:13:33",
+          value: 155,
+          bpm: 155,
+        },
+        {
+          time: "00:13:35",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:13:37",
+          value: 152,
+          bpm: 152,
+        },
+        {
+          time: "00:13:39",
+          value: 153,
+          bpm: 153,
+        },
+        {
+          time: "00:13:41",
+          value: 154,
+          bpm: 154,
+        },
+        {
+          time: "00:13:43",
+          value: 158,
+          bpm: 158,
+        },
+        {
+          time: "00:13:46",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:13:48",
+          value: 162,
+          bpm: 162,
+        },
+        {
+          time: "00:13:50",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:13:52",
+          value: 176,
+          bpm: 176,
+        },
+        {
+          time: "00:13:54",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:13:54",
+          value: 168,
+          bpm: 168,
+        },
+        {
+          time: "00:13:56",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:13:58",
+          value: 164,
+          bpm: 164,
+        },
+        {
+          time: "00:14:01",
+          value: 173,
+          bpm: 173,
+        },
+        {
+          time: "00:14:03",
+          value: 175,
+          bpm: 175,
+        },
+        {
+          time: "00:14:05",
+          value: 177,
+          bpm: 177,
+        },
+        {
+          time: "00:14:07",
+          value: 182,
+          bpm: 182,
+        },
+        {
+          time: "00:14:09",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:14:11",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:14:13",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:14:15",
+          value: 191,
+          bpm: 191,
+        },
+        {
+          time: "00:14:18",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:14:20",
+          value: 192,
+          bpm: 192,
+        },
+        {
+          time: "00:14:22",
+          value: 191,
+          bpm: 191,
+        },
+        {
+          time: "00:14:24",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:14:26",
+          value: 189,
+          bpm: 189,
+        },
+        {
+          time: "00:14:28",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:14:30",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:14:33",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:14:33",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:14:35",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:14:39",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:14:39",
+          value: 185,
+          bpm: 185,
+        },
+        {
+          time: "00:14:41",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:14:43",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:14:45",
+          value: 187,
+          bpm: 187,
+        },
+        {
+          time: "00:14:46",
+          value: 191,
+          bpm: 191,
+        },
+        {
+          time: "00:14:48",
+          value: 190,
+          bpm: 190,
+        },
+        {
+          time: "00:14:50",
+          value: 188,
+          bpm: 188,
+        },
+        {
+          time: "00:14:52",
+          value: 186,
+          bpm: 186,
+        },
+        {
+          time: "00:14:54",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:14:56",
+          value: 171,
+          bpm: 171,
+        },
+        {
+          time: "00:14:58",
+          value: 167,
+          bpm: 167,
+        },
+        {
+          time: "00:15:01",
+          value: 159,
+          bpm: 159,
+        },
+        {
+          time: "00:15:03",
+          value: 157,
+          bpm: 157,
+        },
+        {
+          time: "00:15:05",
+          value: 160,
+          bpm: 160,
+        },
+        {
+          time: "00:15:05",
+          value: 161,
+          bpm: 161,
+        },
+        {
+          time: "00:15:07",
+          value: 166,
+          bpm: 166,
+        },
+        {
+          time: "00:15:09",
+          value: 169,
+          bpm: 169,
+        },
+        {
+          time: "00:15:11",
+          value: 172,
+          bpm: 172,
+        },
+        {
+          time: "00:15:13",
+          value: 180,
+          bpm: 180,
+        },
+        {
+          time: "00:15:16",
+          value: 183,
+          bpm: 183,
+        },
+      ],
     },
   ];
 }
