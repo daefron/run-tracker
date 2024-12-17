@@ -11,10 +11,10 @@ export function RunList({
   return (
     <div id="runList">
       <div id="listTitle">
-        <p>Date</p>
-        <p>Start Time</p>
-        <p>Duration</p>
-        <p>Length</p>
+        <p className="titleFont">Date</p>
+        <p className="titleFont">Start Time</p>
+        <p className="titleFont">Duration</p>
+        <p className="titleFont">Length</p>
       </div>
       <div id="runListItems">
         {runs.map((run) => {
@@ -75,6 +75,7 @@ function RunItem({ activeRun, hoverRun, setActiveRun, setHoverRun, data }) {
       <div className="diffStat">
         <RunItemStat
           type="duration"
+          diffOriginal={true}
           data={data}
           setActiveRun={setActiveRun}
         ></RunItemStat>
@@ -88,6 +89,7 @@ function RunItem({ activeRun, hoverRun, setActiveRun, setHoverRun, data }) {
       <div className="diffStat">
         <RunItemStat
           type="distance"
+          diffOriginal={true}
           data={data}
           setActiveRun={setActiveRun}
         ></RunItemStat>
@@ -102,19 +104,23 @@ function RunItem({ activeRun, hoverRun, setActiveRun, setHoverRun, data }) {
   );
 }
 
-function RunItemStat({ type, data, setActiveRun, diff }) {
+function RunItemStat({ type, data, setActiveRun, diff, diffOriginal }) {
   let content = data.render[type];
   let statStyle = {};
+  let statClassName = "smallFont";
   if (diff) {
-    statStyle.width = "30%";
+    statClassName += " diffStatDiff";
     content = data.render[type + "Diff"];
     if (data[type + "Negative"]) {
       statStyle.color = "Red";
     } else statStyle.color = "Green";
+  } else if (diffOriginal) {
+    statClassName += " diffStatOriginal";
   }
   return (
     <>
       <p
+        className={statClassName}
         style={statStyle}
         onClick={() => {
           setActiveRun(data.index);

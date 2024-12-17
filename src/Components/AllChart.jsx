@@ -11,16 +11,16 @@ import {
   Tooltip,
 } from "recharts";
 export function AllChart({
-  runs,
-  dateRange,
-  dateRangeChange,
-  baselineDate,
-  activeRun,
   render,
   durationColor,
   distanceColor,
   speedColor,
   heartRateColor,
+  runs,
+  activeRun,
+  baselineDate,
+  dateRangeChange,
+  dateRange,
   setDateRange,
   predictedOnGraph,
   trendlineOnGraph,
@@ -38,8 +38,8 @@ export function AllChart({
         }}
         className={
           dateRangeChange.current === value
-            ? "dateChangeActive"
-            : "dateChangeInactive"
+            ? "dateChangeActive smallFont"
+            : "dateChangeInactive smallFont"
         }
       >
         {render}
@@ -57,6 +57,7 @@ export function AllChart({
         onClick={() => {
           dateRangeShiftButton(value);
         }}
+        className="smallFont"
         style={{
           cursor: "pointer",
         }}
@@ -87,28 +88,34 @@ export function AllChart({
     if (!currentRun) {
       return (
         <>
-          <p>Date: {predictedRuns[0].render.date}</p>
-          <p>Duration: {predictedRuns[0].render.duration}</p>
-          <p>Distance: {predictedRuns[0].render.distance}</p>
-          <p>Speed: {predictedRuns[0].render.speed}</p>
-          <p>Heart rate: {predictedRuns[0].render.heartRate}</p>
+          <p className="mediumFont">Date: {predictedRuns[0].render.date}</p>
+          <p className="mediumFont">
+            Duration: {predictedRuns[0].render.duration}
+          </p>
+          <p className="mediumFont">
+            Distance: {predictedRuns[0].render.distance}
+          </p>
+          <p className="mediumFont">Speed: {predictedRuns[0].render.speed}</p>
+          <p className="mediumFont">
+            Heart rate: {predictedRuns[0].render.heartRate}
+          </p>
         </>
       );
     }
     return (
       <>
-        <p>Date: {currentRun.render.date}</p>
-        <p>Duration: {currentRun.render.duration}</p>
-        <p>Distance: {currentRun.render.distance}</p>
-        <p>Speed: {currentRun.render.speed}</p>
-        <p>Heart rate: {currentRun.render.heartRate}</p>
+        <p className="mediumFont">Date: {currentRun.render.date}</p>
+        <p className="mediumFont">Duration: {currentRun.render.duration}</p>
+        <p className="mediumFont">Distance: {currentRun.render.distance}</p>
+        <p className="mediumFont">Speed: {currentRun.render.speed}</p>
+        <p className="mediumFont">Heart rate: {currentRun.render.heartRate}</p>
       </>
     );
   }
 
   function gridMaker(dimension, divider) {
     let array = [];
-    for (let i = 20; i < dimension; i += dimension / divider) {
+    for (let i = 20; i < dimension - 50; i += dimension / divider) {
       array.push(i);
     }
     return array;
@@ -169,7 +176,27 @@ export function AllChart({
       ></circle>
     );
   }
-
+  function SmallerLegend(payload) {
+    const data = payload.payload.filter((value) => value.type !== "none");
+    const listStyle = {
+      display: "flex",
+      justifyContent: "center",
+      gap: "35px",
+      margin: 0,
+    };
+    return (
+      <ul style={listStyle}>
+        {data.map((entry, index) => (
+          <li
+            key={"item-" + index}
+            style={{ color: entry.color, fontSize: 15, textIndent: -8 }}
+          >
+            {entry.value}
+          </li>
+        ))}
+      </ul>
+    );
+  }
   function TodayLabel(payload) {
     return (
       <text
@@ -256,11 +283,12 @@ export function AllChart({
     });
     return dateHolder;
   }
+
   const dateGap = predictedRuns[0].gap;
   return (
     <div className="graphHolder" id="allRunsGraph">
       <div className="graphTop">
-        <p className="graphTitle">{render}</p>
+        <p className="graphTitle titleFont">{render}</p>
         <div className="graphDateHolder">
           <DateRangeChangeButton
             value={6}
@@ -278,7 +306,9 @@ export function AllChart({
             dateRangeChange={dateRangeChange}
           />
           <DateShiftButton value="left" render="<-" />
-          <p>{dateRange[0] + " - " + dateRange[dateRangeChange.current]}</p>
+          <p className="smallFont">
+            {dateRange[0] + " - " + dateRange[dateRangeChange.current]}
+          </p>
           <DateShiftButton value="right" render="->" />
         </div>
       </div>
@@ -291,7 +321,7 @@ export function AllChart({
             }
             verticalCoordinatesGenerator={({ width }) => gridMaker(width, 15)}
           />
-          <Legend />
+          <Legend content={<SmallerLegend />} />
           <XAxis dataKey="date" dy={5} />
           <YAxis yAxisId="duration" domain={[0, "dataMax + 300000"]} hide />
           <ReferenceLine
@@ -335,6 +365,7 @@ export function AllChart({
                 activeRun={activeRun}
               />
             }
+            legendType="circle"
             activeDot={false}
             connectNulls
           />
@@ -391,6 +422,7 @@ export function AllChart({
                 activeRun={activeRun}
               />
             }
+            legendType="circle"
             activeDot={false}
             connectNulls
           />
@@ -443,6 +475,7 @@ export function AllChart({
             dot={
               <DotRender color={speedColor} runs={runs} activeRun={activeRun} />
             }
+            legendType="circle"
             activeDot={false}
             connectNulls
           />
@@ -499,6 +532,7 @@ export function AllChart({
                 activeRun={activeRun}
               />
             }
+            legendType="circle"
             activeDot={false}
             connectNulls
           />

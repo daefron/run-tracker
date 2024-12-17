@@ -9,10 +9,10 @@ export function Stats({ run, types }) {
   function Stat({ type, run }) {
     return (
       <div className="runStat">
-        <p className="statTitle">
+        <p className="statTitle smallFont">
           {type.charAt(0).toUpperCase() + type.slice(1)}:
         </p>
-        <p className="statContent">{run.render[type]}</p>
+        <p className="statContent smallFont">{run.render[type]}</p>
       </div>
     );
   }

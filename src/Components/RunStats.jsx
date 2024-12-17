@@ -14,14 +14,14 @@ export function RunStats({ runs, activeRun }) {
   const run = runs[activeRun];
   return (
     <div id="runStats">
-      <p id="runStatsTitle">Selected run stats</p>
+      <p id="runStatsTitle" className="titleFont">Selected run stats</p>
       <div className="runStat">
-        <p className="statTitle">Date: </p>
-        <p className="statContent">{run.render.date}</p>
+        <p className="statTitle smallFont">Date: </p>
+        <p className="statContent smallFont">{run.render.date}</p>
       </div>
       <div className="runStat">
-        <p className="statTitle">Start time: </p>
-        <p className="statContent">{run.render.startTime}</p>
+        <p className="statTitle smallFont">Start time: </p>
+        <p className="statContent smallFont">{run.render.startTime}</p>
       </div>
       <Stats run={run} types={types} />
     </div>

@@ -1,3 +1,6 @@
+:root {
+  background-color: rgb(25, 25, 40);
+}
 .recharts-text {
   fill: white;
   user-select: none;
@@ -7,36 +10,8 @@
 }
 p,
 label {
+  margin: 0;
   user-select: none;
-}
-#root {
-  height: 100vh;
-  width: 100vw;
-  background-color: rgb(25, 25, 40);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#body {
-  width: calc(100% - 60px);
-  height: calc(100% - 60px);
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 420px minmax(420px, 4fr) 270px 260px;
-  grid-template-rows: repeat(8, 1fr);
-}
-#loadingHolder {
-  display: grid;
-  width: calc(100% - 60px);
-  height: calc(100% - 60px);
-}
-#loadingBody {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 420px minmax(420px, 4fr) 260px 260px;
-  grid-template-rows: repeat(8, 1fr);
 }
 #loadingTextHolder {
   position: fixed;
@@ -47,52 +22,11 @@ label {
   align-items: end;
 }
 #loadingText {
-  margin: 0;
   font-size: 26px;
   font-weight: bold;
 }
 #loadingSymbol {
   height: 18px;
-}
-#runList {
-  background-color: rgb(50, 50, 70);
-  grid-row: 1 / 5;
-  grid-column: 1 / 2;
-}
-#predictionStats {
-  background-color: rgb(50, 50, 70);
-  grid-row: 5 / 9;
-  grid-column: 1 / 2;
-}
-#runStats {
-  background-color: rgb(50, 50, 70);
-  grid-row: 1 / 5;
-  grid-column: 4 / 5;
-}
-#overallStats {
-  background-color: rgb(50, 50, 70);
-  grid-row: 5 / 9;
-  grid-column: 4 / 5;
-}
-#selectedGraph {
-  background-color: rgb(50, 50, 70);
-  grid-row: 1 / 5;
-  grid-column: 2 / 3;
-}
-#allRunsGraph {
-  background-color: rgb(50, 50, 70);
-  grid-row: 5 / 9;
-  grid-column: 2 / 4;
-}
-#heartZonesPie {
-  background-color: rgb(50, 50, 70);
-  grid-row: 3 / 5;
-  grid-column: 3 / 4;
-}
-#activeTimePie {
-  background-color: rgb(50, 50, 70);
-  grid-row: 1 / 3;
-  grid-column: 3 / 4;
 }
 #runListItems {
   display: flex;
@@ -100,7 +34,6 @@ label {
 }
 #listTitle {
   background-color: rgb(65, 65, 85);
-  font-weight: bold;
 }
 #listTitle,
 #allRuns,
@@ -108,7 +41,6 @@ label {
 .statsFooter {
   display: flex;
   line-height: 35px;
-  padding-inline: 10px;
 }
 #listTitle > p,
 .runItem > p {
@@ -117,15 +49,21 @@ label {
 .diffStat > p,
 #listTitle > p,
 .runItem > p {
-  margin: 0;
-  font-size: 14px;
   text-align: center;
   color: white;
 }
+.diffStatOriginal {
+  grid-column: 1 / 2;
+}
+.diffStatDiff {
+  width: fit-content;
+  justify-self: start;
+  grid-column: 2 / 3;
+}
 .diffStat {
   width: 25%;
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .runStat {
   display: flex;
@@ -137,13 +75,7 @@ label {
 #overallStatsTitle {
   background-color: rgb(65, 65, 85);
   text-indent: 10px;
-  margin: 0;
   line-height: 35px;
-  font-weight: bold;
-}
-.runStat > p {
-  margin: 0;
-  font-size: 14px;
 }
 .statTitle {
   text-align: left;
@@ -158,15 +90,14 @@ label {
 .statsFooter {
   margin-top: auto;
   gap: 15px;
+  padding-inline: 10px;
 }
 .statsFooterCheckHolder {
   display: flex;
   gap: 5px;
-  font-size: 14px;
 }
 .statsFooterCheckHolder,
 .statsFooterCheckHolder > input {
-  margin: 0;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -186,7 +117,6 @@ label {
 }
 .graphDateHolder > p {
   line-height: 35px;
-  margin: 0;
   padding-inline: 5px;
 }
 .dateChangeInactive,
@@ -203,9 +133,7 @@ label {
 .graphTitle {
   line-height: 35px;
   text-indent: 5px;
-  margin: 0;
   padding-inline: 5px;
-  font-weight: bold;
 }
 .recharts-tooltip-wrapper {
   padding: 7px;
@@ -214,6 +142,168 @@ label {
 }
 .recharts-tooltip-wrapper > p {
   width: 100%;
-  margin: 0;
   text-align: center;
+}
+.smallFont {
+  font-size: 14px;
+}
+.titleFont {
+  font-size: 16px;
+  font-weight: bold;
+}
+@media (min-width: 300px) {
+  .smallFont {
+    font-size: 10px;
+  }
+  .titleFont {
+    font-size: 12px;
+  }
+  #root {
+    height: fit-content;
+    padding: 12.5px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #body,
+  #loadingBody {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  #loadingHolder {
+    display: grid;
+    width: 100%;
+    height: 100%;
+  }
+  #selectedGraph {
+    height: 40vh;
+    background-color: rgb(50, 50, 70);
+    grid-row: 1 / 3;
+    grid-column: 1 / 3;
+  }
+  #heartZonesPie {
+    height: 20vh;
+    background-color: rgb(50, 50, 70);
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+  }
+  #activeTimePie {
+    height: 20vh;
+    background-color: rgb(50, 50, 70);
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+  }
+  #runStats {
+    background-color: rgb(50, 50, 70);
+    grid-row: 4 / 6;
+    grid-column: 1 / 3;
+  }
+  #runList {
+    background-color: rgb(50, 50, 70);
+    grid-row: 6 / 8;
+    grid-column: 1 / 3;
+  }
+  #allRunsGraph {
+    height: 40vh;
+    background-color: rgb(50, 50, 70);
+    grid-row: 8 / 10;
+    grid-column: 1 / 3;
+  }
+  #predictionStats {
+    background-color: rgb(50, 50, 70);
+    grid-row: 13 / 15;
+    grid-column: 1 / 3;
+  }
+  #overallStats {
+    background-color: rgb(50, 50, 70);
+    grid-row: 10 / 13;
+    grid-column: 1 / 3;
+  }
+}
+@media (min-width: 420px) {
+  .smallFont {
+    font-size: 14px;
+  }
+  .titleFont {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+@media (min-width: 836px) {
+  #root {
+    padding: 15px;
+  }
+  #runStats {
+    grid-row: 4 / 6;
+    grid-column: 1 / 2;
+  }
+  #runList {
+    grid-row: 4 / 6;
+    grid-column: 2 / 3;
+  }
+  #allRunsGraph {
+    height: 40vh;
+    grid-row: 6 / 8;
+    grid-column: 1 / 3;
+  }
+  #predictionStats {
+    grid-row: 8 / 10;
+    grid-column: 1 / 2;
+  }
+  #overallStats {
+    grid-row: 8 / 10;
+    grid-column: 2 / 3;
+  }
+}
+@media (min-width: 1394px) {
+  #root {
+    height: calc(100vh - 60px);
+    padding: 30px;
+  }
+  #body,
+  #loadingBody {
+    gap: 20px;
+    grid-template-columns: 420px 1fr 270px 260px;
+    grid-template-rows: repeat(8, 1fr);
+  }
+  #runList {
+    grid-row: 1 / 5;
+    grid-column: 1 / 2;
+  }
+  #predictionStats {
+    grid-row: 5 / 9;
+    grid-column: 1 / 2;
+  }
+  #runStats {
+    grid-row: 1 / 5;
+    grid-column: 4 / 5;
+  }
+  #overallStats {
+    grid-row: 5 / 9;
+    grid-column: 4 / 5;
+  }
+  #selectedGraph {
+    height: auto;
+    grid-row: 1 / 5;
+    grid-column: 2 / 3;
+  }
+  #allRunsGraph {
+    height: auto;
+    grid-row: 5 / 9;
+    grid-column: 2 / 4;
+  }
+  #heartZonesPie {
+    height: auto;
+    grid-row: 3 / 5;
+    grid-column: 3 / 4;
+  }
+  #activeTimePie {
+    height: auto;
+    grid-row: 1 / 3;
+    grid-column: 3 / 4;
+  }
 }

@@ -17,10 +17,12 @@ export function PredictionStats({
   ];
   return (
     <div id="predictionStats">
-      <p id="runStatsTitle">Predicted next run stats</p>
+      <p id="runStatsTitle" className="titleFont">
+        Predicted next run stats
+      </p>
       <div className="runStat">
-        <p className="statTitle">Date: </p>
-        <p className="statContent">
+        <p className="statTitle smallFont">Date: </p>
+        <p className="statContent smallFont">
           {predictedRuns[0].render.date} ({predictedRuns[0].gap} days from last
           run )
         </p>

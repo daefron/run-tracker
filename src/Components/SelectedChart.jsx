@@ -6,19 +6,15 @@ import {
   Legend,
   ReferenceLine,
   Tooltip,
+  YAxis,
 } from "recharts";
-export function SelectedChart({
-  runs,
-  activeRun,
-  render,
-  setActiveRun,
-}) {
+export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
   if (!runs) {
     return;
   }
   function gridMaker(dimension, divider) {
     let array = [];
-    for (let i = 20; i < dimension; i += dimension / divider) {
+    for (let i = 0; i < dimension; i += dimension / divider) {
       array.push(i);
     }
     return array;
@@ -33,7 +29,27 @@ export function SelectedChart({
       );
     }
   }
-
+  function SmallerLegend(payload) {
+    let data = payload.payload.filter((value) => value.type !== "none");
+    const listStyle = {
+      display: "flex",
+      justifyContent: "center",
+      gap: "35px",
+      margin: 0,
+    };
+    return (
+      <ul style={listStyle}>
+        {data.map((entry, index) => (
+          <li
+            key={"item-" + index}
+            style={{ color: entry.color, fontSize: 15, textIndent: -8 }}
+          >
+            {entry.value.charAt(0).toLowerCase() + entry.value.slice(1)}
+          </li>
+        ))}
+      </ul>
+    );
+  }
   if (runs[activeRun].heartRateZones) {
     const chartData = bpmChartData(runs[activeRun].heartRateArray);
     const zones = zoneGetter(runs[activeRun].heartRateZones);
@@ -81,6 +97,7 @@ export function SelectedChart({
           onClick={() => {
             activeRunShiftButton(value);
           }}
+          className="smallFont"
           style={
             (value === "right" && !activeRun) ||
             (value === "left" && !runs[activeRun + 1])
@@ -107,7 +124,7 @@ export function SelectedChart({
     return (
       <div className="graphHolder" id={"selectedGraph"}>
         <div className="graphTop">
-          <p className="graphTitle">{render}</p>
+          <p className="graphTitle titleFont">{render}</p>
           <div className="graphDateHolder">
             <ActiveRunShiftButton
               value="left"
@@ -115,7 +132,7 @@ export function SelectedChart({
               activeRun={activeRun}
               runs={runs}
             />
-            <p>{runs[activeRun].render.date}</p>
+            <p className="smallFont">{runs[activeRun].render.date}</p>
             <ActiveRunShiftButton
               value="right"
               render="->"
@@ -125,20 +142,23 @@ export function SelectedChart({
           </div>
         </div>
         <ResponsiveContainer>
-          <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
+          <LineChart margin={{ top: 20, left:10, right: 20, bottom: 10 }} data={chartData}>
             <CartesianGrid
               stroke="rgba(255, 255, 255, 0.1)"
+              x={35}
               horizontalCoordinatesGenerator={({ height }) =>
-                gridMaker(height, 10)
+                gridMaker(height - 6 , 15)
               }
-              verticalCoordinatesGenerator={({ width }) => gridMaker(width, 10)}
+              verticalCoordinatesGenerator={({ width }) => gridMaker(width - 5, 15)}
             />
+            <YAxis yAxisId="bpm" width={25} />
             <Line
               yAxisId="bpm"
               isAnimationActive={false}
               dataKey="Light"
               stroke="hotPink"
               strokeWidth={2}
+              legendType="circle"
               dot={false}
             />
             <Line
@@ -147,6 +167,7 @@ export function SelectedChart({
               dataKey="Moderate"
               stroke="green"
               strokeWidth={2}
+              legendType="circle"
               dot={false}
             />
             <ReferenceLine
@@ -161,6 +182,7 @@ export function SelectedChart({
               dataKey="Vigorous"
               stroke="yellow"
               strokeWidth={2}
+              legendType="circle"
               dot={false}
             />
             <ReferenceLine
@@ -175,6 +197,7 @@ export function SelectedChart({
               dataKey="Peak"
               stroke="red"
               strokeWidth={2}
+              legendType="circle"
               dot={false}
             />
             <ReferenceLine
@@ -183,7 +206,7 @@ export function SelectedChart({
               stroke="red"
               y={zones.Peak}
             />
-            <Legend />
+            <Legend content={<SmallerLegend />} />
             <Tooltip content={<TooltipContent />} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>

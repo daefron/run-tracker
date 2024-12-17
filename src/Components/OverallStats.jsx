@@ -1,9 +1,4 @@
-import {
-  msToObject,
-  renderTime,
-  getAverage,
-  getTotal,
-} from "../Tools";
+import { msToObject, renderTime, getAverage, getTotal } from "../Tools";
 export function OverallStats({ runs }) {
   if (!runs) {
     return;
@@ -17,8 +12,8 @@ export function OverallStats({ runs }) {
     }
     return (
       <div className="runStat" id={"average" + unit}>
-        <p className="statTitle">Average {name}: </p>
-        <p className="statContent">{averageRender}</p>
+        <p className="statTitle smallFont">Average {name}: </p>
+        <p className="statContent smallFont">{averageRender}</p>
       </div>
     );
 
@@ -41,8 +36,8 @@ export function OverallStats({ runs }) {
     }
     return (
       <div className="runStat" id={"average" + unit}>
-        <p className="statTitle">Total {unit}: </p>
-        <p className="statContent">{totalRender}</p>
+        <p className="statTitle smallFont">Total {unit}: </p>
+        <p className="statContent smallFont">{totalRender}</p>
       </div>
     );
 
@@ -66,10 +61,10 @@ export function OverallStats({ runs }) {
     }
     return (
       <div className="runStat" id={"find" + unit}>
-        <p className="statTitle">
+        <p className="statTitle smallFont">
           {type} {unit}:
         </p>
-        <p className="statContent">{findRender}</p>
+        <p className="statContent smallFont">{findRender}</p>
       </div>
     );
     function findTarget() {
@@ -94,7 +89,9 @@ export function OverallStats({ runs }) {
 
   return (
     <div id="overallStats">
-      <p id="overallStatsTitle">Overall stats</p>
+      <p id="overallStatsTitle" className="titleFont">
+        Overall stats
+      </p>
       <Total runs={runs} unit="runs" render="" />
       <Total runs={runs} unit="distance" render=" km" />
       <Average

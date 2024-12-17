@@ -55,7 +55,7 @@ export function ChartPie({ runs, activeRun, type, render }) {
     return (
       <div className="pieHolder" id={type + "Pie"}>
         <div className="graphTop">
-          <p className="graphTitle">{render}</p>
+          <p className="graphTitle titleFont">{render}</p>
         </div>
         <ResponsiveContainer>
           <PieChart>
@@ -74,7 +74,6 @@ export function ChartPie({ runs, activeRun, type, render }) {
                 <Cell key={"cell" + index} fill={colors[index]} />
               ))}
             </Pie>
-            <Legend wrapperStyle={{ top: "70%" }} />
             <Tooltip content={<TooltipContent />} isAnimationActive={false} />
           </PieChart>
         </ResponsiveContainer>
