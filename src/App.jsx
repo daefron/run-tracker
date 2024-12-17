@@ -2,67 +2,117 @@ import { Page } from "./Page";
 import { useState, useEffect } from "react";
 import { testData } from "./TestData";
 export default function Main() {
-  //data currently being manually input
-  const authData = {
-    key: "23PZCT",
-    accessToken:
-      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1BaQ1QiLCJzdWIiOiJDQzgzR0siLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByaXJuIHJveHkgcnBybyBybnV0IHJzbGUgcmNmIHJhY3QgcmxvYyBycmVzIHJ3ZWkgcmhyIHJ0ZW0iLCJleHAiOjE3MzQ0MjAwODYsImlhdCI6MTczNDM5MTI4Nn0.yp4zY55KpXFklmLRLlyniqQVIiLsY3PFxr8aWh_onxU",
-  };
-  const [runs, setRuns] = useState([]);
-  const [loading, setLoading] = useState(true);
   async function getRuns() {
-    setLoading(true);
-    fetch(
-      "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2000-01-01&sort=desc&offset=0&limit=100",
-      {
-        headers: {
-          Authorization: "Bearer " + authData.accessToken,
-        },
+    function dec2hex(dec) {
+      return ("0" + dec.toString(16)).substr(-2);
+    }
+    function generateRandomString() {
+      var array = new Uint32Array(56 / 2);
+      window.crypto.getRandomValues(array);
+      return Array.from(array, dec2hex).join("");
+    }
+    function sha256(plain) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(plain);
+      return window.crypto.subtle.digest("SHA-256", data);
+    }
+    function base64urlencode(a) {
+      var str = "";
+      var bytes = new Uint8Array(a);
+      var len = bytes.byteLength;
+      for (var i = 0; i < len; i++) {
+        str += String.fromCharCode(bytes[i]);
       }
-    )
+      return btoa(str)
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
+    }
+    async function challenge_from_verifier(v) {
+      let hashed = await sha256(v);
+      return base64urlencode(hashed);
+    }
+    if (!window.location.search) {
+      var verifier = generateRandomString();
+      var challenge = await challenge_from_verifier(verifier);
+      document.cookie = "challenge=" + challenge;
+      document.cookie = "verifier=" + verifier;
+      var authUrl = new URL(
+        "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23PZCT&scope=activity+heartrate&code_challenge=" +
+          challenge +
+          "&code_challenge_method=S256&state=asdjkfhesfjbdsfkjhwefiuw4eriu4wehf4i3f"
+      );
+      window.location = authUrl;
+    }
+    var authCode = window.location.search.split("=")[1].split("&")[0];
+    fetch("https://api.fitbit.com/oauth2/token", {
+      body:
+        "client_id=23PZCT" +
+        "&grant_type=authorization_code&code=" +
+        authCode +
+        "&code_verifier=" +
+        document.cookie.split("verifier=")[1],
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      method: "POST",
+    })
       .then((response) => response.json())
       .then((data) => {
-        let runs = data.activities.filter(
-          (activity) =>
-            activity.activityName === "Run" && activity.logType !== "manual"
-        );
-        let promiseArray = [];
-        runs.forEach((run) => {
-          let promise = new Promise(function (resolve) {
-            fetch(run.heartRateLink, {
-              headers: {
-                Authorization: "Bearer " + authData.accessToken,
-              },
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                resolve(data);
-              });
-          });
-          promiseArray.push(promise);
-        });
-        let allHeartRateData = [];
-        Promise.all(promiseArray).then((run) => {
-          allHeartRateData.push(run);
-          for (let i = 0; i < runs.length; i++) {
-            if (promiseArray[i]) {
-              runs[i].heartRateArray =
-                allHeartRateData[0][i]["activities-heart-intraday"].dataset;
-            }
+        const accessToken = data.access_token;
+        fetch(
+          "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2000-01-01&sort=desc&offset=0&limit=100",
+          {
+            headers: {
+              Authorization: "Bearer " + accessToken,
+            },
           }
-          console.log("Using API");
-          setLoading(false);
-          setRuns(runs);
-        });
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            let runs = data.activities.filter(
+              (activity) =>
+                activity.activityName === "Run" && activity.logType !== "manual"
+            );
+            let promiseArray = [];
+            runs.forEach((run) => {
+              let promise = new Promise(function (resolve) {
+                fetch(run.heartRateLink, {
+                  headers: {
+                    Authorization: "Bearer " + accessToken,
+                  },
+                })
+                  .then((response) => response.json())
+                  .then((data) => {
+                    resolve(data);
+                  });
+              });
+              promiseArray.push(promise);
+            });
+            let allHeartRateData = [];
+            Promise.all(promiseArray).then((run) => {
+              allHeartRateData.push(run);
+              for (let i = 0; i < runs.length; i++) {
+                if (promiseArray[i]) {
+                  runs[i].heartRateArray =
+                    allHeartRateData[0][i]["activities-heart-intraday"].dataset;
+                }
+              }
+              setLoading(false);
+              setRuns(runs);
+            });
+          });
       });
   }
+  const [runs, setRuns] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    // getRuns();
-    setTimeout(() => {
-      console.log("Using test data");
-      setRuns(testData());
-      setLoading(false);
-    }, 50);
+    getRuns();
+    //   setTimeout(() => {
+    //     console.log("Using test data");
+    //     setRuns(testData());
+    //     setLoading(false);
+    //   }, 50);
   }, []);
 
   return <Page runs={runs} loading={loading} />;
