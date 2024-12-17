@@ -1,10 +1,9 @@
 import { Loaded } from "./Loaded";
 import { Loading } from "./Components/Loading.jsx";
-import { useEffect } from "react";
 import "./App.css";
-export function Page(props) {
-  if (!props.loading) {
-    return <Loaded runs={props.runs} />;
+export function Page({ loading, runs }) {
+  if (!loading) {
+    return <Loaded runs={runs} />;
   } else {
     return <Loading />;
   }
