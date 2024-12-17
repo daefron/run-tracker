@@ -11,10 +11,18 @@ export function RunList({
   return (
     <div id="runList">
       <div id="listTitle">
-        <p className="titleFont">Date</p>
-        <p className="titleFont">Start Time</p>
-        <p className="titleFont">Duration</p>
-        <p className="titleFont">Length</p>
+        <p className="titleFont" style={{ width: "20%" }}>
+          Date
+        </p>
+        <p className="titleFont" style={{ width: "20%" }}>
+          Start Time
+        </p>
+        <p className="titleFont" style={{ width: "30%" }}>
+          Duration
+        </p>
+        <p className="titleFont" style={{ width: "30%" }}>
+          Length
+        </p>
       </div>
       <div id="runListItems">
         {runs.map((run) => {
@@ -66,13 +74,15 @@ function RunItem({ activeRun, hoverRun, setActiveRun, setHoverRun, data }) {
         type="date"
         data={data}
         setActiveRun={setActiveRun}
+        size="20%"
       ></RunItemStat>
       <RunItemStat
         type="startTime"
         data={data}
         setActiveRun={setActiveRun}
+        size="20%"
       ></RunItemStat>
-      <div className="diffStat">
+      <div className="diffStat" style={{ width: "30%" }}>
         <RunItemStat
           type="duration"
           diffOriginal={true}
@@ -86,7 +96,7 @@ function RunItem({ activeRun, hoverRun, setActiveRun, setHoverRun, data }) {
           setActiveRun={setActiveRun}
         ></RunItemStat>
       </div>
-      <div className="diffStat">
+      <div className="diffStat" style={{ width: "30%" }}>
         <RunItemStat
           type="distance"
           diffOriginal={true}
@@ -104,10 +114,13 @@ function RunItem({ activeRun, hoverRun, setActiveRun, setHoverRun, data }) {
   );
 }
 
-function RunItemStat({ type, data, setActiveRun, diff, diffOriginal }) {
+function RunItemStat({ type, data, setActiveRun, diff, diffOriginal, size }) {
   let content = data.render[type];
   let statStyle = {};
   let statClassName = "smallFont";
+  if (size) {
+    statStyle.width = size;
+  }
   if (diff) {
     statClassName += " diffStatDiff";
     content = data.render[type + "Diff"];
