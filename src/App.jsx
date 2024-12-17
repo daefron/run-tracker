@@ -17,9 +17,9 @@ export default function Main() {
       return window.crypto.subtle.digest("SHA-256", data);
     }
     function base64urlencode(a) {
-      var str = "";
-      var bytes = new Uint8Array(a);
-      var len = bytes.byteLength;
+      let str = "";
+      const bytes = new Uint8Array(a);
+      const len = bytes.byteLength;
       for (var i = 0; i < len; i++) {
         str += String.fromCharCode(bytes[i]);
       }
@@ -33,25 +33,27 @@ export default function Main() {
       return base64urlencode(hashed);
     }
     if (!window.location.search) {
-      var verifier = generateRandomString();
-      var challenge = await challenge_from_verifier(verifier);
-      document.cookie = "challenge=" + challenge;
+      const verifier = generateRandomString();
       document.cookie = "verifier=" + verifier;
-      var authUrl = new URL(
+      const challenge = await challenge_from_verifier(verifier);
+      const authUrl = new URL(
         "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=23PZCT&scope=activity+heartrate&code_challenge=" +
           challenge +
           "&code_challenge_method=S256&state=asdjkfhesfjbdsfkjhwefiuw4eriu4wehf4i3f"
       );
       window.location = authUrl;
     }
-    var authCode = window.location.search.split("=")[1].split("&")[0];
+
+    const authCode = window.location.search.split("=")[1].split("&")[0];
+    history.pushState(null, "", location.href.split("?")[0]);
+    const verifierCookie = document.cookie.split("verifier=")[1];
     fetch("https://api.fitbit.com/oauth2/token", {
       body:
         "client_id=23PZCT" +
         "&grant_type=authorization_code&code=" +
         authCode +
         "&code_verifier=" +
-        document.cookie.split("verifier=")[1],
+        verifierCookie,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
