@@ -3,18 +3,18 @@ function Time(hours, mins, secs) {
   this.mins = mins;
   this.secs = secs;
 }
+//time in ms
+const timeRef = {
+  hour: 3600000,
+  min: 60000,
+  sec: 1000,
+};
 
 export function objectToMs(time) {
-  const hourIn = 3600000;
-  const minIn = 60000;
-  const secIn = 1000;
-  return time.hours * hourIn + time.mins * minIn + time.secs * secIn;
+  return time.hours * timeRef.hour + time.mins * timeRef.min + time.secs * timeRef.sec;
 }
 
 export function msToObject(time) {
-  const hourIn = 3600000;
-  const minIn = 60000;
-  const secsIn = 1000;
   let hours = 0;
   let mins = 0;
   let secs = 0;
@@ -23,21 +23,21 @@ export function msToObject(time) {
     time *= -1;
     negative = true;
   }
-  if (time / hourIn >= 1) {
-    hours = time / hourIn;
+  if (time / timeRef.hour >= 1) {
+    hours = time / timeRef.hour;
     let hourRemainder = hours % 1;
     hours -= hourRemainder;
     mins = hourRemainder * 60;
     let minsRemainder = mins % 1;
     mins -= minsRemainder;
     secs = parseInt(minsRemainder * 60);
-  } else if (time / minIn >= 1) {
-    mins = time / minIn;
+  } else if (time / timeRef.min >= 1) {
+    mins = time / timeRef.min;
     let minsRemainder = mins % 1;
     mins -= minsRemainder;
     secs = parseInt(minsRemainder * 60);
   } else {
-    secs = parseInt(time / secsIn);
+    secs = parseInt(time / timeRef.sec);
   }
   if (negative) {
     return new Time(-hours, -mins, -secs);
@@ -218,11 +218,24 @@ export function trendLine(data, type) {
   };
 }
 
+export function arrayReverser(array) {
+  let reversedArray = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    reversedArray.push(array[i]);
+  }
+  return reversedArray;
+}
+
 export function dateFiller(runs, dateRange, types) {
   let holder = [];
   for (let i = dateRange.length - 1; i >= 0; i--) {
     let runOnDate = runs.find((run) => run.render.date === dateRange[i]);
     if (runOnDate) {
+      holder.push(runOnDateStats());
+    } else {
+      holder.push(noRunOnDateStats());
+    }
+    function runOnDateStats() {
       runOnDate.chartOrder = i;
       let stats = {
         id: runOnDate.id,
@@ -233,19 +246,16 @@ export function dateFiller(runs, dateRange, types) {
       types.forEach((type) => {
         stats[type] = runOnDate[type];
       });
-      holder.push(stats);
-    } else {
-      holder.push({
+      return stats;
+    }
+    function noRunOnDateStats() {
+      return {
         id: null,
         date: dateRange[i][0] + dateRange[i][1],
         order: i,
         parsedDate: dateRange[i],
-      });
+      };
     }
   }
-  let holder2 = [];
-  for (let i = holder.length - 1; i >= 0; i--) {
-    holder2.push(holder[i]);
-  }
-  return holder2;
+  return arrayReverser(holder);
 }

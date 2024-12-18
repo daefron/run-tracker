@@ -72,7 +72,7 @@ input {
 }
 .statsFooter {
   margin-top:auto;
-  justify-self: baseline;
+  justify-content: start;
   gap: 15px;
 }
 .checkHolder {
