@@ -13,15 +13,15 @@ export function ChartPie({ runs, activeRun, type, render }) {
       colors = ["green", "red"];
     }
     if (type === "heartZones") {
-      colors = ["pink", "green", "yellow", "red"];
+      colors = ["green", "yellow", "red"];
     }
     function dataGetter(run) {
       if (type === "heartZones") {
         return [
-          {
-            name: "light",
-            value: run.heartRateZones[0].minutes,
-          },
+          // {
+          //   name: "light",
+          //   value: run.heartRateZones[0].minutes,
+          // },
           {
             name: "moderate",
             value: run.heartRateZones[1].minutes,
