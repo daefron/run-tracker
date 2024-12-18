@@ -56,10 +56,12 @@ export function Loaded({ runs }) {
         />
         <AllChart
           render="All runs"
-          durationColor="rgb(100, 149, 237)"
-          distanceColor="rgb(195, 177, 146)"
-          heartRateColor="rgb(220, 20, 60)"
-          speedColor="rgb(250, 128, 114)"
+          durationColor="rgb(0, 200, 150)"
+          distanceColor="rgb(0, 80, 255)"
+          heartRateColor="rgb(210, 0, 0)"
+          speedColor="rgb(220, 0, 100)"
+          stepsColor="rgb(255, 0, 255)"
+          caloriesColor="rgb(255, 150, 0) "
           runs={parsedRuns.current}
           activeRun={activeRun}
           baselineDate={baselineDate}

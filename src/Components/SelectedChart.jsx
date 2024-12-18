@@ -202,7 +202,9 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
           </defs>
           <Line
             yAxisId="bpm"
-            isAnimationActive={false}
+            // isAnimationActive={false}
+            animationBegin={0}
+            animationDuration={300}
             dataKey="value"
             strokeWidth={2}
             legendType="circle"

@@ -15,6 +15,8 @@ export function AllChart({
   distanceColor,
   speedColor,
   heartRateColor,
+  stepsColor,
+  caloriesColor,
   runs,
   activeRun,
   baselineDate,
@@ -354,7 +356,8 @@ export function AllChart({
           )}
           <Line
             yAxisId="duration"
-            isAnimationActive={false}
+            animationBegin={0}
+            animationDuration={300}
             dataKey="duration"
             stroke={durationColor}
             strokeWidth={2}
@@ -372,7 +375,8 @@ export function AllChart({
           {predictedOnGraph ? (
             <Line
               yAxisId="duration"
-              isAnimationActive={false}
+              animationBegin={0}
+              animationDuration={300}
               dataKey="durationPrediction"
               stroke={predictionColor(durationColor)}
               strokeWidth={1}
@@ -411,7 +415,8 @@ export function AllChart({
           <YAxis yAxisId="distance" domain={[0, "dataMax + 1"]} hide />
           <Line
             yAxisId="distance"
-            isAnimationActive={false}
+            animationBegin={0}
+            animationDuration={300}
             dataKey="distance"
             stroke={distanceColor}
             strokeWidth={2}
@@ -429,7 +434,8 @@ export function AllChart({
           {predictedOnGraph ? (
             <Line
               yAxisId="distance"
-              isAnimationActive={false}
+              animationBegin={0}
+              animationDuration={300}
               dataKey="distancePrediction"
               stroke={predictionColor(distanceColor)}
               strokeWidth={1}
@@ -468,7 +474,8 @@ export function AllChart({
           <YAxis yAxisId="speed" domain={[0, "dataMax + 4"]} hide />
           <Line
             yAxisId="speed"
-            isAnimationActive={false}
+            animationBegin={0}
+            animationDuration={300}
             dataKey="speed"
             stroke={speedColor}
             strokeWidth={2}
@@ -482,7 +489,8 @@ export function AllChart({
           {predictedOnGraph ? (
             <Line
               yAxisId="speed"
-              isAnimationActive={false}
+              animationBegin={0}
+              animationDuration={300}
               dataKey="speedPrediction"
               stroke={predictionColor(speedColor)}
               strokeWidth={1}
@@ -521,7 +529,8 @@ export function AllChart({
           <YAxis yAxisId="heartRate" domain={[0, "dataMax + 40"]} hide />
           <Line
             yAxisId="heartRate"
-            isAnimationActive={false}
+            animationBegin={0}
+            animationDuration={300}
             dataKey="heartRate"
             stroke={heartRateColor}
             strokeWidth={2}
@@ -539,7 +548,8 @@ export function AllChart({
           {predictedOnGraph ? (
             <Line
               yAxisId="heartRate"
-              isAnimationActive={false}
+              animationBegin={0}
+              animationDuration={300}
               dataKey="heartRatePrediction"
               stroke={predictionColor(heartRateColor)}
               strokeWidth={1}
@@ -575,6 +585,120 @@ export function AllChart({
           ) : (
             <></>
           )}
+          {/* <YAxis yAxisId="steps" domain={[0, "dataMax + 800"]} hide />
+          <Line
+            yAxisId="steps"
+            animationBegin={0}
+            animationDuration={300}
+            dataKey="steps"
+            stroke={stepsColor}
+            strokeWidth={2}
+            dot={
+              <DotRender color={stepsColor} runs={runs} activeRun={activeRun} />
+            }
+            legendType="circle"
+            activeDot={false}
+            connectNulls
+          />
+          {predictedOnGraph ? (
+            <Line
+              yAxisId="steps"
+              animationBegin={0}
+              animationDuration={300}
+              dataKey="stepsPrediction"
+              stroke={predictionColor(stepsColor)}
+              strokeWidth={1}
+              dot={
+                <PredictionDot
+                  color={predictionColor(stepsColor)}
+                  runs={runs}
+                  activeRun={activeRun}
+                />
+              }
+              activeDot={false}
+              legendType="none"
+              connectNulls
+            />
+          ) : (
+            <></>
+          )}
+          {trendlineOnGraph ? (
+            <ReferenceLine
+              yAxisId="steps"
+              segment={[
+                {
+                  x: trends.steps.xStart,
+                  y: trends.steps.calcY(trends.steps.xStart),
+                },
+                {
+                  x: trends.steps.xEnd + dateGap,
+                  y: trends.steps.calcY(trends.steps.xEnd + dateGap),
+                },
+              ]}
+              stroke={predictionColor(stepsColor)}
+            />
+          ) : (
+            <></>
+          )}
+          <YAxis yAxisId="calories" domain={[0, "dataMax + 150"]} hide />
+          <Line
+            yAxisId="calories"
+            animationBegin={0}
+            animationDuration={300}
+            dataKey="calories"
+            stroke={caloriesColor}
+            strokeWidth={2}
+            dot={
+              <DotRender
+                color={caloriesColor}
+                runs={runs}
+                activeRun={activeRun}
+              />
+            }
+            legendType="circle"
+            activeDot={false}
+            connectNulls
+          />
+          {predictedOnGraph ? (
+            <Line
+              yAxisId="calories"
+              animationBegin={0}
+              animationDuration={300}
+              dataKey="caloriesPrediction"
+              stroke={predictionColor(caloriesColor)}
+              strokeWidth={1}
+              dot={
+                <PredictionDot
+                  color={predictionColor(caloriesColor)}
+                  runs={runs}
+                  activeRun={activeRun}
+                />
+              }
+              activeDot={false}
+              legendType="none"
+              connectNulls
+            />
+          ) : (
+            <></>
+          )}
+          {trendlineOnGraph ? (
+            <ReferenceLine
+              yAxisId="calories"
+              segment={[
+                {
+                  x: trends.calories.xStart,
+                  y: trends.calories.calcY(trends.calories.xStart),
+                },
+                {
+                  x: trends.calories.xEnd + dateGap,
+                  y: trends.calories.calcY(trends.calories.xEnd + dateGap),
+                },
+              ]}
+              stroke={predictionColor(caloriesColor)}
+            />
+          ) : (
+            <></>
+          )} */}
           <Tooltip content={<TooltipContent />} isAnimationActive={false} />
         </LineChart>
       </ResponsiveContainer>
