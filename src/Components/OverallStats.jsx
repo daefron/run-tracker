@@ -11,7 +11,7 @@ export function OverallStats({ runs }) {
       averageRender = renderTime(msToObject(average));
     }
     return (
-      <div className="runStat" id={"average" + unit}>
+      <div className="listItem" id={"average" + unit}>
         <p className="statTitle smallFont">Average {name}: </p>
         <p className="statContent smallFont">{averageRender}</p>
       </div>
@@ -35,7 +35,7 @@ export function OverallStats({ runs }) {
       totalRender = renderTime(msToObject(total));
     }
     return (
-      <div className="runStat" id={"average" + unit}>
+      <div className="listItem" id={"average" + unit}>
         <p className="statTitle smallFont">Total {unit}: </p>
         <p className="statContent smallFont">{totalRender}</p>
       </div>
@@ -60,7 +60,7 @@ export function OverallStats({ runs }) {
         target.render.date + " - " + target.speed.toFixed(2) + " km/h";
     }
     return (
-      <div className="runStat" id={"find" + unit}>
+      <div className="listItem" id={"find" + unit}>
         <p className="statTitle smallFont">
           {type} {unit}:
         </p>
@@ -89,7 +89,7 @@ export function OverallStats({ runs }) {
 
   return (
     <div id="overallStats">
-      <p id="overallStatsTitle" className="titleFont">
+      <p id="overallStatsTitle" className="titleFont elementHeader">
         Overall stats
       </p>
       <Total runs={runs} unit="runs" render="" />

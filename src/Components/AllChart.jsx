@@ -88,15 +88,15 @@ export function AllChart({
     if (!currentRun) {
       return (
         <>
-          <p className="mediumFont">Date: {predictedRuns[0].render.date}</p>
-          <p className="mediumFont">
+          <p className="smallFont">Date: {predictedRuns[0].render.date}</p>
+          <p className="smallFont">
             Duration: {predictedRuns[0].render.duration}
           </p>
-          <p className="mediumFont">
+          <p className="smallFont">
             Distance: {predictedRuns[0].render.distance}
           </p>
-          <p className="mediumFont">Speed: {predictedRuns[0].render.speed}</p>
-          <p className="mediumFont">
+          <p className="smallFont">Speed: {predictedRuns[0].render.speed}</p>
+          <p className="smallFont">
             Heart rate: {predictedRuns[0].render.heartRate}
           </p>
         </>
@@ -104,21 +104,13 @@ export function AllChart({
     }
     return (
       <>
-        <p className="mediumFont">Date: {currentRun.render.date}</p>
-        <p className="mediumFont">Duration: {currentRun.render.duration}</p>
-        <p className="mediumFont">Distance: {currentRun.render.distance}</p>
-        <p className="mediumFont">Speed: {currentRun.render.speed}</p>
-        <p className="mediumFont">Heart rate: {currentRun.render.heartRate}</p>
+        <p className="smallFont">Date: {currentRun.render.date}</p>
+        <p className="smallFont">Duration: {currentRun.render.duration}</p>
+        <p className="smallFont">Distance: {currentRun.render.distance}</p>
+        <p className="smallFont">Speed: {currentRun.render.speed}</p>
+        <p className="smallFont">Heart rate: {currentRun.render.heartRate}</p>
       </>
     );
-  }
-
-  function gridMaker(dimension, divider) {
-    let array = [];
-    for (let i = 20; i < dimension - 50; i += dimension / divider) {
-      array.push(i);
-    }
-    return array;
   }
 
   function predictionColor(color) {
@@ -189,7 +181,8 @@ export function AllChart({
         {data.map((entry, index) => (
           <li
             key={"item-" + index}
-            style={{ color: entry.color, fontSize: 15, textIndent: -8 }}
+            className="recharts-legend-item-text smallFont"
+            style={{ color: entry.color }}
           >
             {entry.value}
           </li>
@@ -202,7 +195,7 @@ export function AllChart({
       <text
         x={payload.viewBox.x}
         y={payload.viewBox.y + payload.viewBox.height - 10}
-        fontSize="14"
+        className="smallFont"
         fill="white"
       >
         - today
@@ -214,11 +207,26 @@ export function AllChart({
       <text
         x={payload.viewBox.x}
         y={payload.viewBox.y + payload.viewBox.height - 10}
-        fontSize="14"
+        className="smallFont"
         fill="rgba(255, 255, 255, 0.3)"
       >
         - {payload.month}
       </text>
+    );
+  }
+  function SmallerAxisTick({ payload, x, y }) {
+    return (
+      <g transform={"translate(" + x + "," + y + ")"}>
+        <text
+          dx={8}
+          dy={12}
+          textAnchor="end"
+          fill="white"
+          className="smallFont"
+        >
+          {payload.value}
+        </text>
+      </g>
     );
   }
   const types = [
@@ -255,6 +263,7 @@ export function AllChart({
     });
     return trendHolder;
   }
+
   const todayInGraph = todayChecker();
   function todayChecker() {
     const today = new Date();
@@ -283,12 +292,11 @@ export function AllChart({
     });
     return dateHolder;
   }
-
   const dateGap = predictedRuns[0].gap;
   return (
     <div className="graphHolder" id="allRunsGraph">
-      <div className="graphTop">
-        <p className="graphTitle titleFont">{render}</p>
+      <div className="elementHeader">
+        <p className="titleFont">{render}</p>
         <div className="graphDateHolder">
           <DateRangeChangeButton
             value={6}
@@ -314,15 +322,8 @@ export function AllChart({
       </div>
       <ResponsiveContainer>
         <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
-          <CartesianGrid
-            stroke="rgba(255, 255, 255, 0.1)"
-            horizontalCoordinatesGenerator={({ height }) =>
-              gridMaker(height, 10)
-            }
-            verticalCoordinatesGenerator={({ width }) => gridMaker(width, 15)}
-          />
           <Legend content={<SmallerLegend />} />
-          <XAxis dataKey="date" dy={5} />
+          <XAxis dataKey="date" tick={<SmallerAxisTick />} />
           <YAxis yAxisId="duration" domain={[0, "dataMax + 300000"]} hide />
           <ReferenceLine
             yAxisId="distance"

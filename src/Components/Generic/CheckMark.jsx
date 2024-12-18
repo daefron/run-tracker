@@ -1,7 +1,7 @@
 export function CheckMark({ type, classRender, state, setState, text }) {
   return (
     <>
-      <label key={type + "checkHolder"} className={classRender + "CheckHolder smallFont"}>
+      <label key={type + "checkHolder"} className="checkHolder smallFont">
         <input
           id={type + "CheckMark"}
           name={type}

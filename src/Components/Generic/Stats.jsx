@@ -8,7 +8,7 @@ export function Stats({ run, types }) {
   );
   function Stat({ type, run }) {
     return (
-      <div className="runStat">
+      <div className="listItem">
         <p className="statTitle smallFont">
           {type.charAt(0).toUpperCase() + type.slice(1)}:
         </p>

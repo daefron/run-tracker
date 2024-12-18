@@ -1,7 +1,6 @@
 import {
   ResponsiveContainer,
   LineChart,
-  CartesianGrid,
   Line,
   Legend,
   ReferenceLine,
@@ -12,19 +11,12 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
   if (!runs) {
     return;
   }
-  function gridMaker(dimension, divider) {
-    let array = [];
-    for (let i = 0; i < dimension; i += dimension / divider) {
-      array.push(i);
-    }
-    return array;
-  }
   function TooltipContent({ payload }) {
     if (payload[0]) {
       return (
         <>
-          <p>Time: {payload[0].payload.time}</p>
-          <p>BPM: {payload[0].payload.bpm}</p>
+          <p className="smallFont">Time: {payload[0].payload.time}</p>
+          <p className="smallFont">BPM: {payload[0].payload.bpm}</p>
         </>
       );
     }
@@ -42,7 +34,8 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
         {data.map((entry, index) => (
           <li
             key={"item-" + index}
-            style={{ color: entry.color, fontSize: 15, textIndent: -8 }}
+            className="recharts-legend-item-text smallFont"
+            style={{ color: entry.color }}
           >
             {entry.value.charAt(0).toLowerCase() + entry.value.slice(1)}
           </li>
@@ -91,6 +84,21 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
       });
       return holder;
     }
+    function SmallerAxisTick({ payload, x, y }) {
+      return (
+        <g transform={"translate(" + x + "," + y + ")"}>
+          <text
+            dx={0}
+            dy={5}
+            textAnchor="end"
+            fill="white"
+            className="smallFont"
+          >
+            {payload.value}
+          </text>
+        </g>
+      );
+    }
     function ActiveRunShiftButton({ value, render, activeRun, runs }) {
       return (
         <p
@@ -123,8 +131,8 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
     }
     return (
       <div className="graphHolder" id={"selectedGraph"}>
-        <div className="graphTop">
-          <p className="graphTitle titleFont">{render}</p>
+        <div className="elementHeader">
+          <p className="titleFont">{render}</p>
           <div className="graphDateHolder">
             <ActiveRunShiftButton
               value="left"
@@ -142,16 +150,17 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
           </div>
         </div>
         <ResponsiveContainer>
-          <LineChart margin={{ top: 20, left:10, right: 20, bottom: 10 }} data={chartData}>
-            <CartesianGrid
-              stroke="rgba(255, 255, 255, 0.1)"
-              x={35}
-              horizontalCoordinatesGenerator={({ height }) =>
-                gridMaker(height - 6 , 15)
-              }
-              verticalCoordinatesGenerator={({ width }) => gridMaker(width - 5, 15)}
+          <LineChart
+            margin={{ top: 20, left: 10, right: 20, bottom: 10 }}
+            data={chartData}
+          >
+            <YAxis
+              yAxisId="bpm"
+              width={25}
+              tick={<SmallerAxisTick />}
+              tickCount={3}
+              domain={["dataMin", "dataMax"]}
             />
-            <YAxis yAxisId="bpm" width={25} />
             <Line
               yAxisId="bpm"
               isAnimationActive={false}

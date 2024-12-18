@@ -54,8 +54,8 @@ export function ChartPie({ runs, activeRun, type, render }) {
     const colors = ["green", "yellow", "red"];
     return (
       <div className="pieHolder" id={type + "Pie"}>
-        <div className="graphTop">
-          <p className="graphTitle titleFont">{render}</p>
+        <div className="elementHeader">
+          <p className="titleFont">{render}</p>
         </div>
         <ResponsiveContainer>
           <PieChart>
@@ -82,7 +82,7 @@ export function ChartPie({ runs, activeRun, type, render }) {
   } else {
     return (
       <div className="pieHolder" id={type + "Pie"}>
-        <div className="graphTop">
+        <div className="elementHeader graphTop">
           <p className="graphTitle">{render}</p>
         </div>
         <p className="noData">No data available for manual records</p>

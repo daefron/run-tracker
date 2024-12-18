@@ -71,7 +71,7 @@ export function Loaded({ runs }) {
           marginAmount={marginAmount}
         />
         <ChartPie
-          render="Zone minutes"
+          render="Heart zone time"
           type="heartZones"
           runs={parsedRuns.current}
           activeRun={activeRun}
