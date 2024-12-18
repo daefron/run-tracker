@@ -11,7 +11,11 @@ const timeRef = {
 };
 
 export function objectToMs(time) {
-  return time.hours * timeRef.hour + time.mins * timeRef.min + time.secs * timeRef.sec;
+  return (
+    time.hours * timeRef.hour +
+    time.mins * timeRef.min +
+    time.secs * timeRef.sec
+  );
 }
 
 export function msToObject(time) {
@@ -103,33 +107,6 @@ export function dateTimeParser(dateString) {
   return new Time(hour, mins, secs);
 }
 
-export function compareRuns(run) {
-  run.render.distanceDiff = compareDistance();
-  run.render.durationDiff = compareDuration();
-  function compareDistance() {
-    let distanceDiff = run.distance - run.lastRun.distance;
-    if (distanceDiff < 0) {
-      run.distanceNegative = true;
-      return distanceDiff.toFixed(2);
-    }
-    return "+" + distanceDiff.toFixed(2);
-  }
-  function compareDuration() {
-    let competingTime = run.lastRun.duration;
-    let time = run.duration;
-    let durationDiff = time - competingTime;
-    if (durationDiff < 0) {
-      durationDiff *= -1;
-      run.durationNegative = true;
-    }
-    let renderString = renderDuration(msToObject(durationDiff));
-    if (run.durationNegative) {
-      return "-" + renderString;
-    }
-    return "+" + renderString;
-  }
-}
-
 export function renderDuration(time) {
   if (time.secs.toString().length < 2) {
     time.secs = "0" + time.secs;
@@ -137,6 +114,8 @@ export function renderDuration(time) {
   let renderString = time.secs;
   if (time.mins) {
     renderString = time.mins + ":" + renderString;
+  } else {
+    renderString = "0:" + renderString;
   }
   if (time.hours) {
     renderString = time.hours + ":" + renderString;

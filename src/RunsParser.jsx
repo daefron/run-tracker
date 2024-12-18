@@ -3,14 +3,10 @@ import {
   renderTime,
   toAusDate,
   dateTimeParser,
-  compareRuns,
   renderDuration,
   heartRateArrayParse,
 } from "./Tools.jsx";
 export function runsParser(runs) {
-  if (!runs || !runs[0]) {
-    return;
-  }
   class Run {
     constructor(run) {
       this.id = run.logId;
@@ -54,6 +50,32 @@ export function runsParser(runs) {
       run.lastRun = runHolder[i + 1];
       if (run.lastRun) {
         compareRuns(run);
+        function compareRuns(run) {
+          run.render.distanceDiff = compareDistance();
+          run.render.durationDiff = compareDuration();
+          function compareDistance() {
+            let distanceDiff = run.distance - run.lastRun.distance;
+            if (distanceDiff < 0) {
+              run.distanceNegative = true;
+              return distanceDiff.toFixed(2);
+            }
+            return "+" + distanceDiff.toFixed(2);
+          }
+          function compareDuration() {
+            let competingTime = run.lastRun.duration;
+            let time = run.duration;
+            let durationDiff = time - competingTime;
+            if (durationDiff < 0) {
+              durationDiff *= -1;
+              run.durationNegative = true;
+            }
+            let renderString = renderDuration(msToObject(durationDiff));
+            if (run.durationNegative) {
+              return "-" + renderString;
+            }
+            return "+" + renderString;
+          }
+        }
       }
     });
     return runHolder;

@@ -5,9 +5,6 @@ export function RunList({
   hoverRun,
   setHoverRun,
 }) {
-  if (!runs) {
-    return;
-  }
   return (
     <div id="runList">
       <div className="elementHeader runItem">

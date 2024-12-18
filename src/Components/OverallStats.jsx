@@ -1,9 +1,5 @@
 import { msToObject, renderTime, getAverage, getTotal } from "../Tools";
 export function OverallStats({ runs }) {
-  if (!runs) {
-    return;
-  }
-
   function Average({ decimals, render, unit, name }) {
     let average = findAverage();
     let averageRender = average.toFixed(decimals) + render;

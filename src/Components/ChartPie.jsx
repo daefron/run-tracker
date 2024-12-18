@@ -7,9 +7,6 @@ import {
   Legend,
 } from "recharts";
 export function ChartPie({ runs, activeRun, type, render }) {
-  if (!runs) {
-    return;
-  }
   if (runs[activeRun].heartRateZones) {
     const pieData = dataGetter(runs[activeRun]);
     function dataGetter(run) {

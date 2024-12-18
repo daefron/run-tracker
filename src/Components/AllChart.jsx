@@ -26,9 +26,6 @@ export function AllChart({
   predictedRuns,
   marginAmount,
 }) {
-  if (!runs && !predictedRuns[0]) {
-    return;
-  }
   function DateRangeChangeButton({ value, render, dateRangeChange }) {
     return (
       <p

@@ -8,9 +8,6 @@ import {
   YAxis,
 } from "recharts";
 export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
-  if (!runs) {
-    return;
-  }
   function TooltipContent({ payload }) {
     if (payload[0]) {
       return (
@@ -129,6 +126,40 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
         setActiveRun(activeRun + 1);
       }
     }
+    const lineColors = {
+      peakPercentage: lineColor("Peak"),
+      vigorousPercentage: lineColor("Vigorous"),
+      moderatePercentage: lineColor("Moderate"),
+    };
+    function lineColor(type) {
+      let highest = highestValue(chartData);
+      let lowest = lowestValue(chartData);
+      console.log(lowest);
+      let percentageOf =
+        (1 - (zones[type] - lowest) / (highest - lowest)) * 100;
+      console.log(percentageOf);
+      return percentageOf + "%";
+    }
+    function highestValue(array) {
+      let bpmArray = array.map((value) => (value = value.bpm));
+      let highest = 0;
+      for (let i = 0; i <= bpmArray.length; i++) {
+        if (bpmArray[i] > highest) {
+          highest = bpmArray[i];
+        }
+      }
+      return highest;
+    }
+    function lowestValue(array) {
+      let bpmArray = array.map((value) => (value = value.bpm));
+      let lowest = Infinity;
+      for (let i = 0; i <= bpmArray.length; i++) {
+        if (bpmArray[i] < lowest) {
+          lowest = bpmArray[i];
+        }
+      }
+      return lowest;
+    }
     return (
       <div className="graphHolder" id={"selectedGraph"}>
         <div className="elementHeader">
@@ -161,22 +192,35 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
               tickCount={3}
               domain={["dataMin", "dataMax"]}
             />
+
+            <defs>
+              <linearGradient id="colorBpm" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="red" />
+                <stop offset={lineColors.peakPercentage} stopColor="red" />
+                <stop offset={lineColors.peakPercentage} stopColor="yellow" />
+                <stop
+                  offset={lineColors.vigorousPercentage}
+                  stopColor="yellow"
+                />
+                <stop
+                  offset={lineColors.vigorousPercentage}
+                  stopColor="green"
+                />
+                <stop
+                  offset={lineColors.moderatePercentage}
+                  stopColor="green"
+                />
+                <stop offset={lineColors.moderatePercentage} stopColor="pink" />
+                <stop offset="100%" stopColor="pink" />
+              </linearGradient>
+            </defs>
             <Line
               yAxisId="bpm"
               isAnimationActive={false}
-              dataKey="Light"
-              stroke="hotPink"
+              dataKey="value"
               strokeWidth={2}
               legendType="circle"
-              dot={false}
-            />
-            <Line
-              yAxisId="bpm"
-              isAnimationActive={false}
-              dataKey="Moderate"
-              stroke="green"
-              strokeWidth={2}
-              legendType="circle"
+              stroke="url(#colorBpm)"
               dot={false}
             />
             <ReferenceLine
@@ -185,30 +229,14 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
               stroke="green"
               y={zones.Moderate}
             />
-            <Line
-              yAxisId="bpm"
-              isAnimationActive={false}
-              dataKey="Vigorous"
-              stroke="yellow"
-              strokeWidth={2}
-              legendType="circle"
-              dot={false}
-            />
+
             <ReferenceLine
               yAxisId="bpm"
               strokeWidth={1}
               stroke="yellow"
               y={zones.Vigorous}
             />
-            <Line
-              yAxisId="bpm"
-              isAnimationActive={false}
-              dataKey="Peak"
-              stroke="red"
-              strokeWidth={2}
-              legendType="circle"
-              dot={false}
-            />
+
             <ReferenceLine
               yAxisId="bpm"
               strokeWidth={1}
