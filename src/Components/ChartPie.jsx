@@ -58,7 +58,6 @@ export function ChartPie({ runs, activeRun, type, render }) {
         );
       }
     }
-    console.log(pieData);
     return (
       <div className="pieHolder" id={type + "Pie"}>
         <div className="elementHeader">
