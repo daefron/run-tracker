@@ -1,4 +1,4 @@
-export function CheckMark({ type, classRender, state, setState, text }) {
+export function CheckMark({ type, state, setState, text }) {
   return (
     <>
       <label key={type + "checkHolder"} className="checkHolder smallFont">
