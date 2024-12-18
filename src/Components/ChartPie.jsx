@@ -4,14 +4,24 @@ import {
   Pie,
   Cell,
   Tooltip,
-  Legend,
 } from "recharts";
 export function ChartPie({ runs, activeRun, type, render }) {
   if (runs[activeRun].heartRateZones) {
     const pieData = dataGetter(runs[activeRun]);
+    let colors;
+    if (type === "activeTime") {
+      colors = ["green", "red"];
+    }
+    if (type === "heartZones") {
+      colors = ["pink", "green", "yellow", "red"];
+    }
     function dataGetter(run) {
       if (type === "heartZones") {
         return [
+          {
+            name: "light",
+            value: run.heartRateZones[0].minutes,
+          },
           {
             name: "moderate",
             value: run.heartRateZones[1].minutes,
@@ -48,7 +58,7 @@ export function ChartPie({ runs, activeRun, type, render }) {
         );
       }
     }
-    const colors = ["green", "yellow", "red"];
+    console.log(pieData);
     return (
       <div className="pieHolder" id={type + "Pie"}>
         <div className="elementHeader">
