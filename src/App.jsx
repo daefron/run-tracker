@@ -1,6 +1,8 @@
-import { Page } from "./Page";
 import { useState, useEffect } from "react";
 import { testData } from "./TestData";
+import { Loaded } from "./Loaded";
+import { Loading } from "./Components/Loading";
+import "./App.css";
 export default function Main() {
   async function getRuns() {
     function dec2hex(dec) {
@@ -109,13 +111,17 @@ export default function Main() {
   const [runs, setRuns] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getRuns();
-    //   setTimeout(() => {
-    //     console.log("Using test data");
-    //     setRuns(testData());
-    //     setLoading(false);
-    //   }, 50);
+    // getRuns();
+      setTimeout(() => {
+        console.log("Using test data");
+        setRuns(testData());
+        setLoading(false);
+      }, 50);
   }, []);
 
-  return <Page runs={runs} loading={loading} />;
+  if (!loading) {
+    return <Loaded runs={runs} />;
+  } else {
+    return <Loading />;
+  }
 }
