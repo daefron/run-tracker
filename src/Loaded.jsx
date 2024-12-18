@@ -21,9 +21,6 @@ export function Loaded({ runs }) {
   );
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
-  const [predictionAmount, setPredictionAmount] = useState(
-    parsedRuns.current.length
-  );
   const predictedRuns = useRef([
     new PredictedRun(
       baselineDate,
@@ -50,9 +47,6 @@ export function Loaded({ runs }) {
           setPredictedOnGraph={setPredictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
           setTrendlineOnGraph={setTrendlineOnGraph}
-          predictionAmount={predictionAmount}
-          setPredictionAmount={setPredictionAmount}
-          runs={parsedRuns.current}
         />
         <SelectedChart
           render="Selected run"

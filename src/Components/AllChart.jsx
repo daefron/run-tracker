@@ -2,7 +2,6 @@ import { dateArrayToRender, trendLine, dateFiller } from "../Tools.jsx";
 import {
   ResponsiveContainer,
   LineChart,
-  CartesianGrid,
   Line,
   ReferenceLine,
   Legend,
@@ -321,7 +320,10 @@ export function AllChart({
         </div>
       </div>
       <ResponsiveContainer>
-        <LineChart margin={{ top: 0, left: 20, right: 30, bottom: 10 }} data={chartData}>
+        <LineChart
+          margin={{ top: 0, left: 20, right: 30, bottom: 10 }}
+          data={chartData}
+        >
           <Legend content={<SmallerLegend />} />
           <XAxis dataKey="date" tick={<SmallerAxisTick />} />
           <YAxis yAxisId="duration" domain={[0, "dataMax + 300000"]} hide />

@@ -1,15 +1,11 @@
 import { Stats } from "./Generic/Stats";
 import { CheckMark } from "./Generic/CheckMark";
-import { NumberIncrementor } from "./Generic/NumberInput";
 export function PredictionStats({
   predictedRuns,
   predictedOnGraph,
   setPredictedOnGraph,
   trendlineOnGraph,
   setTrendlineOnGraph,
-  predictionAmount,
-  setPredictionAmount,
-  runs,
 }) {
   const types = [
     "duration",
@@ -46,13 +42,6 @@ export function PredictionStats({
           checked="checked"
           state={trendlineOnGraph}
           setState={setTrendlineOnGraph}
-        />
-        <NumberIncrementor
-          type="predictionAmount"
-          text="amount:"
-          state={predictionAmount}
-          setState={setPredictionAmount}
-          runs={runs}
         />
       </div>
     </div>

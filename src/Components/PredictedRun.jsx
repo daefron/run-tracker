@@ -14,7 +14,7 @@ export class PredictedRun {
     runs,
     marginAmount,
     setDateRange,
-    dateRangeChange
+    dateRangeChange,
   ) {
     if (!runs) {
       return;
@@ -72,10 +72,6 @@ export class PredictedRun {
       return day + "/" + month + "/" + year[2] + year[3];
     }
 
-    function dateDifference(date1, date2) {}
-
-    function dateToMs(date) {}
-
     function getGapsAverage() {
       dateRuns.forEach((point, i) => {
         point.order = i;
@@ -91,7 +87,6 @@ export class PredictedRun {
         }
       }
     }
-
     function typeMaker(parent) {
       types.forEach((type) => {
         parent[type] = trendLine(dateRuns, type).calcY(parent.chartOrder);
