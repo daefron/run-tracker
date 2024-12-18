@@ -49,15 +49,11 @@ input {
   line-height: 35px;
   padding-inline: 10px;
 }
+.runItem,
+.statsFooter,
 .listItem {
   display: flex;
   justify-content: space-between;
-  line-height: 35px;
-  padding-inline: 10px;
-}
-.runItem,
-.statsFooter {
-  display: flex;
   line-height: 35px;
   padding-inline: 10px;
 }
@@ -75,9 +71,9 @@ input {
   width: 14.5vw;
 }
 .statsFooter {
-  margin-top: auto;
+  margin-top:auto;
+  justify-self: baseline;
   gap: 15px;
-  padding-inline: 10px;
 }
 .checkHolder {
   display: flex;
@@ -168,6 +164,9 @@ input {
 }
 #predictionStats {
   background-color: rgb(50, 50, 70);
+  display: flex;
+  flex-direction: column;
+  grid-auto-rows: 35px;
   grid-row: 13 / 15;
   grid-column: 1 / 3;
 }

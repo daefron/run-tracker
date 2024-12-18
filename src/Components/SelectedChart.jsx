@@ -151,7 +151,7 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
         </div>
         <ResponsiveContainer>
           <LineChart
-            margin={{ top: 20, left: 10, right: 20, bottom: 10 }}
+            margin={{ top: 10, left: 10, right: 20, bottom: 10 }}
             data={chartData}
           >
             <YAxis

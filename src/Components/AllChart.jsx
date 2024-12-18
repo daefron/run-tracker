@@ -196,9 +196,9 @@ export function AllChart({
         x={payload.viewBox.x}
         y={payload.viewBox.y + payload.viewBox.height - 10}
         className="smallFont"
-        fill="white"
+        fill="rgba(255, 255, 255, 0.5)"
       >
-        - today
+        - Today
       </text>
     );
   }
@@ -321,7 +321,7 @@ export function AllChart({
         </div>
       </div>
       <ResponsiveContainer>
-        <LineChart margin={{ top: 20, left: 20, right: 20 }} data={chartData}>
+        <LineChart margin={{ top: 0, left: 10, right: 20, bottom: 10 }} data={chartData}>
           <Legend content={<SmallerLegend />} />
           <XAxis dataKey="date" tick={<SmallerAxisTick />} />
           <YAxis yAxisId="duration" domain={[0, "dataMax + 300000"]} hide />
@@ -336,7 +336,7 @@ export function AllChart({
               yAxisId="distance"
               strokeWidth={1}
               x={todayInGraph}
-              stroke="white"
+              stroke="rgba(255, 255, 255, 0.5)"
               label={<TodayLabel />}
             />
           ) : (
