@@ -17,7 +17,7 @@ export function Loaded({ runs }) {
   const marginAmount = useRef(0);
   const dateRangeChange = useRef(31);
   const [dateRange, setDateRange] = useState(
-    dateArrayToRender(31, baselineDate, marginAmount)
+    dateArrayToRender(dateRangeChange.current, baselineDate, marginAmount)
   );
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
@@ -27,7 +27,8 @@ export function Loaded({ runs }) {
       dateRange,
       parsedRuns.current,
       marginAmount,
-      setDateRange
+      setDateRange,
+      dateRangeChange
     ),
   ]);
   return (

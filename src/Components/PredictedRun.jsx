@@ -8,7 +8,14 @@ import {
   dateArrayToRender,
 } from "../Tools";
 export class PredictedRun {
-  constructor(baselineDate, dateRange, runs, marginAmount, setDateRange) {
+  constructor(
+    baselineDate,
+    dateRange,
+    runs,
+    marginAmount,
+    setDateRange,
+    dateRangeChange
+  ) {
     if (!runs) {
       return;
     }
@@ -37,11 +44,20 @@ export class PredictedRun {
       steps: Math.round(this.steps) + " steps",
       calories: Math.round(this.calories) + " cals",
     };
+    predictionMargin(this.date);
 
-    if (this.date > baselineDate.current) {
-      marginAmount.current = this.gap;
-      setDateRange(dateArrayToRender(31, baselineDate, marginAmount));
+    function predictionMargin(date) {
+      if (!marginAmount.current && date > baselineDate.current) {
+        const amountOfDaysBetween = Math.ceil(
+          (date - baselineDate.current) / 1000 / 3600 / 24
+        );
+        marginAmount.current = amountOfDaysBetween;
+        setDateRange(
+          dateArrayToRender(dateRangeChange.current, baselineDate, marginAmount)
+        );
+      }
     }
+
     function daysBeforeToData(daysBefore, date) {
       const currentDay = date.getDate();
       const currentMonth = date.getMonth();
@@ -55,6 +71,10 @@ export class PredictedRun {
       const year = date.getFullYear().toString();
       return day + "/" + month + "/" + year[2] + year[3];
     }
+
+    function dateDifference(date1, date2) {}
+
+    function dateToMs(date) {}
 
     function getGapsAverage() {
       dateRuns.forEach((point, i) => {
