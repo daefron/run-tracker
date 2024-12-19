@@ -9,22 +9,24 @@ I had just started getting into running, and I found that Fitbit's data visualis
 
 ## About this project
 
-This is a custom made dashboard that visualises all tracked runs made through the Fitbit API.
+This is a custom made dashboard that visualises all tracked runs made through the Fitbit API.  
+
+![page](docs/images/page.png)
 
 ### Features:
-* List of all runs made with comparisons to last run:
+* List of all runs made with comparisons to last run:  
 ![runList](docs/images/runList.png)
-* Overall stats across all runs:
-![overallStats](docs/images/overagllStats.png)
-* All runs shown in line chart with option for trend line and predicted next run:
+* Overall stats across all runs:  
+![overallStats](docs/images/overallStats.png)
+* All runs shown in line chart with option for trend line and predicted next run:  
 ![allRuns](docs/images/allRuns.png)
-* Selected run data over time in a line chart:
+* Selected run data over time in a line chart:  
 ![selectedGraph](docs/images/selectedGraph.png)
-* Selected run data as ratios in pie chart:
+* Selected run data as ratios in pie chart:  
 ![pieChart](docs/images/pieChart.png)
-* Selected run data as statistics:
+* Selected run data as statistics:  
 ![selectedStats](docs/images/selectedStats.png)
-* Predicted next run's stats based on previous runs:
+* Predicted next run's stats based on previous runs:  
 ![predictedStats](docs/images/predictedStats.png)
 
 ### Built using:
