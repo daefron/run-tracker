@@ -102,6 +102,7 @@ export default function Main() {
                     allHeartRateData[0][i]["activities-heart-intraday"].dataset;
                 }
               }
+              console.log(runs);
               setLoading(false);
               setRuns(runs);
             });
@@ -111,12 +112,12 @@ export default function Main() {
   const [runs, setRuns] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getRuns();
-      // setTimeout(() => {
-      //   console.log("Using test data");
-      //   setRuns(testData());
-      //   setLoading(false);
-      // }, 50);
+    // getRuns();
+    setTimeout(() => {
+      console.log("Using test data");
+      setRuns(testData());
+      setLoading(false);
+    }, 50);
   }, []);
 
   if (!loading) {

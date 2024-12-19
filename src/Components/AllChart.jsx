@@ -9,14 +9,10 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
+import { Fragment } from "react";
 export function AllChart({
   render,
-  durationColor,
-  distanceColor,
-  speedColor,
-  heartRateColor,
-  stepsColor,
-  caloriesColor,
+  lineColors,
   runs,
   activeRun,
   baselineDate,
@@ -27,6 +23,8 @@ export function AllChart({
   trendlineOnGraph,
   predictedRuns,
   marginAmount,
+  lineVisibility,
+  setLineVisibility,
 }) {
   function DateRangeChangeButton({ value, render, dateRangeChange }) {
     return (
@@ -111,7 +109,7 @@ export function AllChart({
     );
   }
 
-  function predictionColor(color) {
+  function transparentRGB(color) {
     let firstSplit = color.split("(");
     let aAdded = firstSplit[0] + "a(" + firstSplit[1];
     let secondSplit = aAdded.split(")");
@@ -167,18 +165,26 @@ export function AllChart({
     );
   }
   function SmallerLegend(payload) {
-    const data = payload.payload.filter((value) => value.type !== "none");
+    let data = payload.payload.filter((value) => value.type !== "none");
     const listStyle = {
       display: "flex",
       justifyContent: "center",
       gap: "35px",
       margin: 0,
     };
+    data.forEach((value) => {
+      if (!lineVisibility[value.value]) {
+        value.color = transparentRGB(value.color);
+      }
+    });
     return (
       <ul style={listStyle}>
         {data.map((entry, index) => (
           <li
             key={"item-" + index}
+            onClick={() => {
+              setLineVisibility(swapLine(entry.value));
+            }}
             className="recharts-legend-item-text smallFont"
             style={{ color: entry.color }}
           >
@@ -187,6 +193,14 @@ export function AllChart({
         ))}
       </ul>
     );
+  }
+  function swapLine(selectedType) {
+    let newLines = {};
+    types.forEach((type) => {
+      newLines[type] = lineVisibility[type];
+    });
+    newLines[selectedType] = !lineVisibility[selectedType];
+    return newLines;
   }
   function TodayLabel(payload) {
     return (
@@ -291,6 +305,124 @@ export function AllChart({
     return dateHolder;
   }
   const dateGap = predictedRuns[0].gap;
+  const graphMax = graphPadding();
+  function graphPadding() {
+    let paddedTypes = {};
+    types.forEach((type) => {
+      let highestValue = 0;
+      for (let i = 0; i < runs.length; i++) {
+        if (runs[i][type] > highestValue) {
+          highestValue = runs[i][type];
+        }
+      }
+      const paddedValue = highestValue * 1.2;
+      paddedTypes[type] = paddedValue;
+    });
+    return paddedTypes;
+  }
+  const lines = types.map((type) => {
+    const line = (
+      <Line
+        yAxisId={type}
+        dataKey={type}
+        stroke={lineColors[type]}
+        strokeWidth={2}
+        dot={
+          lineVisibility[type] ? (
+            <DotRender
+              color={lineColors[type]}
+              runs={runs}
+              activeRun={activeRun}
+            />
+          ) : (
+            false
+          )
+        }
+        legendType="circle"
+        activeDot={false}
+        connectNulls={lineVisibility[type] ? true : false}
+        isAnimationActive={false}
+      />
+    );
+    const yAxis = <YAxis yAxisId={type} domain={[0, graphMax[type]]} hide />;
+    const prediction = (
+      <Line
+        yAxisId={type}
+        dataKey={type + "Prediction"}
+        stroke={transparentRGB(lineColors[type])}
+        strokeWidth={1}
+        dot={
+          lineVisibility[type] ? (
+            <PredictionDot
+              color={transparentRGB(lineColors[type])}
+              runs={runs}
+              activeRun={activeRun}
+            />
+          ) : (
+            false
+          )
+        }
+        activeDot={false}
+        legendType="none"
+        connectNulls={lineVisibility[type] ? true : false}
+        isAnimationActive={false}
+      />
+    );
+    const predictionLine = (
+      <ReferenceLine
+        yAxisId={type}
+        segment={
+          lineVisibility[type]
+            ? [
+                {
+                  x: trends[type].xStart,
+                  y: trends[type].calcY(trends[type].xStart),
+                },
+                {
+                  x: trends[type].xEnd + dateGap,
+                  y: trends[type].calcY(trends[type].xEnd + dateGap),
+                },
+              ]
+            : false
+        }
+        stroke={transparentRGB(lineColors[type])}
+        isAnimationActive={false}
+      />
+    );
+    return (
+      <Fragment key={type + "Line"}>
+        {yAxis}
+        {line}
+        {predictedOnGraph ? prediction : <></>}
+        {trendlineOnGraph ? predictionLine : <></>}
+      </Fragment>
+    );
+  });
+  const referenceLines = (
+    <>
+      <YAxis hide />
+      {todayInGraph ? (
+        <ReferenceLine
+          strokeWidth={1}
+          x={todayInGraph}
+          stroke="rgba(255, 255, 255, 0.5)"
+          label={<TodayLabel />}
+        />
+      ) : (
+        <></>
+      )}
+      {newMonths[0] && dateRangeChange.current <= 32 ? (
+        <ReferenceLine
+          strokeWidth={1}
+          x={newMonths[0][0]}
+          stroke="rgba(255, 255, 255, 0.3)"
+          label={<MonthLabel month={newMonths[0][1]} />}
+        />
+      ) : (
+        <></>
+      )}
+    </>
+  );
   return (
     <div className="graphHolder" id="allRunsGraph">
       <div className="elementHeader">
@@ -323,382 +455,10 @@ export function AllChart({
           margin={{ top: 0, left: 20, right: 30, bottom: 10 }}
           data={chartData}
         >
-          <Legend content={<SmallerLegend />} />
           <XAxis dataKey="date" tick={<SmallerAxisTick />} />
-          <YAxis yAxisId="duration" domain={[0, "dataMax + 300000"]} hide />
-          <ReferenceLine
-            yAxisId="distance"
-            strokeWidth={1}
-            stroke="rgba(255, 255, 255, 0.1)"
-            x={dateRangeChange.current}
-          />
-          {todayInGraph ? (
-            <ReferenceLine
-              yAxisId="distance"
-              strokeWidth={1}
-              x={todayInGraph}
-              stroke="rgba(255, 255, 255, 0.5)"
-              label={<TodayLabel />}
-            />
-          ) : (
-            <></>
-          )}
-          {newMonths[0] && dateRangeChange.current <= 32 ? (
-            <ReferenceLine
-              yAxisId="distance"
-              strokeWidth={1}
-              x={newMonths[0][0]}
-              stroke="rgba(255, 255, 255, 0.3)"
-              label={<MonthLabel month={newMonths[0][1]} />}
-            />
-          ) : (
-            <></>
-          )}
-          <Line
-            yAxisId="duration"
-            animationBegin={0}
-            animationDuration={300}
-            dataKey="duration"
-            stroke={durationColor}
-            strokeWidth={2}
-            dot={
-              <DotRender
-                color={durationColor}
-                runs={runs}
-                activeRun={activeRun}
-              />
-            }
-            legendType="circle"
-            activeDot={false}
-            connectNulls
-          />
-          {predictedOnGraph ? (
-            <Line
-              yAxisId="duration"
-              animationBegin={0}
-              animationDuration={300}
-              dataKey="durationPrediction"
-              stroke={predictionColor(durationColor)}
-              strokeWidth={1}
-              dot={
-                <PredictionDot
-                  color={predictionColor(durationColor)}
-                  runs={runs}
-                  activeRun={activeRun}
-                />
-              }
-              activeDot={false}
-              legendType="none"
-              connectNulls
-            />
-          ) : (
-            <></>
-          )}
-          {trendlineOnGraph ? (
-            <ReferenceLine
-              yAxisId="duration"
-              segment={[
-                {
-                  x: trends.duration.xStart,
-                  y: trends.duration.calcY(trends.duration.xStart),
-                },
-                {
-                  x: trends.duration.xEnd + dateGap,
-                  y: trends.duration.calcY(trends.duration.xEnd + dateGap),
-                },
-              ]}
-              stroke={predictionColor(durationColor)}
-            />
-          ) : (
-            <></>
-          )}
-          <YAxis yAxisId="distance" domain={[0, "dataMax + 1"]} hide />
-          <Line
-            yAxisId="distance"
-            animationBegin={0}
-            animationDuration={300}
-            dataKey="distance"
-            stroke={distanceColor}
-            strokeWidth={2}
-            dot={
-              <DotRender
-                color={distanceColor}
-                runs={runs}
-                activeRun={activeRun}
-              />
-            }
-            legendType="circle"
-            activeDot={false}
-            connectNulls
-          />
-          {predictedOnGraph ? (
-            <Line
-              yAxisId="distance"
-              animationBegin={0}
-              animationDuration={300}
-              dataKey="distancePrediction"
-              stroke={predictionColor(distanceColor)}
-              strokeWidth={1}
-              dot={
-                <PredictionDot
-                  color={predictionColor(distanceColor)}
-                  runs={runs}
-                  activeRun={activeRun}
-                />
-              }
-              activeDot={false}
-              legendType="none"
-              connectNulls
-            />
-          ) : (
-            <></>
-          )}
-          {trendlineOnGraph ? (
-            <ReferenceLine
-              yAxisId="distance"
-              segment={[
-                {
-                  x: trends.distance.xStart,
-                  y: trends.distance.calcY(trends.distance.xStart),
-                },
-                {
-                  x: trends.distance.xEnd + dateGap,
-                  y: trends.distance.calcY(trends.distance.xEnd + dateGap),
-                },
-              ]}
-              stroke={predictionColor(distanceColor)}
-            />
-          ) : (
-            <></>
-          )}
-          <YAxis yAxisId="speed" domain={[0, "dataMax + 4"]} hide />
-          <Line
-            yAxisId="speed"
-            animationBegin={0}
-            animationDuration={300}
-            dataKey="speed"
-            stroke={speedColor}
-            strokeWidth={2}
-            dot={
-              <DotRender color={speedColor} runs={runs} activeRun={activeRun} />
-            }
-            legendType="circle"
-            activeDot={false}
-            connectNulls
-          />
-          {predictedOnGraph ? (
-            <Line
-              yAxisId="speed"
-              animationBegin={0}
-              animationDuration={300}
-              dataKey="speedPrediction"
-              stroke={predictionColor(speedColor)}
-              strokeWidth={1}
-              dot={
-                <PredictionDot
-                  color={predictionColor(speedColor)}
-                  runs={runs}
-                  activeRun={activeRun}
-                />
-              }
-              activeDot={false}
-              legendType="none"
-              connectNulls
-            />
-          ) : (
-            <></>
-          )}
-          {trendlineOnGraph ? (
-            <ReferenceLine
-              yAxisId="speed"
-              segment={[
-                {
-                  x: trends.speed.xStart,
-                  y: trends.speed.calcY(trends.speed.xStart),
-                },
-                {
-                  x: trends.speed.xEnd + dateGap,
-                  y: trends.speed.calcY(trends.speed.xEnd + dateGap),
-                },
-              ]}
-              stroke={predictionColor(speedColor)}
-            />
-          ) : (
-            <></>
-          )}
-          <YAxis yAxisId="heartRate" domain={[0, "dataMax + 40"]} hide />
-          <Line
-            yAxisId="heartRate"
-            animationBegin={0}
-            animationDuration={300}
-            dataKey="heartRate"
-            stroke={heartRateColor}
-            strokeWidth={2}
-            dot={
-              <DotRender
-                color={heartRateColor}
-                runs={runs}
-                activeRun={activeRun}
-              />
-            }
-            legendType="circle"
-            activeDot={false}
-            connectNulls
-          />
-          {predictedOnGraph ? (
-            <Line
-              yAxisId="heartRate"
-              animationBegin={0}
-              animationDuration={300}
-              dataKey="heartRatePrediction"
-              stroke={predictionColor(heartRateColor)}
-              strokeWidth={1}
-              dot={
-                <PredictionDot
-                  color={predictionColor(heartRateColor)}
-                  runs={runs}
-                  activeRun={activeRun}
-                />
-              }
-              activeDot={false}
-              legendType="none"
-              connectNulls
-            />
-          ) : (
-            <></>
-          )}
-          {trendlineOnGraph ? (
-            <ReferenceLine
-              yAxisId="heartRate"
-              segment={[
-                {
-                  x: trends.heartRate.xStart,
-                  y: trends.heartRate.calcY(trends.heartRate.xStart),
-                },
-                {
-                  x: trends.heartRate.xEnd + dateGap,
-                  y: trends.heartRate.calcY(trends.heartRate.xEnd + dateGap),
-                },
-              ]}
-              stroke={predictionColor(heartRateColor)}
-            />
-          ) : (
-            <></>
-          )}
-          {/* <YAxis yAxisId="steps" domain={[0, "dataMax + 800"]} hide />
-          <Line
-            yAxisId="steps"
-            animationBegin={0}
-            animationDuration={300}
-            dataKey="steps"
-            stroke={stepsColor}
-            strokeWidth={2}
-            dot={
-              <DotRender color={stepsColor} runs={runs} activeRun={activeRun} />
-            }
-            legendType="circle"
-            activeDot={false}
-            connectNulls
-          />
-          {predictedOnGraph ? (
-            <Line
-              yAxisId="steps"
-              animationBegin={0}
-              animationDuration={300}
-              dataKey="stepsPrediction"
-              stroke={predictionColor(stepsColor)}
-              strokeWidth={1}
-              dot={
-                <PredictionDot
-                  color={predictionColor(stepsColor)}
-                  runs={runs}
-                  activeRun={activeRun}
-                />
-              }
-              activeDot={false}
-              legendType="none"
-              connectNulls
-            />
-          ) : (
-            <></>
-          )}
-          {trendlineOnGraph ? (
-            <ReferenceLine
-              yAxisId="steps"
-              segment={[
-                {
-                  x: trends.steps.xStart,
-                  y: trends.steps.calcY(trends.steps.xStart),
-                },
-                {
-                  x: trends.steps.xEnd + dateGap,
-                  y: trends.steps.calcY(trends.steps.xEnd + dateGap),
-                },
-              ]}
-              stroke={predictionColor(stepsColor)}
-            />
-          ) : (
-            <></>
-          )}
-          <YAxis yAxisId="calories" domain={[0, "dataMax + 150"]} hide />
-          <Line
-            yAxisId="calories"
-            animationBegin={0}
-            animationDuration={300}
-            dataKey="calories"
-            stroke={caloriesColor}
-            strokeWidth={2}
-            dot={
-              <DotRender
-                color={caloriesColor}
-                runs={runs}
-                activeRun={activeRun}
-              />
-            }
-            legendType="circle"
-            activeDot={false}
-            connectNulls
-          />
-          {predictedOnGraph ? (
-            <Line
-              yAxisId="calories"
-              animationBegin={0}
-              animationDuration={300}
-              dataKey="caloriesPrediction"
-              stroke={predictionColor(caloriesColor)}
-              strokeWidth={1}
-              dot={
-                <PredictionDot
-                  color={predictionColor(caloriesColor)}
-                  runs={runs}
-                  activeRun={activeRun}
-                />
-              }
-              activeDot={false}
-              legendType="none"
-              connectNulls
-            />
-          ) : (
-            <></>
-          )}
-          {trendlineOnGraph ? (
-            <ReferenceLine
-              yAxisId="calories"
-              segment={[
-                {
-                  x: trends.calories.xStart,
-                  y: trends.calories.calcY(trends.calories.xStart),
-                },
-                {
-                  x: trends.calories.xEnd + dateGap,
-                  y: trends.calories.calcY(trends.calories.xEnd + dateGap),
-                },
-              ]}
-              stroke={predictionColor(caloriesColor)}
-            />
-          ) : (
-            <></>
-          )} */}
+          {lines}
+          {referenceLines}
+          <Legend content={<SmallerLegend />} />
           <Tooltip content={<TooltipContent />} isAnimationActive={false} />
         </LineChart>
       </ResponsiveContainer>

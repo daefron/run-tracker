@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { runsParser } from "./RunsParser.jsx";
-import { dateArrayToRender } from "./Tools.jsx";
+import { dateArrayToRender, initialLines } from "./Tools.jsx";
 import { RunList } from "./Components/RunList.jsx";
 import { PredictionStats } from "./Components/Prediction.jsx";
 import { AllChart } from "./Components/AllChart.jsx";
@@ -31,6 +31,15 @@ export function Loaded({ runs }) {
       dateRangeChange
     ),
   ]);
+  const [lineVisibility, setLineVisibility] = useState(initialLines());
+  const lineColors = {
+    duration: "rgb(0, 200, 150)",
+    distance: "rgb(0, 80, 255)",
+    heartRate: "rgb(210, 0, 0)",
+    speed: "rgb(220, 0, 100)",
+    steps: "rgb(200, 200, 200)",
+    calories: "rgb(255, 150, 0)",
+  };
   return (
     <>
       <div id="body">
@@ -49,19 +58,14 @@ export function Loaded({ runs }) {
           setTrendlineOnGraph={setTrendlineOnGraph}
         />
         <SelectedChart
-          render="Selected run"
+          render="Selected run bpm"
           runs={parsedRuns.current}
           activeRun={activeRun}
           setActiveRun={setActiveRun}
         />
         <AllChart
           render="All runs"
-          durationColor="rgb(0, 200, 150)"
-          distanceColor="rgb(0, 80, 255)"
-          heartRateColor="rgb(210, 0, 0)"
-          speedColor="rgb(220, 0, 100)"
-          stepsColor="rgb(255, 0, 255)"
-          caloriesColor="rgb(255, 150, 0) "
+          lineColors={lineColors}
           runs={parsedRuns.current}
           activeRun={activeRun}
           baselineDate={baselineDate}
@@ -72,6 +76,8 @@ export function Loaded({ runs }) {
           trendlineOnGraph={trendlineOnGraph}
           predictedRuns={predictedRuns.current}
           marginAmount={marginAmount}
+          lineVisibility={lineVisibility}
+          setLineVisibility={setLineVisibility}
         />
         <ChartPie
           render="Heart zone time"
