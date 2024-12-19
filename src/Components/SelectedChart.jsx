@@ -55,7 +55,7 @@ export function SelectedChart({
             <li
               key={"item-" + index}
               className="recharts-legend-item-text smallFont"
-              style={{ color: entry.color, paddingLeft: "2px" }}
+              style={{ color: entry.color, paddingLeft: "5px" }}
             >
               {entry.value.charAt(0).toLowerCase() + entry.value.slice(1)}
             </li>
@@ -68,7 +68,7 @@ export function SelectedChart({
         <ul style={listStyle}>
           <li
             className="recharts-legend-item-text smallFont"
-            style={{ color: "rgb(200, 200, 200)", paddingLeft: "2px" }}
+            style={{ color: "rgb(200, 200, 200)", paddingLeft: "5px" }}
           >
             steps
           </li>
