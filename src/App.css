@@ -214,6 +214,13 @@ input {
   grid-row: 10 / 13;
   grid-column: 1 / 3;
 }
+#fakeBody > .graphHolder {
+  height: 40vh;
+}
+#fakeBody > .pieHolder {
+  height: 20vh;
+}
+
 #body > .pieHolder {
   height: 150px;
 }
@@ -221,10 +228,10 @@ input {
   height: 200px;
 }
 @media (min-height: 550px) {
-  .pieHolder {
+  #body > .pieHolder {
     height: 20vh;
   }
-  .graphHolder {
+  #body > .graphHolder {
     height: 40vh;
   }
 }
@@ -277,6 +284,12 @@ input {
   }
 }
 @media (min-width: 1394px) {
+  #body > .pieHolder {
+    height: auto;
+  }
+  #body > .graphHolder {
+    height: auto;
+  }
   #root {
     height: calc(100vh - 60px);
     padding: 30px;
