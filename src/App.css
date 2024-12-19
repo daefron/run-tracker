@@ -172,19 +172,16 @@ input {
   font-size: 11px;
 }
 #selectedGraph {
-  height: 40vh;
   background-color: rgb(50, 50, 70);
   grid-row: 1 / 3;
   grid-column: 1 / 3;
 }
 #heartZonesPie {
-  height: 20vh;
   background-color: rgb(50, 50, 70);
   grid-row: 3 / 4;
   grid-column: 1 / 2;
 }
 #activeTimePie {
-  height: 20vh;
   background-color: rgb(50, 50, 70);
   grid-row: 3 / 4;
   grid-column: 2 / 3;
@@ -200,7 +197,6 @@ input {
   grid-column: 1 / 3;
 }
 #allRunsGraph {
-  height: 40vh;
   background-color: rgb(50, 50, 70);
   grid-row: 8 / 10;
   grid-column: 1 / 3;
@@ -218,13 +214,25 @@ input {
   grid-row: 10 / 13;
   grid-column: 1 / 3;
 }
-
+#body > .pieHolder {
+  height: 150px;
+}
+#body > .graphHolder {
+  height: 200px;
+}
+@media (min-height: 550px) {
+  .pieHolder {
+    height: 20vh;
+  }
+  .graphHolder {
+    height: 40vh;
+  }
+}
 @media (min-width: 349px) {
   .titleFont {
     font-size: 12px;
   }
 }
-
 @media (min-width: 419px) {
   .smallFont {
     font-size: 13px;

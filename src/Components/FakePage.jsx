@@ -1,7 +1,7 @@
 export function FakePage() {
   return (
     <div id="fakeBody" style={{ filter: "blur(10px)" }}>
-      <div id="allRunsGraph">
+      <div id="allRunsGraph" className="graphHolder">
         <div className="graphTop">
           <p className="graphTitle">All runs</p>
         </div>
@@ -14,7 +14,7 @@ export function FakePage() {
         </div>
         <div className="statsFooter"></div>
       </div>
-      <div id="selectedGraph">
+      <div id="selectedGraph" className="graphHolder">
         <div className="graphTop">
           <p className="graphTitle">Selected run</p>
         </div>
@@ -33,12 +33,12 @@ export function FakePage() {
           <p>Length</p>
         </div>
       </div>
-      <div id="activeTimePie">
+      <div id="activeTimePie" className="pieHolder">
         <div className="graphTop">
           <p className="graphTitle">Heart zone minutes</p>
         </div>
       </div>
-      <div id="heartZonesPie">
+      <div id="heartZonesPie" className="pieHolder">
         <div className="graphTop">
           <p className="graphTitle">Active time</p>
         </div>
