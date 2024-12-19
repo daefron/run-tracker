@@ -218,7 +218,7 @@ export function AllChart({
               setLineVisibility(swapLine(entry.value));
             }}
             className="recharts-legend-item-text smallFont"
-            style={{ color: entry.color, paddingLeft: "2px" }}
+            style={{ color: entry.color, paddingLeft: "5px" }}
           >
             {entry.value}
           </li>
