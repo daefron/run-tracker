@@ -85,26 +85,56 @@ export function AllChart({
       return (
         <>
           <p className="smallFont">Date: {predictedRuns[0].render.date}</p>
-          <p className="smallFont">
-            Duration: {predictedRuns[0].render.duration}
-          </p>
-          <p className="smallFont">
-            Distance: {predictedRuns[0].render.distance}
-          </p>
-          <p className="smallFont">Speed: {predictedRuns[0].render.speed}</p>
-          <p className="smallFont">
-            Heart rate: {predictedRuns[0].render.heartRate}
-          </p>
+          {lineVisibility.duration ? (
+            <p className="smallFont">
+              Duration: {predictedRuns[0].render.duration}
+            </p>
+          ) : null}
+          {lineVisibility.distance ? (
+            <p className="smallFont">
+              Distance: {predictedRuns[0].render.distance}
+            </p>
+          ) : null}
+          {lineVisibility.speed ? (
+            <p className="smallFont">Speed: {predictedRuns[0].render.speed}</p>
+          ) : null}
+          {lineVisibility.heartRate ? (
+            <p className="smallFont">
+              Heart rate: {predictedRuns[0].render.heartRate}
+            </p>
+          ) : null}
+          {lineVisibility.calories ? (
+            <p className="smallFont">
+              Calories: {predictedRuns[0].render.calories}
+            </p>
+          ) : null}
+          {lineVisibility.steps ? (
+            <p className="smallFont">Steps: {predictedRuns[0].render.steps}</p>
+          ) : null}
         </>
       );
     }
     return (
       <>
         <p className="smallFont">Date: {currentRun.render.date}</p>
-        <p className="smallFont">Duration: {currentRun.render.duration}</p>
-        <p className="smallFont">Distance: {currentRun.render.distance}</p>
-        <p className="smallFont">Speed: {currentRun.render.speed}</p>
-        <p className="smallFont">Heart rate: {currentRun.render.heartRate}</p>
+        {lineVisibility.duration ? (
+          <p className="smallFont">Duration: {currentRun.render.duration}</p>
+        ) : null}
+        {lineVisibility.distance ? (
+          <p className="smallFont">Distance: {currentRun.render.distance}</p>
+        ) : null}
+        {lineVisibility.speed ? (
+          <p className="smallFont">Speed: {currentRun.render.speed}</p>
+        ) : null}
+        {lineVisibility.heartRate ? (
+          <p className="smallFont">Heart rate: {currentRun.render.heartRate}</p>
+        ) : null}
+        {lineVisibility.calories ? (
+          <p className="smallFont">Calories: {currentRun.render.calories}</p>
+        ) : null}
+        {lineVisibility.steps ? (
+          <p className="smallFont">Steps: {currentRun.render.steps}</p>
+        ) : null}
       </>
     );
   }
