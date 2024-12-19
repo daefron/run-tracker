@@ -74,30 +74,83 @@ export async function apiFetch(setRuns, setLoading) {
             (activity) =>
               activity.activityName === "Run" && activity.logType !== "manual"
           );
-          let promiseArray = [];
+          let heartRatePromises = [];
+          let stepsPromises = [];
           runs.forEach((run) => {
-            let promise = new Promise(function (resolve) {
-              fetch(run.heartRateLink, {
-                headers: {
-                  Authorization: "Bearer " + accessToken,
-                },
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                  resolve(data);
-                });
-            });
-            promiseArray.push(promise);
-          });
-          let allHeartRateData = [];
-          Promise.all(promiseArray).then((run) => {
-            allHeartRateData.push(run);
-            for (let i = 0; i < runs.length; i++) {
-              if (promiseArray[i]) {
-                runs[i].heartRateArray =
-                  allHeartRateData[0][i]["activities-heart-intraday"].dataset;
+            heartRatePromises.push(intradayPromise("heartRate"));
+            stepsPromises.push(intradayPromise("steps"));
+            function intradayPromise(type) {
+              let link;
+              if (type == "heartRate") {
+                link = run[type + "Link"];
+              } else link = linkMaker(type);
+              return new Promise(function (resolve) {
+                fetch(link, {
+                  headers: {
+                    Authorization: "Bearer " + accessToken,
+                  },
+                })
+                  .then((response) => response.json())
+                  .then((data) => {
+                    resolve(data);
+                  });
+              });
+              function linkMaker(type) {
+                const baselineLink = run["heartRateLink"];
+                const dateRange =
+                  baselineLink.split("date/")[1].split("/")[0] +
+                  "/" +
+                  baselineLink.split("date/")[1].split("/")[1];
+                let time1 = baselineLink.split("time/")[1].split("/")[0];
+                let time2 = baselineLink.split(time1 + "/")[1].split(".")[0];
+                if (time1[1] === ":") {
+                  time1 = "0" + time1;
+                }
+                if (time2[1] === ":") {
+                  time2 = "0" + time2;
+                }
+                return (
+                  "https://api.fitbit.com/1/user/-/activities/" +
+                  type +
+                  "/date/" +
+                  dateRange +
+                  "/1min/time/" +
+                  time1 +
+                  "/" +
+                  time2 +
+                  ".json"
+                );
               }
             }
+          });
+          let allHeartRateData = [];
+          let allStepsData = [];
+          function unpackPromises(type, promises, array, run, arrayName) {
+            array.push(run);
+            for (let i = 0; i < runs.length; i++) {
+              if (promises[i]) {
+                runs[i][arrayName] =
+                  array[0][i]["activities-" + type + "-intraday"].dataset;
+              }
+            }
+          }
+          Promise.all(heartRatePromises).then((run) => {
+            unpackPromises(
+              "heart",
+              heartRatePromises,
+              allHeartRateData,
+              run,
+              "heartRateArray"
+            );
+            Promise.all(stepsPromises).then((run) => {
+              unpackPromises(
+                "steps",
+                stepsPromises,
+                allStepsData,
+                run,
+                "stepsArray"
+              );
+            });
             setLoading(false);
             setRuns(runs);
           });
