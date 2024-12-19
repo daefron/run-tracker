@@ -39,8 +39,10 @@ export function SelectedChart({
     const listStyle = {
       display: "flex",
       justifyContent: "center",
-      gap: "35px",
+      gap: "25px",
       margin: 0,
+      marginLeft: -15
+
     };
     if (selectedType === "bpm") {
       const data = [

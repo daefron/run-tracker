@@ -199,8 +199,10 @@ export function AllChart({
     const listStyle = {
       display: "flex",
       justifyContent: "center",
-      gap: "35px",
+      gap: "25px",
       margin: 0,
+      marginLeft: -15
+
     };
     data.forEach((value) => {
       if (!lineVisibility[value.value]) {
@@ -216,7 +218,7 @@ export function AllChart({
               setLineVisibility(swapLine(entry.value));
             }}
             className="recharts-legend-item-text smallFont"
-            style={{ color: entry.color, paddingLeft: "5px" }}
+            style={{ color: entry.color, paddingLeft: "2px" }}
           >
             {entry.value}
           </li>
