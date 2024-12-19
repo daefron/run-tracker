@@ -7,45 +7,83 @@ import {
   Tooltip,
   YAxis,
 } from "recharts";
-export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
+export function SelectedChart({
+  runs,
+  activeRun,
+  render,
+  setActiveRun,
+  selectedType,
+  setSelectedType,
+}) {
   function TooltipContent({ payload }) {
     if (payload[0]) {
-      return (
-        <>
-          <p className="smallFont">Time: {payload[0].payload.time}</p>
-          <p className="smallFont">BPM: {payload[0].payload.bpm}</p>
-        </>
-      );
+      if (selectedType === "bpm") {
+        return (
+          <>
+            <p className="smallFont">Time: {payload[0].payload.time}</p>
+            <p className="smallFont">BPM: {payload[0].payload.bpm}</p>
+          </>
+        );
+      }
+      if (selectedType === "steps") {
+        return (
+          <>
+            <p className="smallFont">Time: {payload[0].payload.time}</p>
+            <p className="smallFont">Steps: {payload[0].payload.value}</p>
+          </>
+        );
+      }
     }
   }
   function SmallerLegend() {
-    const data = [
-      { value: "Light", color: "pink" },
-      { value: "Moderate", color: "green" },
-      { value: "Vigorous", color: "yellow" },
-      { value: "Peak", color: "red" },
-    ];
     const listStyle = {
       display: "flex",
       justifyContent: "center",
       gap: "35px",
       margin: 0,
     };
-    return (
-      <ul style={listStyle}>
-        {data.map((entry, index) => (
+    if (selectedType === "bpm") {
+      const data = [
+        { value: "Light", color: "pink" },
+        { value: "Moderate", color: "green" },
+        { value: "Vigorous", color: "yellow" },
+        { value: "Peak", color: "red" },
+      ];
+      return (
+        <ul style={listStyle}>
+          {data.map((entry, index) => (
+            <li
+              key={"item-" + index}
+              className="recharts-legend-item-text smallFont"
+              style={{ color: entry.color }}
+            >
+              {entry.value.charAt(0).toLowerCase() + entry.value.slice(1)}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+    if (selectedType === "steps") {
+      return (
+        <ul style={listStyle}>
           <li
-            key={"item-" + index}
             className="recharts-legend-item-text smallFont"
-            style={{ color: entry.color }}
+            style={{ color: "rgb(200, 200, 200)" }}
           >
-            {entry.value.charAt(0).toLowerCase() + entry.value.slice(1)}
+            steps
           </li>
-        ))}
-      </ul>
-    );
+        </ul>
+      );
+    }
   }
-  const chartData = bpmChartData(runs[activeRun].heartRateArray);
+  function getChartData() {
+    if (selectedType === "bpm") {
+      return runs[activeRun]["heartRateArray"];
+    } else {
+      return runs[activeRun][selectedType + "Array"];
+    }
+  }
+  const chartData = getChartData();
   const zones = zoneGetter(runs[activeRun].heartRateZones);
   const lineColors = {
     peakPercentage: lineColor("Peak"),
@@ -84,37 +122,6 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
       parsedData[value.name] = value.min;
     });
     return parsedData;
-  }
-  function bpmChartData(chartData) {
-    let zones = runs[activeRun].heartRateZones;
-    let holder = [];
-    chartData.forEach((entry) => {
-      for (const zone of zones) {
-        if (entry.bpm >= zone.min && entry.bpm <= zone.max) {
-          entry[zone.name] = entry.bpm;
-        }
-      }
-      holder.push(entry);
-    });
-    holder.forEach((entry, i) => {
-      if (holder[i + 1]) {
-        let nextEntry = holder[i + 1];
-        let entryKey = Object.keys(entry)[3];
-        let nextEntryKey = Object.keys(nextEntry)[3];
-        if (entryKey !== nextEntryKey) {
-          entry[nextEntryKey] = entry.value;
-        }
-      }
-      if (holder[i - 1]) {
-        let previousEntry = holder[i - 1];
-        let entryKey = Object.keys(entry)[3];
-        let previousEntryKey = Object.keys(previousEntry)[3];
-        if (entryKey !== previousEntryKey) {
-          entry[previousEntryKey] = entry.value;
-        }
-      }
-    });
-    return holder;
   }
   function SmallerAxisTick({ payload, x, y }) {
     return (
@@ -157,8 +164,30 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
   }
   return (
     <div className="graphHolder" id={"selectedGraph"}>
-      <div className="elementHeader">
+      <div className="elementHeader" id="selectedHeader">
         <p className="titleFont">{render}</p>
+        <p
+          className="selectedButton titleFont"
+          onClick={() => {
+            setSelectedType("bpm");
+          }}
+          style={
+            selectedType === "bpm" ? { textDecoration: "underline" } : null
+          }
+        >
+          BPM
+        </p>
+        <p
+          className="selectedButton titleFont"
+          onClick={() => {
+            setSelectedType("steps");
+          }}
+          style={
+            selectedType === "steps" ? { textDecoration: "underline" } : null
+          }
+        >
+          Steps
+        </p>
         <div className="graphDateHolder">
           <ActiveRunShiftButton
             value="left"
@@ -181,54 +210,76 @@ export function SelectedChart({ runs, activeRun, render, setActiveRun }) {
           data={chartData}
         >
           <YAxis
-            yAxisId="bpm"
+            yAxisId={selectedType}
             width={25}
             tick={<SmallerAxisTick />}
             tickCount={3}
             domain={["dataMin", "dataMax"]}
-          />{" "}
-          g
-          <defs>
-            <linearGradient id="colorBpm" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="red" />
-              <stop offset={lineColors.peakPercentage} stopColor="red" />
-              <stop offset={lineColors.peakPercentage} stopColor="yellow" />
-              <stop offset={lineColors.vigorousPercentage} stopColor="yellow" />
-              <stop offset={lineColors.vigorousPercentage} stopColor="green" />
-              <stop offset={lineColors.moderatePercentage} stopColor="green" />
-              <stop offset={lineColors.moderatePercentage} stopColor="pink" />
-              <stop offset="100%" stopColor="pink" />
-            </linearGradient>
-          </defs>
+          />
           <Line
-            yAxisId="bpm"
-            // isAnimationActive={false}
+            yAxisId={selectedType}
             animationBegin={0}
             animationDuration={300}
             dataKey="value"
             strokeWidth={2}
             legendType="circle"
-            stroke="url(#colorBpm)"
+            stroke={
+              selectedType === "bpm"
+                ? "url(#colorBpm)"
+                : selectedType === "steps"
+                ? "rgb(200, 200, 200)"
+                : "white"
+            }
             dot={false}
           />
-          <ReferenceLine
-            yAxisId="bpm"
-            strokeWidth={1}
-            stroke="green"
-            y={zones.Moderate}
-          />
-          <ReferenceLine
-            yAxisId="bpm"
-            strokeWidth={1}
-            stroke="yellow"
-            y={zones.Vigorous}
-          />
-          <ReferenceLine
-            yAxisId="bpm"
-            strokeWidth={1}
-            stroke="red"
-            y={zones.Peak}
-          />
+          {selectedType === "bpm" ? (
+            <>
+              <defs>
+                <linearGradient id="colorBpm" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="red" />
+                  <stop offset={lineColors.peakPercentage} stopColor="red" />
+                  <stop offset={lineColors.peakPercentage} stopColor="yellow" />
+                  <stop
+                    offset={lineColors.vigorousPercentage}
+                    stopColor="yellow"
+                  />
+                  <stop
+                    offset={lineColors.vigorousPercentage}
+                    stopColor="green"
+                  />
+                  <stop
+                    offset={lineColors.moderatePercentage}
+                    stopColor="green"
+                  />
+                  <stop
+                    offset={lineColors.moderatePercentage}
+                    stopColor="pink"
+                  />
+                  <stop offset="100%" stopColor="pink" />
+                </linearGradient>
+              </defs>
+              <ReferenceLine
+                yAxisId="bpm"
+                strokeWidth={1}
+                stroke="green"
+                y={zones.Moderate}
+              />
+              <ReferenceLine
+                yAxisId="bpm"
+                strokeWidth={1}
+                stroke="yellow"
+                y={zones.Vigorous}
+              />
+              <ReferenceLine
+                yAxisId="bpm"
+                strokeWidth={1}
+                stroke="red"
+                y={zones.Peak}
+              />
+            </>
+          ) : (
+            <></>
+          )}
           <Legend content={<SmallerLegend />} />
           <Tooltip content={<TooltipContent />} isAnimationActive={false} />
         </LineChart>

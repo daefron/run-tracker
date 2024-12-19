@@ -147,6 +147,16 @@ export function heartRateArrayParse(array) {
   return array;
 }
 
+export function stepsArrayParse(array) {
+  const baselineTime = timeParser(array[0].time);
+  for (const record of array) {
+    let recordTime = timeParser(record.time);
+    let difference = msToObject(recordTime - baselineTime);
+    record.time = renderTime(difference);
+  }
+  return array;
+}
+
 export function getAverage(data) {
   if (data[0] === undefined) {
     return;
@@ -240,12 +250,7 @@ export function dateFiller(runs, dateRange, types) {
 }
 
 export function initialLines() {
-  const types = [
-    "duration",
-    "distance",
-    "speed",
-    "heartRate",
-  ];
+  const types = ["duration", "distance", "speed", "heartRate"];
   let visibleLines = {};
   types.forEach((type) => (visibleLines[type] = true));
   return visibleLines;

@@ -5,6 +5,7 @@ import {
   dateTimeParser,
   renderDuration,
   heartRateArrayParse,
+  stepsArrayParse,
 } from "./Tools.jsx";
 export function runsParser(runs) {
   class Run {
@@ -26,6 +27,7 @@ export function runsParser(runs) {
       this.heartRateZones[2].name = "Vigorous";
       this.heartRateZones[3].name = "Peak";
       this.heartRateArray = heartRateArrayParse(run.heartRateArray);
+      this.stepsArray = stepsArrayParse(run.stepsArray);
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),

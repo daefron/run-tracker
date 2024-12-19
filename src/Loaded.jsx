@@ -40,6 +40,7 @@ export function Loaded({ runs }) {
     steps: "rgb(200, 200, 200)",
     calories: "rgb(255, 150, 0)",
   };
+  const [selectedType, setSelectedType] = useState("bpm");
   return (
     <>
       <div id="body">
@@ -58,7 +59,9 @@ export function Loaded({ runs }) {
           setTrendlineOnGraph={setTrendlineOnGraph}
         />
         <SelectedChart
-          render="Selected run bpm"
+          render="Selected run - "
+          selectedType={selectedType}
+          setSelectedType={setSelectedType}
           runs={parsedRuns.current}
           activeRun={activeRun}
           setActiveRun={setActiveRun}

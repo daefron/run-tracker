@@ -119,6 +119,10 @@ input {
   display: flex;
   flex-direction: column;
 }
+#selectedHeader > .graphDateHolder {
+  grid-column: 6;
+  justify-self: end;
+}
 .graphDateHolder {
   display: flex;
   gap: 10px;
@@ -133,6 +137,14 @@ input {
 }
 .dateChangeInactive {
   font-weight: 300;
+}
+#selectedHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.selectedButton {
+  text-align: center;
+  cursor: pointer;
 }
 .titleFont {
   font-weight: bold;
