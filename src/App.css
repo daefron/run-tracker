@@ -284,9 +284,11 @@ input {
   }
 }
 @media (min-width: 1394px) {
+  #fakeBody > .pieHolder,
   #body > .pieHolder {
     height: auto;
   }
+  #fakeBody > .graphHolder,
   #body > .graphHolder {
     height: auto;
   }
