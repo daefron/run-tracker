@@ -66,6 +66,9 @@ input {
   background-color: rgb(25, 25, 40);
   border: none;
 }
+#errorText {
+  font-weight: bold;
+}
 #loadingText {
   font-size: 26px;
   font-weight: bold;

@@ -3,7 +3,7 @@ export function testFetch(setRuns, setLoading) {
   setRuns(testData());
   setLoading(false);
 }
-export async function apiFetch(setRuns, setLoading) {
+export async function apiFetch(setRuns, setLoading, setError) {
   function dec2hex(dec) {
     return ("0" + dec.toString(16)).substr(-2);
   }
@@ -45,6 +45,21 @@ export async function apiFetch(setRuns, setLoading) {
   const authCode = window.location.search.split("=")[1].split("&")[0];
   history.pushState(null, "", location.href.split("?")[0]);
   const verifierCookie = document.cookie.split("verifier=")[1];
+  async function errorCheck(response) {
+    if (!response.ok) {
+      const text = await response.text();
+      console.log(text);
+      const code = text.toString().split('code": ')[1].split(',')[0];
+      const errorMessage = text
+        .toString()
+        .split('message": "')[1]
+        .split('"')[0];
+      setError(code + " " + errorMessage);
+      throw new Error(text);
+    } else {
+      return response.json();
+    }
+  }
   fetch("https://api.fitbit.com/oauth2/token", {
     body:
       "client_id=23PZCT" +
@@ -57,7 +72,9 @@ export async function apiFetch(setRuns, setLoading) {
     },
     method: "POST",
   })
-    .then((response) => response.json())
+    .then((response) => {
+      return errorCheck(response);
+    })
     .then((data) => {
       const accessToken = data.access_token;
       fetch(
@@ -68,7 +85,9 @@ export async function apiFetch(setRuns, setLoading) {
           },
         }
       )
-        .then((response) => response.json())
+        .then((response) => {
+          return errorCheck(response);
+        })
         .then((data) => {
           let runs = data.activities.filter(
             (activity) =>
@@ -89,11 +108,9 @@ export async function apiFetch(setRuns, setLoading) {
                   headers: {
                     Authorization: "Bearer " + accessToken,
                   },
-                })
-                  .then((response) => response.json())
-                  .then((data) => {
-                    resolve(data);
-                  });
+                }).then((response) => {
+                  return errorCheck(response);
+                });
               });
               function linkMaker(type) {
                 const baselineLink = run["heartRateLink"];

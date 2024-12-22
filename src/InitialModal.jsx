@@ -1,8 +1,22 @@
 import { FakePage } from "./Components/FakePage";
-export function InitialModal({ setDataSource, modalButtonClicked }) {
+export function InitialModal({ setDataSource, modalButtonClicked, error, setError }) {
   function clickButton(value) {
     setDataSource(value);
+    setError(false);
     modalButtonClicked.current = true;
+  }
+  let errorText;
+  if (error) {
+    errorText = parseErrorText(error);
+    function parseErrorText(error) {
+      if (error === 401) {
+        return "incorrect auth data";
+      }
+      if (error === 429) {
+        return "hit API request limit";
+      }
+      return error;
+    }
   }
   return (
     <div id="initialModalHolder">
@@ -28,6 +42,13 @@ export function InitialModal({ setDataSource, modalButtonClicked }) {
         <p className="smallFont">
           (do note, live data requires signing into a personal Fitbit account)
         </p>
+        {errorText ? (
+          <p id="errorText" className="smallFont">
+            ERROR: {errorText}
+          </p>
+        ) : (
+          <></>
+        )}
       </div>
       <FakePage />
     </div>
