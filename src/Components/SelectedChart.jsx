@@ -15,6 +15,16 @@ export function SelectedChart({
   selectedType,
   setSelectedType,
 }) {
+  if (!runs[activeRun].heartRateArray) {
+    return (
+      <div className="graphHolder" id={"selectedGraph"}>
+        <div className="elementHeader" id="selectedHeader">
+          <p className="titleFont">{render}</p>
+        </div>
+        <p className="noData titleFont">No graph data available for selected run</p>
+      </div>
+    );
+  }
   function TooltipContent({ payload }) {
     if (payload[0]) {
       if (selectedType === "bpm") {
@@ -41,8 +51,7 @@ export function SelectedChart({
       justifyContent: "center",
       gap: "25px",
       margin: 0,
-      marginLeft: -15
-
+      marginLeft: -15,
     };
     if (selectedType === "bpm") {
       const data = [

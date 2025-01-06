@@ -45,17 +45,16 @@ export async function apiFetch(setRuns, setLoading, setError) {
   const authCode = window.location.search.split("=")[1].split("&")[0];
   history.pushState(null, "", location.href.split("?")[0]);
   const verifierCookie = document.cookie.split("verifier=")[1];
-  async function errorCheck(response) {
+  async function jsonOrError(response) {
     if (!response.ok) {
       const text = await response.text();
-      console.log(text);
-      const code = text.toString().split('code": ')[1].split(',')[0];
+      const code = text.toString().split('code": ')[1].split(",")[0];
       const errorMessage = text
         .toString()
         .split('message": "')[1]
         .split('"')[0];
       setError(code + " " + errorMessage);
-      throw new Error(text);
+      throw new Error(code + " " + errorMessage);
     } else {
       return response.json();
     }
@@ -73,9 +72,15 @@ export async function apiFetch(setRuns, setLoading, setError) {
     method: "POST",
   })
     .then((response) => {
-      return errorCheck(response);
+      return jsonOrError(response);
+    })
+    .catch((error) => {
+      return error;
     })
     .then((data) => {
+      if (data instanceof Error) {
+        return;
+      }
       const accessToken = data.access_token;
       fetch(
         "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2000-01-01&sort=desc&offset=0&limit=100",
@@ -86,9 +91,15 @@ export async function apiFetch(setRuns, setLoading, setError) {
         }
       )
         .then((response) => {
-          return errorCheck(response);
+          return jsonOrError(response);
+        })
+        .catch((error) => {
+          return error;
         })
         .then((data) => {
+          if (data instanceof Error) {
+            return;
+          }
           let runs = data.activities.filter(
             (activity) =>
               activity.activityName === "Run" && activity.logType !== "manual"
@@ -108,9 +119,13 @@ export async function apiFetch(setRuns, setLoading, setError) {
                   headers: {
                     Authorization: "Bearer " + accessToken,
                   },
-                }).then((response) => {
-                  return errorCheck(response);
-                });
+                })
+                  .then((response) => {
+                    response.json();
+                  })
+                  .then((data) => {
+                    resolve(data);
+                  });
               });
               function linkMaker(type) {
                 const baselineLink = run["heartRateLink"];
@@ -140,36 +155,33 @@ export async function apiFetch(setRuns, setLoading, setError) {
               }
             }
           });
-          let allHeartRateData = [];
-          let allStepsData = [];
-          function unpackPromises(type, promises, array, run, arrayName) {
-            array.push(run);
+          function unpackPromises(type, promises, settledPromises, arrayName) {
             for (let i = 0; i < runs.length; i++) {
               if (promises[i]) {
                 runs[i][arrayName] =
-                  array[0][i]["activities-" + type + "-intraday"].dataset;
+                  settledPromises[i][
+                    "activities-" + type + "-intraday"
+                  ].dataset;
               }
             }
           }
-          Promise.all(heartRatePromises).then((run) => {
+          Promise.all(heartRatePromises).then((settledPromises) => {
             unpackPromises(
               "heart",
               heartRatePromises,
-              allHeartRateData,
-              run,
+              settledPromises,
               "heartRateArray"
             );
-            Promise.all(stepsPromises).then((run) => {
+            Promise.all(stepsPromises).then((settledPromises) => {
               unpackPromises(
                 "steps",
                 stepsPromises,
-                allStepsData,
-                run,
+                settledPromises,
                 "stepsArray"
               );
+              setLoading(false);
+              setRuns(runs);
             });
-            setLoading(false);
-            setRuns(runs);
           });
         });
     });

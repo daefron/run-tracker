@@ -126,6 +126,12 @@ input {
   grid-column: 6;
   justify-self: end;
 }
+.noData {
+  padding: 15px;
+  margin-block: auto;
+  text-wrap: wrap;
+  text-align: center;
+}
 .graphDateHolder {
   display: flex;
   gap: 10px;
