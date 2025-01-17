@@ -18,20 +18,21 @@ async function updateGet(req, res) {
       localRuns = localRunsQuery.rows[0].data;
     }
     fetchRuns();
+    async function dataOrError(response) {
+      console.log("Fetching data");
+      if (!response.ok) {
+        throw new Error(response.status + " " + response.statusText);
+      } else {
+        return response.json();
+      }
+    }
     async function fetchRuns() {
       fetch(
         "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2000-01-01&sort=desc&offset=0&limit=100",
         fetchAuth
       )
         .then((response) => {
-          console.log("Fetching data");
-          if (!response.ok) {
-            throw new Error(
-              response.status + " " + response.statusText + " at ACTIVITY LIST"
-            );
-          } else {
-            return response.json();
-          }
+          return dataOrError(response);
         })
         .catch((error) => {
           return error;
@@ -82,18 +83,7 @@ async function updateGet(req, res) {
             async function intradayFetch(typeName, sqlName, link) {
               fetch(link, fetchAuth)
                 .then((response) => {
-                  console.log("Fetching " + typeName + ".");
-                  if (!response.ok) {
-                    throw new Error(
-                      response.status +
-                        " " +
-                        response.statusText +
-                        " at intraday-" +
-                        typeName
-                    );
-                  } else {
-                    return response.json();
-                  }
+                  return dataOrError(response);
                 })
                 .catch((error) => {
                   return error;
