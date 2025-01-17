@@ -79,75 +79,50 @@ async function updateGet(req, res) {
             } else {
               idMade = true;
             }
-            if (localRun && localRun.hrdata === null) {
-              async function intradayHr(run) {
-                fetch(run.heartRateLink, fetchAuth)
-                  .then((response) => {
-                    console.log("Fethcing hr");
-                    if (!response.ok) {
-                      throw new Error(
-                        response.status +
-                          " " +
-                          response.statusText +
-                          " at INTRADAYHR"
-                      );
-                    } else {
-                      return response.json();
-                    }
-                  })
-                  .catch((error) => {
-                    return error;
-                  })
-                  .then(async (data) => {
-                    if (data instanceof Error) {
-                      console.log(data);
-                      return;
-                    }
-                    hr = data["activities-heart-intraday"].dataset;
-                    await db.query(
-                      'UPDATE "runs" SET "hrdata" = $1 WHERE "logid" = $2',
-                      [JSON.stringify(hr), localRun.logid]
+            async function intradayFetch(typeName, sqlName, link) {
+              fetch(link, fetchAuth)
+                .then((response) => {
+                  console.log("Fetching " + typeName + ".");
+                  if (!response.ok) {
+                    throw new Error(
+                      response.status +
+                        " " +
+                        response.statusText +
+                        " at intraday-" +
+                        typeName
                     );
-                    hrMade = true;
-                  });
-              }
-              intradayHr(run);
+                  } else {
+                    return response.json();
+                  }
+                })
+                .catch((error) => {
+                  return error;
+                })
+                .then(async (data) => {
+                  if (data instanceof Error) {
+                    console.log(data);
+                    return;
+                  }
+                  await db.query(
+                    'UPDATE "runs" SET "' +
+                      sqlName +
+                      '" = $1 WHERE "logid" = $2',
+                    [
+                      JSON.stringify(
+                        data["activities-" + typeName + "-intraday"].dataset
+                      ),
+                      localRun.logid,
+                    ]
+                  );
+                });
+            }
+            if (localRun && localRun.hrdata === null) {
+              intradayFetch("heart", "hrdata", run.heartRateLink);
             } else {
               hrMade = true;
             }
             if (localRun && localRun.stepdata === null) {
-              async function intradaySteps(run) {
-                fetch(linkMaker("steps", run), fetchAuth)
-                  .then((response) => {
-                    console.log("Fetching steps");
-                    if (!response.ok) {
-                      throw new Error(
-                        response.status +
-                          " " +
-                          response.statusText +
-                          " at INTRADAYSTEPS"
-                      );
-                    } else {
-                      return response.json();
-                    }
-                  })
-                  .catch((error) => {
-                    return error;
-                  })
-                  .then(async (data) => {
-                    if (data instanceof Error) {
-                      console.log(data);
-                      return;
-                    }
-                    steps = data["activities-steps-intraday"].dataset;
-                    await db.query(
-                      'UPDATE "runs" SET "stepdata" = $1 WHERE "logid" = $2',
-                      [JSON.stringify(steps), localRun.logid]
-                    );
-                    stepsMade = true;
-                  });
-              }
-              intradaySteps(run);
+              intradayFetch("steps", "stepdata", linkMaker("steps", run));
             } else {
               stepsMade = true;
             }

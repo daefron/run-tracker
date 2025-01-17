@@ -6,7 +6,7 @@ const refreshAuthDelay = 14400000;
 
 function timers() {
   setInterval(() => {
-    fitbitDataController.fetchRuns();
+    fitbitDataController.updateGet();
   }, runFetchDelay);
   console.log(
     "Run auto-updater running. Interval = " + runFetchDelay / 60000 + " mins"
