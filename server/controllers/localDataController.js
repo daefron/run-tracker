@@ -1,8 +1,10 @@
 const db = require("../db/pool");
+const authData = require("../hidden/authData");
 
 async function launchGet(req, res) {
   const localRunsQuery = await db.query(
-    'SELECT "data" FROM "run_list" WHERE "id" = (SELECT max("id") FROM "run_list")'
+    "SELECT data FROM run_list WHERE owner = $1",
+    [authData().owner]
   );
   const localRuns = localRunsQuery.rows[0].data;
   let formattedRuns = [];
@@ -17,7 +19,12 @@ async function launchGet(req, res) {
     formattedRuns.push(run);
   }
   console.log("Sent most recent run list");
-  res.json({ data: formattedRuns });
+  const lastUpdatedQuery = await db.query(
+    "SELECT last_refreshed FROM auth WHERE owner = $1",
+    [authData().owner]
+  );
+  const lastUpdated = lastUpdatedQuery.rows[0].last_refreshed;
+  res.json({ data: formattedRuns, lastUpdated: lastUpdated });
   return;
 }
 

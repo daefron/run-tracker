@@ -57,7 +57,7 @@ async function updateGet(req, res) {
           ) {
             console.log("Activity data up to date.");
           } else {
-            await db.query('INSERT INTO "run_list" (data, owner) VALUES ($1, $2)', [
+            await db.query("UPDATE run_list data = $1, owner $2", [
               JSON.stringify(fitbitRuns),
               authData().owner,
             ]);

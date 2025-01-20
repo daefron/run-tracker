@@ -9,7 +9,9 @@ import { ChartPie } from "./Components/ChartPie.jsx";
 import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
 import { PredictedRun } from "./Components/PredictedRun.jsx";
-export function Loaded({ runs }) {
+import { LastUpdated } from "./Components/LastUpdated.jsx";
+
+export function Loaded({ runs, lastUpdated }) {
   const parsedRuns = useRef(runsParser(runs));
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
@@ -96,6 +98,7 @@ export function Loaded({ runs }) {
         />
         <RunStats runs={parsedRuns.current} activeRun={activeRun} />
         <OverallStats runs={parsedRuns.current} />
+        <LastUpdated lastUpdated={lastUpdated} />
       </div>
     </>
   );
