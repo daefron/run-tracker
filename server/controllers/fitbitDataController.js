@@ -122,7 +122,9 @@ async function updateGet(req, res) {
             }
             if (lastRun && idMade && hrMade && stepsMade) {
               console.log("All runs finished updating.");
-              res.send("Refreshed");
+              if (req) {
+                res.send("Refreshed");
+              }
               return;
             }
           }
