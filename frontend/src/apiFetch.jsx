@@ -1,7 +1,6 @@
 export async function apiFetch(setRuns, setLoading, setLastUpdated) {
-  fetch("http://localhost:3000/data", {
+  fetch("https://surviving-maurizia-thomasevans-e62ca6c2.koyeb.app/data", {
     headers: {
-      "Access-Control-Allow-Origin": "http://localhost:3000/",
       "Content-Type": "text/html",
     },
     method: "GET",

@@ -10,9 +10,9 @@ export function LastUpdated({ lastUpdated, setLoading, setLastUpdated }) {
   }
   async function refreshPage() {
     setLoading(true);
-    fetch("http://localhost:3000/update", {
+
+    fetch("https://surviving-maurizia-thomasevans-e62ca6c2.koyeb.app/update", {
       headers: {
-        "Access-Control-Allow-Origin": "http://localhost:3000/",
         "Content-Type": "text/html",
       },
       method: "GET",
