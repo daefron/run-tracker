@@ -1,6 +1,5 @@
 const db = require("../db/pool");
 const auth = require("../tools/auth");
-const authData = require("../hidden/authData");
 const { linkMaker } = require("../tools/linkMaker");
 
 async function updateGet(req, res) {
@@ -14,7 +13,7 @@ async function updateGet(req, res) {
     };
     const localRunsQuery = await db.query(
       "SELECT data FROM run_list WHERE owner = $1",
-      [authData().owner]
+      [process.env.owner]
     );
     let localRuns;
     if (localRunsQuery.rows[0]) {
@@ -60,7 +59,7 @@ async function updateGet(req, res) {
           } else {
             await db.query("UPDATE run_list SET data = $1, owner = $2", [
               JSON.stringify(fitbitRuns),
-              authData().owner,
+              process.env.owner,
             ]);
             console.log("Inserted updated run list.");
           }

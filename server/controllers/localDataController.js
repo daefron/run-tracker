@@ -1,10 +1,9 @@
 const db = require("../db/pool");
-const authData = require("../hidden/authData");
 
 async function launchGet(req, res) {
   const localRunsQuery = await db.query(
     "SELECT data FROM run_list WHERE owner = $1",
-    [authData().owner]
+    [process.env.owner]
   );
   const localRuns = localRunsQuery.rows[0].data;
   let formattedRuns = [];
@@ -20,7 +19,7 @@ async function launchGet(req, res) {
   }
   const lastUpdatedQuery = await db.query(
     "SELECT last_updated FROM run_list WHERE owner = $1",
-    [authData().owner]
+    [process.env.owner]
   );
   const lastUpdated = lastUpdatedQuery.rows[0].last_updated;
   res.json({ data: formattedRuns, lastUpdated: lastUpdated });

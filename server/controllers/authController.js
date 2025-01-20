@@ -1,6 +1,5 @@
 const db = require("../db/pool");
 const auth = require("../tools/auth");
-const authData = require("../hidden/authData");
 const base64UrlEncode = require("../tools/base64UrlEncode");
 
 async function refreshAuth(req, res) {
@@ -10,14 +9,14 @@ async function refreshAuth(req, res) {
   fetch("https://api.fitbit.com/oauth2/token", {
     body:
       "client_id=" +
-      authData().client +
+      process.env.client +
       "&grant_type=refresh_token&refresh_token=" +
       refreshToken,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization:
         "Basic " +
-        base64UrlEncode.encode(authData().client + ":" + authData().secret),
+        base64UrlEncode.encode(process.env.client + ":" + process.env.secret),
     },
     method: "POST",
   })
