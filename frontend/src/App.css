@@ -273,6 +273,7 @@ input {
     grid-column: 1 / 2;
   }
   #runList {
+    overflow-y: scroll;
     grid-row: 4 / 6;
     grid-column: 2 / 3;
   }

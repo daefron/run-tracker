@@ -15,6 +15,6 @@ export default function Main() {
   if (loading) {
     return <Loading />;
   } else {
-    return <Loaded runs={runs} lastUpdated={lastUpdated} />;
+    return <Loaded runs={runs} lastUpdated={lastUpdated} setLoading={setLoading} setLastUpdated={setLastUpdated}/>;
   }
 }

@@ -11,7 +11,7 @@ import { RunStats } from "./Components/RunStats.jsx";
 import { PredictedRun } from "./Components/PredictedRun.jsx";
 import { LastUpdated } from "./Components/LastUpdated.jsx";
 
-export function Loaded({ runs, lastUpdated }) {
+export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
   const parsedRuns = useRef(runsParser(runs));
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
@@ -98,7 +98,11 @@ export function Loaded({ runs, lastUpdated }) {
         />
         <RunStats runs={parsedRuns.current} activeRun={activeRun} />
         <OverallStats runs={parsedRuns.current} />
-        <LastUpdated lastUpdated={lastUpdated} />
+        <LastUpdated
+          lastUpdated={lastUpdated}
+          setLoading={setLoading}
+          setLastUpdated={setLastUpdated}
+        />
       </div>
     </>
   );

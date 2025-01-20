@@ -6,6 +6,7 @@ const { linkMaker } = require("../tools/linkMaker");
 async function updateGet(req, res) {
   const lastAuth = await auth.getLastAuth();
   if (lastAuth) {
+    await db.query("UPDATE run_list SET last_updated = $1", [Date.now()]);
     const fetchAuth = {
       headers: {
         Authorization: "Bearer " + lastAuth.access_token,
@@ -57,7 +58,7 @@ async function updateGet(req, res) {
           ) {
             console.log("Activity data up to date.");
           } else {
-            await db.query("UPDATE run_list data = $1, owner $2", [
+            await db.query("UPDATE run_list SET data = $1, owner = $2", [
               JSON.stringify(fitbitRuns),
               authData().owner,
             ]);
@@ -121,6 +122,7 @@ async function updateGet(req, res) {
             }
             if (lastRun && idMade && hrMade && stepsMade) {
               console.log("All runs finished updating.");
+              res.send("Refreshed");
               return;
             }
           }

@@ -20,10 +20,10 @@ async function launchGet(req, res) {
   }
   console.log("Sent most recent run list");
   const lastUpdatedQuery = await db.query(
-    "SELECT last_refreshed FROM auth WHERE owner = $1",
+    "SELECT last_updated FROM run_list WHERE owner = $1",
     [authData().owner]
   );
-  const lastUpdated = lastUpdatedQuery.rows[0].last_refreshed;
+  const lastUpdated = lastUpdatedQuery.rows[0].last_updated;
   res.json({ data: formattedRuns, lastUpdated: lastUpdated });
   return;
 }
