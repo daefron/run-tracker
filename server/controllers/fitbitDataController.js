@@ -1,5 +1,6 @@
 const db = require("../db/pool");
 const auth = require("../tools/auth");
+const authData = require("../hidden/authData");
 const { linkMaker } = require("../tools/linkMaker");
 
 async function updateGet(req, res) {
@@ -7,11 +8,12 @@ async function updateGet(req, res) {
   if (lastAuth) {
     const fetchAuth = {
       headers: {
-        Authorization: "Bearer " + lastAuth.access,
+        Authorization: "Bearer " + lastAuth.access_token,
       },
     };
     const localRunsQuery = await db.query(
-      'SELECT "data" FROM "run_list" WHERE "id" = (SELECT max("id") FROM "run_list")'
+      "SELECT data FROM run_list WHERE owner = $1",
+      [authData().owner]
     );
     let localRuns;
     if (localRunsQuery.rows[0]) {
@@ -55,8 +57,9 @@ async function updateGet(req, res) {
           ) {
             console.log("Activity data up to date.");
           } else {
-            await db.query('INSERT INTO "run_list" (data) VALUES ($1)', [
+            await db.query('INSERT INTO "run_list" (data, owner) VALUES ($1, $2)', [
               JSON.stringify(fitbitRuns),
+              authData().owner,
             ]);
             console.log("Inserted updated run list.");
           }

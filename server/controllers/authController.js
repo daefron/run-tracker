@@ -6,7 +6,7 @@ const base64UrlEncode = require("../tools/base64UrlEncode");
 async function refreshAuth(req, res) {
   console.log("Refreshing authentication");
   const lastAuth = await auth.getLastAuth();
-  const refreshToken = lastAuth.refresh;
+  const refreshToken = lastAuth.refresh_token;
   fetch("https://api.fitbit.com/oauth2/token", {
     body:
       "client_id=" +
@@ -38,10 +38,10 @@ async function refreshAuth(req, res) {
         console.log(data);
         return;
       }
-      await db.query('INSERT INTO "auth" (access, refresh) VALUES ($1, $2)', [
-        data.access_token,
-        data.refresh_token,
-      ]);
+      await db.query(
+        "UPDATE auth SET access_token = $1, refresh_token = $2, last_refreshed = $3, refresh_cutoff = $4",
+        [data.access_token, data.refresh_token, Date.now(), data.expires_in]
+      );
       console.log("Authentication refreshed");
       return;
     });
