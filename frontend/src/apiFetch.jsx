@@ -1,4 +1,5 @@
 export async function apiFetch(setRuns, setLoading, setLastUpdated) {
+  console.log(process.env.SERVER_URL);
   fetch(process.env.SERVER_URL + "/data", {
     headers: {
       "Content-Type": "text/html",
