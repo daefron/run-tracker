@@ -23,9 +23,7 @@ async function refreshAuth(req, res) {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error(
-          response.status + " " + response.statusText + " at INTRADAYSTEPS"
-        );
+        throw new Error(response.status + " " + response.statusText);
       } else {
         return response.json();
       }

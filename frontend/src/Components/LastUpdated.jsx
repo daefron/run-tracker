@@ -1,7 +1,6 @@
 export function LastUpdated({ lastUpdated }) {
   const timeNow = Date.now();
-  let lastUpdatedd = Number(lastUpdated) - 4000000;
-  const timeDiff = timeNow - Number(lastUpdatedd);
+  const timeDiff = timeNow - Number(lastUpdated);
   let newTime = parseInt(timeDiff / 1000 / 60);
   if (newTime > 60) {
     newTime =
