@@ -1,7 +1,6 @@
 const db = require("../db/pool");
 
 async function launchGet(req, res) {
-  console.log(process.env.owner, process.env.database);
   const localRunsQuery = await db.query(
     "SELECT data FROM run_list WHERE owner = $1",
     [process.env.owner]
