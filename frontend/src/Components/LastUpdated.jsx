@@ -11,7 +11,7 @@ export function LastUpdated({ lastUpdated, setLoading, setLastUpdated }) {
   async function refreshPage() {
     setLoading(true);
 
-    fetch(process.env.SERVER_URL + "/update", {
+    fetch("https://surviving-maurizia-thomasevans-e62ca6c2.koyeb.app/update", {
       headers: {
         "Content-Type": "text/html",
       },

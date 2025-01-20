@@ -1,6 +1,5 @@
 export async function apiFetch(setRuns, setLoading, setLastUpdated) {
-  console.log(process.env.SERVER_URL);
-  fetch(process.env.SERVER_URL + "/data", {
+  fetch("https://surviving-maurizia-thomasevans-e62ca6c2.koyeb.app/data", {
     headers: {
       "Content-Type": "text/html",
     },
