@@ -1,5 +1,5 @@
 export async function apiFetch(setRuns, setLoading, setLastUpdated) {
-  fetch("https://surviving-maurizia-thomasevans-e62ca6c2.koyeb.app/data", {
+  fetch("https://run-tracker-r3vq.onrender.com/data", {
     headers: {
       "Content-Type": "text/html",
     },
