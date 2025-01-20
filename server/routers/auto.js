@@ -1,7 +1,7 @@
 const authController = require("../controllers/authController");
 const fitbitDataController = require("../controllers/fitbitDataController");
 
-const runFetchDelay = 900000;
+const runFetchDelay = 1800000;
 const refreshAuthDelay = 14400000;
 
 function timers() {
