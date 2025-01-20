@@ -1,9 +1,4 @@
-import { testData } from "./TestData";
-export function testFetch(setRuns, setLoading) {
-  setRuns(testData());
-  setLoading(false);
-}
-export async function apiFetch(setRuns, setLoading, setError) {
+export async function apiFetch(setRuns, setLoading) {
   fetch("http://localhost:3000/data", {
     headers: {
       "Access-Control-Allow-Origin": "http://localhost:3000/",
