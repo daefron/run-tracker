@@ -33,7 +33,6 @@ export function runsParser(runs) {
         this.stepsArray = stepsArrayParse(run.stepsArray);
       }
       this.temperature = run.temperature;
-      console.log(this.temperature);
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),
@@ -43,6 +42,7 @@ export function runsParser(runs) {
         steps: this.steps + " steps",
         calories: this.calories + " cals",
         heartRate: this.heartRate + " bpm",
+        temperature: this.this.temperature + " °C",
       };
     }
   }

@@ -10,6 +10,7 @@ export function RunStats({ runs, activeRun }) {
     "heartRate",
     "steps",
     "calories",
+    "temperature",
   ];
   const run = runs[activeRun];
   return (
