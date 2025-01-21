@@ -206,6 +206,36 @@ export function trendLine(data, type) {
     xEnd: xData[xData.length - 1],
   };
 }
+export function dateArray(runs) {
+  const lowestDate = runs[runs.length - 1].date;
+  const lowestDay = lowestDate.split("-")[2];
+  const lowestMonth = lowestDate.split("-")[1] - 1;
+  const lowestYear = lowestDate.split("-")[0];
+  const lowestDateParsed = new Date(lowestYear, lowestMonth, lowestDay);
+  const highestDate = runs[0].date;
+  const highestDay = highestDate.split("-")[2];
+  const highestMonth = highestDate.split("-")[1] - 1;
+  const highestYear = highestDate.split("-")[0];
+  const highestDateParsed = new Date(highestYear, highestMonth, highestDay);
+  const amountOfDays = 5 + (highestDateParsed - lowestDateParsed) / 86400000;
+  let array = [];
+  let currentDate = lowestDateParsed;
+  for (let i = 0; i <= amountOfDays; i++) {
+    let day = currentDate.getDate().toString();
+    if (day.length < 2) {
+      day = "0" + day;
+    }
+    let month = (currentDate.getMonth() + 1).toString();
+    if (month.length < 2) {
+      month = "0" + month;
+    }
+    const year = currentDate.getFullYear().toString();
+    const renderDate = day + "/" + month + "/" + year[2] + year[3];
+    array.push(renderDate);
+    currentDate = new Date(currentDate.setDate(currentDate.getDate() + 1));
+  }
+  return array;
+}
 
 export function arrayReverser(array) {
   let reversedArray = [];

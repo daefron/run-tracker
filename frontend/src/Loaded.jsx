@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { runsParser } from "./RunsParser.jsx";
-import { dateArrayToRender, initialLines } from "./Tools.jsx";
+import { dateArrayToRender, initialLines, dateArray } from "./Tools.jsx";
 import { RunList } from "./Components/RunList.jsx";
 import { PredictionStats } from "./Components/Prediction.jsx";
 import { AllChart } from "./Components/AllChart.jsx";
@@ -15,22 +15,13 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
   const parsedRuns = useRef(runsParser(runs));
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
-  const baselineDate = useRef(new Date());
-  const marginAmount = useRef(0);
-  const dateRangeChange = useRef(31);
-  const [dateRange, setDateRange] = useState(
-    dateArrayToRender(dateRangeChange.current, baselineDate, marginAmount)
-  );
+  const [dateRange, setDateRange] = useState(dateArray(parsedRuns.current));
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
   const predictedRuns = useRef([
     new PredictedRun(
-      baselineDate,
       dateRange,
       parsedRuns.current,
-      marginAmount,
-      setDateRange,
-      dateRangeChange
     ),
   ]);
   const [lineVisibility, setLineVisibility] = useState(initialLines());
@@ -74,14 +65,10 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
           lineColors={lineColors}
           runs={parsedRuns.current}
           activeRun={activeRun}
-          baselineDate={baselineDate}
-          dateRangeChange={dateRangeChange}
           dateRange={dateRange}
-          setDateRange={setDateRange}
           predictedOnGraph={predictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
           predictedRuns={predictedRuns.current}
-          marginAmount={marginAmount}
           lineVisibility={lineVisibility}
           setLineVisibility={setLineVisibility}
         />

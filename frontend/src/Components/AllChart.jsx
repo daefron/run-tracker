@@ -8,6 +8,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  Brush,
 } from "recharts";
 import { Fragment } from "react";
 export function AllChart({
@@ -15,67 +16,13 @@ export function AllChart({
   lineColors,
   runs,
   activeRun,
-  baselineDate,
-  dateRangeChange,
   dateRange,
-  setDateRange,
   predictedOnGraph,
   trendlineOnGraph,
   predictedRuns,
-  marginAmount,
   lineVisibility,
   setLineVisibility,
 }) {
-  function DateRangeChangeButton({ value, render, dateRangeChange }) {
-    return (
-      <p
-        onClick={() => {
-          dateRangeChangeButton(value);
-        }}
-        className={
-          dateRangeChange.current === value
-            ? "dateChangeActive smallFont"
-            : "dateChangeInactive smallFont"
-        }
-      >
-        {render}
-      </p>
-    );
-  }
-  function dateRangeChangeButton(amount) {
-    dateRangeChange.current = amount;
-    setDateRange(dateArrayToRender(amount, baselineDate, marginAmount));
-  }
-
-  function DateShiftButton({ value, render }) {
-    return (
-      <p
-        onClick={() => {
-          dateRangeShiftButton(value);
-        }}
-        className="smallFont"
-        style={{
-          cursor: "pointer",
-        }}
-      >
-        {render}
-      </p>
-    );
-  }
-  function dateRangeShiftButton(direction) {
-    if (direction === "left") {
-      baselineDate.current.setDate(
-        baselineDate.current.getDate() - dateRangeChange.current
-      );
-    } else {
-      baselineDate.current.setDate(
-        baselineDate.current.getDate() + dateRangeChange.current
-      );
-    }
-    setDateRange(
-      dateArrayToRender(dateRangeChange.current, baselineDate, marginAmount)
-    );
-  }
   function TooltipContent({ payload }) {
     if (!payload[0]) {
       return;
@@ -263,19 +210,7 @@ export function AllChart({
     );
   }
   function SmallerAxisTick({ payload, x, y }) {
-    return (
-      <g transform={"translate(" + x + "," + y + ")"}>
-        <text
-          dx={8}
-          dy={12}
-          textAnchor="end"
-          fill="white"
-          className="smallFont"
-        >
-          {payload.value}
-        </text>
-      </g>
-    );
+    return <g transform={"translate(" + x + "," + y + ")"}></g>;
   }
   const types = [
     "duration",
@@ -288,8 +223,9 @@ export function AllChart({
   ];
   const predictionData = dateFiller(predictedRuns, dateRange, types);
   const chartData = chartFiller(dateFiller(runs, dateRange, types));
+
   function chartFiller(data) {
-    for (let i = 0; i <= data.length; i++) {
+    for (let i = 0; i <= data.length + 5; i++) {
       predictedRuns.forEach((run) => {
         if (i === run.chartOrder) {
           for (const key in predictionData[i]) {
@@ -316,8 +252,14 @@ export function AllChart({
   const todayInGraph = todayChecker();
   function todayChecker() {
     const today = new Date();
-    const currentDay = today.getDate();
-    const currentMonth = today.getMonth() + 1;
+    let currentDay = today.getDate().toString();
+    if (currentDay.length < 2) {
+      currentDay = "0" + currentDay;
+    }
+    let currentMonth = (today.getMonth() + 1).toString();
+    if (currentMonth.length < 2) {
+      currentMonth = "0" + currentMonth;
+    }
     const currentYear = today.getFullYear().toString();
     const parsedToday =
       currentDay + "/" + currentMonth + "/" + currentYear[2] + currentYear[3];
@@ -357,6 +299,26 @@ export function AllChart({
     });
     return paddedTypes;
   }
+  const brushLines = types.map((type) => {
+    const line = (
+      <Line
+        yAxisId={type}
+        dataKey={type}
+        stroke={lineColors[type]}
+        strokeWidth={2}
+        dot={false}
+        connectNulls={lineVisibility[type] ? true : false}
+        isAnimationActive={false}
+      />
+    );
+    const yAxis = <YAxis yAxisId={type} domain={[0, graphMax[type]]} hide />;
+    return (
+      <Fragment key={type + "Line"}>
+        {yAxis}
+        {line}
+      </Fragment>
+    );
+  });
   const lines = types.map((type) => {
     const line = (
       <Line
@@ -438,65 +400,49 @@ export function AllChart({
   const referenceLines = (
     <>
       <YAxis hide />
-      {todayInGraph ? (
-        <ReferenceLine
-          strokeWidth={1}
-          x={todayInGraph}
-          stroke="rgba(255, 255, 255, 0.5)"
-          label={<TodayLabel />}
-        />
-      ) : (
-        <></>
-      )}
-      {newMonths[0] && dateRangeChange.current <= 32 ? (
-        <ReferenceLine
-          strokeWidth={1}
-          x={newMonths[0][0]}
-          stroke="rgba(255, 255, 255, 0.3)"
-          label={<MonthLabel month={newMonths[0][1]} />}
-        />
-      ) : (
-        <></>
-      )}
+      <ReferenceLine
+        strokeWidth={1}
+        x={todayInGraph}
+        stroke="rgba(255, 255, 255, 0.5)"
+        label={<TodayLabel />}
+      />
+      <ReferenceLine
+        strokeWidth={1}
+        x={newMonths[0][0]}
+        stroke="rgba(255, 255, 255, 0.3)"
+        label={<MonthLabel month={newMonths[0][1]} />}
+      />
+      <ReferenceLine
+        strokeWidth={1}
+        x={newMonths[1][0]}
+        stroke="rgba(255, 255, 255, 0.3)"
+        label={<MonthLabel month={newMonths[1][1]} />}
+      />
     </>
   );
   return (
     <div className="graphHolder" id="allRunsGraph">
       <div className="elementHeader">
         <p className="titleFont">{render}</p>
-        <div className="graphDateHolder">
-          <DateRangeChangeButton
-            value={6}
-            render="W"
-            dateRangeChange={dateRangeChange}
-          />
-          <DateRangeChangeButton
-            value={31}
-            render="M"
-            dateRangeChange={dateRangeChange}
-          />
-          <DateRangeChangeButton
-            value={365}
-            render="Y"
-            dateRangeChange={dateRangeChange}
-          />
-          <DateShiftButton value="left" render="<-" />
-          <p className="smallFont">
-            {dateRange[0] + " - " + dateRange[dateRangeChange.current]}
-          </p>
-          <DateShiftButton value="right" render="->" />
-        </div>
       </div>
       <ResponsiveContainer>
         <LineChart
           margin={{ top: 0, left: 20, right: 30, bottom: 10 }}
           data={chartData}
         >
-          <XAxis dataKey="date" tick={<SmallerAxisTick />} />
+          <XAxis
+            dataKey="order"
+            tick={<SmallerAxisTick />}
+            interval={0}
+            tickSize={5}
+          />
           {lines}
           {referenceLines}
           <Legend content={<SmallerLegend />} />
           <Tooltip content={<TooltipContent />} isAnimationActive={false} />
+          <Brush data={chartData} startIndex={chartData.length - 30}>
+            <LineChart data={chartData}>{brushLines}</LineChart>
+          </Brush>
         </LineChart>
       </ResponsiveContainer>
     </div>
