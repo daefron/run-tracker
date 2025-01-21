@@ -42,7 +42,7 @@ export function runsParser(runs) {
         steps: this.steps + " steps",
         calories: this.calories + " cals",
         heartRate: this.heartRate + " bpm",
-        temperature: this.this.temperature + " °C",
+        temperature: this.temperature + " °C",
       };
     }
   }
