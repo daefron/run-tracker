@@ -34,9 +34,9 @@ export function runsParser(runs) {
       }
       this.temperature = run.temperature;
       if (run.hasGps) {
-        this.GPS = "connected";
+        this.GPS = "Connected";
       } else {
-        this.GPS = "disconnected";
+        this.GPS = "Disconnected";
       }
       this.hasGps = run.hasGps;
       this.render = {
