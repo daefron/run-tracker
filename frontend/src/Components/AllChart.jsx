@@ -234,11 +234,7 @@ export function AllChart({
       predictedRuns.forEach((run) => {
         if (i === run.chartOrder) {
           for (const key in predictionData[i]) {
-            // if (key === "id") {
-            //   data[i][key + "Prediction"] = "predictionKey";
-            // } else {
             data[i][key + "Prediction"] = predictionData[i][key];
-            // }
           }
         }
       });

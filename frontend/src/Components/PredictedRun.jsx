@@ -5,7 +5,6 @@ import {
   gapsBetween,
   msToObject,
   renderDuration,
-  dateArrayToRender,
 } from "../Tools";
 export class PredictedRun {
   constructor(dateRange, runs) {
@@ -19,6 +18,7 @@ export class PredictedRun {
       "heartRate",
       "steps",
       "calories",
+      "temperature",
     ];
     this.id = "nextRun";
     const filledDates = dateFiller(runs, dateRange, types);
@@ -26,7 +26,9 @@ export class PredictedRun {
     this.gap = gap;
     this.chartOrder = orderGetter();
     const daysBefore = dateRange.length - 1 - this.chartOrder;
-    this.date = daysBeforeToData(daysBefore, new Date());
+    let lastDate = new Date();
+    lastDate.setDate(lastDate.getDate() + 4);
+    this.date = daysBeforeToData(daysBefore, lastDate);
     typeMaker(this);
     this.render = {
       date: dateToRender(this.date),
@@ -36,8 +38,8 @@ export class PredictedRun {
       heartRate: Math.round(this.heartRate) + " bpm",
       steps: Math.round(this.steps) + " steps",
       calories: Math.round(this.calories) + " cals",
+      temperate: this.temperature + " °C",
     };
-
 
     function daysBeforeToData(daysBefore, date) {
       const currentDay = date.getDate();
@@ -47,8 +49,14 @@ export class PredictedRun {
     }
 
     function dateToRender(date) {
-      const day = date.getDate().toString();
-      const month = (date.getMonth() + 1).toString();
+      let day = date.getDate().toString();
+      if (day.length < 2) {
+        day = "0" + day;
+      }
+      let month = (date.getMonth() + 1).toString();
+      if (month.length < 2) {
+        month = "0" + month;
+      }
       const year = date.getFullYear().toString();
       return day + "/" + month + "/" + year[2] + year[3];
     }
