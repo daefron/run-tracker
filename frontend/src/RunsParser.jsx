@@ -33,6 +33,7 @@ export function runsParser(runs) {
         this.stepsArray = stepsArrayParse(run.stepsArray);
       }
       this.temperature = run.temperature;
+      this.hasGps = run.hasGps;
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),
@@ -43,6 +44,7 @@ export function runsParser(runs) {
         calories: this.calories + " cals",
         heartRate: this.heartRate + " bpm",
         temperature: this.temperature + " °C",
+        GPS: this.hasGps,
       };
     }
   }

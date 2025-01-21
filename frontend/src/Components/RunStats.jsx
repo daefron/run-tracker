@@ -11,11 +11,14 @@ export function RunStats({ runs, activeRun }) {
     "steps",
     "calories",
     "temperature",
+    "GPS",
   ];
   const run = runs[activeRun];
   return (
     <div id="runStats">
-      <p id="runStatsTitle" className="elementHeader titleFont">Selected run stats</p>
+      <p id="runStatsTitle" className="elementHeader titleFont">
+        Selected run stats
+      </p>
       <div className="listItem">
         <p className="statTitle smallFont">Date: </p>
         <p className="statContent smallFont">{run.render.date}</p>
