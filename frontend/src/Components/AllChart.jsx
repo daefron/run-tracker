@@ -201,8 +201,7 @@ export function AllChart({
       justifyContent: "center",
       gap: "25px",
       margin: 0,
-      marginLeft: -15
-
+      marginLeft: -15,
     };
     data.forEach((value) => {
       if (!lineVisibility[value.value]) {
@@ -280,6 +279,7 @@ export function AllChart({
     "heartRate",
     "calories",
     "steps",
+    "temperature",
   ];
   const predictionData = dateFiller(predictedRuns, dateRange, types);
   const chartData = chartFiller(dateFiller(runs, dateRange, types));
