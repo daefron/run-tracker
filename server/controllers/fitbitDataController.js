@@ -165,7 +165,7 @@ async function updateGet(req, res) {
                   );
                 });
             }
-            if (lastRun && idMade && hrMade && stepsMade &&) {
+            if (lastRun && idMade && hrMade && stepsMade && weatherMade) {
               console.log("All runs finished updating.");
               if (req) {
                 res.send("Refreshed");
