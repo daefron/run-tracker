@@ -64,21 +64,26 @@ async function updateGet(req, res) {
             console.log("Inserted updated run list.");
           }
           for (let i = 0; i < fitbitRuns.length; i++) {
-            let lastRun, idMade, hrMade, stepsMade;
+            let lastRun, idMade, hrMade, stepsMade, weatherMade;
             if (i === fitbitRuns.length - 1) {
               lastRun = true;
             }
             const run = fitbitRuns[i];
-            const localRunQuery = await db.query(
-              'SELECT * FROM "runs" WHERE logid = $1',
+            let localRunQuery = await db.query(
+              "SELECT * FROM runs WHERE logid = $1",
               [run.logId]
             );
-            const localRun = localRunQuery.rows[0];
+            let localRun = localRunQuery.rows[0];
             if (!localRun) {
               await db.query(
-                'INSERT INTO "runs" (logid, hrdata, stepdata) VALUES ($1, $2, $3)',
-                [run.logId, null, null]
+                "INSERT INTO runs (logid, hrdata, stepdata, weatherdata) VALUES ($1, $2, $3, $4)",
+                [run.logId, null, null, null]
               );
+              localRunQuery = await db.query(
+                "SELECT * FROM runs WHERE logid = $1",
+                [run.logId]
+              );
+              localRun = localRunQuery.rows[0];
               idMade = true;
             } else {
               idMade = true;
@@ -97,9 +102,7 @@ async function updateGet(req, res) {
                     return;
                   }
                   await db.query(
-                    'UPDATE "runs" SET "' +
-                      sqlName +
-                      '" = $1 WHERE "logid" = $2',
+                    'UPDATE runs SET "' + sqlName + '" = $1 WHERE logid = $2',
                     [
                       JSON.stringify(
                         data["activities-" + typeName + "-intraday"].dataset
@@ -119,7 +122,50 @@ async function updateGet(req, res) {
             } else {
               stepsMade = true;
             }
-            if (lastRun && idMade && hrMade && stepsMade) {
+            if (localRun && localRun.weatherdata === null) {
+              weatherFetch(run);
+            } else {
+              weatherMade = true;
+            }
+            function weatherFetch(run) {
+              const weatherTime = run.originalStartTime.split(":")[0];
+              const latitude = -37.814;
+              const longitude = 144.9633;
+              fetch(
+                "https://api.open-meteo.com/v1/forecast?latitude=" +
+                  latitude +
+                  "&longitude=" +
+                  longitude +
+                  "&hourly=temperature_2m&past_days=92",
+                {
+                  headers: {
+                    "Content-Type": "text/html",
+                  },
+                  method: "GET",
+                }
+              )
+                .then((res) => {
+                  return res.json();
+                })
+                .then(async (data) => {
+                  const timeArray = data.hourly.time;
+                  const tempArray = data.hourly.temperature_2m;
+                  const GMTDiff = 11;
+                  const timePosition = () => {
+                    for (let i = 0; i < timeArray.length; i++) {
+                      if (timeArray[i].split(":")[0] === weatherTime) {
+                        return i + GMTDiff;
+                      }
+                    }
+                  };
+                  const temp = tempArray[timePosition()];
+                  await db.query(
+                    "UPDATE runs SET weatherdata = $1 WHERE logid = $2",
+                    [temp, localRun.logid]
+                  );
+                });
+            }
+            if (lastRun && idMade && hrMade && stepsMade && weatherMade) {
               console.log("All runs finished updating.");
               if (req) {
                 res.send("Refreshed");
