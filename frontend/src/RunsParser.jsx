@@ -33,6 +33,11 @@ export function runsParser(runs) {
         this.stepsArray = stepsArrayParse(run.stepsArray);
       }
       this.temperature = run.temperature;
+      if (run.hasGps) {
+        this.GPS = "connected";
+      } else {
+        this.GPS = "disconnected";
+      }
       this.hasGps = run.hasGps;
       this.render = {
         date: toAusDate(this.date),
@@ -44,7 +49,7 @@ export function runsParser(runs) {
         calories: this.calories + " cals",
         heartRate: this.heartRate + " bpm",
         temperature: this.temperature + " °C",
-        GPS: this.hasGps,
+        GPS: this.GPS,
       };
     }
   }
