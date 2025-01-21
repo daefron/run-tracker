@@ -18,10 +18,14 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
   const [dateRange, setDateRange] = useState(dateArray(parsedRuns.current));
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
+  const brushStart = useRef();
+  const brushEnd = useRef();
   const predictedRuns = useRef([
     new PredictedRun(
       dateRange,
       parsedRuns.current,
+      brushStart.current,
+      brushEnd.current
     ),
   ]);
   const [lineVisibility, setLineVisibility] = useState(initialLines());
@@ -35,8 +39,6 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
     temperature: "rgb(200, 200, 0)",
   };
   const [selectedType, setSelectedType] = useState("bpm");
-  const brushStart = useRef();
-  const brushEnd = useRef();
   return (
     <>
       <div id="body">
@@ -70,7 +72,7 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
           dateRange={dateRange}
           predictedOnGraph={predictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
-          predictedRuns={predictedRuns.current}
+          predictedRuns={predictedRuns}
           lineVisibility={lineVisibility}
           setLineVisibility={setLineVisibility}
           brushStart={brushStart}

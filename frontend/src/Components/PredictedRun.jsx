@@ -7,7 +7,7 @@ import {
   renderDuration,
 } from "../Tools";
 export class PredictedRun {
-  constructor(dateRange, runs) {
+  constructor(dateRange, runs, brushStart, brushEnd) {
     if (!runs) {
       return;
     }
@@ -18,10 +18,17 @@ export class PredictedRun {
       "heartRate",
       "steps",
       "calories",
-      "temperature",
     ];
     this.id = "nextRun";
     const filledDates = dateFiller(runs, dateRange, types);
+    this.visibleDates = dateRangeShrink(filledDates);
+    function dateRangeShrink(dates) {
+      if (!brushStart) {
+        return dates;
+      }
+      let newDates = dates.splice(brushStart, brushEnd - brushStart);
+      return newDates;
+    }
     const gap = getGapsAverage();
     this.gap = gap;
     this.chartOrder = orderGetter();
@@ -38,7 +45,6 @@ export class PredictedRun {
       heartRate: Math.round(this.heartRate) + " bpm",
       steps: Math.round(this.steps) + " steps",
       calories: Math.round(this.calories) + " cals",
-      temperate: this.temperature + " °C",
     };
 
     function daysBeforeToData(daysBefore, date) {
@@ -78,7 +84,9 @@ export class PredictedRun {
     }
     function typeMaker(parent) {
       types.forEach((type) => {
-        parent[type] = trendLine(filledDates, type).calcY(parent.chartOrder);
+        parent[type] = trendLine(dateRangeShrink(filledDates), type).calcY(
+          parent.chartOrder
+        );
       });
     }
   }

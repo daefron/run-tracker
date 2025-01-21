@@ -10,6 +10,7 @@ import {
   Tooltip,
   Brush,
 } from "recharts";
+import { PredictedRun } from "./PredictedRun.jsx";
 import { Fragment } from "react";
 export function AllChart({
   render,
@@ -24,8 +25,6 @@ export function AllChart({
   setLineVisibility,
   brushStart,
   brushEnd,
-  setBrushStart,
-  setBrushEnd,
 }) {
   function TooltipContent({ payload }) {
     if (!payload[0]) {
@@ -35,32 +34,38 @@ export function AllChart({
     if (!currentRun) {
       return (
         <>
-          <p className="smallFont">Date: {predictedRuns[0].render.date}</p>
+          <p className="smallFont">
+            Date: {predictedRuns.current[0].render.date}
+          </p>
           {lineVisibility.duration ? (
             <p className="smallFont">
-              Duration: {predictedRuns[0].render.duration}
+              Duration: {predictedRuns.current[0].render.duration}
             </p>
           ) : null}
           {lineVisibility.distance ? (
             <p className="smallFont">
-              Distance: {predictedRuns[0].render.distance}
+              Distance: {predictedRuns.current[0].render.distance}
             </p>
           ) : null}
           {lineVisibility.speed ? (
-            <p className="smallFont">Speed: {predictedRuns[0].render.speed}</p>
+            <p className="smallFont">
+              Speed: {predictedRuns.current[0].render.speed}
+            </p>
           ) : null}
           {lineVisibility.heartRate ? (
             <p className="smallFont">
-              Heart rate: {predictedRuns[0].render.heartRate}
+              Heart rate: {predictedRuns.current[0].render.heartRate}
             </p>
           ) : null}
           {lineVisibility.calories ? (
             <p className="smallFont">
-              Calories: {predictedRuns[0].render.calories}
+              Calories: {predictedRuns.current[0].render.calories}
             </p>
           ) : null}
           {lineVisibility.steps ? (
-            <p className="smallFont">Steps: {predictedRuns[0].render.steps}</p>
+            <p className="smallFont">
+              Steps: {predictedRuns.current[0].render.steps}
+            </p>
           ) : null}
         </>
       );
@@ -226,12 +231,12 @@ export function AllChart({
     "temperature",
   ];
 
-  const predictionData = dateFiller(predictedRuns, dateRange, types);
+  const predictionData = dateFiller(predictedRuns.current, dateRange, types);
   const chartData = chartFiller(dateFiller(runs, dateRange, types));
 
   function chartFiller(data) {
     for (let i = 0; i <= data.length + 5; i++) {
-      predictedRuns.forEach((run) => {
+      predictedRuns.current.forEach((run) => {
         if (i === run.chartOrder) {
           for (const key in predictionData[i]) {
             data[i][key + "Prediction"] = predictionData[i][key];
@@ -245,7 +250,7 @@ export function AllChart({
   function trendFiller() {
     let trendHolder = {};
     types.forEach((type, i) => {
-      trendHolder[type] = trendLine(chartData, type);
+      trendHolder[type] = trendLine(predictedRuns.current[0].visibleDates, type);
     });
     return trendHolder;
   }
@@ -284,7 +289,7 @@ export function AllChart({
     });
     return dateHolder;
   }
-  const dateGap = predictedRuns[0].gap;
+  const dateGap = predictedRuns.current[0].gap;
   const graphMax = graphPadding();
   function graphPadding() {
     let paddedTypes = {};
@@ -424,6 +429,9 @@ export function AllChart({
   function brushChange(payload) {
     brushStart.current = payload.startIndex;
     brushEnd.current = payload.endIndex;
+    predictedRuns.current = [
+      new PredictedRun(dateRange, runs, brushStart.current, brushEnd.current),
+    ];
   }
   return (
     <div className="graphHolder" id="allRunsGraph">
