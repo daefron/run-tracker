@@ -135,6 +135,11 @@ export function AllChart({
         {lineVisibility.steps ? (
           <p className="smallFont">Steps: {currentRun.render.steps}</p>
         ) : null}
+        {lineVisibility.temperature ? (
+          <p className="smallFont">
+            Temperture: {currentRun.render.temperature}
+          </p>
+        ) : null}
       </>
     );
   }

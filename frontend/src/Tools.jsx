@@ -250,7 +250,7 @@ export function dateFiller(runs, dateRange, types) {
 }
 
 export function initialLines() {
-  const types = ["duration", "distance", "speed", "heartRate"];
+  const types = ["duration", "distance", "speed", "heartRate", "temperature"];
   let visibleLines = {};
   types.forEach((type) => (visibleLines[type] = true));
   return visibleLines;
