@@ -13,8 +13,11 @@ async function launchGet(req, res) {
       [run.logId]
     );
     const runData = runDataQuery.rows[0];
-    run.heartRateArray = runData.hrdata;
-    run.stepsArray = runData.stepdata;
+    if (runData) {
+      run.heartRateArray = runData.hrdata;
+      run.stepsArray = runData.stepdata;
+      run.temperature = runData.weatherdata;
+    }
     formattedRuns.push(run);
   }
   const lastUpdatedQuery = await db.query(

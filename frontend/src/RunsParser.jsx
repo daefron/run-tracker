@@ -21,7 +21,6 @@ export function runsParser(runs) {
       this.activeDuration = run.activeDuration;
       this.inactiveDuration = run.duration - run.activeDuration;
       this.heartRate = run.averageHeartRate;
-
       this.heartRateZones = run.heartRateZones;
       this.heartRateZones[0].name = "Light";
       this.heartRateZones[1].name = "Moderate";
@@ -29,8 +28,12 @@ export function runsParser(runs) {
       this.heartRateZones[3].name = "Peak";
       if (run.heartRateArray) {
         this.heartRateArray = heartRateArrayParse(run.heartRateArray);
+      }
+      if (run.stepsAray) {
         this.stepsArray = stepsArrayParse(run.stepsArray);
       }
+      this.temperature = run.temperature;
+      console.log(this.temperature);
       this.render = {
         date: toAusDate(this.date),
         startTime: renderTime(this.initialTime),
