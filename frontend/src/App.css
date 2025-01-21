@@ -174,8 +174,21 @@ input {
   width: 100%;
   text-align: center;
 }
+.recharts-brush-slide {
+  fill-opacity: 0.3;
+}
+.recharts-brush {
+  fill-opacity: 0;
+}
 .recharts-brush > rect {
-  fill-opacity: 0.05;
+  fill: black;
+}
+.recharts-brush-traveller > rect {
+  fill: white;
+  fill-opacity: 0.25;
+}
+.recharts-brush-texts {
+  opacity: 0;
 }
 .smallFont {
   font-size: 10px;
