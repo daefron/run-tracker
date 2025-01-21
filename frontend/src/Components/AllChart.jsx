@@ -22,6 +22,10 @@ export function AllChart({
   predictedRuns,
   lineVisibility,
   setLineVisibility,
+  brushStart,
+  brushEnd,
+  setBrushStart,
+  setBrushEnd,
 }) {
   function TooltipContent({ payload }) {
     if (!payload[0]) {
@@ -221,6 +225,7 @@ export function AllChart({
     "steps",
     "temperature",
   ];
+
   const predictionData = dateFiller(predictedRuns, dateRange, types);
   const chartData = chartFiller(dateFiller(runs, dateRange, types));
 
@@ -229,11 +234,11 @@ export function AllChart({
       predictedRuns.forEach((run) => {
         if (i === run.chartOrder) {
           for (const key in predictionData[i]) {
-            if (key === "heartRate" && !run.heartRate) {
-              data[i][key + "Prediction"] = null;
-            } else {
-              data[i][key + "Prediction"] = predictionData[i][key];
-            }
+            // if (key === "id") {
+            //   data[i][key + "Prediction"] = "predictionKey";
+            // } else {
+            data[i][key + "Prediction"] = predictionData[i][key];
+            // }
           }
         }
       });
@@ -420,6 +425,10 @@ export function AllChart({
       />
     </>
   );
+  function brushChange(payload) {
+    brushStart.current = payload.startIndex;
+    brushEnd.current = payload.endIndex;
+  }
   return (
     <div className="graphHolder" id="allRunsGraph">
       <div className="elementHeader">
@@ -440,7 +449,12 @@ export function AllChart({
           {referenceLines}
           <Legend content={<SmallerLegend />} />
           <Tooltip content={<TooltipContent />} isAnimationActive={false} />
-          <Brush data={chartData} startIndex={chartData.length - 30}>
+          <Brush
+            data={chartData}
+            startIndex={brushStart.current}
+            endIndex={brushEnd.current}
+            onChange={brushChange}
+          >
             <LineChart data={chartData}>{brushLines}</LineChart>
           </Brush>
         </LineChart>

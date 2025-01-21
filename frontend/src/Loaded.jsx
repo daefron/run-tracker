@@ -35,6 +35,8 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
     temperature: "rgb(200, 200, 0)",
   };
   const [selectedType, setSelectedType] = useState("bpm");
+  const brushStart = useRef();
+  const brushEnd = useRef();
   return (
     <>
       <div id="body">
@@ -71,6 +73,8 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
           predictedRuns={predictedRuns.current}
           lineVisibility={lineVisibility}
           setLineVisibility={setLineVisibility}
+          brushStart={brushStart}
+          brushEnd={brushEnd}
         />
         <ChartPie
           render="Heart zone time"
