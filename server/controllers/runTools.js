@@ -146,11 +146,11 @@ class Run {
     this.heartRateZones.forEach((zone, i) => {
       zone.name = heartRateZoneNames[i];
     });
+    this.temp = run.temperature;
 
     if (run.heartRateArray) {
       this.heartRateArray = heartRateArrayParse(run.heartRateArray);
     }
-
     if (run.stepsArray) {
       this.stepsArray = stepsArrayParse(run.stepsArray);
     }

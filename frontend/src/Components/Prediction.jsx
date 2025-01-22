@@ -22,7 +22,7 @@ export function PredictionStats({
         <p className="statTitle smallFont">Date: </p>
         <p className="statContent smallFont">
           {predictedRuns[0].render.date} ({predictedRuns[0].gap} days from last
-          run )
+          run)
         </p>
       </div>
       <Stats run={predictedRuns[0]} types={types} />

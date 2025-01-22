@@ -92,9 +92,7 @@ export function AllChart({
           <p className="smallFont">Steps: {currentRun.render.steps}</p>
         ) : null}
         {lineVisibility.temp ? (
-          <p className="smallFont">
-            Temperature: {currentRun.render.temp}
-          </p>
+          <p className="smallFont">Temperature: {currentRun.render.temp}</p>
         ) : null}
       </>
     );
@@ -162,6 +160,7 @@ export function AllChart({
       justifyContent: "center",
       gap: "25px",
       margin: 0,
+      marginLeft: -25,
     };
     data.forEach((value) => {
       if (!lineVisibility[value.value]) {
@@ -217,7 +216,7 @@ export function AllChart({
       </text>
     );
   }
-  
+
   function SmallerAxisTick() {
     return;
   }
@@ -376,6 +375,8 @@ export function AllChart({
         isAnimationActive={false}
       />
     );
+    console.log(runs)
+    console.log(brushStart.current, brushEnd.current);
     const predictionLine = (
       <ReferenceLine
         yAxisId={type}

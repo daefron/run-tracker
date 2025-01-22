@@ -32,7 +32,7 @@ export class PredictedRun {
     const gap = getGapsAverage();
     this.gap = gap;
     this.chartOrder = orderGetter();
-    const daysBefore = dateRange.length - 1 - this.chartOrder;
+    const daysBefore = dateRange.length - this.chartOrder;
     let lastDate = new Date();
     lastDate.setDate(lastDate.getDate() + 4);
     this.date = daysBeforeToData(daysBefore, lastDate);
