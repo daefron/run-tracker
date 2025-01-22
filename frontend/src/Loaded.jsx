@@ -22,6 +22,7 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
   const predictedRuns = useRef([
     new PredictedRun(dateRange, parsedRuns.current),
   ]);
+  const [forceUpdate, setForceUpdate] = useState(false);
   const [lineVisibility, setLineVisibility] = useState(initialLines());
   const lineColors = {
     duration: "rgb(0, 200, 150)",
@@ -42,6 +43,8 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
           setActiveRun={setActiveRun}
           hoverRun={hoverRun}
           setHoverRun={setHoverRun}
+          brushStart={brushStart.current}
+          brushEnd={brushEnd.current}
         />
         <PredictionStats
           predictedRuns={predictedRuns.current}
@@ -71,6 +74,7 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
           setLineVisibility={setLineVisibility}
           brushStart={brushStart}
           brushEnd={brushEnd}
+          setForceUpdate={setForceUpdate}
         />
         <ChartPie
           render="Heart zone time"

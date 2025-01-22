@@ -24,6 +24,8 @@ export function AllChart({
   setLineVisibility,
   brushStart,
   brushEnd,
+  forceUpdate,
+  setForceUpdate,
 }) {
   function TooltipContent({ payload }) {
     if (!payload[0]) {
@@ -364,11 +366,7 @@ export function AllChart({
       />
     );
     const yAxis = (
-      <YAxis
-        yAxisId={type}
-        domain={[graphMin[type], graphMax[type]]}
-        hide
-      />
+      <YAxis yAxisId={type} domain={[graphMin[type], graphMax[type]]} hide />
     );
     if (type === "temp") {
       return (
@@ -482,6 +480,7 @@ export function AllChart({
           <Tooltip content={<TooltipContent />} isAnimationActive={false} />
           <Brush
             data={chartData}
+            dataKey={"order"}
             startIndex={brushStart.current}
             endIndex={brushEnd.current}
             onChange={brushChange}
