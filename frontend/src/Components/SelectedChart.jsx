@@ -21,7 +21,9 @@ export function SelectedChart({
         <div className="elementHeader" id="selectedHeader">
           <p className="titleFont">{render}</p>
         </div>
-        <p className="noData titleFont">No graph data available for selected run</p>
+        <p className="noData titleFont">
+          No graph data available for selected run
+        </p>
       </div>
     );
   }
@@ -228,6 +230,7 @@ export function SelectedChart({
             domain={["dataMin", "dataMax"]}
           />
           <Line
+            type={"basis"}
             yAxisId={selectedType}
             animationBegin={0}
             animationDuration={300}

@@ -1,4 +1,4 @@
-import {  trendLine, dateFiller } from "../Tools.jsx";
+import { trendLine, dateFiller } from "../Tools.jsx";
 import {
   ResponsiveContainer,
   LineChart,
@@ -219,7 +219,8 @@ export function AllChart({
     );
   }
   function SmallerAxisTick({ payload, x, y }) {
-    return <g transform={"translate(" + x + "," + y + ")"}></g>;
+    // return <g transform={"translate(" + x + "," + y + ")"}></g>;
+    return;
   }
   const types = [
     "duration",
@@ -250,7 +251,10 @@ export function AllChart({
   function trendFiller() {
     let trendHolder = {};
     types.forEach((type, i) => {
-      trendHolder[type] = trendLine(predictedRuns.current[0].visibleDates, type);
+      trendHolder[type] = trendLine(
+        predictedRuns.current[0].visibleDates,
+        type
+      );
     });
     return trendHolder;
   }
@@ -440,14 +444,15 @@ export function AllChart({
       </div>
       <ResponsiveContainer>
         <LineChart
-          margin={{ top: 0, left: 20, right: 30, bottom: 10 }}
+          margin={{ top: 0, left: 20, right: 20, bottom: 5 }}
           data={chartData}
         >
           <XAxis
             dataKey="order"
             tick={<SmallerAxisTick />}
             interval={0}
-            tickSize={5}
+            tickSize={8}
+            mirror
           />
           {lines}
           {referenceLines}
