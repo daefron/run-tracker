@@ -5,8 +5,7 @@ async function launchGet(req, res) {
     "SELECT processed_data FROM run_list WHERE owner = $1",
     [process.env.owner]
   );
-  const localRuns = localRunsQuery.rows[0].data;
-
+  const localRuns = localRunsQuery.rows[0].processed_data;
   const lastUpdatedQuery = await db.query(
     "SELECT last_updated FROM run_list WHERE owner = $1",
     [process.env.owner]
