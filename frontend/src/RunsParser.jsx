@@ -8,40 +8,34 @@ import {
   stepsArrayParse,
 } from "./Tools.jsx";
 export function runsParser(runs) {
+  const heartRateZoneNames = ["Light", "Moderate", "Vigorous", "Peak"];
   class Run {
     constructor(run) {
       this.id = run.logId;
-      this.date = run.originalStartTime.split("T")[0];
-      this.initialTime = dateTimeParser(run.originalStartTime);
       this.duration = run.activeDuration;
+      this.totalDuration = run.duration;
+      this.inactiveDuration = this.totalDuration - this.duration;
       this.distance = Number(run.distance.toFixed(2));
       this.speed = run.speed;
       this.steps = run.steps;
       this.calories = run.calories;
-      this.activeDuration = run.activeDuration;
-      this.inactiveDuration = run.duration - run.activeDuration;
       this.heartRate = run.averageHeartRate;
       this.heartRateZones = run.heartRateZones;
-      this.heartRateZones[0].name = "Light";
-      this.heartRateZones[1].name = "Moderate";
-      this.heartRateZones[2].name = "Vigorous";
-      this.heartRateZones[3].name = "Peak";
+      this.heartRateZones.forEach((zone, i) => {
+        zone.name = heartRateZoneNames[i];
+      });
+      this.temperature = run.temperature;
+
       if (run.heartRateArray) {
         this.heartRateArray = heartRateArrayParse(run.heartRateArray);
       }
       if (run.stepsAray) {
         this.stepsArray = stepsArrayParse(run.stepsArray);
       }
-      this.temperature = run.temperature;
-      if (run.hasGps) {
-        this.GPS = "Connected";
-      } else {
-        this.GPS = "Disconnected";
-      }
-      this.hasGps = run.hasGps;
+
       this.render = {
-        date: toAusDate(this.date),
-        startTime: renderTime(this.initialTime),
+        date: toAusDate(run.originalStartTime),
+        startTime: renderTime(dateTimeParser(run.originalStartTime)),
         duration: renderDuration(msToObject(this.duration)),
         distance: this.distance + " km",
         speed: this.speed.toFixed(2) + " km/h",
@@ -51,6 +45,11 @@ export function runsParser(runs) {
         temperature: this.temperature + " °C",
         GPS: this.GPS,
       };
+      if (run.hasGps) {
+        this.render.GPS = "Connected";
+      } else {
+        this.render.GPS = "Disconnected";
+      }
     }
   }
 

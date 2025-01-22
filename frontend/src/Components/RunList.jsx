@@ -25,7 +25,7 @@ export function RunList({
         {runs.map((run) => {
           return (
             <RunItem
-              key={run.date + run.index}
+              key={run.render.date + run.index}
               data={run}
               activeRun={activeRun}
               setActiveRun={setActiveRun}

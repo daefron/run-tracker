@@ -33,7 +33,7 @@ export function ChartPie({ runs, activeRun, type, render }) {
       return [
         {
           name: "active",
-          value: Math.round(run.activeDuration / 60000),
+          value: Math.round(run.duration / 60000),
         },
         {
           name: "inactive",

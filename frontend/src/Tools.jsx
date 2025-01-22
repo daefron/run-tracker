@@ -60,7 +60,8 @@ export function renderTime(time) {
 }
 
 export function toAusDate(date) {
-  let splitDate = date.split("-");
+  let splitDate = date.split("T")[0];
+  splitDate = splitDate.split("-");
   return (
     splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0][2] + splitDate[0][3]
   );
@@ -207,15 +208,15 @@ export function trendLine(data, type) {
   };
 }
 export function dateArray(runs) {
-  const lowestDate = runs[runs.length - 1].date;
-  const lowestDay = lowestDate.split("-")[2];
-  const lowestMonth = lowestDate.split("-")[1] - 1;
-  const lowestYear = lowestDate.split("-")[0];
+  const lowestDate = runs[runs.length - 1].render.date;
+  const lowestDay = Number(lowestDate.split("/")[0]);
+  const lowestMonth = Number(lowestDate.split("/")[1] - 1);
+  const lowestYear = Number("20" + lowestDate.split("/")[2]);
   const lowestDateParsed = new Date(lowestYear, lowestMonth, lowestDay);
-  const highestDate = runs[0].date;
-  const highestDay = highestDate.split("-")[2];
-  const highestMonth = highestDate.split("-")[1] - 1;
-  const highestYear = highestDate.split("-")[0];
+  const highestDate = runs[0].render.date;
+  const highestDay = Number(highestDate.split("/")[0]);
+  const highestMonth = Number(highestDate.split("/")[1] - 1);
+  const highestYear = Number("20" + highestDate.split("/")[2]);
   const highestDateParsed = new Date(highestYear, highestMonth, highestDay);
   const amountOfDays = 5 + (highestDateParsed - lowestDateParsed) / 86400000;
   let array = [];
