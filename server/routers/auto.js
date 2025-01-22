@@ -18,13 +18,6 @@ function timers() {
       " mins"
   );
 
-  //time between server pings (14 minutes as server sleeps after 15 mins)
-  const serverPing = 840000;
-  autoTimer(serverPing, console.log("ping"));
-  console.log(
-    "Server pinger running. Interval = " + serverPing / 60000 + " mins"
-  );
-
   function autoTimer(delay, func) {
     setInterval(() => {
       func;
