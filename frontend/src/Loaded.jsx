@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
-import { runsParser } from "./RunsParser.jsx";
-import { dateArrayToRender, initialLines, dateArray } from "./Tools.jsx";
+import { initialLines, dateArray } from "./Tools.jsx";
 import { RunList } from "./Components/RunList.jsx";
 import { PredictionStats } from "./Components/Prediction.jsx";
 import { AllChart } from "./Components/AllChart.jsx";
@@ -12,7 +11,7 @@ import { PredictedRun } from "./Components/PredictedRun.jsx";
 import { LastUpdated } from "./Components/LastUpdated.jsx";
 
 export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
-  const parsedRuns = useRef(runsParser(runs));
+  const parsedRuns = useRef(runs);
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
   const [dateRange, setDateRange] = useState(dateArray(parsedRuns.current));

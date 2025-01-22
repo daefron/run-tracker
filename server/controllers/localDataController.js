@@ -1,4 +1,5 @@
 const db = require("../db/pool");
+const runTools = require("./runTools");
 
 async function launchGet(req, res) {
   const localRunsQuery = await db.query(
@@ -6,19 +7,25 @@ async function launchGet(req, res) {
     [process.env.owner]
   );
   const localRuns = localRunsQuery.rows[0].data;
+
   let formattedRuns = [];
-  for (let run of localRuns) {
+  for (let i = 0; i < localRuns.length; i++) {
+    const run = localRuns[i];
     const runDataQuery = await db.query(
       'SELECT * FROM "runs" WHERE logid = $1',
       [run.logId]
     );
     const runData = runDataQuery.rows[0];
-    if (runData) {
-      run.heartRateArray = runData.hrdata;
-      run.stepsArray = runData.stepdata;
-      run.temperature = runData.weatherdata;
+    run.heartRateArray = runData.hrdata;
+    run.stepsArray = runData.stepdata;
+    run.temperature = runData.weatherdata;
+    run.index = i;
+    const newRun = new runTools.Run(run);
+    newRun.lastRun = formattedRuns[i + 1];
+    if (newRun.lastRun) {
+      runTools.compareRuns(newRun);
     }
-    formattedRuns.push(run);
+    formattedRuns.push(newRun);
   }
   const lastUpdatedQuery = await db.query(
     "SELECT last_updated FROM run_list WHERE owner = $1",
