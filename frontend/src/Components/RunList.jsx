@@ -7,7 +7,7 @@ export function RunList({
 }) {
   return (
     <div id="runList">
-      <div className="elementHeader runItem">
+      <div className="elementHeader runItem runListTitle">
         <p className="titleFont" style={{ width: "20%" }}>
           Date
         </p>
