@@ -51,6 +51,7 @@ async function updateGet(req, res) {
               fitbitRuns.push(activity);
             }
           }
+          let runsUpdated;
           if (
             localRuns &&
             JSON.stringify(fitbitRuns) === JSON.stringify(localRuns)
@@ -61,6 +62,7 @@ async function updateGet(req, res) {
               JSON.stringify(fitbitRuns),
               process.env.owner,
             ]);
+            runsUpdated = true;
             console.log("Inserted updated run list.");
           }
           for (let i = 0; i < fitbitRuns.length; i++) {
@@ -166,8 +168,10 @@ async function updateGet(req, res) {
                 });
             }
             if (lastRun && idMade && hrMade && stepsMade && weatherMade) {
+              if (runsUpdated) {
+                processRuns();
+              }
               console.log("All runs finished updating.");
-              processRuns();
               if (req) {
                 res.send("Refreshed");
               }
@@ -185,7 +189,7 @@ async function updateGet(req, res) {
 const runTools = require("./runTools");
 async function processRuns() {
   const localRunsQuery = await db.query(
-    "SELECT processed_data FROM run_list WHERE owner = $1",
+    "SELECT data FROM run_list WHERE owner = $1",
     [process.env.owner]
   );
   const localRuns = localRunsQuery.rows[0].data;
