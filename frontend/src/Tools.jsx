@@ -10,14 +10,6 @@ const timeRef = {
   sec: 1000,
 };
 
-export function objectToMs(time) {
-  return (
-    time.hours * timeRef.hour +
-    time.mins * timeRef.min +
-    time.secs * timeRef.sec
-  );
-}
-
 export function msToObject(time) {
   let hours = 0;
   let mins = 0;
@@ -59,55 +51,6 @@ export function renderTime(time) {
   return parsedTime[0] + ":" + parsedTime[1] + ":" + parsedTime[2];
 }
 
-export function toAusDate(date) {
-  let splitDate = date.split("T")[0];
-  splitDate = splitDate.split("-");
-  return (
-    splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0][2] + splitDate[0][3]
-  );
-}
-
-export function daysBeforeToRender(daysBefore, date) {
-  const currentDay = date.getDate();
-  const currentMonth = date.getMonth();
-  const currentYear = date.getFullYear();
-  const newDate = new Date(currentYear, currentMonth, currentDay - daysBefore);
-  const newDay = newDate.getDate().toString();
-  const newMonth = (newDate.getMonth() + 1).toString();
-  const newYear = newDate.getFullYear().toString();
-  return newDay + "/" + newMonth + "/" + newYear[2] + newYear[3];
-}
-
-export function dateArrayToRender(length, baselineDate, marginAmount) {
-  const currentDay = baselineDate.current.getDate();
-  const currentMonth = baselineDate.current.getMonth();
-  const currentYear = baselineDate.current.getFullYear();
-  let days = [];
-  for (let i = length - marginAmount.current; i >= -marginAmount.current; i--) {
-    let newDate = new Date(currentYear, currentMonth, currentDay - i);
-    let day = newDate.getDate().toString();
-    if (day.length < 2) {
-      day = "0" + day;
-    }
-    let month = (newDate.getMonth() + 1).toString();
-    if (month.length < 2) {
-      month = "0" + month;
-    }
-    let year = newDate.getFullYear().toString();
-    days.push(day + "/" + month + "/" + year[2] + year[3]);
-  }
-  return days;
-}
-
-export function dateTimeParser(dateString) {
-  let parsed = dateString.split("T")[1];
-  parsed = parsed.split("+")[0].split(":");
-  let hour = Number(parsed[0]);
-  let mins = Number(parsed[1]);
-  let secs = Number(parsed[2]);
-  return new Time(hour, mins, secs);
-}
-
 export function renderDuration(time) {
   if (time.secs.toString().length < 2) {
     time.secs = "0" + time.secs;
@@ -122,35 +65,6 @@ export function renderDuration(time) {
     renderString = time.hours + ":" + renderString;
   }
   return renderString;
-}
-
-function timeParser(time) {
-  const splitTime = time.split(":");
-  const hours = Number(splitTime[0]);
-  const mins = Number(splitTime[1]);
-  const secs = Number(splitTime[2]);
-  return hours * timeRef.hour + mins * timeRef.min + secs * timeRef.sec;
-}
-
-export function heartRateArrayParse(array) {
-  const baselineTime = timeParser(array[0].time);
-  for (const record of array) {
-    record.bpm = record.value;
-    let recordTime = timeParser(record.time);
-    let difference = msToObject(recordTime - baselineTime);
-    record.time = renderTime(difference);
-  }
-  return array;
-}
-
-export function stepsArrayParse(array) {
-  const baselineTime = timeParser(array[0].time);
-  for (const record of array) {
-    let recordTime = timeParser(record.time);
-    let difference = msToObject(recordTime - baselineTime);
-    record.time = renderTime(difference);
-  }
-  return array;
 }
 
 export function getAverage(data) {

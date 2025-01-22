@@ -1,4 +1,4 @@
-import { dateArrayToRender, trendLine, dateFiller } from "../Tools.jsx";
+import {  trendLine, dateFiller } from "../Tools.jsx";
 import {
   ResponsiveContainer,
   LineChart,

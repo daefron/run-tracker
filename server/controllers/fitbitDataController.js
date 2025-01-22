@@ -213,7 +213,7 @@ async function processRuns() {
     formattedRuns.push(newRun);
   }
   await db.query("UPDATE run_list SET processed_data = $1 WHERE owner = $2", [
-    formattedRuns,
+    JSON.stringify(formattedRuns),
     process.env.owner,
   ]);
 }
