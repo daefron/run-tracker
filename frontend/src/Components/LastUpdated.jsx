@@ -10,7 +10,7 @@ export function LastUpdated({ lastUpdated, setLoading, setLastUpdated }) {
   }
   async function refreshPage() {
     setLoading(true);
-    fetch("https://run-tracker-r3vq.onrender.com/update", {
+    fetch("https://surviving-maurizia-thomasevans-e62ca6c2.koyeb.app/data", {
       headers: {
         "Content-Type": "text/html",
       },
