@@ -167,8 +167,8 @@ async function updateGet(req, res) {
             }
             if (lastRun && idMade && hrMade && stepsMade && weatherMade) {
               console.log("All runs finished updating.");
+              processRuns();
               if (req) {
-                processRuns();
                 res.send("Refreshed");
               }
               return;
