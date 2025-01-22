@@ -165,7 +165,6 @@ class Run {
       calories: this.calories + " cals",
       heartRate: this.heartRate + " bpm",
       temp: run.temperature + " °C",
-      GPS: this.GPS,
     };
     if (run.hasGps) {
       this.render.GPS = "Connected";
