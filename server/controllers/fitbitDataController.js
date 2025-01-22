@@ -208,7 +208,10 @@ async function processRuns() {
     }
     formattedRuns.push(newRun);
   }
-  await db.query("UPDATE run_list SET processed_data = $1", [formattedRuns]);
+  await db.query("UPDATE run_list SET processed_data = $1 WHERE owner = $2", [
+    formattedRuns,
+    process.env.owner,
+  ]);
 }
 
 module.exports = {
