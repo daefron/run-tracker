@@ -50,7 +50,7 @@ Back-end:
 - [Express](https://expressjs.com/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Neon](https://neon.tech/)
-- [Render](https://render.com/)
+- [Koyeb](https://app.koyeb.com/)
 
 ### Acknowledgements:
 

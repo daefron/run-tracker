@@ -24,8 +24,6 @@ export function AllChart({
   setLineVisibility,
   brushStart,
   brushEnd,
-  forceUpdate,
-  setForceUpdate,
 }) {
   function TooltipContent({ payload }) {
     if (!payload[0]) {

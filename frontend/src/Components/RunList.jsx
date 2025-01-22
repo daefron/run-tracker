@@ -99,6 +99,9 @@ function RunItem({
       onMouseOver={() => {
         setHoverRun(data.index);
       }}
+      onMouseOut={() => {
+        setHoverRun(false);
+      }}
     >
       {data.render.GPS === "Connected" ? (
         <svg
