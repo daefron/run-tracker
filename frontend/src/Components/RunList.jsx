@@ -28,10 +28,11 @@ export function RunList({
       </div>
       <div id="runListItems">
         {runs.map((run) => {
+          //deactivated as input gets caught
           let inBrush;
-          if (run.chartOrder >= brushStart && run.chartOrder <= brushEnd) {
-            inBrush = true;
-          }
+          // if (run.chartOrder >= brushStart && run.chartOrder <= brushEnd) {
+          //   inBrush = true;
+          // }
           return (
             <RunItem
               key={run.render.date + run.index}
