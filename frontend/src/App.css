@@ -165,6 +165,7 @@ input {
 .recharts-legend-item-text {
   user-select: none;
   text-indent: -7px;
+  font-size: 11px;
 }
 .recharts-tooltip-wrapper {
   padding: 7px;

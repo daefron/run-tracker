@@ -35,7 +35,7 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
     speed: "rgb(220, 0, 100)",
     steps: "rgb(200, 200, 200)",
     calories: "rgb(255, 150, 0)",
-    temperature: "rgb(200, 200, 0)",
+    temp: "rgb(200, 200, 0)",
   };
   const [selectedType, setSelectedType] = useState("bpm");
   return (

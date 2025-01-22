@@ -146,11 +146,11 @@ class Run {
     this.heartRateZones.forEach((zone, i) => {
       zone.name = heartRateZoneNames[i];
     });
-    this.temperature = run.temperature;
 
     if (run.heartRateArray) {
       this.heartRateArray = heartRateArrayParse(run.heartRateArray);
     }
+
     if (run.stepsArray) {
       this.stepsArray = stepsArrayParse(run.stepsArray);
     }
@@ -164,7 +164,7 @@ class Run {
       steps: this.steps + " steps",
       calories: this.calories + " cals",
       heartRate: this.heartRate + " bpm",
-      temperature: this.temperature + " °C",
+      temp: run.temperature + " °C",
       GPS: this.GPS,
     };
     if (run.hasGps) {

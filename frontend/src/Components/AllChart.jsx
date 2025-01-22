@@ -91,9 +91,9 @@ export function AllChart({
         {lineVisibility.steps ? (
           <p className="smallFont">Steps: {currentRun.render.steps}</p>
         ) : null}
-        {lineVisibility.temperature ? (
+        {lineVisibility.temp ? (
           <p className="smallFont">
-            Temperture: {currentRun.render.temperature}
+            Temperature: {currentRun.render.temp}
           </p>
         ) : null}
       </>
@@ -176,7 +176,7 @@ export function AllChart({
             onClick={() => {
               setLineVisibility(swapLine(entry.value));
             }}
-            className="recharts-legend-item-text smallFont"
+            className="recharts-legend-item-text"
             style={{ color: entry.color }}
           >
             {entry.value}
@@ -217,8 +217,8 @@ export function AllChart({
       </text>
     );
   }
-  function SmallerAxisTick({ payload, x, y }) {
-    // return <g transform={"translate(" + x + "," + y + ")"}></g>;
+  
+  function SmallerAxisTick() {
     return;
   }
   const types = [
@@ -228,7 +228,7 @@ export function AllChart({
     "heartRate",
     "calories",
     "steps",
-    "temperature",
+    "temp",
   ];
 
   const predictionData = dateFiller(predictedRuns.current, dateRange, types);
@@ -448,11 +448,12 @@ export function AllChart({
           margin={{ top: 0, left: 20, right: 20, bottom: 5 }}
           data={chartData}
         >
-            tickSize={8}
+          tickSize={8}
           <XAxis
             dataKey="order"
             tick={<SmallerAxisTick />}
             interval={0}
+            align={"center"}
             mirror
           />
           {lines}
