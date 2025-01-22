@@ -419,7 +419,6 @@ export function AllChart({
             : false
         }
         stroke={transparentRGB(lineColors[type])}
-        ifOverflow="hidden"
         isAnimationActive={false}
       />
     );
@@ -428,7 +427,7 @@ export function AllChart({
         {yAxis}
         {line}
         {predictedOnGraph ? prediction : <></>}
-        {/* {trendlineOnGraph ? predictionLine : <></>} */}
+        {trendlineOnGraph ? predictionLine : <></>}
       </Fragment>
     );
   });
