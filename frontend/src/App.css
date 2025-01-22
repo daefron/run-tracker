@@ -3,6 +3,7 @@
   height: fit-content;
   padding: 12.5px;
   width: 100vw;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,7 +164,7 @@ input {
 }
 .recharts-legend-item-text {
   user-select: none;
-  text-indent: -8px;
+  text-indent: -7px;
 }
 .recharts-tooltip-wrapper {
   padding: 7px;

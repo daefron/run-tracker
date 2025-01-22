@@ -12,7 +12,6 @@ import { LastUpdated } from "./Components/LastUpdated.jsx";
 
 export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
   const parsedRuns = useRef(runs);
-  console.log(runs);
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
   const [dateRange, setDateRange] = useState(dateArray(parsedRuns.current));

@@ -104,7 +104,7 @@ export function AllChart({
     let firstSplit = color.split("(");
     let aAdded = firstSplit[0] + "a(" + firstSplit[1];
     let secondSplit = aAdded.split(")");
-    return secondSplit[0] + ", 0.5)";
+    return secondSplit[0] + ", 0.3)";
   }
 
   function PredictionDot(payload) {
@@ -162,7 +162,6 @@ export function AllChart({
       justifyContent: "center",
       gap: "25px",
       margin: 0,
-      marginLeft: -15,
     };
     data.forEach((value) => {
       if (!lineVisibility[value.value]) {
@@ -178,7 +177,7 @@ export function AllChart({
               setLineVisibility(swapLine(entry.value));
             }}
             className="recharts-legend-item-text smallFont"
-            style={{ color: entry.color, paddingLeft: "5px" }}
+            style={{ color: entry.color }}
           >
             {entry.value}
           </li>
@@ -431,11 +430,13 @@ export function AllChart({
     </>
   );
   function brushChange(payload) {
-    brushStart.current = payload.startIndex;
-    brushEnd.current = payload.endIndex;
-    predictedRuns.current = [
-      new PredictedRun(dateRange, runs, brushStart.current, brushEnd.current),
-    ];
+    if (
+      payload.startIndex !== brushStart.current &&
+      payload.endIndex !== brushEnd.current
+    ) {
+      brushStart.current = payload.startIndex;
+      brushEnd.current = payload.endIndex;
+    }
   }
   return (
     <div className="graphHolder" id="allRunsGraph">
@@ -447,11 +448,11 @@ export function AllChart({
           margin={{ top: 0, left: 20, right: 20, bottom: 5 }}
           data={chartData}
         >
+            tickSize={8}
           <XAxis
             dataKey="order"
             tick={<SmallerAxisTick />}
             interval={0}
-            tickSize={8}
             mirror
           />
           {lines}
