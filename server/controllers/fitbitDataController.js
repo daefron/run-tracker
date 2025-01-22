@@ -206,7 +206,7 @@ async function processRuns() {
     run.temperature = runData.weatherdata;
     run.index = i;
     const newRun = new runTools.Run(run);
-    newRun.lastRun = formattedRuns[i + 1];
+    newRun.lastRun = localRuns[i + 1];
     if (newRun.lastRun) {
       runTools.compareRuns(newRun);
     }
