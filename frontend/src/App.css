@@ -280,6 +280,12 @@ input {
     font-size: 14px;
   }
 }
+@media (min-width: 500px) {
+  .recharts-legend-item-text {
+    font-size: 14px;
+  }
+
+}
 @media (min-width: 836px) {
   .smallFont {
     font-size: 14px;
