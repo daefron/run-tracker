@@ -10,7 +10,6 @@ import {
   Tooltip,
   Brush,
 } from "recharts";
-import { PredictedRun } from "./PredictedRun.jsx";
 import { Fragment } from "react";
 export function AllChart({
   render,
@@ -234,29 +233,25 @@ export function AllChart({
   const chartData = chartFiller(dateFiller(runs, dateRange, types));
 
   function chartFiller(data) {
-    for (let i = 0; i <= data.length + 5; i++) {
-      predictedRuns.current.forEach((run) => {
-        if (i === run.chartOrder) {
-          for (const key in predictionData[i]) {
-            data[i][key + "Prediction"] = predictionData[i][key];
-          }
-        }
-      });
-    }
+    predictedRuns.current.forEach((run) => {
+      for (const key in predictionData[run.chartOrder]) {
+        data[run.chartOrder][key + "Prediction"] =
+          predictionData[run.chartOrder][key];
+      }
+    });
     return data;
   }
   const trends = trendFiller();
   function trendFiller() {
     let trendHolder = {};
     types.forEach((type, i) => {
-      trendHolder[type] = trendLine(
-        predictedRuns.current[0].visibleDates,
-        type
-      );
+      if (type === "temp") {
+        return;
+      }
+      trendHolder[type] = trendLine(chartData, type);
     });
     return trendHolder;
   }
-
   const todayInGraph = todayChecker();
   function todayChecker() {
     const today = new Date();
@@ -292,8 +287,9 @@ export function AllChart({
     return dateHolder;
   }
   const dateGap = predictedRuns.current[0].gap;
-  const graphMax = graphPadding();
-  function graphPadding() {
+  const graphMax = graphMaxPadding();
+  const graphMin = graphMinPadding();
+  function graphMaxPadding() {
     let paddedTypes = {};
     types.forEach((type) => {
       let highestValue = 0;
@@ -302,7 +298,21 @@ export function AllChart({
           highestValue = runs[i][type];
         }
       }
-      const paddedValue = highestValue * 1.2;
+      const paddedValue = highestValue * 1.03;
+      paddedTypes[type] = paddedValue;
+    });
+    return paddedTypes;
+  }
+  function graphMinPadding() {
+    let paddedTypes = {};
+    types.forEach((type) => {
+      let lowestValue = Infinity;
+      for (let i = 0; i < runs.length; i++) {
+        if (runs[i][type] < lowestValue) {
+          lowestValue = runs[i][type];
+        }
+      }
+      const paddedValue = lowestValue * 0.8;
       paddedTypes[type] = paddedValue;
     });
     return paddedTypes;
@@ -319,7 +329,9 @@ export function AllChart({
         isAnimationActive={false}
       />
     );
-    const yAxis = <YAxis yAxisId={type} domain={[0, graphMax[type]]} hide />;
+    const yAxis = (
+      <YAxis yAxisId={type} domain={[graphMin[type], graphMax[type]]} hide />
+    );
     return (
       <Fragment key={type + "Line"}>
         {yAxis}
@@ -351,7 +363,21 @@ export function AllChart({
         isAnimationActive={false}
       />
     );
-    const yAxis = <YAxis yAxisId={type} domain={[0, graphMax[type]]} hide />;
+    const yAxis = (
+      <YAxis
+        yAxisId={type}
+        domain={[graphMin[type], graphMax[type]]}
+        hide
+      />
+    );
+    if (type === "temp") {
+      return (
+        <Fragment key={type + "Line"}>
+          {yAxis}
+          {line}
+        </Fragment>
+      );
+    }
     const prediction = (
       <Line
         yAxisId={type}
@@ -375,8 +401,6 @@ export function AllChart({
         isAnimationActive={false}
       />
     );
-    console.log(runs)
-    console.log(brushStart.current, brushEnd.current);
     const predictionLine = (
       <ReferenceLine
         yAxisId={type}
@@ -395,6 +419,7 @@ export function AllChart({
             : false
         }
         stroke={transparentRGB(lineColors[type])}
+        ifOverflow="hidden"
         isAnimationActive={false}
       />
     );
@@ -403,7 +428,7 @@ export function AllChart({
         {yAxis}
         {line}
         {predictedOnGraph ? prediction : <></>}
-        {trendlineOnGraph ? predictionLine : <></>}
+        {/* {trendlineOnGraph ? predictionLine : <></>} */}
       </Fragment>
     );
   });
@@ -431,13 +456,8 @@ export function AllChart({
     </>
   );
   function brushChange(payload) {
-    if (
-      payload.startIndex !== brushStart.current &&
-      payload.endIndex !== brushEnd.current
-    ) {
-      brushStart.current = payload.startIndex;
-      brushEnd.current = payload.endIndex;
-    }
+    brushStart.current = payload.startIndex;
+    brushEnd.current = payload.endIndex;
   }
   return (
     <div className="graphHolder" id="allRunsGraph">
@@ -446,7 +466,7 @@ export function AllChart({
       </div>
       <ResponsiveContainer>
         <LineChart
-          margin={{ top: 0, left: 20, right: 20, bottom: 5 }}
+          margin={{ top: 0, left: 25, right: 25, bottom: 5 }}
           data={chartData}
         >
           tickSize={8}

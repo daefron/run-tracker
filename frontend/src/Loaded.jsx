@@ -20,12 +20,7 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
   const brushStart = useRef();
   const brushEnd = useRef();
   const predictedRuns = useRef([
-    new PredictedRun(
-      dateRange,
-      parsedRuns.current,
-      brushStart.current,
-      brushEnd.current
-    ),
+    new PredictedRun(dateRange, parsedRuns.current),
   ]);
   const [lineVisibility, setLineVisibility] = useState(initialLines());
   const lineColors = {
