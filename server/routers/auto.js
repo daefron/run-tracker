@@ -2,7 +2,7 @@ const authController = require("../controllers/authController");
 const fitbitDataController = require("../controllers/fitbitDataController");
 
 const runFetchDelay = 1800000;
-const refreshAuthDelay = 14400000;
+const refreshAuthDelay = 27000000;
 
 function timers() {
   setInterval(() => {
@@ -11,6 +11,7 @@ function timers() {
   console.log(
     "Run auto-updater running. Interval = " + runFetchDelay / 60000 + " mins"
   );
+  authController.refreshAuth();
   setInterval(() => {
     authController.refreshAuth();
   }, refreshAuthDelay);
