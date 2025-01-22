@@ -218,6 +218,8 @@ input {
   grid-column: 1 / 3;
 }
 #runList {
+  overflow-y: scroll;
+  height: 400px;
   background-color: rgb(50, 50, 70);
   grid-row: 6 / 8;
   grid-column: 1 / 3;
@@ -290,7 +292,7 @@ input {
     grid-column: 1 / 2;
   }
   #runList {
-    overflow-y: scroll;
+    height: auto;
     grid-row: 4 / 6;
     grid-column: 2 / 3;
   }
