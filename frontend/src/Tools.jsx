@@ -125,16 +125,11 @@ export function renderDuration(time) {
 }
 
 function timeParser(time) {
-  let parsed = time.split(":");
-  let hours = Number(parsed[0]);
-  let mins = Number(parsed[1]);
-  let secs = Number(parsed[2]);
-  let parsedTime = {
-    hours: hours,
-    mins: mins,
-    secs: secs,
-  };
-  return objectToMs(parsedTime);
+  const splitTime = time.split(":");
+  const hours = Number(splitTime[0]);
+  const mins = Number(splitTime[1]);
+  const secs = Number(splitTime[2]);
+  return hours * timeRef.hour + mins * timeRef.min + secs * timeRef.sec;
 }
 
 export function heartRateArrayParse(array) {

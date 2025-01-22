@@ -29,7 +29,7 @@ export function runsParser(runs) {
       if (run.heartRateArray) {
         this.heartRateArray = heartRateArrayParse(run.heartRateArray);
       }
-      if (run.stepsAray) {
+      if (run.stepsArray) {
         this.stepsArray = stepsArrayParse(run.stepsArray);
       }
 
