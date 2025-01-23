@@ -129,6 +129,63 @@ function compareRuns(run) {
     return "+" + renderString;
   }
 }
+function trendLine(data, type) {
+  let dataSet = data.filter((point) => point.id);
+  const xData = dataSet.map((point) => point.order);
+  const yData = dataSet.map((point) => point[type]);
+  const xMean = getAverage(xData);
+  const yMean = getAverage(yData);
+  const xMinusxMean = xData.map((value) => value - xMean);
+  const yMinusyMean = yData.map((value) => value - yMean);
+  const xMinusxMeanSq = xMinusxMean.map((val) => Math.pow(val, 2));
+  const xy = [];
+  for (let x = 0; x < dataSet.length; x++) {
+    xy.push(xMinusxMean[x] * yMinusyMean[x]);
+  }
+  const xySum = getTotal(xy);
+  const slope = xySum / getTotal(xMinusxMeanSq);
+  const slopeStart = yMean - slope * xMean;
+  return {
+    slope: slope,
+    slopeStart: slopeStart,
+    calcY: (x) => slopeStart + slope * x,
+    xStart: xData[0],
+    xEnd: xData[xData.length - 1],
+  };
+}
+function dateFiller(runs, dateRange, types) {
+  let holder = [];
+  for (let i = dateRange.length - 1; i >= 0; i--) {
+    let runOnDate = runs.find((run) => run.render.date === dateRange[i]);
+    if (runOnDate) {
+      holder.push(runOnDateStats());
+    } else {
+      holder.push(noRunOnDateStats());
+    }
+    function runOnDateStats() {
+      runOnDate.chartOrder = i;
+      let stats = {
+        id: runOnDate.id,
+        date: dateRange[i][0] + dateRange[i][1],
+        order: i,
+        parsedDate: dateRange[i],
+      };
+      types.forEach((type) => {
+        stats[type] = runOnDate[type];
+      });
+      return stats;
+    }
+    function noRunOnDateStats() {
+      return {
+        id: null,
+        date: dateRange[i][0] + dateRange[i][1],
+        order: i,
+        parsedDate: dateRange[i],
+      };
+    }
+  }
+  return arrayReverser(holder);
+}
 const heartRateZoneNames = ["Light", "Moderate", "Vigorous", "Peak"];
 class Run {
   constructor(run) {
@@ -173,6 +230,106 @@ class Run {
     }
   }
 }
+function dateArray(runs) {
+  const lowestDate = renderToDate(runs[runs.length - 1].render.date);
+  const highestDate = renderToDate(runs[0].render.date);
+  const amountOfDays = 5 + (highestDate - lowestDate) / 86400000;
+  let array = [];
+  let currentDate = lowestDate;
+  for (let i = 0; i <= amountOfDays; i++) {
+    array.push(dateToRender(currentDate));
+    currentDate = new Date(currentDate.setDate(currentDate.getDate() + 1));
+  }
+  return array;
+}
+function dateToRender(date) {
+  let day = date.getDate().toString();
+  if (day.length < 2) {
+    day = "0" + day;
+  }
+  let month = (date.getMonth() + 1).toString();
+  if (month.length < 2) {
+    month = "0" + month;
+  }
+  const year = date.getFullYear().toString();
+  return day + "/" + month + "/" + year[2] + year[3];
+}
+function renderToDate(date) {
+  const newDay = Number(date.split("/")[0]);
+  const newMonth = Number(date.split("/")[1] - 1);
+  const newYear = Number("20" + date.split("/")[2]);
+  return new Date(newYear, newMonth, newDay);
+}
+function getTotal(data) {
+  if (data[0] === undefined) {
+    return;
+  }
+  return data.reduce((total, value) => total + value);
+}
+function getAverage(data) {
+  if (data[0] === undefined) {
+    return;
+  }
+  const dataTotal = data.reduce((total, value) => total + value);
+  return dataTotal / data.length;
+}
+function arrayReverser(array) {
+  let reversedArray = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    reversedArray.push(array[i]);
+  }
+  return reversedArray;
+}
+class PredictedRun {
+  constructor(runs) {
+    const types = [
+      "duration",
+      "distance",
+      "speed",
+      "heartRate",
+      "steps",
+      "calories",
+    ];
+    const dateRange = dateArray(runs);
+    const filledDates = dateFiller(runs, dateRange, types);
+    this.id = "nextRun";
+    this.gap = getGapsAverage();
+    this.chartOrder = runs[0].chartOrder + this.gap;
+    typeMaker(this);
+    this.render = {
+      date: dateToRender(getPredictedDate(this)),
+      distance: this.distance.toFixed(2) + " km",
+      duration: renderDuration(msToObject(this.duration)),
+      speed: this.speed.toFixed(2) + " km/h",
+      heartRate: Math.round(this.heartRate) + " bpm",
+      steps: Math.round(this.steps) + " steps",
+      calories: Math.round(this.calories) + " cals",
+    };
+
+    function getGapsAverage() {
+      let gaps = [];
+      runs.forEach((value, i) => {
+        if (i > 0) {
+          gaps.push(runs[i - 1].chartOrder - value.chartOrder);
+        }
+      });
+      return Math.round(getAverage(gaps));
+    }
+
+    function getPredictedDate(parent) {
+      let lastDate = renderToDate(runs[0].render.date);
+      lastDate.setDate(lastDate.getDate() + parent.gap);
+      return lastDate;
+    }
+
+    function typeMaker(parent) {
+      types.forEach((type) => {
+        parent[type] = trendLine(filledDates, type).calcY(parent.chartOrder);
+      });
+    }
+  }
+}
+
 module.exports = {
   dateTimeParser,
   renderDuration,
@@ -184,4 +341,5 @@ module.exports = {
   msToObject,
   compareRuns,
   Run,
+  PredictedRun,
 };

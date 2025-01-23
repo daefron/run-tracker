@@ -187,6 +187,7 @@ async function updateGet(req, res) {
 }
 
 const runTools = require("./runTools");
+
 async function processRuns() {
   const localRunsQuery = await db.query(
     "SELECT data FROM run_list WHERE owner = $1",
@@ -212,8 +213,13 @@ async function processRuns() {
     }
     formattedRuns.push(newRun);
   }
+  const predictedRun = new runTools.PredictedRun(formattedRuns);
+  const data = {
+    runs: formattedRuns,
+    predicted: predictedRun,
+  };
   await db.query("UPDATE run_list SET processed_data = $1 WHERE owner = $2", [
-    JSON.stringify(formattedRuns),
+    JSON.stringify(data),
     process.env.owner,
   ]);
 }

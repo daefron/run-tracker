@@ -7,11 +7,10 @@ import { SelectedChart } from "./Components/SelectedChart.jsx";
 import { ChartPie } from "./Components/ChartPie.jsx";
 import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
-import { PredictedRun } from "./Components/PredictedRun.jsx";
 import { LastUpdated } from "./Components/LastUpdated.jsx";
 
 export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
-  const parsedRuns = useRef(runs);
+  const parsedRuns = useRef(runs.runs);
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
   const [dateRange, setDateRange] = useState(dateArray(parsedRuns.current));
@@ -19,9 +18,7 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
   const brushStart = useRef();
   const brushEnd = useRef();
-  const predictedRuns = useRef([
-    new PredictedRun(dateRange, parsedRuns.current),
-  ]);
+  const predictedRuns = useRef([runs.predicted]);
   const [lineVisibility, setLineVisibility] = useState(initialLines());
   const lineColors = {
     duration: "rgb(0, 200, 150)",
