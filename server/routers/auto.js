@@ -20,11 +20,6 @@ function timers() {
       " mins"
   );
 
-  //pings the server to keep it awake (14 mins as server times out after 15 mins)
-  const pingDelay = 840000;
-  const pingFunc = () => console.log("ping");
-  autoTimer(pingDelay, pingFunc());
-
   function autoTimer(delay, func) {
     setInterval(() => {
       func;
