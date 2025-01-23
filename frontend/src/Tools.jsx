@@ -82,16 +82,6 @@ export function getTotal(data) {
   return data.reduce((total, value) => total + value);
 }
 
-export function gapsBetween(data, type) {
-  let gaps = [];
-  data.forEach((value, i) => {
-    if (i > 0) {
-      gaps.push(value[type] - data[i - 1][type]);
-    }
-  });
-  return gaps;
-}
-
 export function trendLine(data, type) {
   let dataSet = data.filter((point) => point.id);
   const xData = dataSet.map((point) => point.order);
@@ -117,34 +107,29 @@ export function trendLine(data, type) {
   };
 }
 export function dateArray(runs) {
-  const lowestDate = runs[runs.length - 1].render.date;
-  const lowestDay = Number(lowestDate.split("/")[0]);
-  const lowestMonth = Number(lowestDate.split("/")[1] - 1);
-  const lowestYear = Number("20" + lowestDate.split("/")[2]);
-  const lowestDateParsed = new Date(lowestYear, lowestMonth, lowestDay);
-  const highestDate = runs[0].render.date;
-  const highestDay = Number(highestDate.split("/")[0]);
-  const highestMonth = Number(highestDate.split("/")[1] - 1);
-  const highestYear = Number("20" + highestDate.split("/")[2]);
-  const highestDateParsed = new Date(highestYear, highestMonth, highestDay);
-  const amountOfDays = 5 + (highestDateParsed - lowestDateParsed) / 86400000;
+  const lowestDate = renderToDate(runs[runs.length - 1].render.date);
+  const highestDate = renderToDate(runs[0].render.date);
+  const amountOfDays = 5 + (highestDate - lowestDate) / 86400000;
   let array = [];
-  let currentDate = lowestDateParsed;
+  let currentDate = lowestDate;
   for (let i = 0; i <= amountOfDays; i++) {
-    let day = currentDate.getDate().toString();
-    if (day.length < 2) {
-      day = "0" + day;
-    }
-    let month = (currentDate.getMonth() + 1).toString();
-    if (month.length < 2) {
-      month = "0" + month;
-    }
-    const year = currentDate.getFullYear().toString();
-    const renderDate = day + "/" + month + "/" + year[2] + year[3];
-    array.push(renderDate);
+    array.push(dateToRender(currentDate));
     currentDate = new Date(currentDate.setDate(currentDate.getDate() + 1));
   }
   return array;
+}
+
+export function dateToRender(date) {
+  let day = date.getDate().toString();
+  if (day.length < 2) {
+    day = "0" + day;
+  }
+  let month = (date.getMonth() + 1).toString();
+  if (month.length < 2) {
+    month = "0" + month;
+  }
+  const year = date.getFullYear().toString();
+  return day + "/" + month + "/" + year[2] + year[3];
 }
 
 export function arrayReverser(array) {
@@ -153,6 +138,13 @@ export function arrayReverser(array) {
     reversedArray.push(array[i]);
   }
   return reversedArray;
+}
+
+export function renderToDate(date) {
+  const newDay = Number(date.split("/")[0]);
+  const newMonth = Number(date.split("/")[1] - 1);
+  const newYear = Number("20" + date.split("/")[2]);
+  return new Date(newYear, newMonth, newDay);
 }
 
 export function dateFiller(runs, dateRange, types) {
