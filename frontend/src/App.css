@@ -23,7 +23,6 @@ input {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
-#initialModalHolder,
 #loadingHolder {
   display: grid;
   width: 100%;
