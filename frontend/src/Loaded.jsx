@@ -16,7 +16,7 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
   const [dateRange, setDateRange] = useState(dateArray(parsedRuns.current));
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
-  const brushStart = useRef();
+  const brushStart = useRef(0);
   const brushEnd = useRef();
   const predictedRuns = useRef([runs.predicted]);
   const [lineVisibility, setLineVisibility] = useState(initialLines());
@@ -65,7 +65,7 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
           dateRange={dateRange}
           predictedOnGraph={predictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
-          predictedRuns={predictedRuns}
+          predictedRuns={predictedRuns.current}
           lineVisibility={lineVisibility}
           setLineVisibility={setLineVisibility}
           brushStart={brushStart}

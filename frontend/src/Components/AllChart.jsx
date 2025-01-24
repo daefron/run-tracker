@@ -33,38 +33,32 @@ export function AllChart({
     if (!currentRun) {
       return (
         <>
-          <p className="smallFont">
-            Date: {predictedRuns.current[0].render.date}
-          </p>
+          <p className="smallFont">Date: {predictedRuns[0].render.date}</p>
           {lineVisibility.duration ? (
             <p className="smallFont">
-              Duration: {predictedRuns.current[0].render.duration}
+              Duration: {predictedRuns[0].render.duration}
             </p>
           ) : null}
           {lineVisibility.distance ? (
             <p className="smallFont">
-              Distance: {predictedRuns.current[0].render.distance}
+              Distance: {predictedRuns[0].render.distance}
             </p>
           ) : null}
           {lineVisibility.speed ? (
-            <p className="smallFont">
-              Speed: {predictedRuns.current[0].render.speed}
-            </p>
+            <p className="smallFont">Speed: {predictedRuns[0].render.speed}</p>
           ) : null}
           {lineVisibility.heartRate ? (
             <p className="smallFont">
-              Heart rate: {predictedRuns.current[0].render.heartRate}
+              Heart rate: {predictedRuns[0].render.heartRate}
             </p>
           ) : null}
           {lineVisibility.calories ? (
             <p className="smallFont">
-              Calories: {predictedRuns.current[0].render.calories}
+              Calories: {predictedRuns[0].render.calories}
             </p>
           ) : null}
           {lineVisibility.steps ? (
-            <p className="smallFont">
-              Steps: {predictedRuns.current[0].render.steps}
-            </p>
+            <p className="smallFont">Steps: {predictedRuns[0].render.steps}</p>
           ) : null}
         </>
       );
@@ -229,11 +223,11 @@ export function AllChart({
     "temp",
   ];
 
-  const predictionData = dateFiller(predictedRuns.current, dateRange, types);
+  const predictionData = dateFiller(predictedRuns, dateRange, types);
   const chartData = chartFiller(dateFiller(runs, dateRange, types));
 
   function chartFiller(data) {
-    predictedRuns.current.forEach((run) => {
+    predictedRuns.forEach((run) => {
       for (const key in predictionData[run.chartOrder]) {
         data[run.chartOrder][key + "Prediction"] =
           predictionData[run.chartOrder][key];
@@ -286,7 +280,7 @@ export function AllChart({
     });
     return dateHolder;
   }
-  const dateGap = predictedRuns.current[0].gap;
+  const dateGap = predictedRuns[0].gap;
   const graphMax = graphMaxPadding();
   const graphMin = graphMinPadding();
   function graphMaxPadding() {
@@ -397,33 +391,51 @@ export function AllChart({
         isAnimationActive={false}
       />
     );
-    const predictionLine = (
-      <ReferenceLine
-        yAxisId={type}
-        segment={
-          lineVisibility[type]
-            ? [
-                {
-                  x: trends[type].xStart,
-                  y: trends[type].calcY(trends[type].xStart),
-                },
-                {
-                  x: trends[type].xEnd + dateGap,
-                  y: trends[type].calcY(trends[type].xEnd + dateGap),
-                },
-              ]
-            : false
-        }
-        stroke={transparentRGB(lineColors[type])}
-        isAnimationActive={false}
-      />
-    );
+    const predictionLines = predictionData.map((prediction) => {
+      if (prediction.order < predictedRuns[0].chartOrder) {
+        return (
+          <Fragment key={"predictionLine" + prediction.parsedDate}>
+            <ReferenceLine
+              yAxisId={type}
+              segment={
+                lineVisibility[type]
+                  ? [
+                      {
+                        x: prediction.order,
+                        y: trends[type].calcY(prediction.order),
+                      },
+                      {
+                        x: prediction.order + 1,
+                        y: trends[type].calcY(prediction.order + 1),
+                      },
+                    ]
+                  : false
+              }
+              stroke={transparentRGB(lineColors[type])}
+              isAnimationActive={false}
+            />
+          </Fragment>
+        );
+      }
+    });
     return (
       <Fragment key={type + "Line"}>
         {yAxis}
         {line}
         {predictedOnGraph ? prediction : <></>}
-        {trendlineOnGraph ? predictionLine : <></>}
+        {trendlineOnGraph ? predictionLines : <></>}
+      </Fragment>
+    );
+  });
+  const dateLines = newMonths.map((month) => {
+    return (
+      <Fragment key={"monthLine" + month[1]}>
+        <ReferenceLine
+          strokeWidth={1}
+          x={month[0]}
+          stroke="rgba(255, 255, 255, 0.3)"
+          label={<MonthLabel month={month[1]} />}
+        />
       </Fragment>
     );
   });
@@ -436,18 +448,7 @@ export function AllChart({
         stroke="rgba(255, 255, 255, 0.5)"
         label={<TodayLabel />}
       />
-      <ReferenceLine
-        strokeWidth={1}
-        x={newMonths[0][0]}
-        stroke="rgba(255, 255, 255, 0.3)"
-        label={<MonthLabel month={newMonths[0][1]} />}
-      />
-      <ReferenceLine
-        strokeWidth={1}
-        x={newMonths[1][0]}
-        stroke="rgba(255, 255, 255, 0.3)"
-        label={<MonthLabel month={newMonths[1][1]} />}
-      />
+      {dateLines}
     </>
   );
   function brushChange(payload) {
