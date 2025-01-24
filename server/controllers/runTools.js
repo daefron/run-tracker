@@ -154,37 +154,24 @@ function trendLine(data, type) {
   };
 }
 function dateFiller(runs, dateRange, types) {
-  let holder = [];
-  for (let i = dateRange.length - 1; i >= 0; i--) {
+  let dateHolder = [];
+  for (let i = 0; i <= dateRange.length - 1; i++) {
     let runOnDate = runs.find((run) => run.render.date === dateRange[i]);
+    let stats = {
+      date: dateRange[i][0] + dateRange[i][1],
+      order: i,
+      parsedDate: dateRange[i],
+    };
     if (runOnDate) {
-      holder.push(runOnDateStats());
-    } else {
-      holder.push(noRunOnDateStats());
-    }
-    function runOnDateStats() {
       runOnDate.chartOrder = i;
-      let stats = {
-        id: runOnDate.id,
-        date: dateRange[i][0] + dateRange[i][1],
-        order: i,
-        parsedDate: dateRange[i],
-      };
+      stats.id = runOnDate.id;
       types.forEach((type) => {
         stats[type] = runOnDate[type];
       });
-      return stats;
     }
-    function noRunOnDateStats() {
-      return {
-        id: null,
-        date: dateRange[i][0] + dateRange[i][1],
-        order: i,
-        parsedDate: dateRange[i],
-      };
-    }
+    dateHolder.push(stats);
   }
-  return arrayReverser(holder);
+  return dateHolder;
 }
 const heartRateZoneNames = ["Light", "Moderate", "Vigorous", "Peak"];
 class Run {

@@ -51,28 +51,11 @@ export function renderTime(time) {
   return parsedTime[0] + ":" + parsedTime[1] + ":" + parsedTime[2];
 }
 
-export function renderDuration(time) {
-  if (time.secs.toString().length < 2) {
-    time.secs = "0" + time.secs;
-  }
-  let renderString = time.secs;
-  if (time.mins) {
-    renderString = time.mins + ":" + renderString;
-  } else {
-    renderString = "0:" + renderString;
-  }
-  if (time.hours) {
-    renderString = time.hours + ":" + renderString;
-  }
-  return renderString;
-}
-
 export function getAverage(data) {
   if (data[0] === undefined) {
     return;
   }
-  const dataTotal = data.reduce((total, value) => total + value);
-  return dataTotal / data.length;
+  return getTotal(data) / data.length;
 }
 
 export function getTotal(data) {
@@ -106,6 +89,7 @@ export function trendLine(data, type) {
     xEnd: xData[xData.length - 1],
   };
 }
+
 export function dateArray(runs) {
   const lowestDate = renderToDate(runs[runs.length - 1].render.date);
   const highestDate = renderToDate(runs[0].render.date);
@@ -117,68 +101,47 @@ export function dateArray(runs) {
     currentDate = new Date(currentDate.setDate(currentDate.getDate() + 1));
   }
   return array;
-}
 
-export function dateToRender(date) {
-  let day = date.getDate().toString();
-  if (day.length < 2) {
-    day = "0" + day;
+  function renderToDate(date) {
+    const newDay = Number(date.split("/")[0]);
+    const newMonth = Number(date.split("/")[1] - 1);
+    const newYear = Number("20" + date.split("/")[2]);
+    return new Date(newYear, newMonth, newDay);
   }
-  let month = (date.getMonth() + 1).toString();
-  if (month.length < 2) {
-    month = "0" + month;
-  }
-  const year = date.getFullYear().toString();
-  return day + "/" + month + "/" + year[2] + year[3];
-}
 
-export function arrayReverser(array) {
-  let reversedArray = [];
-  for (let i = array.length - 1; i >= 0; i--) {
-    reversedArray.push(array[i]);
+  function dateToRender(date) {
+    let day = date.getDate().toString();
+    if (day.length < 2) {
+      day = "0" + day;
+    }
+    let month = (date.getMonth() + 1).toString();
+    if (month.length < 2) {
+      month = "0" + month;
+    }
+    const year = date.getFullYear().toString();
+    return day + "/" + month + "/" + year[2] + year[3];
   }
-  return reversedArray;
-}
-
-export function renderToDate(date) {
-  const newDay = Number(date.split("/")[0]);
-  const newMonth = Number(date.split("/")[1] - 1);
-  const newYear = Number("20" + date.split("/")[2]);
-  return new Date(newYear, newMonth, newDay);
 }
 
 export function dateFiller(runs, dateRange, types) {
-  let holder = [];
-  for (let i = dateRange.length - 1; i >= 0; i--) {
+  let dateHolder = [];
+  for (let i = 0; i <= dateRange.length - 1; i++) {
     let runOnDate = runs.find((run) => run.render.date === dateRange[i]);
+    let stats = {
+      date: dateRange[i][0] + dateRange[i][1],
+      order: i,
+      parsedDate: dateRange[i],
+    };
     if (runOnDate) {
-      holder.push(runOnDateStats());
-    } else {
-      holder.push(noRunOnDateStats());
-    }
-    function runOnDateStats() {
       runOnDate.chartOrder = i;
-      let stats = {
-        id: runOnDate.id,
-        date: dateRange[i][0] + dateRange[i][1],
-        order: i,
-        parsedDate: dateRange[i],
-      };
+      stats.id = runOnDate.id;
       types.forEach((type) => {
         stats[type] = runOnDate[type];
       });
-      return stats;
     }
-    function noRunOnDateStats() {
-      return {
-        id: null,
-        date: dateRange[i][0] + dateRange[i][1],
-        order: i,
-        parsedDate: dateRange[i],
-      };
-    }
+    dateHolder.push(stats);
   }
-  return arrayReverser(holder);
+  return dateHolder;
 }
 
 export function initialLines() {
