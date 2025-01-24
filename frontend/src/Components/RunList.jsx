@@ -10,7 +10,7 @@ export function RunList({
   return (
     <div id="runList">
       <div className="elementHeader runItem runListTitle">
-        <p className="titleFont" style={{ width: "5%" }}>
+        <p className="titleFont" style={{ width: "6%" }}>
           GPS
         </p>
         <p className="titleFont" style={{ width: "20%" }}>
@@ -28,11 +28,7 @@ export function RunList({
       </div>
       <div id="runListItems">
         {runs.map((run) => {
-          //deactivated as input gets caught
           let inBrush;
-          // if (run.chartOrder >= brushStart && run.chartOrder <= brushEnd) {
-          //   inBrush = true;
-          // }
           return (
             <RunItem
               key={run.render.date + run.index}

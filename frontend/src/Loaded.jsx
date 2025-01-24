@@ -72,7 +72,7 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
           brushEnd={brushEnd}
         />
         <ChartPie
-          render="Heart zone time"
+          render="Heart rate zones"
           type="heartZones"
           runs={parsedRuns.current}
           activeRun={activeRun}
