@@ -148,20 +148,13 @@ export function AllChart({
   }
   function SmallerLegend(payload) {
     let data = payload.payload.filter((value) => value.type !== "none");
-    const listStyle = {
-      display: "flex",
-      justifyContent: "center",
-      gap: "25px",
-      margin: 0,
-      marginLeft: -25,
-    };
     data.forEach((value) => {
       if (!lineVisibility[value.value]) {
         value.color = transparentRGB(value.color);
       }
     });
     return (
-      <ul style={listStyle}>
+      <ul className="customLegend">
         {data.map((entry, index) => (
           <li
             key={"item-" + index}
