@@ -19,7 +19,6 @@ export function Loaded({ data, setLoading, setLastUpdated }) {
     distance: true,
     heartRate: true,
   });
-  console.log(data);
   const [selectedType, setSelectedType] = useState("bpm");
   return (
     <>
@@ -31,7 +30,9 @@ export function Loaded({ data, setLoading, setLastUpdated }) {
           hoverRun={hoverRun}
           setHoverRun={setHoverRun}
           brushStart={brushStart}
+          setBrushStart={setBrushStart}
           brushEnd={brushEnd}
+          setBrushEnd={setBrushEnd}
         />
         <PredictionStats
           predictedRuns={data.predictedRun}
@@ -55,7 +56,9 @@ export function Loaded({ data, setLoading, setLastUpdated }) {
           trendlineOnGraph={trendlineOnGraph}
           lineVisibility={lineVisibility}
           setLineVisibility={setLineVisibility}
+          brushStart={brushStart}
           setBrushStart={setBrushStart}
+          brushEnd={brushEnd}
           setBrushEnd={setBrushEnd}
           runs={data.runData}
           predictedRuns={data.predictedRun}

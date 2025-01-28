@@ -5,7 +5,9 @@ export function RunList({
   hoverRun,
   setHoverRun,
   brushStart,
+  setBrushStart,
   brushEnd,
+  setBrushEnd,
 }) {
   return (
     <div id="runList">
@@ -41,6 +43,10 @@ export function RunList({
               hoverRun={hoverRun}
               setHoverRun={setHoverRun}
               inBrush={inBrush}
+              brushStart={brushStart}
+              setBrushStart={setBrushStart}
+              brushEnd={brushEnd}
+              setBrushEnd={setBrushEnd}
             ></RunItem>
           );
         })}
@@ -56,6 +62,10 @@ function RunItem({
   setHoverRun,
   data,
   inBrush,
+  brushStart,
+  setBrushStart,
+  brushEnd,
+  setBrushEnd,
 }) {
   return (
     <div
@@ -95,6 +105,7 @@ function RunItem({
       }
       onClick={() => {
         setActiveRun(data.index);
+        shiftBrush(data.chartOrder);
       }}
       onMouseOver={() => {
         setHoverRun(data.index);
@@ -163,6 +174,16 @@ function RunItem({
       </div>
     </div>
   );
+  function shiftBrush(position) {
+    if (!inBrush) {
+      const distanceFromStart = position - brushStart;
+      if (distanceFromStart < 0) {
+        setBrushStart(position);
+      } else {
+        setBrushEnd(position);
+      }
+    }
+  }
 }
 
 function RunItemStat({ type, data, setActiveRun, diff, size }) {

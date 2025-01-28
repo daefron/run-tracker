@@ -20,7 +20,9 @@ export function AllChart({
   predictedRuns,
   lineVisibility,
   setLineVisibility,
+  brushStart,
   setBrushStart,
+  brushEnd,
   setBrushEnd,
   chartData,
 }) {
@@ -496,7 +498,13 @@ export function AllChart({
           {referenceLines}
           <Legend content={<SmallerLegend />} />
           <Tooltip content={<TooltipContent />} isAnimationActive={false} />
-          <Brush data={chartData} dataKey={"order"} onChange={brushChange}>
+          <Brush
+            data={chartData}
+            dataKey={"order"}
+            onChange={brushChange}
+            startIndex={brushStart}
+            endIndex={brushEnd}
+          >
             <LineChart data={chartData}>{brushLines}</LineChart>
           </Brush>
         </LineChart>
