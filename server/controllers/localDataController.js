@@ -3,6 +3,7 @@ const {
   dateArray,
   heartRateArrayParse,
   stepsArrayParse,
+  compareRuns,
   PredictedRun,
   dateFiller,
   getTotal,
@@ -29,6 +30,10 @@ async function launchGet(req, res) {
   runIds.forEach((id) => {
     let run = localRuns.find((run) => run.logid == id);
     let parsedRun = run.data;
+    parsedRun.lastRun = localRuns[parsedRun.index + 1];
+    if (parsedRun.lastRun) {
+      compareRuns(parsedRun);
+    }
     parsedRun.heartRateArray = heartRateArrayParse(run.hr_data);
     parsedRun.stepsArray = stepsArrayParse(run.step_data);
     parsedRun.temp = Number(run.weather_data);
@@ -57,7 +62,7 @@ async function launchGet(req, res) {
     return data;
   }
   const chartData = chartFiller(dateFiller(runs, dateRange, types));
-
+  
   const overallStats = {
     total: totalStats(),
     highest: highestStats(),
