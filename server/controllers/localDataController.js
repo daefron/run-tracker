@@ -32,7 +32,7 @@ async function launchGet(req, res) {
     let parsedRun = run.data;
     const lastRun = localRuns[parsedRun.index + 1];
     if (lastRun) {
-      compareRuns(parsedRun, lastRun);
+      compareRuns(parsedRun, lastRun.data);
     }
     parsedRun.heartRateArray = heartRateArrayParse(run.hr_data);
     parsedRun.stepsArray = stepsArrayParse(run.step_data);
