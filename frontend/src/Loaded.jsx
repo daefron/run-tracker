@@ -13,7 +13,7 @@ export function Loaded({ data, setLoading, setLastUpdated }) {
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
   const [brushStart, setBrushStart] = useState(0);
-  const [brushEnd, setBrushEnd] = useState(data.chartData.length);
+  const [brushEnd, setBrushEnd] = useState(data.chartData.length - 1);
   const [lineVisibility, setLineVisibility] = useState({
     duration: true,
     distance: true,
