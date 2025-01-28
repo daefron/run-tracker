@@ -98,7 +98,7 @@ async function updatePut(req, res) {
         return;
 
         async function hrData() {
-          console.log("Fetching Fitbit run data for " + run.data.id + ".");
+          console.log("Fetching Fitbit hr data for " + run.data.id + ".");
           fetch(run.data.heartRateLink, fetchAuth)
             .then((response) => {
               return dataOrError(response);
