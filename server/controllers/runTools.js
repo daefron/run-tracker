@@ -219,10 +219,10 @@ class Run {
     this.stepsArray = stepsArrayParse(array);
   }
 }
-function dateArray(runs) {
+function dateArray(runs, gap) {
   const lowestDate = renderToDate(runs[runs.length - 1].render.date);
   const highestDate = renderToDate(runs[0].render.date);
-  const amountOfDays = 5 + (highestDate - lowestDate) / 86400000;
+  const amountOfDays = gap + (highestDate - lowestDate) / 86400000;
   let array = [];
   let currentDate = lowestDate;
   for (let i = 0; i <= amountOfDays; i++) {
@@ -262,13 +262,6 @@ function getAverage(data) {
   const dataTotal = data.reduce((total, value) => total + value);
   return dataTotal / data.length;
 }
-function arrayReverser(array) {
-  let reversedArray = [];
-  for (let i = array.length - 1; i >= 0; i--) {
-    reversedArray.push(array[i]);
-  }
-  return reversedArray;
-}
 class PredictedRun {
   constructor(runs) {
     const types = [
@@ -279,8 +272,7 @@ class PredictedRun {
       "steps",
       "calories",
     ];
-    const dateRange = dateArray(runs);
-    const filledDates = dateFiller(runs, dateRange, types);
+    const filledDates = dateFiller(runs, dateArray(runs), types);
     this.id = "nextRun";
     this.gap = getGapsAverage();
     this.chartOrder = runs[0].chartOrder + this.gap;

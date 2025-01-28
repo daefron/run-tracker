@@ -44,8 +44,8 @@ async function launchGet(req, res) {
     "calories",
     "temp",
   ];
-  const dateRange = dateArray(runs);
   const predictedRun = [new PredictedRun(runs)];
+  const dateRange = dateArray(runs, predictedRun[0].gap);
   const predictionData = dateFiller(predictedRun, dateRange, types);
   function chartFiller(data) {
     predictedRun.forEach((run) => {
