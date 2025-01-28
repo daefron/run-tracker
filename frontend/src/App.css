@@ -164,15 +164,19 @@ input {
   gap: 15px;
   padding: 0;
   margin: 0;
-  margin-bottom: -2px;
+  margin-bottom: -5px;
 }
 .recharts-text {
   user-select: none;
 }
 .recharts-legend-item-text {
   user-select: none;
+  width: fit-content;
   text-indent: -7px;
   font-size: 10px;
+}
+.recharts-legend-item-text::marker {
+  font-size: 0;
 }
 .recharts-tooltip-wrapper {
   padding: 7px;

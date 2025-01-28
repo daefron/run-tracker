@@ -151,6 +151,8 @@ export function AllChart({
     data.forEach((value) => {
       if (!lineVisibility[value.value]) {
         value.color = transparentRGB(value.color);
+      } else {
+        value.decoration = "underline";
       }
     });
     return (
@@ -162,7 +164,7 @@ export function AllChart({
               setLineVisibility(swapLine(entry.value));
             }}
             className="recharts-legend-item-text"
-            style={{ color: entry.color }}
+            style={{ color: entry.color, textDecoration: entry.decoration }}
           >
             {entry.value}
           </li>
