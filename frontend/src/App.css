@@ -91,6 +91,12 @@ input {
   line-height: 35px;
   padding-inline: 10px;
 }
+.runItem {
+  padding-right: 0px;
+}
+.runListTitle {
+  padding-right: 15px;
+}
 .runItem > p {
   text-align: center;
   color: white;
@@ -98,8 +104,7 @@ input {
 .runItem > div {
   display: flex;
   justify-content: end;
-  gap: 5px;
-  margin-left: auto;
+  gap:5px;
 }
 .diff {
   width: 14.5vw;
@@ -400,11 +405,6 @@ input {
     grid-column: 3 / 4;
   }
   .diff {
-    width: 3.2vw;
-  }
-}
-@media (min-width: 1920px) {
-  .diff {
-    width: 2.5vw;
+    width: 3.5vw;
   }
 }

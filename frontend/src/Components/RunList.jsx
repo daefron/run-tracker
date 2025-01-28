@@ -12,20 +12,20 @@ export function RunList({
   return (
     <div id="runList">
       <div className="elementHeader runItem runListTitle">
-        <p className="titleFont" style={{ width: "6%" }}>
+        <p className="titleFont" style={{ width: "8%" }}>
           GPS
         </p>
-        <p className="titleFont" style={{ width: "20%" }}>
+        <p className="titleFont" style={{ width: "19%" }}>
           Date
         </p>
-        <p className="titleFont" style={{ width: "20%" }}>
+        <p className="titleFont" style={{ width: "19%" }}>
           Start Time
         </p>
-        <p className="titleFont" style={{ width: "30%" }}>
+        <p className="titleFont" style={{ width: "27%" }}>
           Duration
         </p>
-        <p className="titleFont" style={{ width: "30%" }}>
-          Length &nbsp; &nbsp; &nbsp;
+        <p className="titleFont" style={{ width: "27%" }}>
+          Length
         </p>
       </div>
       <div id="runListItems">
@@ -138,15 +138,15 @@ function RunItem({
         type="date"
         data={data}
         setActiveRun={setActiveRun}
-        size="20%"
+        size="19%"
       ></RunItemStat>
       <RunItemStat
         type="startTime"
         data={data}
         setActiveRun={setActiveRun}
-        size="20%"
+        size="19%"
       ></RunItemStat>
-      <div style={{ width: "30%" }}>
+      <div style={{ width: "29%" }}>
         <RunItemStat
           type="duration"
           data={data}
@@ -159,7 +159,7 @@ function RunItem({
           setActiveRun={setActiveRun}
         ></RunItemStat>
       </div>
-      <div style={{ width: "30%" }}>
+      <div style={{ width: "29%" }}>
         <RunItemStat
           type="distance"
           data={data}
