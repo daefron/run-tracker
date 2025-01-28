@@ -236,7 +236,7 @@ input {
 }
 #runListItems {
   overflow-y: scroll;
-  height: 415px;
+  height: calc(100% - 35px);
 }
 #runList {
   background-color: rgb(50, 50, 70);

@@ -7,7 +7,7 @@ export function FakePage() {
           <p className="graphTitle titleFont">All runs</p>
         </div>
       </div>
-      <div id="predictionStats" style={{ height: "450px" }}>
+      <div id="predictionStats" style={{ height: "auto" }}>
         <p className="titleFont elementHeader">Predicted next run stats</p>
         <div className="statsFooter">
           <CheckMark
@@ -39,7 +39,7 @@ export function FakePage() {
           Overall stats
         </p>
       </div>
-      <div id="runList" style={{ height: "450px" }}>
+      <div id="runList" style={{ height: "auto" }}>
         <div className="elementHeader runItem runListTitle">
           <p className="titleFont" style={{ width: "5%" }}>
             GPS

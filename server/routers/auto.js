@@ -21,6 +21,7 @@ function timers() {
   setInterval(() => {
     authController.refreshAuth();
   }, refreshAuthDelay);
+  
   fitbitDataController.updatePut();
   authController.refreshAuth();
 }
