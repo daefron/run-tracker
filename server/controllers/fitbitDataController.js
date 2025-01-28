@@ -181,12 +181,12 @@ async function updatePut(req, res) {
               const timePosition = () => {
                 for (let i = 0; i < timeArray.length; i++) {
                   if (timeArray[i].split(":")[0] === weatherTime) {
-                    console.log(weatherTime, timeArray[i].split(":")[0]);
                     return i + GMTDiff;
                   }
                 }
               };
               const temp = tempArray[timePosition()];
+              console.log(temp);
               await db.query(
                 "UPDATE runs SET weather_data = $1 WHERE logid = $2",
                 [temp, run.data.id]
