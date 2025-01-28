@@ -181,6 +181,8 @@ async function updatePut(req, res) {
               const timePosition = () => {
                 for (let i = 0; i < timeArray.length; i++) {
                   if (timeArray[i].split(":")[0] === weatherTime) {
+                    console.log(timeArray[i].split(":")[0], weatherTime);
+                    console.log(i + GMTDiff);
                     return i + GMTDiff;
                   }
                 }
