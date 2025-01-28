@@ -220,6 +220,9 @@ class Run {
   }
 }
 function dateArray(runs, gap) {
+  if (!gap) {
+    gap = 0;
+  }
   const lowestDate = renderToDate(runs[runs.length - 1].render.date);
   const highestDate = renderToDate(runs[0].render.date);
   const amountOfDays = gap + (highestDate - lowestDate) / 86400000;

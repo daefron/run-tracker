@@ -9,6 +9,7 @@ import { RunStats } from "./Components/RunStats.jsx";
 import { LastUpdated } from "./Components/LastUpdated.jsx";
 
 export function Loaded({ data, setLoading, setLastUpdated }) {
+  console.log(data);
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
