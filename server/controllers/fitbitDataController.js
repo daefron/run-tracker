@@ -190,6 +190,10 @@ async function updatePut(req, res) {
         }
       });
     }
+    if (req) {
+      res.send("Updated");
+    }
+    return;
   }
 }
 

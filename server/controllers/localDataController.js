@@ -24,7 +24,7 @@ async function launchGet(req, res) {
     ])
   ).rows[0].id_array;
   const localRuns = (
-    await db.query("SELECT * FROM runs WHERE owner = $1", ["CC83GK"])
+    await db.query("SELECT * FROM runs WHERE owner = $1", [process.env.owner])
   ).rows;
   let runs = [];
   runIds.forEach((id) => {
@@ -62,7 +62,7 @@ async function launchGet(req, res) {
     return data;
   }
   const chartData = chartFiller(dateFiller(runs, dateRange, types));
-  
+
   const overallStats = {
     total: totalStats(),
     highest: highestStats(),
