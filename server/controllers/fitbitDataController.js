@@ -145,7 +145,6 @@ async function updatePut(req, res) {
         async function weatherData() {
           console.log("Fetching weather data for " + run.data.id + ".");
           const weatherTime = run.data.originalStartTime.split(":")[0];
-          const weatherDate = weatherTime.split("T")[0];
           const latitude = -37.814;
           const longitude = 144.9633;
           const url =
@@ -153,10 +152,7 @@ async function updatePut(req, res) {
             latitude +
             "&longitude=" +
             longitude +
-            "&hourly=temperature_2m&start_date=" +
-            weatherDate +
-            "&end_date=" +
-            weatherDate;
+            "&hourly=temperature_2m&past_days=92";
           fetch(url, {
             path: url,
             headers: {
@@ -181,14 +177,11 @@ async function updatePut(req, res) {
               const timePosition = () => {
                 for (let i = 0; i < timeArray.length; i++) {
                   if (timeArray[i].split(":")[0] === weatherTime) {
-                    console.log(timeArray[i].split(":")[0], weatherTime);
-                    console.log(i + GMTDiff);
                     return i + GMTDiff;
                   }
                 }
               };
               const temp = tempArray[timePosition()];
-              console.log(temp);
               await db.query(
                 "UPDATE runs SET weather_data = $1 WHERE logid = $2",
                 [temp, run.data.id]
