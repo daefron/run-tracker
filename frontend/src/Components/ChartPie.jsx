@@ -1,6 +1,6 @@
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from "recharts";
-export function ChartPie({ runs, activeRun, type, render }) {
-  const pieData = dataGetter(runs[activeRun]);
+export function ChartPie({ run, type, render }) {
+  const pieData = dataGetter(run);
   let colors;
   if (type === "activeTime") {
     colors = ["green", "red"];

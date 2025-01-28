@@ -29,6 +29,9 @@ export function RunList({
       <div id="runListItems">
         {runs.map((run) => {
           let inBrush;
+          if (run.chartOrder >= brushStart && run.chartOrder <= brushEnd) {
+            inBrush = true;
+          }
           return (
             <RunItem
               key={run.render.date + run.index}

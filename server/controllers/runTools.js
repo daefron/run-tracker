@@ -327,8 +327,13 @@ module.exports = {
   renderTime,
   heartRateArrayParse,
   stepsArrayParse,
+  getTotal,
+  getAverage,
   msToObject,
   compareRuns,
+  dateArray,
+  trendLine,
+  dateFiller,
   Run,
   PredictedRun,
 };

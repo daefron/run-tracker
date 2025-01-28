@@ -15,7 +15,8 @@ export function SelectedChart({
   selectedType,
   setSelectedType,
 }) {
-  if (!runs[activeRun].heartRateArray) {
+  const run = runs[activeRun];
+  if (!run.heartRateArray) {
     return (
       <div className="graphHolder" id={"selectedGraph"}>
         <div className="elementHeader" id="selectedHeader">
@@ -91,13 +92,13 @@ export function SelectedChart({
   }
   function getChartData() {
     if (selectedType === "bpm") {
-      return runs[activeRun]["heartRateArray"];
+      return run["heartRateArray"];
     } else {
-      return runs[activeRun][selectedType + "Array"];
+      return run[selectedType + "Array"];
     }
   }
   const chartData = getChartData();
-  const zones = zoneGetter(runs[activeRun].heartRateZones);
+  const zones = zoneGetter(run.heartRateZones);
   const lineColors = {
     peakPercentage: lineColor("Peak"),
     vigorousPercentage: lineColor("Vigorous"),
@@ -208,7 +209,7 @@ export function SelectedChart({
             activeRun={activeRun}
             runs={runs}
           />
-          <p className="smallFont">{runs[activeRun].render.date}</p>
+          <p className="smallFont">{run.render.date}</p>
           <ActiveRunShiftButton
             value="right"
             render="->"

@@ -1,5 +1,4 @@
-import { useState, useRef, useReducer } from "react";
-import { initialLines, dateArray } from "./Tools.jsx";
+import { useState, useRef } from "react";
 import { RunList } from "./Components/RunList.jsx";
 import { PredictionStats } from "./Components/Prediction.jsx";
 import { AllChart } from "./Components/AllChart.jsx";
@@ -9,17 +8,18 @@ import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
 import { LastUpdated } from "./Components/LastUpdated.jsx";
 
-export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
-  const parsedRuns = useRef(runs.runs);
+export function Loaded({ data, setLoading, setLastUpdated }) {
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
-  const [dateRange, setDateRange] = useState(dateArray(parsedRuns.current));
   const [predictedOnGraph, setPredictedOnGraph] = useState(true);
   const [trendlineOnGraph, setTrendlineOnGraph] = useState(true);
-  const brushStart = useRef(0);
-  const brushEnd = useRef();
-  const predictedRuns = useRef([runs.predicted]);
-  const [lineVisibility, setLineVisibility] = useState(initialLines());
+  const [brushStart, setBrushStart] = useState(0);
+  const [brushEnd, setBrushEnd] = useState(data.chartData.length);
+  const [lineVisibility, setLineVisibility] = useState({
+    duration: true,
+    distance: true,
+    heartRate: true,
+  });
   const lineColors = {
     duration: "rgb(0, 200, 150)",
     distance: "rgb(0, 80, 255)",
@@ -34,16 +34,16 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
     <>
       <div id="body">
         <RunList
-          runs={parsedRuns.current}
+          runs={data.runData}
           activeRun={activeRun}
           setActiveRun={setActiveRun}
           hoverRun={hoverRun}
           setHoverRun={setHoverRun}
-          brushStart={brushStart.current}
-          brushEnd={brushEnd.current}
+          brushStart={brushStart}
+          brushEnd={brushEnd}
         />
         <PredictionStats
-          predictedRuns={predictedRuns.current}
+          predictedRuns={data.predictedRun}
           predictedOnGraph={predictedOnGraph}
           setPredictedOnGraph={setPredictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
@@ -53,40 +53,40 @@ export function Loaded({ runs, lastUpdated, setLoading, setLastUpdated }) {
           render="Selected run - "
           selectedType={selectedType}
           setSelectedType={setSelectedType}
-          runs={parsedRuns.current}
           activeRun={activeRun}
           setActiveRun={setActiveRun}
+          runs={data.runData}
         />
         <AllChart
           render="All runs"
           lineColors={lineColors}
-          runs={parsedRuns.current}
           activeRun={activeRun}
-          dateRange={dateRange}
           predictedOnGraph={predictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
-          predictedRuns={predictedRuns.current}
           lineVisibility={lineVisibility}
           setLineVisibility={setLineVisibility}
-          brushStart={brushStart}
-          brushEnd={brushEnd}
+          setBrushStart={setBrushStart}
+          setBrushEnd={setBrushEnd}
+          runs={data.runData}
+          predictedRuns={data.predictedRun}
+          chartData={data.chartData}
+          predictionData={data.predictionData}
+          trends={data.trends}
         />
         <ChartPie
           render="Heart rate zones"
           type="heartZones"
-          runs={parsedRuns.current}
-          activeRun={activeRun}
+          run={data.runData[activeRun]}
         />
         <ChartPie
           render="Active time"
           type="activeTime"
-          runs={parsedRuns.current}
-          activeRun={activeRun}
+          run={data.runData[activeRun]}
         />
-        <RunStats runs={parsedRuns.current} activeRun={activeRun} />
-        <OverallStats runs={parsedRuns.current} />
+        <RunStats run={data.runData[activeRun]} />
+        <OverallStats overallStats={data.overallStats} />
         <LastUpdated
-          lastUpdated={lastUpdated}
+          lastUpdated={data.lastUpdated}
           setLoading={setLoading}
           setLastUpdated={setLastUpdated}
         />

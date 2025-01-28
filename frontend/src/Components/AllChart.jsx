@@ -1,4 +1,3 @@
-import { trendLine, dateFiller } from "../Tools.jsx";
 import {
   ResponsiveContainer,
   LineChart,
@@ -16,14 +15,15 @@ export function AllChart({
   lineColors,
   runs,
   activeRun,
-  dateRange,
+  predictionData,
   predictedOnGraph,
   trendlineOnGraph,
   predictedRuns,
   lineVisibility,
   setLineVisibility,
-  brushStart,
-  brushEnd,
+  setBrushStart,
+  setBrushEnd,
+  chartData,
 }) {
   function TooltipContent({ payload }) {
     if (!payload[0]) {
@@ -206,6 +206,7 @@ export function AllChart({
   function SmallerAxisTick() {
     return;
   }
+
   const types = [
     "duration",
     "distance",
@@ -215,19 +216,6 @@ export function AllChart({
     "steps",
     "temp",
   ];
-
-  const predictionData = dateFiller(predictedRuns, dateRange, types);
-  const chartData = chartFiller(dateFiller(runs, dateRange, types));
-
-  function chartFiller(data) {
-    predictedRuns.forEach((run) => {
-      for (const key in predictionData[run.chartOrder]) {
-        data[run.chartOrder][key + "Prediction"] =
-          predictionData[run.chartOrder][key];
-      }
-    });
-    return data;
-  }
   const trends = trendFiller();
   function trendFiller() {
     let trendHolder = {};
@@ -238,6 +226,38 @@ export function AllChart({
       trendHolder[type] = trendLine(chartData, type);
     });
     return trendHolder;
+  }
+  function trendLine(data, type) {
+    let dataSet = data.filter((point) => point.id);
+    const xData = dataSet.map((point) => point.order);
+    const yData = dataSet.map((point) => point[type]);
+    const xMean = getAverage(xData);
+    const yMean = getAverage(yData);
+    const xMinusxMean = xData.map((value) => value - xMean);
+    const yMinusyMean = yData.map((value) => value - yMean);
+    const xMinusxMeanSq = xMinusxMean.map((val) => Math.pow(val, 2));
+    const xy = [];
+    for (let x = 0; x < dataSet.length; x++) {
+      xy.push(xMinusxMean[x] * yMinusyMean[x]);
+    }
+    const xySum = getTotal(xy);
+    const slope = xySum / getTotal(xMinusxMeanSq);
+    const slopeStart = yMean - slope * xMean;
+    return {
+      slope: slope,
+      slopeStart: slopeStart,
+      calcY: (x) => slopeStart + slope * x,
+      xStart: xData[0],
+      xEnd: xData[xData.length - 1],
+    };
+
+    function getAverage(data) {
+      return getTotal(data) / data.length;
+    }
+
+    function getTotal(data) {
+      return data.reduce((total, value) => total + value);
+    }
   }
   const todayInGraph = todayChecker();
   function todayChecker() {
@@ -273,34 +293,22 @@ export function AllChart({
     });
     return dateHolder;
   }
-  const dateGap = predictedRuns[0].gap;
-  const graphMax = graphMaxPadding();
-  const graphMin = graphMinPadding();
-  function graphMaxPadding() {
-    let paddedTypes = {};
-    types.forEach((type) => {
-      let highestValue = 0;
-      for (let i = 0; i < runs.length; i++) {
-        if (runs[i][type] > highestValue) {
-          highestValue = runs[i][type];
-        }
-      }
-      const paddedValue = highestValue * 1.03;
-      paddedTypes[type] = paddedValue;
-    });
-    return paddedTypes;
-  }
-  function graphMinPadding() {
+  function graphPadding() {
     let paddedTypes = {};
     types.forEach((type) => {
       let lowestValue = Infinity;
+      let highestValue = 0;
       for (let i = 0; i < runs.length; i++) {
         if (runs[i][type] < lowestValue) {
           lowestValue = runs[i][type];
         }
+        if (runs[i][type] > highestValue) {
+          highestValue = runs[i][type];
+        }
       }
-      const paddedValue = lowestValue * 0.8;
-      paddedTypes[type] = paddedValue;
+      const paddedMax = highestValue + (highestValue - lowestValue) / 15;
+      const paddedMin = lowestValue - (highestValue - lowestValue) / 15;
+      paddedTypes[type] = { max: paddedMax, min: paddedMin };
     });
     return paddedTypes;
   }
@@ -317,7 +325,11 @@ export function AllChart({
       />
     );
     const yAxis = (
-      <YAxis yAxisId={type} domain={[graphMin[type], graphMax[type]]} hide />
+      <YAxis
+        yAxisId={type}
+        domain={[graphPadding()[type].min, graphPadding()[type].max]}
+        hide
+      />
     );
     return (
       <Fragment key={type + "Line"}>
@@ -351,7 +363,11 @@ export function AllChart({
       />
     );
     const yAxis = (
-      <YAxis yAxisId={type} domain={[graphMin[type], graphMax[type]]} hide />
+      <YAxis
+        yAxisId={type}
+        domain={[graphPadding()[type].min, graphPadding()[type].max]}
+        hide
+      />
     );
     if (type === "temp") {
       return (
@@ -445,8 +461,8 @@ export function AllChart({
     </>
   );
   function brushChange(payload) {
-    brushStart.current = payload.startIndex;
-    brushEnd.current = payload.endIndex;
+    setBrushStart(payload.startIndex);
+    setBrushEnd(payload.endIndex);
   }
   return (
     <div className="graphHolder" id="allRunsGraph">
@@ -458,10 +474,10 @@ export function AllChart({
           margin={{ top: 0, left: 25, right: 25, bottom: 5 }}
           data={chartData}
         >
-          tickSize={8}
           <XAxis
             dataKey="order"
             tick={<SmallerAxisTick />}
+            tickSize={8}
             interval={0}
             align={"center"}
             mirror
@@ -470,13 +486,7 @@ export function AllChart({
           {referenceLines}
           <Legend content={<SmallerLegend />} />
           <Tooltip content={<TooltipContent />} isAnimationActive={false} />
-          <Brush
-            data={chartData}
-            dataKey={"order"}
-            startIndex={brushStart.current}
-            endIndex={brushEnd.current}
-            onChange={brushChange}
-          >
+          <Brush data={chartData} dataKey={"order"} onChange={brushChange}>
             <LineChart data={chartData}>{brushLines}</LineChart>
           </Brush>
         </LineChart>

@@ -1,8 +1,5 @@
 import { Stats } from "./Generic/Stats.jsx";
-export function RunStats({ runs, activeRun }) {
-  if (!runs) {
-    return;
-  }
+export function RunStats({ run}) {
   const types = [
     "duration",
     "distance",
@@ -13,7 +10,6 @@ export function RunStats({ runs, activeRun }) {
     "temp",
     "GPS",
   ];
-  const run = runs[activeRun];
   return (
     <div id="runStats">
       <p id="runStatsTitle" className="elementHeader titleFont">
