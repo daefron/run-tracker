@@ -12,7 +12,6 @@ import {
 import { Fragment } from "react";
 export function AllChart({
   render,
-  lineColors,
   runs,
   activeRun,
   predictionData,
@@ -25,6 +24,15 @@ export function AllChart({
   setBrushEnd,
   chartData,
 }) {
+  const lineColors = {
+    duration: "rgb(0, 200, 150)",
+    distance: "rgb(0, 80, 255)",
+    heartRate: "rgb(210, 0, 0)",
+    speed: "rgb(220, 0, 100)",
+    steps: "rgb(200, 200, 200)",
+    calories: "rgb(255, 150, 0)",
+    temp: "rgb(200, 200, 0)",
+  };
   function TooltipContent({ payload }) {
     if (!payload[0]) {
       return;

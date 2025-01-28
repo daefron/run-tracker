@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { RunList } from "./Components/RunList.jsx";
 import { PredictionStats } from "./Components/Prediction.jsx";
 import { AllChart } from "./Components/AllChart.jsx";
@@ -7,7 +7,6 @@ import { ChartPie } from "./Components/ChartPie.jsx";
 import { OverallStats } from "./Components/OverallStats.jsx";
 import { RunStats } from "./Components/RunStats.jsx";
 import { LastUpdated } from "./Components/LastUpdated.jsx";
-
 export function Loaded({ data, setLoading, setLastUpdated }) {
   const [activeRun, setActiveRun] = useState(0);
   const [hoverRun, setHoverRun] = useState(0);
@@ -20,15 +19,7 @@ export function Loaded({ data, setLoading, setLastUpdated }) {
     distance: true,
     heartRate: true,
   });
-  const lineColors = {
-    duration: "rgb(0, 200, 150)",
-    distance: "rgb(0, 80, 255)",
-    heartRate: "rgb(210, 0, 0)",
-    speed: "rgb(220, 0, 100)",
-    steps: "rgb(200, 200, 200)",
-    calories: "rgb(255, 150, 0)",
-    temp: "rgb(200, 200, 0)",
-  };
+  console.log(data);
   const [selectedType, setSelectedType] = useState("bpm");
   return (
     <>
@@ -59,7 +50,6 @@ export function Loaded({ data, setLoading, setLastUpdated }) {
         />
         <AllChart
           render="All runs"
-          lineColors={lineColors}
           activeRun={activeRun}
           predictedOnGraph={predictedOnGraph}
           trendlineOnGraph={trendlineOnGraph}
