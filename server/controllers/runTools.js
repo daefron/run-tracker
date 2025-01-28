@@ -173,7 +173,6 @@ function dateFiller(runs, dateRange, types) {
   }
   return dateHolder;
 }
-const heartRateZoneNames = ["Light", "Moderate", "Vigorous", "Peak"];
 class Run {
   constructor(run) {
     this.id = run.logId;
@@ -184,24 +183,17 @@ class Run {
     this.distance = Number(run.distance.toFixed(2));
     this.speed = run.speed;
     this.steps = run.steps;
+    this.originalStartTime = run.originalStartTime;
     this.calories = run.calories;
     this.heartRate = run.averageHeartRate;
     this.heartRateZones = run.heartRateZones;
+    const heartRateZoneNames = ["Light", "Moderate", "Vigorous", "Peak"];
     this.heartRateZones.forEach((zone, i) => {
       zone.name = heartRateZoneNames[i];
     });
-    this.temp = run.temperature;
-
-    if (run.heartRateArray) {
-      this.heartRateArray = heartRateArrayParse(run.heartRateArray);
-    }
-    if (run.stepsArray) {
-      this.stepsArray = stepsArrayParse(run.stepsArray);
-    }
-
     this.render = {
-      date: toAusDate(run.originalStartTime),
-      startTime: renderTime(dateTimeParser(run.originalStartTime)),
+      date: toAusDate(this.originalStartTime),
+      startTime: renderTime(dateTimeParser(this.originalStartTime)),
       duration: renderDuration(msToObject(this.duration)),
       distance: this.distance + " km",
       speed: this.speed.toFixed(2) + " km/h",
@@ -215,6 +207,16 @@ class Run {
     } else {
       this.render.GPS = "Disconnected";
     }
+    this.heartRateLink = run.heartRateLink;
+  }
+  temp(temp) {
+    this.temp = temp;
+  }
+  heartRateArray(array) {
+    this.heartRateArray = heartRateArrayParse(array);
+  }
+  stepsArray(array) {
+    this.stepsArray = stepsArrayParse(array);
   }
 }
 function dateArray(runs) {

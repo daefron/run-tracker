@@ -1,34 +1,35 @@
 const db = require("../db/pool");
 const auth = require("../tools/auth");
+const runTools = require("./runTools");
 const { linkMaker } = require("../tools/linkMaker");
 
-async function updateGet(req, res) {
+async function updatePut(req, res) {
   const lastAuth = await auth.getLastAuth();
   if (lastAuth) {
-    await db.query("UPDATE run_list SET last_updated = $1", [Date.now()]);
+    await db.query("UPDATE users SET last_updated = $1", [Date.now()]);
+    let localIds = (
+      await db.query("SELECT id_array FROM users WHERE owner = $1", [
+        process.env.owner,
+      ])
+    ).rows[0].id_array;
+    if (!localIds) {
+      localIds = [];
+    }
     const fetchAuth = {
       headers: {
         Authorization: "Bearer " + lastAuth.access_token,
       },
     };
-    const localRunsQuery = await db.query(
-      "SELECT data FROM run_list WHERE owner = $1",
-      [process.env.owner]
-    );
-    let localRuns;
-    if (localRunsQuery.rows[0]) {
-      localRuns = localRunsQuery.rows[0].data;
-    }
-    fetchRuns();
     async function dataOrError(response) {
-      console.log("Fetching data");
       if (!response.ok) {
         throw new Error(response.status + " " + response.statusText);
       } else {
         return response.json();
       }
     }
-    async function fetchRuns() {
+    newIdCheck();
+    async function newIdCheck() {
+      console.log("Fetching Fitbit activity list.");
       fetch(
         "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2000-01-01&sort=desc&offset=0&limit=100",
         fetchAuth
@@ -44,186 +45,159 @@ async function updateGet(req, res) {
             console.log(data);
             return;
           }
-          const fitbitActivities = data.activities;
-          let fitbitRuns = [];
-          for (const activity of fitbitActivities) {
-            if (activity.activityName === "Run") {
-              fitbitRuns.push(activity);
-            }
-          }
-          let runsUpdated;
-          if (
-            localRuns &&
-            JSON.stringify(fitbitRuns) === JSON.stringify(localRuns)
-          ) {
-            console.log("Activity data up to date.");
-          } else {
-            await db.query("UPDATE run_list SET data = $1, owner = $2", [
-              JSON.stringify(fitbitRuns),
+          const fitbitData = data.activities;
+          const fitbitRuns = fitbitData.filter(
+            (activity) => activity.activityName === "Run"
+          );
+          const fitbitIds = fitbitRuns.map((run) => run.logId);
+          const newIds = fitbitIds.filter((id) => !localIds.includes(id));
+          if (newIds[0]) {
+            console.log("New runs detected, updating runs.");
+            newIds.forEach(async (id) => {
+              const fitbitRun = fitbitRuns.find((run) => run.logId === id);
+              fitbitRun.index = fitbitRuns.indexOf(fitbitRun);
+              await db.query(
+                "INSERT INTO runs (logId, owner, data, hr_data, step_data, weather_data) VALUES ($1, $2, $3, $4, $5, $6)",
+                [
+                  fitbitRun.logId,
+                  process.env.owner,
+                  JSON.stringify(new runTools.Run(fitbitRun)),
+                  null,
+                  null,
+                  null,
+                ]
+              );
+            });
+            await db.query("UPDATE users SET id_array = $1 WHERE owner = $2", [
+              JSON.stringify(fitbitIds),
               process.env.owner,
             ]);
-            runsUpdated = true;
-            console.log("Inserted updated run list.");
-          }
-          for (let i = 0; i < fitbitRuns.length; i++) {
-            let lastRun, idMade, hrMade, stepsMade, weatherMade;
-            if (i === fitbitRuns.length - 1) {
-              lastRun = true;
-            }
-            const run = fitbitRuns[i];
-            let localRunQuery = await db.query(
-              "SELECT * FROM runs WHERE logid = $1",
-              [run.logId]
-            );
-            let localRun = localRunQuery.rows[0];
-            if (!localRun) {
-              await db.query(
-                "INSERT INTO runs (logid, hrdata, stepdata, weatherdata) VALUES ($1, $2, $3, $4)",
-                [run.logId, null, null, null]
-              );
-              localRunQuery = await db.query(
-                "SELECT * FROM runs WHERE logid = $1",
-                [run.logId]
-              );
-              localRun = localRunQuery.rows[0];
-              idMade = true;
-            } else {
-              idMade = true;
-            }
-            async function intradayFetch(typeName, sqlName, link) {
-              fetch(link, fetchAuth)
-                .then((response) => {
-                  return dataOrError(response);
-                })
-                .catch((error) => {
-                  return error;
-                })
-                .then(async (data) => {
-                  if (data instanceof Error) {
-                    console.log(data);
-                    return;
-                  }
-                  await db.query(
-                    'UPDATE runs SET "' + sqlName + '" = $1 WHERE logid = $2',
-                    [
-                      JSON.stringify(
-                        data["activities-" + typeName + "-intraday"].dataset
-                      ),
-                      localRun.logid,
-                    ]
-                  );
-                });
-            }
-            if (localRun && localRun.hrdata === null) {
-              intradayFetch("heart", "hrdata", run.heartRateLink);
-            } else {
-              hrMade = true;
-            }
-            if (localRun && localRun.stepdata === null) {
-              intradayFetch("steps", "stepdata", linkMaker("steps", run));
-            } else {
-              stepsMade = true;
-            }
-            if (localRun && localRun.weatherdata === null) {
-              weatherFetch(run);
-            } else {
-              weatherMade = true;
-            }
-            function weatherFetch(run) {
-              const weatherTime = run.originalStartTime.split(":")[0];
-              const latitude = -37.814;
-              const longitude = 144.9633;
-              fetch(
-                "https://api.open-meteo.com/v1/forecast?latitude=" +
-                  latitude +
-                  "&longitude=" +
-                  longitude +
-                  "&hourly=temperature_2m&past_days=92",
-                {
-                  headers: {
-                    "Content-Type": "text/html",
-                  },
-                  method: "GET",
-                }
-              )
-                .then((res) => {
-                  return res.json();
-                })
-                .then(async (data) => {
-                  const timeArray = data.hourly.time;
-                  const tempArray = data.hourly.temperature_2m;
-                  const GMTDiff = 11;
-                  const timePosition = () => {
-                    for (let i = 0; i < timeArray.length; i++) {
-                      if (timeArray[i].split(":")[0] === weatherTime) {
-                        return i + GMTDiff;
-                      }
-                    }
-                  };
-                  const temp = tempArray[timePosition()];
-                  await db.query(
-                    "UPDATE runs SET weatherdata = $1 WHERE logid = $2",
-                    [temp, localRun.logid]
-                  );
-                });
-            }
-            if (lastRun && idMade && hrMade && stepsMade && weatherMade) {
-              if (runsUpdated) {
-                processRuns();
-              }
-              console.log("All runs finished updating.");
-              if (req) {
-                res.send("Refreshed");
-              }
-              return;
-            }
+            return;
+          } else {
+            console.log("No new runs detected.");
+            return;
           }
         });
     }
-  } else {
-    console.log("Authentication broken.");
-    return;
-  }
-}
+    updateIdCheck();
+    async function updateIdCheck() {
+      const allRuns = (
+        await db.query("SELECT * FROM runs WHERE owner = $1", [
+          process.env.owner,
+        ])
+      ).rows;
+      console.log("Checking runs have all data.");
+      allRuns.forEach((run) => {
+        if (!run.hr_data) {
+          hrData();
+        } else if (!run.step_data) {
+          stepData();
+        } else if (!run.weather_data) {
+          weatherData();
+        }
+        return;
 
-const runTools = require("./runTools");
-
-async function processRuns() {
-  const localRunsQuery = await db.query(
-    "SELECT data FROM run_list WHERE owner = $1",
-    [process.env.owner]
-  );
-  const localRuns = localRunsQuery.rows[0].data;
-  let formattedRuns = [];
-  for (let i = 0; i < localRuns.length; i++) {
-    const run = localRuns[i];
-    const runDataQuery = await db.query(
-      'SELECT * FROM "runs" WHERE logid = $1',
-      [run.logId]
-    );
-    const runData = runDataQuery.rows[0];
-    run.heartRateArray = runData.hrdata;
-    run.stepsArray = runData.stepdata;
-    run.temperature = runData.weatherdata;
-    run.index = i;
-    const newRun = new runTools.Run(run);
-    newRun.lastRun = localRuns[i + 1];
-    if (newRun.lastRun) {
-      runTools.compareRuns(newRun);
+        async function hrData() {
+          console.log("Fetching Fitbit run data for " + run.data.id + ".");
+          fetch(run.data.heartRateLink, fetchAuth)
+            .then((response) => {
+              return dataOrError(response);
+            })
+            .catch((error) => {
+              return error;
+            })
+            .then(async (data) => {
+              if (data instanceof Error) {
+                console.log(data);
+                return;
+              }
+              await db.query("UPDATE runs SET hr_data = $1 WHERE logid = $2", [
+                JSON.stringify(data["activities-heart-intraday"].dataset),
+                run.logid,
+              ]);
+              stepData();
+            });
+        }
+        async function stepData() {
+          console.log("Fetching Fitbit step data for " + run.data.id + ".");
+          fetch(linkMaker("steps", run.data), fetchAuth)
+            .then((response) => {
+              return dataOrError(response);
+            })
+            .catch((error) => {
+              return error;
+            })
+            .then(async (data) => {
+              if (data instanceof Error) {
+                console.log(data);
+                return;
+              }
+              await db.query(
+                "UPDATE runs SET step_data = $1 WHERE logid = $2",
+                [
+                  JSON.stringify(data["activities-steps-intraday"].dataset),
+                  run.logid,
+                ]
+              );
+              weatherData();
+            });
+        }
+        async function weatherData() {
+          console.log("Fetching weather data for " + run.data.id + ".");
+          const weatherTime = run.data.originalStartTime.split(":")[0];
+          const weatherDate = weatherTime.split("T")[0];
+          const latitude = -37.814;
+          const longitude = 144.9633;
+          const url =
+            "https://api.open-meteo.com/v1/forecast?latitude=" +
+            latitude +
+            "&longitude=" +
+            longitude +
+            "&hourly=temperature_2m&start_date=" +
+            weatherDate +
+            "&end_date=" +
+            weatherDate;
+          fetch(url, {
+            path: url,
+            headers: {
+              "Content-Type": "text/html",
+            },
+            method: "GET",
+          })
+            .then((response) => {
+              return dataOrError(response);
+            })
+            .catch((error) => {
+              return error;
+            })
+            .then(async (data) => {
+              if (data instanceof Error) {
+                console.log(data);
+                return;
+              }
+              const timeArray = data.hourly.time;
+              const tempArray = data.hourly.temperature_2m;
+              const GMTDiff = 11;
+              const timePosition = () => {
+                for (let i = 0; i < timeArray.length; i++) {
+                  if (timeArray[i].split(":")[0] === weatherTime) {
+                    console.log(weatherTime, timeArray[i].split(":")[0]);
+                    return i + GMTDiff;
+                  }
+                }
+              };
+              const temp = tempArray[timePosition()];
+              await db.query(
+                "UPDATE runs SET weather_data = $1 WHERE logid = $2",
+                [temp, run.data.id]
+              );
+            });
+        }
+      });
     }
-    formattedRuns.push(newRun);
   }
-  const predictedRun = new runTools.PredictedRun(formattedRuns);
-  const data = {
-    runs: formattedRuns,
-    predicted: predictedRun,
-  };
-  await db.query("UPDATE run_list SET processed_data = $1 WHERE owner = $2", [
-    JSON.stringify(data),
-    process.env.owner,
-  ]);
 }
 
 module.exports = {
-  updateGet,
+  updatePut,
 };

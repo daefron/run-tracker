@@ -8,7 +8,7 @@ const authController = require("../controllers/authController");
 
 mainRouter.get("/data", localDataController.launchGet);
 
-mainRouter.get("/update", fitbitDataController.updateGet);
+mainRouter.get("/update", fitbitDataController.updatePut);
 
 mainRouter.get("/auth", authController.refreshAuth);
 
