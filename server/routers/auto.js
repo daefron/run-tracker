@@ -8,7 +8,7 @@ function timers() {
     "Run auto-updater running. Interval = " + runFetchDelay / 60000 + " mins."
   );
   setInterval(() => {
-    fitbitDataController.updateGet();
+    fitbitDataController.updatePut();
   }, runFetchDelay);
 
   //time between auth refresh updates (7.5 hours as tokens last 8 hours)
