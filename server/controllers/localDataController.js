@@ -30,9 +30,9 @@ async function launchGet(req, res) {
   runIds.forEach((id) => {
     let run = localRuns.find((run) => run.logid == id);
     let parsedRun = run.data;
-    parsedRun.lastRun = localRuns[parsedRun.index + 1];
-    if (parsedRun.lastRun) {
-      compareRuns(parsedRun);
+    const lastRun = localRuns[parsedRun.index + 1];
+    if (lastRun) {
+      compareRuns(parsedRun, lastRun);
     }
     parsedRun.heartRateArray = heartRateArrayParse(run.hr_data);
     parsedRun.stepsArray = stepsArrayParse(run.step_data);

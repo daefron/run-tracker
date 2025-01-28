@@ -105,11 +105,11 @@ function dateTimeParser(dateString) {
   let secs = Number(parsed[2]);
   return new Time(hour, mins, secs);
 }
-function compareRuns(run) {
+function compareRuns(run, lastRun) {
   run.render.distanceDiff = compareDistance();
   run.render.durationDiff = compareDuration();
   function compareDistance() {
-    let distanceDiff = run.distance - run.lastRun.distance;
+    let distanceDiff = run.distance - lastRun.distance;
     if (distanceDiff < 0) {
       run.distanceNegative = true;
       return distanceDiff.toFixed(2);
@@ -117,7 +117,7 @@ function compareRuns(run) {
     return "+" + distanceDiff.toFixed(2);
   }
   function compareDuration() {
-    let durationDiff = run.duration - run.lastRun.duration;
+    let durationDiff = run.duration - lastRun.duration;
     if (durationDiff < 0) {
       durationDiff *= -1;
       run.durationNegative = true;
