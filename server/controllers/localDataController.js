@@ -30,7 +30,7 @@ async function launchGet(req, res) {
   runIds.forEach((id) => {
     let run = localRuns.find((run) => run.logid == id);
     let parsedRun = run.data;
-    const lastRun = localRuns.find((run) => run.index === parsedRun.index + 1);
+    const lastRun = localRuns.find((run) => run.data.index === parsedRun.index + 1);
     if (lastRun) {
       compareRuns(parsedRun, lastRun.data);
     }
