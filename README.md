@@ -2,7 +2,7 @@
 
 ## Why this project?
 
-So my girlfriend got me a Fitbit for me birthday...
+So my girlfriend got me a Fitbit for my birthday...
 
 I had just started getting into running, and I found the official Fitbit app didn't allow for easy comparison of exercises, so I decided to make a dashboard for tracking my runs.
 
