@@ -1,4 +1,4 @@
-## [Live site here](https://runtacker.netlify.app)
+## [Live site here](https://run.thomasevans.org)
 
 ## Why this project?
 
